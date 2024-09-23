@@ -1,4 +1,11 @@
-import dotenv from 'dotenv'
-dotenv.config();
+import mongoose from 'mongoose';
+import config from './config';
 
-//aquí va la conexión con mongo atlas
+(async () => {
+    try {
+        const db = await mongoose.connect(config.MONGO_DB as string);
+        console.log('Database is connected to MongoDB');
+    } catch (error) {
+        console.log(error);
+    }
+})();

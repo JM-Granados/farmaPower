@@ -1,7 +1,11 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import app from './app';
+import './database'
 
 app.get('/', (req, res) => res.send('Hello World with TypeScript!'));
 
-app.listen(3000, () => {
-  console.log(`Server is run at http://localhost:${3000}`);
+app.listen(app.get('port'), () => {
+  console.log(`Server is run at`, app.get('port'));
 });
