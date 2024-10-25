@@ -1,0 +1,110 @@
+/* --------------------------------------
+   Estilos Generales del Login
+   -------------------------------------- */
+
+/* Establece el tamaño, margen, padding y color de fondo del <html> y <body> para asegurar una apariencia coherente en toda la página. */
+html, body {
+    height: 100%; /* Hace que la altura del <html> y <body> sea igual a la altura del viewport. */
+    margin: 0; /* Elimina cualquier margen predeterminado. */
+    padding: 0; /* Elimina cualquier padding predeterminado. */
+    overflow: hidden; /* Oculta el desplazamiento de la página para evitar barras de scroll. */
+    background-color: #080F2B; /* Establece un color de fondo oscuro para todo el documento. */
+}
+
+/* Define el estilo del contenedor de fondo que cubre toda la pantalla. */
+.fullscreen-bg {
+    position: fixed; /* Posicionamiento fijo para que permanezca en su lugar al hacer scroll. */
+    width: 100%; /* Ancho completo del viewport. */
+    height: 100%; /* Altura completa del viewport. */
+    background-attachment: fixed; /* La imagen de fondo no se mueve con el scroll. */
+    background: url('../assets/Background.png') no-repeat center right; /* Configuración de la imagen de fondo. */
+    background-size: 150% 150%; /* Aumenta el tamaño de la imagen de fondo para que sea más grande que el contenedor. */
+    background-position: right -1000px top -360px; /* Posiciona la imagen más a la derecha y hacia arriba para un corte específico. */
+}
+
+/* Estilos para el contenedor principal que centra el contenido de login en la pantalla. */
+.content {
+    position: relative; /* Posición relativa dentro de su contenedor padre. */
+    width: 100%; /* Ancho completo del contenedor padre. */
+    height: 100%; /* Altura completa del contenedor padre. */
+    display: flex; /* Utiliza Flexbox para facilitar la alineación de los elementos internos. */
+    justify-content: center; /* Centra los elementos horizontalmente en el contenedor. */
+    align-items: center; /* Centra los elementos verticalmente en el contenedor. */
+    z-index: 10; /* Eleva el índice z para que esté por encima del fondo. */
+    color: #ffffff; /* Establece el color de texto a blanco. */
+}
+
+/* Define estilos para la barra de navegación en la parte inferior. */
+.navbar {
+    display: grid; /* Utiliza Grid para la disposición de elementos. */
+    justify-content: center; /* Centra el contenido dentro de la barra de navegación. */
+}
+
+/* Estilos generales para textos dentro del formulario. */
+.form-text {
+    color: #ffffff; /* Establece el color de texto a blanco para mejor contraste. */
+}
+
+/* Estilos para el título de la página de login. */
+.IngresarText {
+    font-size: 6rem; /* Tamaño de fuente grande para el título. */
+    font-family: sans-serif; /* Familia de fuente sans-serif para un look moderno. */
+}
+
+/* Estilos para las etiquetas de los campos del formulario. */
+.form-label {
+    font-size: 1.2rem; /* Tamaño de fuente moderado para las etiquetas. */
+    font-family: sans-serif; /* Consistencia en la familia de fuente. */
+}
+
+/* Estilos para el contenedor de los botones en el formulario. */
+.form-button-container {
+    display: flex; /* Dispone los botones en una fila usando Flexbox. */
+    justify-content: space-between; /* Separa los botones uniformemente. */
+    width: 100%; /* Ocupa todo el ancho disponible de su contenedor. */
+    padding: 0 15px; /* Añade padding a los lados para no tocar los bordes. */
+}
+
+/* Estilos comunes para ambos botones. */
+.button {
+    flex-grow: 1; /* Permite que los botones crezcan y llenen el espacio disponible. */
+    margin: 0 10px; /* Añade un pequeño margen entre los botones. */
+    font-size: 18px; /* Tamaño de fuente grande para facilidad de lectura. */
+    font-family: sans-serif; /* Familia de fuente para consistencia visual. */
+    padding: 10px 20px; /* Padding suficiente para que los botones sean fáciles de clickear. */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra suave para efecto visual. */
+    transition: all 0.3s; /* Transición suave para efectos de hover y focus. */
+}
+
+/* Estilos adicionales para botones específicos y sus estados interactivos. */
+.Crear, .Ingresar {
+    background-color: #141e46; /* Color de fondo oscuro para ambos botones. */
+    color: #ffffff; /* Texto en blanco para contraste. */
+}
+.Ingresar {
+    background-image: url('../assets/FondoBoton.png'); /* Imagen de fondo específica para el botón Ingresar. */
+    background-position: center; /* Centra la imagen de fondo en el botón. */
+    padding: 10px 40px; /* Padding adicional para este botón específico. */
+}
+.Crear:hover, .Ingresar:hover {
+    box-shadow: 6px 0 24px rgba(0,0,0,0.3); /* Sombra más intensa al hacer hover. */
+}
+.Crear:focus, .Ingresar:focus {
+    outline: none; /* Elimina el borde de enfoque predeterminado para un look más limpio. */
+    box-shadow: 0 0 12px rgba(0,0,0,0.5); /* Sombra intensa para indicar foco. */
+}
+
+/* Estilos para controles de formulario cuando están en foco. */
+.form-control {
+    border-color: #ffffff; /* Color de borde blanco para consistencia. */
+    color: #ffffff; /* Color de texto blanco. */
+    background-color: transparent; /* Fondo transparente para un look integrado. */
+    border-bottom: 1px solid #ffffff; /* Borde inferior para destacar el campo activo. */
+    transition: box-shadow 0.3s ease-in-out, border-color 0.15s ease-in-out; /* Transiciones suaves para cambios visuales. */
+}
+.form-control:focus {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.8); /* Sombra intensa para un claro indicador de campo activo. */
+    border-color: transparent; /* Hace el borde transparente en foco para destacar la sombra. */
+}
+
+
