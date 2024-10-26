@@ -22,9 +22,17 @@ import config from './config';
 (async () => {
     try {
         // Intenta conectar a MongoDB usando la URL provista en la configuración.
-        const db = await mongoose.connect(config.MONGO_DB as string);
+        await mongoose.connect(config.MONGO_DB as string);
         // Mensaje de éxito que se muestra si la conexión es exitosa.
-        console.log('Database is connected to MongoDB');
+        console.log('Connection successful, sending ping...');
+        // Asegura que db está definido antes de enviar el ping
+        if (mongoose.connection.db) {
+            const pingResult = await mongoose.connection.db.admin().command({ ping: 1 });
+            console.log('Ping response:', pingResult);
+        } else {
+            console.log('Database object not available');
+        }
+        
     } catch (error) {
         // Captura y muestra en consola cualquier error que ocurra durante la conexión.
         console.log(error);

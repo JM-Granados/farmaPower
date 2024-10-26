@@ -23,5 +23,6 @@ dotenv.config();
 export default {
     // MONGO_DB: Guarda la cadena de conexión de MongoDB obtenida de las variables de entorno.
     // Utiliza `process.env.MONGO_URI`, que debería ser definida en el archivo `.env`.
-    MONGO_DB: process.env.MONGO_URI
+    MONGO_DB: process.env.MONGO_URI,
+    MONGO_PORT: process.env.PORT
 }

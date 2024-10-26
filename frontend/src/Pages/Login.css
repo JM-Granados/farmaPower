@@ -16,10 +16,11 @@ html, body {
     position: fixed; /* Posicionamiento fijo para que permanezca en su lugar al hacer scroll. */
     width: 100%; /* Ancho completo del viewport. */
     height: 100%; /* Altura completa del viewport. */
-    background-attachment: fixed; /* La imagen de fondo no se mueve con el scroll. */
+    background-attachment: fixed !important; /* La imagen de fondo no se mueve con el scroll. */
     background: url('../assets/Background.png') no-repeat center right; /* Configuración de la imagen de fondo. */
     background-size: 150% 150%; /* Aumenta el tamaño de la imagen de fondo para que sea más grande que el contenedor. */
     background-position: right -1000px top -360px; /* Posiciona la imagen más a la derecha y hacia arriba para un corte específico. */
+    background-position-x: left;
 }
 
 /* Estilos para el contenedor principal que centra el contenido de login en la pantalla. */
@@ -85,10 +86,16 @@ html, body {
     background-image: url('../assets/FondoBoton.png'); /* Imagen de fondo específica para el botón Ingresar. */
     background-position: center; /* Centra la imagen de fondo en el botón. */
     padding: 10px 40px; /* Padding adicional para este botón específico. */
+    color: #080F2B;
 }
 .Crear:hover, .Ingresar:hover {
     box-shadow: 6px 0 24px rgba(0,0,0,0.3); /* Sombra más intensa al hacer hover. */
 }
+
+.Ingresar:hover {
+    color: #111A3D;
+}
+
 .Crear:focus, .Ingresar:focus {
     outline: none; /* Elimina el borde de enfoque predeterminado para un look más limpio. */
     box-shadow: 0 0 12px rgba(0,0,0,0.5); /* Sombra intensa para indicar foco. */
