@@ -26,7 +26,7 @@ import app from './app';
 import './database'
 
 // Define una ruta base '/' y envía un mensaje de 'Hello World' como respuesta HTTP.
-app.get('/', (req, res) => res.send('Hello World with TypeScript!'));
+app.get('/', (req, res) => res.send('Hello World with TypeScript! :D'));
 
 // Inicia el servidor para escuchar en el puerto especificado en las variables de entorno.
 app.listen(app.get('port'), () => {

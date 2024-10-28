@@ -11,7 +11,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 // Importación de los componentes de las ventanas que se utilizarán en las rutas.
 import Home_Guest from './Home_Guest' // Componente que muestra la página de inicio para usuarios no autenticados.
 import Login from './Login'; // Componente para la página de login.
-
+import My_Requests from './My_Requests'; // Componente para la página de solicitudes del usuario.
 /**
  * @fileoverview Aplicación principal para el proyecto React usando React Router y Bootstrap.
  *
@@ -44,6 +44,7 @@ function App() {
         <Route path='/' element={<Home_Guest/>}></Route>
         {/* Ruta para la página de login accesible desde '/Login' */}
         <Route path='/Login' element={<Login/>}></Route>
+        <Route path='/MyRequests' element={<My_Requests/>}></Route>
       </Routes>
     </BrowserRouter>
   )
