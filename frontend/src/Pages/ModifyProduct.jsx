@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './ProductRegister.css';
+import './ModifyProduct.css';
 
-function ProductRegister() {
+function ModifyProduct() {
     return (
-      <div className="register-container">
-        <h1 className="title">Registrar Producto</h1>
+      <div className="modify-container">
+        <h1 className="title">Modificar Producto</h1>
         
         <div className="form-group">
           <label>Seleccione su producto</label>
@@ -41,9 +41,12 @@ function ProductRegister() {
           </select>
         </div>
   
-        <button className="create-button">Crear</button>
+        <div className="button-group">
+          <button className="delete-product-button">Eliminar</button>
+          <button className="modify-product-button">Modificar</button>
+        </div>
       </div>
     );
-  }
-  
-  export default ProductRegister;
+}
+
+export default ModifyProduct;
