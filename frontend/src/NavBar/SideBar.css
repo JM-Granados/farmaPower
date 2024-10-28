@@ -1,0 +1,72 @@
+.sidebar {
+    font-family: "League Spartan-Regular", Helvetica;
+    background: var(--Fondo, #141E46);
+    left: 21px;
+    top: 40px;
+    width: 320px;
+    position: absolute;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+    border-radius: 20px;
+}
+
+.sidebar-title {
+    font-size: 45px;
+    margin-bottom: 40px;
+}
+
+.back-1 {
+    width: 54px;
+    height: 52px;
+    margin-bottom: 30px;
+}
+
+.sidebar-link {
+    top: 90px;
+    margin: 15px;
+    cursor: pointer;
+    width: 223px;
+    height: 56px;
+    font-size: 30px;
+    line-height: normal;
+}
+
+.selected-image-container img {
+    width: 209px;
+    height: 10px;
+}
+.selected-image-container {
+    width: 209px;
+    height: 10px;
+    position: fixed;
+    top: 458px;
+    left: 70px;
+}
+
+.sidebar-user {
+    margin-top: 70px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.sidebar-user-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espacio entre el nombre de usuario y la imagen */
+}
+
+.user_image_container img {
+    margin-top: 70px;
+    width: 68px;
+    height: 69px;
+    flex-shrink: 0;
+}
+
+
+.back-1 {
+    width: 54px;
+    height: 52px;
+    flex-shrink: 0;
+}
