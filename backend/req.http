@@ -1,2 +1,3 @@
 //Esto permite hacer request sin otro programa (get, post, delete, update)
 
+GET http://localhost:3000/api/requests/
