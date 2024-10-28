@@ -1,97 +1,150 @@
+/* General body styling */
 body {
-    background-color: #12152a;
-    color: white;
-    font-family: 'League Spartan', sans-serif;
-  }
-  
-  .register-container {
-    width: 600px;
-    margin: 0 auto; /* Quitar para enviar a la izquierda */
-    padding: 20px;
-    background-color: #12152a;
-    border-radius: 10px;
-    text-align: center;
-  }
-  
-  .title-product {
-    font-size: 30px;
-    padding: 10px;
-    background: linear-gradient(to right, #00ffc9, #ffaccf 50%, #ff5da2);
-    color: #fff;
-    border-radius: 10px;
-  }
-  
-  .form-group {
-    margin: 15px 0;
-    display: flex;
-    align-items: center;
-    gap: 10px; /* space between label and search bar */
-  }
-  
-  .form-group label {
-    font-size: 14px;
-    color: #aaa;
-    margin: 0; /* removes extra margin to align better with search bar */
-    white-space: nowrap; /* prevents label text from wrapping */
-  }
-  
-  .search-bar {
-    flex-grow: 1; /* allows search bar to take up remaining space */
-    display: flex;
-  }
-  
-  .search-bar input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    background-color: #1b1e34;
-    color: #ccc;
-    border: none;
-    border-radius: 5px 0 0 5px; /* rounded left corners */
-  }
-  
-  .search-button {
-    background: #1b1e34;
-    border: none;
-    color: #67d4e8;
-    padding: 10px;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 0 5px 5px 0; /* rounded right corners */
-  }
-  
-  /* Styles for other form fields */
-  input[type="number"],
-  textarea,
-  select {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    background-color: #1b1e34;
-    color: #ccc;
-    border: none;
-    border-radius: 5px;
-    margin-top: 8px;
-  }
-  
-  textarea {
-    resize: none;
-    height: 80px;
-  }
-  
-  .create-product-button {
-    width: 25%;
-    padding: 10px;
-    font-size: 18px;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    background: linear-gradient(to right, #00ffc9, #ffaccf 50%, #ff5da2);
-    cursor: pointer;
-  }
-  
-  .create-button:disabled {
-    background: #4b4f73;
-    cursor: not-allowed;
-  }
-  
+  background-color: #0d1124;
+  color: white;
+  font-family: 'League Spartan', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container for both navbar and form */
+.page-container {
+  display: flex;
+  padding: 20px; /* Adds padding to separate content from screen edges */
+}
+
+/* Navbar styling */
+.navbar {
+  width: 220px;
+  background-color: #1b1e34;
+  border-radius: 15px; /* Rounded corners */
+  padding: 20px;
+  margin-right: 20px; /* Space between navbar and form */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+
+.navbar label {
+  font-size: 40px;
+}
+
+.navbar ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.navbar li {
+  margin: 10px 0;
+  width: 100%;
+}
+
+.navbar a {
+  color: #67d4e8;
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 10px;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+  background-color: #2a2f47;
+}
+
+/* Register form container styling */
+.register-container {
+  flex-grow: 1;
+  max-width: 600px;
+  padding: 30px;
+  background-color: #12152a;
+  border-radius: 15px; /* Rounded corners */
+  text-align: left;
+}
+
+.title-product {
+  font-size: 26px;
+  padding: 15px;
+  background: linear-gradient(to right, #00ffc9, #ffaccf 50%, #ff5da2);
+  color: #fff;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #aaa;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.search-bar {
+  flex-grow: 1;
+  display: flex;
+}
+
+.search-bar input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #1b1e34;
+  color: #ccc;
+  border: none;
+  border-radius: 5px 0 0 5px;
+}
+
+.search-button {
+  background: #1b1e34;
+  border: none;
+  color: #67d4e8;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+}
+
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #1b1e34;
+  color: #ccc;
+  border: none;
+  border-radius: 5px;
+  margin-top: 8px;
+}
+
+textarea {
+  resize: none;
+  height: 80px;
+}
+
+.create-product-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right, #00ffc9, #ffaccf 50%, #ff5da2);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.create-product-button:hover {
+  background: linear-gradient(to right, #ff5da2, #ffaccf 50%, #00ffc9);
+}

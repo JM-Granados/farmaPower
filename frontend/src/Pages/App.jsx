@@ -16,6 +16,8 @@ import ModifyProduct from './ModifyProduct';
 import RegisterPharmacy from './RegisterPharmacy';
 import ModifyPharmacy from './ModifyPharmacy';
 
+import ModifyProgram from './ModifyProgram';
+
 /**
  * @fileoverview Aplicación principal para el proyecto React usando React Router y Bootstrap.
  *
@@ -52,6 +54,7 @@ function App() {
         <Route path='/ModifyProduct' element={<ModifyProduct/>}></Route>
         <Route path='/RegisterPharmacy' element={<RegisterPharmacy/>}></Route>
         <Route path='/ModifyPharmacy' element={<ModifyPharmacy/>}></Route>
+        <Route path='/ModifyProgram' element={<ModifyProgram/>}></Route>
       </Routes>
     </BrowserRouter>
   )

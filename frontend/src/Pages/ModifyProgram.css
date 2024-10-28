@@ -1,11 +1,11 @@
 body {
     background-color: #12152a;
     color: white;
-    font-family: 'League Spartan';
+    font-family: 'League Spartan', sans-serif;
   }
   
-  .modify-program-container {
-    width: 900px;
+  .modify-container {
+    width: 600px;
     margin: 0 auto; /* Quitar para enviar a la izquierda */
     padding: 20px;
     background-color: #12152a;
@@ -13,11 +13,8 @@ body {
     text-align: center;
   }
   
-  .title-product {
-    font-size: 96px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  .title-program {
+    font-size: 30px;
     padding: 10px;
     background: linear-gradient(to right, #00ffc9, #ffaccf 50%, #ff5da2);
     color: #fff;

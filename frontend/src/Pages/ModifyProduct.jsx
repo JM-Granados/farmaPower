@@ -6,8 +6,8 @@ import './ModifyProduct.css';
 
 function ModifyProduct() {
     return (
-      <div className="modify-container">
-        <h1 className="title">Modificar Producto</h1>
+      <div className="modify-program-container">
+        <h1 className="title-product">Modificar Producto</h1>
         
         <div className="form-group">
           <label>Seleccione su producto</label>
@@ -18,7 +18,7 @@ function ModifyProduct() {
         </div>
         
         <div className="form-group">
-          <textarea placeholder="Descripción del producto"></textarea>
+          <textarea></textarea>
         </div>
   
         <div className="form-group">

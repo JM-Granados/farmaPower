@@ -5,7 +5,18 @@ import axios from 'axios';
 import './RegisterProduct.css';
 
 function RegisterProduct() {
-    return (
+  return (
+    <div className="page-container"> 
+      <nav className="navbar">
+      <label classname="nav-title">Panel de navegación</label>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#register">Register Product</a></li>
+          <li><a href="#settings">Settings</a></li>
+        </ul>
+      </nav>
+
       <div className="register-container">
         <h1 className="title-product">Registrar Producto</h1>
         
@@ -43,7 +54,8 @@ function RegisterProduct() {
   
         <button className="create-product-button">Crear</button>
       </div>
-    );
-  }
-  
-  export default RegisterProduct;
+    </div>
+  );
+}
+
+export default RegisterProduct;
