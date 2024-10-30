@@ -21,4 +21,23 @@ export const createRequest: RequestHandler = async (req, res) => {
     }
 }
 
+import { Request, Response } from 'express';
+
+export const getRequests_RStatus = async (req: Request, res: Response) => {
+    try {
+        const rStatus  = req.body.rStatus; 
+        
+        let query: { rStatus?: string } = {};
+        if (rStatus) {
+            query.rStatus = rStatus; 
+        }
+        const requests = await RequestModel.find(query);
+        
+        res.json(requests);
+    } catch (error) {
+        console.error("Error fetching requests:", error);
+        res.status(500).json({ message: "Error fetching requests" });
+    }
+};
+
 
