@@ -61,6 +61,7 @@
     font-family: "League Spartan-Regular", Helvetica;
     background: var(--Fondo, #141E46);
     left: 21px;
+    
     top: 40px;
     width: 320px;
     position: absolute;
