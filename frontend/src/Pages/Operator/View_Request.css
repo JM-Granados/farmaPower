@@ -1,12 +1,24 @@
 :root {
     --variable-collection-c1: rgb(255, 150, 84);
     --variable-collection-c2: rgb(255, 183, 83);
-    --variable-collection-fondo: rgba(20, 30, 70, 1);
-    --variable-collection-fondo-exp: rgb(4, 11, 39);
-    --variable-collection-fondo-solicitudes: rgba(17, 26, 61, 1);
+    --variable-collection-fondo: #040b27;
     --variable-collection-inputs: rgba(40, 55, 115, 1);
-    --variable-collection-no-seleccionado: rgba(125, 125, 125, 1);
     --variable-collection-seleccionado: rgba(255, 255, 255, 1);
+}
+
+.sidebar-container {
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #040b27; 
+}
+
+.content-container {
+    margin-left: 300px; /* Igual al ancho del sidebar */
+    padding: 20px;
+    flex-grow: 1;
 }
 
 .gradient-title {
@@ -35,7 +47,7 @@
 
 .label-text {
     font-family: "League Spartan-Regular", Helvetica;
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 400;
     border-radius: 0.5rem;
     color: var(--variable-collection-seleccionado);
@@ -55,18 +67,18 @@
     color: var(--variable-collection-seleccionado); /* Color del texto */
     padding-top: 15px;
     padding-bottom: 15px; /* Espaciado interno */
-    font-size: 20px; /* Tamaño de la fuente */
+    font-size: 18px; /* Tamaño de la fuente */
     padding-left: 30px;
-    width: 450px;
+    width: 35rem;
+    height: 3.5rem;
+    margin-left: 2rem;
 }
 
-/* Placeholder con estilo */
 .form-control.custom-input::placeholder {
     color: #aaa;
     opacity: 0.7; /* Opacidad para un look más sutil */
 }
 
-/* Cambio de color en el enfoque */
 .form-control.custom-input:focus {
     background-color: var(--variable-collection-inputs);
     border-color: var(--variable-collection-fondo-exp); /* Color de borde al hacer focus */
@@ -74,73 +86,74 @@
 }
 
 .mb-6 {
-    margin-bottom: 40px;
+    margin-bottom: 2rem;
 }
 
 .save-button{
     background: linear-gradient(to right, rgb(255, 150, 84), rgb(255, 183, 83));
-    width: 165px;
+    max-width: 165px;
     border-radius: 16px;
     height: 50px;
     font-family: "League Spartan-Regular", Helvetica;
     font-size: 30px;
     font-weight: 400;
-    padding-top: 0;
+    padding-top: 2;
     border: none;
+    color: var(--variable-collection-seleccionado) !important;
 }
 
 .button-container {
     display: flex;
-    margin-right: 50rem;
-    justify-content: center; /* Cambia a 'center' para centrar */
+    margin-right: 10rem;
+    justify-content: center; 
     margin-top: 8rem; /* Espaciado superior */
 }
 
 .green-button {
-    background-color: rgb(48, 165, 25);
-    border-color: rgb(48, 165, 25);
-    width: 40px;
-    border-radius: 30px;
-    height: 40px;
+    background-color: rgb(48, 165, 25) !important;
+    border-color: rgb(48, 165, 25) !important;
     margin-right: 20px;
+    max-width: 40px;
+    border-radius: 30px;
+    max-height: 40px;
 }
 
 .red-button {
-    background-color: rgb(177, 0, 0);
-    border-color: rgb(177, 0, 0);
-    width: 40px;
-    border-radius: 30px;
-    height: 40px;
+    background-color: rgb(177, 0, 0) !important;
+    border-color: rgb(177, 0, 0) !important;
     margin-right: 20px;
-    margin-left: 28px;
+    margin-left: 40px;
+    max-width: 40px;
+    border-radius: 30px;
+    max-height: 40px;
 }
 
 .grey-button{
-    background-color: darkgray;
-    border-color: darkgrey;
-    width: 40px;
+    background-color: darkgray !important;
+    border-color: darkgrey !important;
+    max-width: 40px;
     border-radius: 30px;
-    height: 40px;
+    max-height: 40px;
 }
 
 .green-button:hover {
-    background-color: rgb(67, 226, 36);
-    border-color: rgb(13, 58, 4);
-    border-width: 3px;
+    background-color: rgb(67, 226, 36) !important;
+    border-color: rgb(13, 58, 4) !important;
+    border-width: 3px !important;
     transform: scale(1.05);
 }
 
 .red-button:hover {
-    background-color: rgb(243, 3, 3);
-    border-color: rgb(58, 4, 4);
-    border-width: 3px;
+    background-color: rgb(243, 3, 3) !important;
+    border-color: rgb(58, 4, 4) !important;
+    border-width: 3px !important;
     transform: scale(1.05);
 }
 
 .grey-button:hover {
-    background-color: rgb(212, 212, 212);
-    border-color: rgb(88, 88, 88);
-    border-width: 3px;
+    background-color: rgb(212, 212, 212) !important;
+    border-color: rgb(88, 88, 88) !important;
+    border-width: 3px !important;
     transform: scale(1.05);
 }
 

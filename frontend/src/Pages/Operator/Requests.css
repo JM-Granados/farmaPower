@@ -18,7 +18,7 @@
     color: var(--variable-collection-seleccionado);
     font-family: "League Spartan-Regular", Helvetica;
     
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 400;
     text-align: center;
 }
@@ -76,7 +76,7 @@
 }
 
 .scrollable-container {
-    max-height: 810px; 
+    max-height: 660px; 
     overflow-y: auto;
     overflow-x: hidden; /* Evita el desplazamiento horizontal */
     width: 100%;

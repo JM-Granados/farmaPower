@@ -10,23 +10,23 @@
 }
 
 .pills{
-    max-width: 180px;
+    max-width: 140px;
     height: auto; 
     display: block; /* Asegura que la imagen se muestre como un bloque */
 }
 
 .pill-container{
     background-color: var(--variable-collection-fondo);
-    height: 15rem;
-    width: 18rem;
+    height: 12rem;
+    width: 19rem;
     justify-items: center;
-    padding: 20px;
+    padding: 0rem;
 }
 
 .request-card {
-    min-width: 18rem; /* Ancho máximo de la tarjeta */
+    min-width: 10rem; /* Ancho máximo de la tarjeta */
     height: 24rem; 
-    margin: 1rem; /* Añade un margen para separación */
+    margin: 0.5rem; /* Añade un margen para separación */
     border-radius: 0.5rem; /* Bordes redondeados */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Añade una sombra */
     overflow: hidden; /* Asegura que el contenido no desborde */
@@ -51,9 +51,9 @@
     font-weight: 400;
     border-radius: 0.5rem;
     color: var(--variable-collection-seleccionado);
-    padding-left: 25px;
 }
 
 .card-body{
     background-color: var(--variable-collection-fondo);
+    gap: 0.5rem;
 }

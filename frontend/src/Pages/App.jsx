@@ -54,7 +54,6 @@ function App() {
         <Route path='/' element={<Home_Guest />}></Route>
         {/* Ruta para la página de login accesible desde '/Login' */}
         <Route path='/Login' element={<Login/>}></Route>
-        <Route path='/MyRequests' element={<My_Requests/>}></Route>
         {/* Ruta para la página de requests de operador accesible desde '/requests' */}
         <Route path='/Requests' element={<Requests/>}></Route>
         {/* Ruta para la página de request específico accesible desde '/viewrequest/id' */}

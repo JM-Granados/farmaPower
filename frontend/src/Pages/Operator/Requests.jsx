@@ -11,6 +11,15 @@ import user from '../../assets/user.png';
 import Request from './Components';
 
 const apiURL = import.meta.env.VITE_BACKEND_URL;
+const mockRequests = [
+    { id: 1, date: '17-05-2024', status: 'pending' },
+    { id: 2, date: '18-05-2024', status: 'approved' },
+    { id: 3, date: '19-05-2024', status: 'rejected' },
+    { id: 4, date: '20-05-2024', status: 'pending' },
+    { id: 5, date: '21-05-2024', status: 'approved' },
+    { id: 6, date: '22-05-2024', status: 'pending' },
+    { id: 7, date: '23-05-2024', status: 'rejected' },
+];
 
 function Requests() {
     const [requests, setRequests] = useState([]);
@@ -26,6 +35,7 @@ function Requests() {
                 setRequests(response.data);
             } catch (error) {
                 setErrorMessage(error.response?.data.error || 'An error occurred.');
+                setRequests(mockRequests);
             }
         };
         
