@@ -10,31 +10,27 @@ import gradient from '../../assets/orange-yellow-gradient.png';
 import user from '../../assets/user.png';
 import Request from './Components';
 
-const mockRequests = [
-    { id: 1, date: '17-05-2024', status: 'pending' },
-    { id: 2, date: '18-05-2024', status: 'approved' },
-    { id: 3, date: '19-05-2024', status: 'rejected' },
-    { id: 4, date: '20-05-2024', status: 'pending' },
-    { id: 5, date: '21-05-2024', status: 'approved' },
-    { id: 6, date: '22-05-2024', status: 'pending' },
-    { id: 7, date: '23-05-2024', status: 'rejected' },
-    { id: 1, date: '17-05-2024', status: 'pending' },
-    { id: 2, date: '18-05-2024', status: 'approved' },
-    { id: 3, date: '19-05-2024', status: 'rejected' },
-    { id: 4, date: '20-05-2024', status: 'pending' },
-    { id: 5, date: '21-05-2024', status: 'approved' },
-    { id: 6, date: '22-05-2024', status: 'pending' },
-    { id: 7, date: '23-05-2024', status: 'rejected' }
-];
+const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 function Requests() {
     const [requests, setRequests] = useState([]);
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const endpoint = apiURL;
 
     useEffect(() => {
-        setRequests(mockRequests);
-        console.log(requests);
-        //Aquí la llamada al endpoint para obtener los datos
-    }, [requests]);
+        // Crear una función asíncrona dentro de useEffect para realizar la solicitud
+        const fetchRequests = async () => {
+            try {
+                const response = await axios.get(endpoint);
+                setRequests(response.data);
+            } catch (error) {
+                setErrorMessage(error.response?.data.error || 'An error occurred.');
+            }
+        };
+        
+        fetchRequests(); 
+    }, [endpoint]);
 
     return (
         <div className=''>
@@ -69,6 +65,7 @@ function Requests() {
                     </div>
                 </div>
             </div>
+            {errorMessage && <p className="text-danger">{errorMessage}</p>}
         </div>
     );
 }

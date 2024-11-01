@@ -5,7 +5,7 @@
  */
 
 // Importa las dependencias necesarias de React y otras bibliotecas
-import React, { useState } from 'react' // Importa React para poder usar JSX y componentes.
+import { useState } from 'react' // Importa React para poder usar JSX y componentes.
 import { Link } from 'react-router-dom'; // Importa Link de react-router-dom para la navegación sin recarga.
 import axios from 'axios'; // Importa axios para realizar llamadas HTTP.
 import { useNavigate } from 'react-router-dom'; // Importa useNavigate para la navegación programática.
