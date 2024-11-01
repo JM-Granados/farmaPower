@@ -1,0 +1,230 @@
+:root {
+    --variable-collection-c1: rgba(65, 176, 110, 1);
+    --variable-collection-c2: rgba(141, 236, 180, 1);
+    --variable-collection-c3: rgba(255, 245, 224, 1);
+    --variable-collection-fondo: rgba(20, 30, 70, 1);
+    --variable-collection-fondo-exp: rgba(8, 15, 43, 1);
+    --variable-collection-fondo-solicitudes: rgba(17, 26, 61, 1);
+    --variable-collection-inputs: rgba(40, 55, 115, 1);
+    --variable-collection-no-seleccionado: rgba(125, 125, 125, 1);
+    --variable-collection-seleccionado: rgba(255, 255, 255, 1);
+}
+
+.mis-solicitudes {
+    background-color: var(--variable-collection-fondo-exp);
+    height: 1117px;
+    position: relative;
+    width: 1728px;
+}
+
+.mis-solicitudes .gradient-header {
+    top: 40px;
+    height: 155px;
+    left: 387px;
+    position: absolute;
+    top: 107px;
+    width: 690px;
+    display: flex;
+    margin: 20px auto;
+    font-size: 30px;
+}
+
+.gradient-header .gradient-text {
+    color: var(--seleccionado, #FFF);
+    font-family: "League Spartan-Regular", Helvetica;
+    font-size: 96px;
+    left: 30px;
+    line-height: normal;
+    position: absolute;
+    top: -40px;
+    white-space: nowrap;
+    width: 624px;
+    height: 100px;
+}
+
+.gradient-image-container{
+    position: relative;
+    object-fit: cover;
+    position: fixed;
+    top: 90px;
+    left: 390px;
+}
+
+.gradient-image-container img {
+    width: 690px;
+    height: 118px;
+    flex-shrink: 0;
+    border-radius: 20px;
+}
+
+.mis-solicitudes .sidebar {
+    font-family: "League Spartan-Regular", Helvetica;
+    background: var(--Fondo, #141E46);
+    left: 21px;
+    
+    top: 40px;
+    width: 320px;
+    position: absolute;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+    border-radius: 20px;
+}
+
+.sidebar-title {
+    font-size: 45px;
+    margin-bottom: 40px;
+}
+
+.back-1 {
+    width: 54px;
+    height: 52px;
+    margin-bottom: 30px;
+}
+
+.sidebar-link {
+    top: 90px;
+    margin: 15px;
+    cursor: pointer;
+    width: 223px;
+    height: 56px;
+    font-size: 30px;
+    line-height: normal;
+}
+
+.selected-image-container img {
+    width: 209px;
+    height: 10px;
+}
+.selected-image-container {
+    width: 209px;
+    height: 10px;
+    position: fixed;
+    top: 458px;
+    left: 70px;
+}
+
+.sidebar-user {
+    margin-top: 70px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.sidebar-user-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espacio entre el nombre de usuario y la imagen */
+}
+
+.user_image_container img {
+    margin-top: 70px;
+    width: 68px;
+    height: 69px;
+    flex-shrink: 0;
+}
+
+
+.back-1 {
+    width: 54px;
+    height: 52px;
+    flex-shrink: 0;
+}
+
+.mis-solicitudes .request-card {
+    background-color: var(--variable-collection-fondo-solicitudes);
+    border-radius: 20px;
+    height: 391px;
+    left: 387px;
+    position: absolute;
+    top: 414px;
+    width: 352px;
+}
+
+.mis-solicitudes .div {
+    background-color: var(--variable-collection-fondo);
+    border-radius: 20px;
+    height: 97px;
+    left: 16px;
+    position: absolute;
+    top: 264px;
+    width: 314px;
+}
+
+.mis-solicitudes .request-card-num {
+    color: var(--variable-collection-seleccionado);
+    font-family: "League Spartan-Regular", Helvetica;
+    font-size: 24px;
+    font-weight: 400;
+    left: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 14px;
+    width: 232px;
+}
+
+.mis-solicitudes .request-card-status {
+    color: var(--variable-collection-seleccionado);
+    font-family: "League Spartan-Regular", Helvetica;
+    font-size: 24px;
+    font-weight: 400;
+    left: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 49px;
+    width: 232px;
+}
+
+.mis-solicitudes .pill-image-container {
+    background-color: var(--variable-collection-fondo);
+    border-radius: 20px;
+    height: 228px;
+    left: 16px;
+    position: absolute;
+    top: 23px;
+    width: 314px;
+}
+
+.mis-solicitudes .pill {
+    height: 139px;
+    left: 87px;
+    object-fit: cover;
+    position: absolute;
+    top: 45px;
+    width: 140px;
+}
+
+.mis-solicitudes .overlap-2 {
+    background-color: var(--variable-collection-fondo);
+    border-radius: 20px;
+    height: 51px;
+    left: 387px;
+    position: absolute;
+    top: 317px;
+    width: 383px;
+}
+
+.mis-solicitudes .back {
+    height: 34px;
+    left: 321px;
+    object-fit: cover;
+    position: absolute;
+    top: 8px;
+    width: 40px;
+}
+
+.mis-solicitudes .text-wrapper-4 {
+    color: var(--variable-collection-seleccionado);
+    font-family: "League Spartan-Regular", Helvetica;
+    font-size: 32px;
+    font-weight: 400;
+    left: 33px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 11px;
+    white-space: nowrap;
+    width: 230px;
+}

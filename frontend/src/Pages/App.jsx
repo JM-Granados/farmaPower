@@ -11,17 +11,12 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 // Importación de los componentes de las ventanas que se utilizarán en las rutas.
 import Home_Guest from './Home_Guest' // Componente que muestra la página de inicio para usuarios no autenticados.
 import Login from './Login'; // Componente para la página de login.
+import My_Requests from './My_Requests'; // Componente para la página de solicitudes del usuario.
 import Requests from './Operator/Requests';
 import ThisRequest from './Operator/View_Request';
 import RegisterProgram from './Program/RegisterProgram';
 import Info from './Information/Info';
-import Help2 from './Help/Help';
-import My_Requests from '../Pages/Client/My_Requests'; // Componente para la página de solicitudes del usuario.
-import NewRequest from '../Pages/Client/New_Request';
-import Points from '../Pages/Client/My_Points';
-import Help from '../Pages/Client/Help';
-// import Home from '../Pages/Client/Home';
-
+import Help from './Help/Help';
 /**
  * @fileoverview Aplicación principal para el proyecto React usando React Router y Bootstrap.
  *
@@ -51,7 +46,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Ruta para la página de inicio accesible desde la URL base '/' */}
-        <Route path='/' element={<Home_Guest />}></Route>
+        <Route path='/' element={<Home_Guest/>}></Route>
         {/* Ruta para la página de login accesible desde '/Login' */}
         <Route path='/Login' element={<Login/>}></Route>
         <Route path='/MyRequests' element={<My_Requests/>}></Route>
@@ -64,13 +59,8 @@ function App() {
         {/* Ruta para la página de registrar programa accesible desde '/info/id' */}
         <Route path='/info/:id' element={<Info/>}></Route> {/*No se como se vaya a manejar esto */}
         {/* Ruta para la página de registrar programa accesible desde '/help' */}
-        <Route path='/help2' element={<Help2/>}></Route> {/*No se como se vaya a manejar esto */}
+        <Route path='/help' element={<Help/>}></Route> {/*No se como se vaya a manejar esto */}
 
-        <Route path='/Login' element={<Login />}></Route>
-        <Route path='/MyRequests' element={<My_Requests />}></Route>
-        <Route path="/NewRequest" element={<NewRequest />}></Route>
-        <Route path="/MyPoints" element={<Points />}></Route>
-        <Route path="/Help" element={<Help />}></Route>
       </Routes>
     </BrowserRouter>
   )

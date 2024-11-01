@@ -31,8 +31,6 @@
     height: 56px;
     font-size: 30px;
     line-height: normal;
-    color: white;   
-    text-decoration: none; 
 }
 
 .selected-image-container img {
@@ -72,4 +70,3 @@
     height: 52px;
     flex-shrink: 0;
 }
-
