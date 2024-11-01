@@ -11,12 +11,12 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 // Importación de los componentes de las ventanas que se utilizarán en las rutas.
 import Home_Guest from './Home_Guest' // Componente que muestra la página de inicio para usuarios no autenticados.
 import Login from './Login'; // Componente para la página de login.
-import RegisterProduct from './RegisterProduct';
-import ModifyProduct from './ModifyProduct';
-import RegisterPharmacy from './RegisterPharmacy';
-import ModifyPharmacy from './ModifyPharmacy';
-
-import ModifyProgram from './ModifyProgram';
+import ManageElegibleMedication from '../Pages/Admin/ManageElegibleMedication';
+import RegisterProduct from '../Pages/Admin/RegisterProduct';
+import ModifyProduct from '../Pages/Admin/ModifyProduct';
+import RegisterPharmacy from '../Pages/Admin/RegisterPharmacy';
+import ModifyPharmacy from '../Pages/Admin/ModifyPharmacy';
+import ModifyProgram from '../Pages/Admin/ModifyProgram';
 
 /**
  * @fileoverview Aplicación principal para el proyecto React usando React Router y Bootstrap.
@@ -50,6 +50,7 @@ function App() {
         <Route path='/' element={<Home_Guest/>}></Route>
         {/* Ruta para la página de login accesible desde '/Login' */}
         <Route path='/Login' element={<Login/>}></Route>
+        <Route path='/ManageElegibleMedication' element={<ManageElegibleMedication/>}></Route>
         <Route path='/RegisterProduct' element={<RegisterProduct/>}></Route>
         <Route path='/ModifyProduct' element={<ModifyProduct/>}></Route>
         <Route path='/RegisterPharmacy' element={<RegisterPharmacy/>}></Route>

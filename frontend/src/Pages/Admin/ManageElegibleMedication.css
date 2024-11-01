@@ -1,0 +1,43 @@
+.mis-solicitudes {
+    background-color: rgba(8, 15, 43, 1);
+    min-height: 100vh;
+    padding-bottom: 20px; /* Agrega un poco de espacio al final */
+}
+
+.principal {
+    min-height: 100vh; /* Asegúrate de que tenga suficiente altura */
+}
+
+.div2 {
+    background-color: rgba(8, 15, 43, 1);
+    padding: 20px;
+}
+
+.div3 {
+    padding: 20px;
+    background-color: rgba(8, 15, 43, 1);
+    margin-bottom: 20px; /* Agrega espacio debajo del encabezado */
+}
+
+.div4 {
+    padding: 15px 0;
+    background-color: rgba(8, 15, 43, 1);
+    margin-bottom: 20px; /* Espacio debajo de los filtros */
+}
+
+.estado {
+    background-color: #141E46;
+    padding: 10px; /* Añade algo de padding para mayor separación */
+}
+
+.cuadrado {
+    background-color: #111A3D;
+    padding: 15px;
+    border-radius: 20px;
+    margin-bottom: 20px; /* Espacio entre las tarjetas */
+}
+
+.imagen {
+    max-width: 100%;
+    height: auto;
+}
