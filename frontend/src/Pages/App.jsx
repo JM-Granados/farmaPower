@@ -16,6 +16,7 @@ import Requests from './Operator/Requests';
 import ThisRequest from './Operator/View_Request';
 import RegisterProgram from './Program/RegisterProgram';
 import Info from './Information/Info';
+import Help from './Help/Help';
 /**
  * @fileoverview Aplicación principal para el proyecto React usando React Router y Bootstrap.
  *
@@ -51,12 +52,14 @@ function App() {
         <Route path='/MyRequests' element={<My_Requests/>}></Route>
         {/* Ruta para la página de requests de operador accesible desde '/requests' */}
         <Route path='/Requests' element={<Requests/>}></Route>
-        {/* Ruta para la página de request específico accesible desde '/viewrequest' */}
+        {/* Ruta para la página de request específico accesible desde '/viewrequest/id' */}
         <Route path='/viewrequest/:id' element={<ThisRequest/>}></Route>
         {/* Ruta para la página de registrar programa accesible desde '/registerProgram' */}
         <Route path='/registerProgram' element={<RegisterProgram/>}></Route>
-        {/* Ruta para la página de registrar programa accesible desde '/registerProgram' */}
+        {/* Ruta para la página de registrar programa accesible desde '/info/id' */}
         <Route path='/info/:id' element={<Info/>}></Route> {/*No se como se vaya a manejar esto */}
+        {/* Ruta para la página de registrar programa accesible desde '/help' */}
+        <Route path='/help' element={<Help/>}></Route> {/*No se como se vaya a manejar esto */}
 
       </Routes>
     </BrowserRouter>
