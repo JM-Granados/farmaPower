@@ -16,13 +16,11 @@
 .div3 {
     padding: 20px;
     background-color: rgba(8, 15, 43, 1);
-    margin-bottom: 20px; /* Agrega espacio debajo del encabezado */
 }
 
 .div4 {
     padding: 15px 0;
     background-color: rgba(8, 15, 43, 1);
-    margin-bottom: 20px; /* Espacio debajo de los filtros */
 }
 
 .estado {

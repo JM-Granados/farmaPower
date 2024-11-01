@@ -6,6 +6,44 @@ import gradient from '../../assets/elegible_medication_title.png';
 import pill from '../../assets/drugs1.png';
 
 const ManageElegibleMedication = () => { 
+    const [medications, setMedications] = useState([]);
+    const [searchText, setSearchText] = useState('');
+
+    useEffect(() => {
+        // Fetch all eligible medications on initial load
+        const fetchMedications = async () => {
+            try {
+                const response = await axios.get('http://localhost:3000/api/elegiblemedication');
+                setMedications(response.data);
+            } catch (error) {
+                console.error("Error fetching eligible medications:", error);
+            }
+        };
+
+        fetchMedications();
+    }, []);
+
+    useEffect(() => {
+        // Fetch medications based on search text whenever it changes
+        const searchMedications = async () => {
+            if (searchText === '') {
+                // Fetch all medications if search text is cleared
+                const response = await axios.get('http://localhost:3000/api/elegiblemedication');
+                setMedications(response.data);
+            } else {
+                // Fetch medications that match the search text
+                try {
+                    const response = await axios.get(`http://localhost:3000/api/elegiblemedication/search?searchText=${searchText}`);
+                    setMedications(response.data);
+                } catch (error) {
+                    console.error("Error searching medications:", error);
+                }
+            }
+        };
+
+        searchMedications();
+    }, [searchText]); // Trigger search whenever searchText changes
+
     return (
         <div className="container-fluid mis-solicitudes">
             <div className="row principal">
@@ -20,28 +58,43 @@ const ManageElegibleMedication = () => {
                         </div>
                     </div>
 
-                    <div className="row div4 justify-content-center">
-                        <div className="estado btn-group col-md-8 col-10">
-                            <button type="button" className="btn" onClick={() => handleFilter('Aprobada')}>Aprobadas</button>
-                            <button type="button" className="btn" onClick={() => handleFilter('Pendiente')}>Pendientes</button>
-                            <button type="button" className="btn" onClick={() => handleFilter('Rechazada')}>Rechazadas</button>
-                            <button type="button" className="btn" onClick={() => handleFilter('Todas')}>Todas</button>
+                    {/* Search bar and text */}
+                    <div className="row mt-3">
+                        <div className="col-md-8">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Buscar medicamento"
+                                value={searchText}
+                                onChange={(e) => setSearchText(e.target.value)} // Update search text on input change
+                            />
+                        </div>
+                        <div className="col-md-4 d-flex align-items-center">
+                            <span>No hay coincidencias?</span>
+                            <a href="/register" className="ml-2">Registrar nuevo</a>
                         </div>
                     </div>
 
-                    <div className="row div5 overflow-auto">
-                        {filteredRequests.map((request, index) => (
-                            <div className="col-md-4 col-12 mb-3" key={request._id}>
-                                <div className="cuadrado">
-                                    <div className="row1">
-                                        <img src={pill} className="card-img-top" alt="..." />
-                                    </div>
-                                    <div className="row2">
-                                        <p>Solicitud #{index + 1} <br />Estado: {request.rStatus}</p>
+                    {/* Medications Displayed as Cards */}
+                    <div className="row mt-4">
+                        {medications.length > 0 ? (
+                            medications.map((medication, index) => (
+                                <div className="col-md-4" key={medication._id}>
+                                    <div className="card p-3">
+                                        <img src={pill} className="card-img-top" alt="Medication" />
+                                        <div className="card-body">
+                                            <h5 className="card-title">Medication #{index + 1}</h5>
+                                            <p className="card-text">
+                                                Puntos: {medication.points} <br />
+                                                Cantidad de Intercambio: {medication.exchangeAmount}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))
+                        ) : (
+                            <p>No hay medicamentos elegibles que coincidan con la búsqueda.</p>
+                        )}
                     </div>
                 </div>
             </div>
