@@ -5,7 +5,7 @@ import SideBar from '../../NavBar/SideBar';
 import gradient from '../../assets/elegible_medication_title.png';
 import pill from '../../assets/drugs1.png';
 
-const ManageElegibleMedication = () => { 
+const ManageElegibleMedication = () => {
     const [medications, setMedications] = useState([]);
     const [searchText, setSearchText] = useState('');
 
@@ -45,7 +45,7 @@ const ManageElegibleMedication = () => {
     }, [searchText]); // Trigger search whenever searchText changes
 
     return (
-        <div className="container-fluid mis-solicitudes">
+        <div className="container-fluid manage-elegible-medications">
             <div className="row principal">
                 <div className="col-lg-3 col-12 px-0">
                     <SideBar />
@@ -71,7 +71,7 @@ const ManageElegibleMedication = () => {
                         </div>
                         <div className="col-md-4 d-flex align-items-center">
                             <span>No hay coincidencias?</span>
-                            <a href="/register" className="ml-2">Registrar nuevo</a>
+                            <a href="/registerproduct" className="gradient-link mx-2">Registrar nuevo</a>
                         </div>
                     </div>
 

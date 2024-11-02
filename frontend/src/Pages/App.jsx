@@ -12,6 +12,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Home_Guest from './Home_Guest' // Componente que muestra la página de inicio para usuarios no autenticados.
 import Login from './Login'; // Componente para la página de login.
 import ManageElegibleMedication from '../Pages/Admin/ManageElegibleMedication';
+import ManagePharmacy from '../Pages/Admin/ManagePharmacy';
 import RegisterProduct from '../Pages/Admin/RegisterProduct';
 import ModifyProduct from '../Pages/Admin/ModifyProduct';
 import RegisterPharmacy from '../Pages/Admin/RegisterPharmacy';
@@ -51,6 +52,7 @@ function App() {
         {/* Ruta para la página de login accesible desde '/Login' */}
         <Route path='/Login' element={<Login/>}></Route>
         <Route path='/ManageElegibleMedication' element={<ManageElegibleMedication/>}></Route>
+        <Route path='/ManagePharmacy' element={<ManagePharmacy/>}></Route>
         <Route path='/RegisterProduct' element={<RegisterProduct/>}></Route>
         <Route path='/ModifyProduct' element={<ModifyProduct/>}></Route>
         <Route path='/RegisterPharmacy' element={<RegisterPharmacy/>}></Route>

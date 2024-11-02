@@ -1,150 +1,78 @@
-/* General body styling */
-body {
-  background-color: #0d1124;
-  color: white;
-  font-family: 'League Spartan', sans-serif;
-  margin: 0;
-  padding: 0;
+.register-product {
+  background-color: rgba(8, 15, 43, 1);
+  min-height: 100vh;
+  padding-bottom: 20px;
 }
 
-/* Container for both navbar and form */
-.page-container {
-  display: flex;
-  padding: 20px; /* Adds padding to separate content from screen edges */
+.principal {
+  min-height: 100vh;
 }
 
-/* Navbar styling */
-.navbar {
-  width: 220px;
-  background-color: #1b1e34;
-  border-radius: 15px; /* Rounded corners */
+.div2 {
+  background-color: rgba(8, 15, 43, 1);
   padding: 20px;
-  margin-right: 20px; /* Space between navbar and form */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #fff;
 }
 
-.navbar label {
-  font-size: 40px;
+.div3 {
+  padding: 20px;
+  background-color: rgba(8, 15, 43, 1);
 }
 
-.navbar ul {
-  list-style: none;
-  padding: 0;
-  width: 100%;
-}
-
-.navbar li {
-  margin: 10px 0;
-  width: 100%;
-}
-
-.navbar a {
-  color: #67d4e8;
-  text-decoration: none;
-  font-size: 16px;
-  display: block;
-  padding: 10px 15px;
-  border-radius: 10px;
-  text-align: left;
-  transition: background-color 0.3s ease;
-}
-
-.navbar a:hover {
-  background-color: #2a2f47;
-}
-
-/* Register form container styling */
-.register-container {
-  flex-grow: 1;
-  max-width: 600px;
-  padding: 30px;
-  background-color: #12152a;
-  border-radius: 15px; /* Rounded corners */
-  text-align: left;
-}
-
-.title-product {
-  font-size: 26px;
+.cuadrado {
+  background-color: #111A3D;
   padding: 15px;
-  background: linear-gradient(to right, #00ffc9, #ffaccf 50%, #ff5da2);
-  color: #fff;
-  border-radius: 10px;
-  text-align: center;
-  margin-bottom: 20px;
+  border-radius: 20px;
+  margin-top: 15px;
 }
 
-.form-group {
-  margin: 15px 0;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.imagen {
+  max-width: 100%;
+  height: auto;
 }
 
-.form-group label {
-  font-size: 14px;
-  color: #aaa;
-  margin: 0;
-  white-space: nowrap;
+/* Search bar styling */
+.form-control {
+  background-color: rgba(8, 15, 43, 1); /* Initial background color */
+  color: white; /* Text color */
+  border: 1px solid rgba(104, 104, 104, 0.2); /* Light border */
 }
 
-.search-bar {
-  flex-grow: 1;
-  display: flex;
+.form-control:focus {
+  background-color: rgba(15, 25, 55, 1); /* Lighter shade of blue on focus */
+  color: white; /* Text color */
+  border-color: rgba(255, 255, 255, 0.4); /* Lighter border on focus */
+  box-shadow: none; /* Remove default box-shadow */
 }
 
-.search-bar input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  background-color: #1b1e34;
-  color: #ccc;
-  border: none;
-  border-radius: 5px 0 0 5px;
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.6); /* White placeholder text with opacity */
 }
 
-.search-button {
-  background: #1b1e34;
-  border: none;
-  color: #67d4e8;
-  padding: 10px;
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 0 5px 5px 0;
+.form-label, .form-control, .btn, p {
+  font-family: 'League Spartan', sans-serif;
 }
 
-input[type="number"],
-textarea,
-select {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  background-color: #1b1e34;
-  color: #ccc;
-  border: none;
-  border-radius: 5px;
-  margin-top: 8px;
+.form-select {
+  background-color: rgba(8, 15, 43, 1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
 }
 
-textarea {
-  resize: none;
-  height: 80px;
+.form-select:focus {
+  background-color: rgba(15, 25, 55, 1); /* Slightly lighter blue on focus */
+  color: white; /* White text color */
+  border-color: rgba(255, 255, 255, 0.4); /* Lighter border on focus */
+  box-shadow: none; /* Remove default box-shadow */
 }
 
 .create-product-button {
-  width: 100%;
-  padding: 12px;
-  font-size: 18px;
+  padding: 10px;
+  font-size: 20px;
   color: #fff;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(to right, #00ffc9, #ffaccf 50%, #ff5da2);
+  background: linear-gradient(to right, #00ffc9, #ffaccf 50%, #ff5da2) !important;
   cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.create-product-button:hover {
-  background: linear-gradient(to right, #ff5da2, #ffaccf 50%, #00ffc9);
 }
