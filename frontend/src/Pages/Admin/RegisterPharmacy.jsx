@@ -16,7 +16,7 @@ const RegisterPharmacy = () => {
         <div className="col-lg-9 col-12 div2">
           <div className="row div3 align-items-end">
             <div className="col-12 div-gradient-header">
-              <img className='imagen' src={gradient} alt="Registrar Producto" />
+              <img className='imagen' src={gradient} alt="Registrar Farmacia" />
             </div>
           </div>
 

@@ -1,34 +1,68 @@
-// Importa las dependencias necesarias de React y otras bibliotecas
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import './ModifyPharmacy.css';
+import SideBar from '../../NavBar/SideBar';
+import gradient from '../../assets/modify_pharmacy_title.png';
 
-function ModifyPharmacy() {
+const ModifyPharmacy = () => {
+    const [searchText, setSearchText] = useState('');
+
     return (
-        <div className="modify-container">
-            <h1 className="title-pharmacy">Modificar Farmacia</h1>
+        <div className="container-fluid modify-pharmacy">
+            <div className="row principal">
+                <div className="col-lg-3 col-12 px-0">
+                    <SideBar />
+                </div>
 
-            <div className="form-group">
-                <label>Nombre</label>
-                <input type="text" />
-            </div>
+                <div className="col-lg-9 col-12 div2">
+                    <div className="row div3 align-items-end">
+                        <div className="col-12 div-gradient-header">
+                            <img className='imagen' src={gradient} alt="Modificar Farmacia" />
+                        </div>
+                    </div>
 
-            <div className="form-group">
-                <label>Sede</label>
-                <input type="text" />
-            </div>
+                    {/* Input fields with labels to the left */}
+                    <div className="row mt-4 align-items-center">
+                        <div className="col-md-3">
+                            <p className="form-label text-white">Nombre</p>
+                        </div>
+                        <div className="col-md-6">
+                            <input type="text" className="form-control" />
+                        </div>
+                    </div>
 
-            <div className="form-group">
-                <label>Dirección</label>
-                <input type="text" />
-            </div>
-            <div className="button-group">
-                <button className="delete-pharmacy-button">Eliminar</button>
-                <button className="modify-pharmacy-button">Modificar</button>
+                    <div className="row mt-4 align-items-center">
+                        <div className="col-md-3">
+                            <p className="form-label text-white">Sede</p>
+                        </div>
+                        <div className="col-md-6">
+                            <input type="text" className="form-control" />
+                        </div>
+                    </div>
+
+                    <div className="row mt-4 align-items-center">
+                        <div className="col-md-3">
+                            <p className="form-label text-white">Direccion</p>
+                        </div>
+                        <div className="col-md-6">
+                            <input type="text" className="form-control" />
+                        </div>
+                    </div>
+
+                    {/* Submit button */}
+                    <div className="row mt-4">
+                        <div className="col-md-2">
+                            <button className="btn delete-pharmacy-button w-100">Eliminar</button>
+                        </div>
+                        <div className="col-md-5">
+                        </div>
+                        <div className="col-md-2">
+                            <button className="btn modify-pharmacy-button w-100">Modificar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
-}
+};
 
 export default ModifyPharmacy;

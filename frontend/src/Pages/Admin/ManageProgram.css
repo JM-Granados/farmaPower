@@ -1,0 +1,70 @@
+.manage-elegible-medications {
+    background-color: rgba(8, 15, 43, 1);
+    min-height: 100vh;
+    padding-bottom: 20px;
+}
+
+.principal {
+    min-height: 100vh;
+}
+
+.div2 {
+    background-color: rgba(8, 15, 43, 1);
+    padding: 20px;
+}
+
+.div3 {
+    padding: 20px;
+    background-color: rgba(8, 15, 43, 1);
+}
+
+.div4 {
+    padding: 15px 0;
+    background-color: rgba(8, 15, 43, 1);
+}
+
+.estado {
+    background-color: #141E46;
+    padding: 10px;
+}
+
+.cuadrado {
+    background-color: #111A3D;
+    padding: 15px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.imagen {
+    max-width: 100%;
+    height: auto;
+}
+
+.form-control {
+    background-color: rgba(8, 15, 43, 1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.form-control:focus {
+    background-color: rgba(15, 25, 55, 1);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: none;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.gradient-link {
+    background: linear-gradient(90deg, #0cc0df, #ffde59); /* Adjust colors as desired */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Makes text transparent to show gradient */
+    font-weight: bold;
+    text-decoration: none; /* Removes underline */
+}
+
+.gradient-link:hover {
+    opacity: 0.8;
+}

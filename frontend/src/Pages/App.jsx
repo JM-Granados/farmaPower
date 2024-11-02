@@ -13,6 +13,7 @@ import Home_Guest from './Home_Guest' // Componente que muestra la página de in
 import Login from './Login'; // Componente para la página de login.
 import ManageElegibleMedication from '../Pages/Admin/ManageElegibleMedication';
 import ManagePharmacy from '../Pages/Admin/ManagePharmacy';
+import ManageProgram from '../Pages/Admin/ManageProgram';
 import RegisterProduct from '../Pages/Admin/RegisterProduct';
 import ModifyProduct from '../Pages/Admin/ModifyProduct';
 import RegisterPharmacy from '../Pages/Admin/RegisterPharmacy';
@@ -53,6 +54,7 @@ function App() {
         <Route path='/Login' element={<Login/>}></Route>
         <Route path='/ManageElegibleMedication' element={<ManageElegibleMedication/>}></Route>
         <Route path='/ManagePharmacy' element={<ManagePharmacy/>}></Route>
+        <Route path='/ManageProgram' element={<ManageProgram/>}></Route>
         <Route path='/RegisterProduct' element={<RegisterProduct/>}></Route>
         <Route path='/ModifyProduct' element={<ModifyProduct/>}></Route>
         <Route path='/RegisterPharmacy' element={<RegisterPharmacy/>}></Route>
