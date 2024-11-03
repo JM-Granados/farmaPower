@@ -1,3 +1,8 @@
 //Esto permite hacer request sin otro programa (get, post, delete, update)
+POST http://localhost:3000/api/users/login HTTP/1.1
+Content-Type: application/json
 
-GET http://localhost:3000/api/requests/
+{
+    "email": "example@example.com",
+    "password": "yourPassword123**"
+}

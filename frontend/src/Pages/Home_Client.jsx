@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios'; // Utilizado para realizar solicitudes HTTP.
 import 'bootstrap/dist/css/bootstrap.min.css'; // Estilos de Bootstrap para diseño y respuesta.
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Funcionalidades de JavaScript de Bootstrap.
-import Header_Home from '../NavBar/Header_Home'
+import Header_Home from '../NavBar/Header_Home_Client'
 import nuevaSolicitud from '../assets/Nueva_Solicitud.png'
 import Ayuda from '../assets/Ayuda.png'
 import OfertaNueva from '../assets/OfertaNueva.png'
@@ -18,6 +18,9 @@ function Home_Guest() {
                 <ul className="nav nav-underline">
                     <li className="nav-item">
                         <a className="nav-link active text-white" aria-current="page" href="#">Inicio</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link text-white" href="#">Mis solicitudes</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link text-white" href="#">Medicamentos participantes</a>

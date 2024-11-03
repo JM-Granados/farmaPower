@@ -1,15 +1,11 @@
-/**
- * Cosas que faltan: 
- * 1. Conectar con el be y determinar los endpoints
- * 2. Botón para "recuperar contraseña"?
- */
-
 // Importa las dependencias necesarias de React y otras bibliotecas
-import React, { useState } from 'react' // Importa React para poder usar JSX y componentes.
+import React, { useState, useEffect } from 'react' // Importa React para poder usar JSX y componentes.
 import { Link } from 'react-router-dom'; // Importa Link de react-router-dom para la navegación sin recarga.
 import axios from 'axios'; // Importa axios para realizar llamadas HTTP.
+import usePasswordToggle from "../ComponentsLogin/usePasswordToggle";
 import { useNavigate } from 'react-router-dom'; // Importa useNavigate para la navegación programática.
 import './Login.css'; // Importa los estilos específicos para la pantalla de login.
+const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 /**
  * @fileoverview Componente Login para la aplicación FarmaTEC.
@@ -41,35 +37,58 @@ import './Login.css'; // Importa los estilos específicos para la pantalla de lo
 
 // Define el componente funcional 'Login'
 function Login() {
+    const [PasswordInputType, ToggleIcon] = usePasswordToggle();
+
     // Declaración de estados para email y password usando el hook useState de React.
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     // Hook useNavigate de React Router para la navegación programática.
     const navigate = useNavigate();
 
     // Estado para manejar mensajes de error.
     const [errorMessage, setErrorMessage] = useState('');
+    const [fade, setFade] = useState(false);
+
+    useEffect(() => {
+        if (errorMessage && !fade) {
+            setTimeout(() => {
+                setFade(true); // Inicia la transición de difuminado
+                setTimeout(() => {
+                    setErrorMessage(''); // Limpia el mensaje después de que la transición termine
+                    setFade(false); // Restablece el estado de fade para el próximo error
+                }, 1000); // Este timeout debe coincidir con la duración de la transición CSS
+            }, 5000); // Tiempo visible antes de comenzar a difuminar
+        }
+    }, [errorMessage, fade]);
 
     // Función handleSubmit que se ejecuta cuando el formulario se envía.
     const handleSubmit = async (e) => {
         e.preventDefault();  // Previene la recarga de la página al enviar el formulario.
         setErrorMessage('');  // Limpia mensajes de error anteriores.
 
-        const endpoint = `http://localhost:3000/api/users/login`;  // URL del endpoint de login.
+        const endpoint = `${apiURL}/api/users/login`;  // URL del endpoint de login.
+
+        console.log(endpoint)
 
         try {
             // Intento de inicio de sesión usando axios para enviar una solicitud POST al servidor.
-            const response = await axios.post(endpoint, {email, password});
+            const response = await axios.post(endpoint, { email, password });
 
             // Verifica si la respuesta del servidor indica un inicio de sesión exitoso.
-            if (response.data.message === "User authenticated successfully") {
+            if (response.data.message === "User logged in successfully") {
                 // Guarda los datos del usuario en el almacenamiento local y redirige a la página Home.
                 localStorage.setItem('user', JSON.stringify(response.data.user));
-                navigate('/Home');
+                if(response.data.user.role == "Client") {
+                    navigate('/Home_Client');
+                } else if(response.data.user.role == "Admin") {
+                    navigate('/Home_Admin');
+                } else {
+                    navigate('/Home_Operator');
+                }
             } else {
                 // Si el mensaje no indica éxito, muestra un mensaje de error.
-                setErrorMessage('Email or password incorrect.');
+                setErrorMessage(response.data.message);
             }
         } catch (error) {
             // Captura errores de la solicitud y muestra un mensaje de error.
@@ -85,42 +104,51 @@ function Login() {
          * trae una imagen que es única para esta ventana. No es necesario este div para las demás ventanas
          */
         <div className="fullscreen-bg">
-            
+
             {/* Div contenedor para el contenido central. */}
             <div className="content">
-                
+
                 {/* Formulario para el ingreso de usuario. */}
                 <form className='form' onSubmit={handleSubmit}>
                     {/* Título del formulario. */}
                     <h1 className='IngresarText text-center mb-5'>Ingresar</h1>
-                    
+
                     {/* Div contenedor para el campo de correo electrónico. */}
                     <div className="mb-5">
                         <label htmlFor="exampleInputEmail1" className="form-label">Correo electrónico</label>
                         {/* Input para correo electrónico con estilos específicos. */}
-                        <input 
-                            type="email" 
+                        <input
+                            type="email"
                             name="email"
-                            className="form-control bg-transparent border-0 border-bottom rounded-0 text-white" 
-                            id="exampleInputEmail1" 
+                            className="form-control bg-transparent border-0 border-bottom rounded-0 text-white"
+                            id="exampleInputEmail1"
                             aria-describedby="emailHelp"
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
-                    
+
                     {/* Div contenedor para el campo de contraseña. */}
                     <div className="mb-5">
                         <label htmlFor="exampleInputPassword1" className="form-label">Contraseña</label>
                         {/* Input para contraseña con estilos específicos. */}
-                        <input 
-                            type="password" 
-                            name="password"
-                            className="form-control bg-transparent border-0 border-bottom rounded-0 text-white" 
-                            id="exampleInputPassword1"
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
+                        <div className="password-container d-grid">
+                            {/* Input para contraseña con estilos específicos. */}
+                            <input
+                                type={PasswordInputType}
+                                name="password"
+                                className="space-password form-control bg-transparent border-0 border-bottom rounded-0 text-white"
+                                id="validationPassword"
+                                aria-describedby="passwordHelpInline"
+                                required
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <span className="password-toogle-icon">
+                                {ToggleIcon}
+                            </span>
+                        </div>
                     </div>
-                    
+
                     {/* Div contenedor para los botones del formulario. */}
                     <div className='form-button-container'>
                         {/* Link para navegar a la página de registro. */}
@@ -129,20 +157,18 @@ function Login() {
                         <button type="submit" className="Ingresar button btn">Ingresar</button>
                     </div>
 
-                    <p></p>
-                    {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
-                    <p></p>
-                    
+                    {errorMessage && <div className={`alert alert-danger text-white bg-danger mt-5 text-center ${fade ? 'fade-out' : ''}`} >{errorMessage}</div>}
+
                     <div className="form-text text-center mt-5" id="basic-addon4">
                         <Link to="/PassRecovery">¿Olvidaste tu contraseña?</Link>
                     </div>
                 </form>
             </div>
-            
+
             {/* // Barra de navegación fija en la parte inferior. */}
-            <nav className="navbar navbar-expand-lg fixed-bottom">
+            <nav className="foot navbar navbar-expand-lg fixed-bottom">
                 <div className="container-md">
-            
+
                     {/* // Texto para mostrar en la barra de navegación. */}
                     <a className="navbar-brand text-white fs-6" href="#">
                         FarmaTEC 2024

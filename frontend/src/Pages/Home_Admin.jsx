@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import axios from 'axios'; // Utilizado para realizar solicitudes HTTP.
 import 'bootstrap/dist/css/bootstrap.min.css'; // Estilos de Bootstrap para diseño y respuesta.
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Funcionalidades de JavaScript de Bootstrap.
-import Header_Home from '../NavBar/Header_Home'
-import nuevaSolicitud from '../assets/Nueva_Solicitud.png'
-import Ayuda from '../assets/Ayuda.png'
-import OfertaNueva from '../assets/OfertaNueva.png'
+import Header_Home from '../NavBar/Header_Home_Admin'
+import Gestionar_Farmacias from '../assets/Gestionar_Farmacias.png'
+import Gestionar_Programa from '../assets/Gestionar_Programa.png'
+import Gestionar_Productos from '../assets/Gestionar_Productos.png'
 
-import './Home_Guest.css'
+import './Home_Admin.css'
 
 function Home_Guest() {
     return (
@@ -20,13 +20,16 @@ function Home_Guest() {
                         <a className="nav-link active text-white" aria-current="page" href="#">Inicio</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link text-white" href="#">Medicamentos participantes</a>
+                        <a className="nav-link text-white" href="#">Medicamentos</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link text-white" href="#">Farmacias participantes</a>
+                        <a className="nav-link text-white" href="#">Farmacias</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link text-white" href="#">Programas</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link text-white" href="#">Usuarios</a>
                     </li>
                 </ul>
             </div>
@@ -34,19 +37,19 @@ function Home_Guest() {
             <div className="container-fluid d-flex jutify-content-center">
                 <Link to="/ruta-para-nueva-solicitud" className="ms-5 mt-5 me-5 card-link">
                     <div className="card">
-                        <img src={nuevaSolicitud} className="card-img-top" alt="..." />
+                        <img src={Gestionar_Programa} className="card-img-top" alt="..." />
                     </div>
                 </Link>
 
                 <Link to="/ruta-para-oferta-nueva" className="ms-5 mt-5 me-5 card-link">
                     <div className="card">
-                        <img src={OfertaNueva} className="card-img-top" alt="..." />
+                        <img src={Gestionar_Farmacias} className="card-img-top" alt="..." />
                     </div>
                 </Link>
 
                 <Link to="/ruta-para-ayuda" className="ms-5 mt-5 me-5 card-link">
                     <div className="card">
-                        <img src={Ayuda} className="card-img-top" alt="..." />
+                        <img src={Gestionar_Productos} className="card-img-top" alt="..." />
                     </div>
                 </Link>
             </div>
