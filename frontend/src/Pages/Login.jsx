@@ -124,9 +124,9 @@ function Login() {
                     {/* Div contenedor para los botones del formulario. */}
                     <div className='form-button-container'>
                         {/* Link para navegar a la página de registro. */}
-                        <Link to="/Signup" className="Crear button btn">Crear cuenta</Link>
+                        <Link to="/Signup" className="Crear button mbtn">Crear cuenta</Link>
                         {/* Link para navegar a la página principal después de ingresar. */}
-                        <button type="submit" className="Ingresar button btn">Ingresar</button>
+                        <button type="submit" className="Ingresar button mbtn">Ingresar</button>
                     </div>
 
                     <p></p>

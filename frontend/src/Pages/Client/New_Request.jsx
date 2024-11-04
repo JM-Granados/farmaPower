@@ -92,7 +92,7 @@ const NewRequest = () => {
                   <p className="form-label text-white">Farmacia</p>
                 </div>
                 <div class="dropdown">
-                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="mbtn mbtn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dropdown link
                   </a>
 
