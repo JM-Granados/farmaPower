@@ -40,7 +40,7 @@ const MyRequests = () => {
 
     return (
         /*
-
+ 
         La pantalla esta dividida en 12 pedazos, ya sea horizontal o verticalmente.
          */
         <div className="mis-solicitudes">
