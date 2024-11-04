@@ -1,7 +1,10 @@
 import express, { Router } from 'express';
-import * as elegibleMedicationsCtrl from '../controllers/elegibleMedications.controller';
-import router from './users';
+import * as elegibleMedicationCtrl from '../controllers/elegiblemedication.controller';
 
-router.get('/', elegibleMedicationsCtrl.getElegibleMedications);
+const router = Router();
+
+router.get('/search', elegibleMedicationCtrl.searchElegibleMedications);
+router.get('/', elegibleMedicationCtrl.getElegibleMedications);
+router.post('/', elegibleMedicationCtrl.createElegibleMedication);
 
 export default router;
