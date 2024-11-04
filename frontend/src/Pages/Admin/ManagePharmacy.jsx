@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './ManagePharmacy.css';
-import SideBar from '../../NavBar/SideBar';
+import SideBar from '../../NavBar/SideBarAdmin';
 import gradient from '../../assets/manage_pharmacy_title.png';
 
 const ManagePharmacy = () => {
@@ -69,7 +69,7 @@ const ManagePharmacy = () => {
                             />
                         </div>
                         <div className="col-md-4 d-flex align-items-center">
-                            <span>No hay coincidencias?</span>
+                            <span className="i-maph-no-coincidences">No hay coincidencias?</span>
                             <a href="/registerpharmacy" className="i-maph-gradient-link mx-2">Registrar nueva</a>
                         </div>
                     </div>
@@ -92,7 +92,7 @@ const ManagePharmacy = () => {
                                 </div>
                             ))
                         ) : (
-                            <p>No hay farmacias que coincidan con la búsqueda.</p>
+                            <p className="i-maph-no-results">No hay farmacias que coincidan con la búsqueda.</p>
                         )}
                     </div>
                 </div>

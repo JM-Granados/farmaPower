@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './ManageProgram.css';
-import SideBar from '../../NavBar/SideBar';
+import SideBar from '../../NavBar/SideBarAdmin';
 import gradient from '../../assets/manage_program_title.png';
 
 const ManageProgram = () => {
@@ -40,16 +40,16 @@ const ManageProgram = () => {
     }, [searchText]);
 
     return (
-        <div className="container-fluid i-maph-manage-programs">
-            <div className="row i-maph-principal">
+        <div className="container-fluid i-mapr-manage-programs">
+            <div className="row i-mapr-principal">
                 <div className="col-lg-3 col-12 px-0">
                     <SideBar />
                 </div>
 
-                <div className="col-lg-9 col-12 i-maph-div2">
-                    <div className="row i-maph-div3 align-items-end">
+                <div className="col-lg-9 col-12 i-mapr-div2">
+                    <div className="row i-mapr-div3 align-items-end">
                         <div className="col-12 div-gradient-header">
-                            <img className='i-maph-imagen' src={gradient} alt="Manage Programs" />
+                            <img className='i-mapr-imagen' src={gradient} alt="Manage Programs" />
                         </div>
                     </div>
 
@@ -57,15 +57,15 @@ const ManageProgram = () => {
                         <div className="col-md-8">
                             <input
                                 type="text"
-                                className="i-maph-form-control form-control"
+                                className="i-mapr-form-control form-control"
                                 placeholder="Buscar programa"
                                 value={searchText}
                                 onChange={(e) => setSearchText(e.target.value)}
                             />
                         </div>
                         <div className="col-md-4 d-flex align-items-center">
-                            <span>No hay coincidencias?</span>
-                            <a href="/registerprogram" className="i-maph-gradient-link mx-2">Registrar nuevo</a>
+                            <span className="i-mapr-no-results">No hay coincidencias?</span>
+                            <a href="/registerprogram" className="i-mapr-gradient-link mx-2">Registrar nuevo</a>
                         </div>
                     </div>
 
@@ -86,7 +86,7 @@ const ManageProgram = () => {
                                 </div>
                             ))
                         ) : (
-                            <p>No hay programas que coincidan con la búsqueda.</p>
+                            <p className="i-mapr-no-results">No hay programas que coincidan con la búsqueda.</p>
                         )}
                     </div>
                 </div>

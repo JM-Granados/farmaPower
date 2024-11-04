@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './ManageElegibleMedication.css';
-import SideBar from '../../NavBar/SideBar';
+import SideBar from '../../NavBar/SideBarAdmin';
 import gradient from '../../assets/elegible_medication_title.png';
 import pill from '../../assets/drugs1.png';
 
@@ -70,7 +70,7 @@ const ManageElegibleMedication = () => {
                             />
                         </div>
                         <div className="col-md-4 d-flex align-items-center">
-                            <span>No hay coincidencias?</span>
+                            <span className='i-maem-no-coincidences'>No hay coincidencias?</span>
                             <a href="/registerproduct" className="i-maem-gradient-link mx-2">Registrar nuevo</a>
                         </div>
                     </div>
@@ -93,7 +93,7 @@ const ManageElegibleMedication = () => {
                                 </div>
                             ))
                         ) : (
-                            <p>No hay medicamentos elegibles que coincidan con la búsqueda.</p>
+                            <p className="i-maem-no-results">No hay medicamentos elegibles que coincidan con la búsqueda.</p>
                         )}
                     </div>
                 </div>
