@@ -56,7 +56,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //----------------------------------------------------------------------------------
 //Crea las rutas
-app.use(users)
+app.use('/api/users',users)
 app.use('/api/requests',requests)
 app.use('/api/elegiblemedications',elegibleMedications)
 app.use('/api/medications', medications)
