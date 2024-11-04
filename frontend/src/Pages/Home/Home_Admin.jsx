@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios'; // Utilizado para realizar solicitudes HTTP.
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Estilos de Bootstrap para diseño y respuesta.
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Funcionalidades de JavaScript de Bootstrap.
-import Header_Home from '../NavBar/Header_Home_Admin'
+import Header_Home from '../../NavBar/Header_Home_User'
 import Gestionar_Farmacias from '../assets/Gestionar_Farmacias.png'
 import Gestionar_Programa from '../assets/Gestionar_Programa.png'
 import Gestionar_Productos from '../assets/Gestionar_Productos.png'
@@ -11,6 +12,8 @@ import Gestionar_Productos from '../assets/Gestionar_Productos.png'
 import './Home_Admin.css'
 
 function Home_Guest() {
+    const user = JSON.parse(localStorage.getItem('user')); 
+
     return (
         <div>
             <Header_Home />
@@ -34,7 +37,7 @@ function Home_Guest() {
                 </ul>
             </div>
 
-            <div className="container-fluid d-flex jutify-content-center">
+            <div className="container-fluid d-flex justify-content-center">
                 <Link to="/ruta-para-nueva-solicitud" className="ms-5 mt-5 me-5 card-link">
                     <div className="card">
                         <img src={Gestionar_Programa} className="card-img-top" alt="..." />

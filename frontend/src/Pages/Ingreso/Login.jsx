@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react' // Importa React para poder usar JSX y componentes.
 import { Link } from 'react-router-dom'; // Importa Link de react-router-dom para la navegación sin recarga.
 import axios from 'axios'; // Importa axios para realizar llamadas HTTP.
-import usePasswordToggle from "../ComponentsLogin/usePasswordToggle";
+import usePasswordToggle from "../../ComponentsLogin/usePasswordToggle";
 import { useNavigate } from 'react-router-dom'; // Importa useNavigate para la navegación programática.
 import './Login.css'; // Importa los estilos específicos para la pantalla de login.
 const apiURL = import.meta.env.VITE_BACKEND_URL;

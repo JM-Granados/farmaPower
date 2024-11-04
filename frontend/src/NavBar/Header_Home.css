@@ -80,6 +80,10 @@ button.navbar-toggler:focus {
     box-shadow: none; /* Sin sombra para mantener la interfaz limpia y profesional. */
 }
 
+::marker {
+    display: none;
+}
+
 /* Media query para ajustes en dispositivos con un ancho máximo de 768px */
 @media (max-width: 768px) {
     /* Ajustes para la imagen del logo, asegurando adecuada visibilidad y estética en dispositivos móviles. */

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react' // Importa React para poder usar JSX y componentes.
 import { Link } from 'react-router-dom'; // Importa Link de react-router-dom para la navegación sin recarga.
 import axios from 'axios'; // Importa axios para realizar llamadas HTTP.
-import usePasswordToggle from "../ComponentsLogin/usePasswordToggle";
+import usePasswordToggle from "../../ComponentsLogin/usePasswordToggle";
 import { useNavigate } from 'react-router-dom'; // Importa useNavigate para la navegación programática.
 import './Signup.css'; // Importa los estilos específicos para la pantalla de login.
 
@@ -17,6 +17,7 @@ function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [photo, setPhoto] = useState("");
 
 
     // Hook useNavigate de React Router para la navegación programática.
@@ -74,6 +75,8 @@ function Signup() {
             setErrorMessage('Las contraseñas no coinciden.');
             return; // Detiene la ejecución si las contraseñas no coinciden
         }
+
+        console.log(photo); //C:\fakepath\Captura de pantalla 2024-08-16 120708.png
 
 
         setErrorMessage(''); // Limpia el mensaje de error
@@ -229,6 +232,20 @@ function Signup() {
                                 {ToggleIcon}
                             </span>
                         </div>
+                    </div>
+
+                    {/* Div contenedor para el campo de correo electrónico. */}
+                    <div className="col-12">
+                        <label htmlFor="validationPhoto" className="form-label mt-3">Correo electrónico</label>
+                        {/* Input para correo electrónico con estilos específicos. */}
+                        <input
+                            type="file"
+                            name="Photo"
+                            className="file form-control bg-transparent border-0 border-bottom rounded-2 text-white"
+                            id="validationEmail"
+                            aria-describedby="emailHelp"
+                            onChange={(e) => setPhoto(e.target.value)}
+                        />
                     </div>
 
                     {/* Div contenedor para los botones del formulario. */}
