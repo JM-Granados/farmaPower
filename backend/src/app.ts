@@ -25,6 +25,7 @@ import cors from 'cors'
 //----------------------------------------------------------------------------------
 // Importa las rutas que se utilizarán en el proyecto
 import users from './routes/users'
+import states from './routes/states'
 
 //----------------------------------------------------------------------------------
 // Carga las variables de entorno desde el archivo `.env` al entorno de ejecución.
@@ -51,6 +52,7 @@ app.use(express.urlencoded({ extended: true }));
 //----------------------------------------------------------------------------------
 //Crea las rutas
 app.use(users)
+app.use(states)
 
 // Exporta la instancia de la aplicación para su uso en otros archivos, como el servidor principal.
 export default app;

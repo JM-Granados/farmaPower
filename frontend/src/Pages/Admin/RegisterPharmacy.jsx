@@ -1,10 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './RegisterPharmacy.css';
 import SideBar from '../../NavBar/SideBar';
 import gradient from '../../assets/register_pharmacy_title.png';
+import axios from 'axios';
 
 const RegisterPharmacy = () => {
-  const [searchText, setSearchText] = useState('');
+  const [states, setStates] = useState([]);
+
+  useEffect(() => {
+    const fetchStates = async () => {
+      try {
+        const response = await axios.get('/api/states'); // Adjust the endpoint as needed
+        // Ensure the response data is an array
+        setStates(Array.isArray(response.data) ? response.data : []);
+      } catch (error) {
+        console.error("Error fetching states:", error);
+        setStates([]); // Set to an empty array on error
+      }
+    };
+    fetchStates();
+  }, []);
 
   return (
     <div className="container-fluid register-pharmacy">
@@ -41,17 +56,32 @@ const RegisterPharmacy = () => {
 
           <div className="row mt-4 align-items-center">
             <div className="col-md-3">
-              <p className="form-label text-white">Direccion</p>
+              <p className="form-label text-white">Número de Local</p>
             </div>
             <div className="col-md-6">
-              <input type="text" className="form-control" />
+              <input type="number" className="form-control" />
+            </div>
+          </div>
+
+          <div className="row mt-4 align-items-center">
+            <div className="col-md-3">
+              <p className="form-label text-white">Provincia</p>
+            </div>
+            <div className="col-md-6">
+              <select className="form-select">
+                <option value="">Seleccione una provincia</option>
+                {states.map((state) => (
+                  <option key={state._id} value={state.state}>
+                    {state.state}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
 
           {/* Submit button */}
           <div className="row mt-4">
-          <div className="col-md-7">
-          </div>
+            <div className="col-md-7"></div>
             <div className="col-md-2">
               <button className="btn create-product-button w-100">Crear</button>
             </div>

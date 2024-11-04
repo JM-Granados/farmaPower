@@ -76,3 +76,19 @@
   background: linear-gradient(to right, #0cc0df, #cb6ce6 50%, #7b2cbf) !important;
   cursor: pointer;
 }
+
+input[type="number"] {
+  background-color: rgba(8, 15, 43, 1); /* Match background color */
+  color: white; /* Match text color */
+  border: 1px solid rgba(104, 104, 104, 0.2); /* Match border style */
+  font-family: 'League Spartan', sans-serif; /* Match font */
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+input[type="number"]:focus {
+  background-color: rgba(15, 25, 55, 1); /* Match focus background color */
+  border-color: rgba(255, 255, 255, 0.4); /* Match focus border color */
+  color: white; /* Match focus text color */
+  box-shadow: none; /* Remove default box-shadow */
+}
