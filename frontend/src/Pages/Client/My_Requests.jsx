@@ -63,7 +63,7 @@ const MyRequests = () => {
 
                     {/* Pedazo del filtro - Sacado de bootstrap */}
                     <div className="row div4">
-                        <div className="estado mbtn-group" role="group">
+                        <div className="estado btn-group" role="group">
                             <button type="button" className="mbtn" onClick={() => handleFilter('Aprobada')}>Aprobadas</button>
                             <button type="button" className="mbtn" onClick={() => handleFilter('Pendiente')}>Pendientes</button>
                             <button type="button" className="mbtn" onClick={() => handleFilter('Rechazada')}>Rechazadas</button>
