@@ -1,8 +1,10 @@
 import express, { Router } from 'express';
-import * as programsCtrl from '../controllers/programs.controller';
+import * as programCtrl from '../controllers/program.controller';
 
 const router = Router();
 
-router.get('/', programsCtrl.getPrograms);
+router.get('/search', programCtrl.searchPrograms);
+router.get('/', programCtrl.getPrograms);
+router.post('/', programCtrl.createProgram);
 
 export default router;

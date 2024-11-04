@@ -1,8 +1,10 @@
 import express, { Router } from 'express';
-import * as pharmaciesCtrl from '../controllers/pharmacies.controller';
+import * as pharmacyCtrl from '../controllers/pharmacy.controller';
 
 const router = Router();
 
-router.get('/', pharmaciesCtrl.getPharmacies);
+router.get('/search', pharmacyCtrl.searchPharmacies);
+router.get('/', pharmacyCtrl.getPharmacies);
+router.post('/', pharmacyCtrl.createPharmacy);
 
 export default router;

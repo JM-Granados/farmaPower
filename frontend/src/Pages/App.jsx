@@ -23,6 +23,14 @@ import Medication from '../Pages/Client/Participating_Medications';
 import Pharmacies from '../Pages/Client/Participating_Pharmacies';
 import Programs from '../Pages/Client/Programs';
 // import Home from '../Pages/Client/Home';
+import ManageElegibleMedication from '../Pages/Admin/ManageElegibleMedication';
+import ManagePharmacy from '../Pages/Admin/ManagePharmacy';
+import ManageProgram from '../Pages/Admin/ManageProgram';
+import RegisterProduct from '../Pages/Admin/RegisterProduct';
+import ModifyProduct from '../Pages/Admin/ModifyProduct';
+import RegisterPharmacy from '../Pages/Admin/RegisterPharmacy';
+import ModifyPharmacy from '../Pages/Admin/ModifyPharmacy';
+import ModifyProgram from '../Pages/Admin/ModifyProgram';
 
 /**
  * @fileoverview Aplicación principal para el proyecto React usando React Router y Bootstrap.
@@ -80,6 +88,14 @@ function App() {
         <Route path="/Pharmacies" element={<Pharmacies />}></Route>
         <Route path="/Programs" element={<Programs />}></Route>
         {/* <Route path="/Home" element={<Home />}></Route> */}
+        <Route path='/ManageElegibleMedication' element={<ManageElegibleMedication/>}></Route>
+        <Route path='/ManagePharmacy' element={<ManagePharmacy/>}></Route>
+        <Route path='/ManageProgram' element={<ManageProgram/>}></Route>
+        <Route path='/RegisterProduct' element={<RegisterProduct/>}></Route>
+        <Route path='/ModifyProduct' element={<ModifyProduct/>}></Route>
+        <Route path='/RegisterPharmacy' element={<RegisterPharmacy/>}></Route>
+        <Route path='/ModifyPharmacy' element={<ModifyPharmacy/>}></Route>
+        <Route path='/ModifyProgram' element={<ModifyProgram/>}></Route>
       </Routes>
     </BrowserRouter>
   )
