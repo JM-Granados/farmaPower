@@ -44,16 +44,16 @@ const ManagePharmacy = () => {
     }, [searchText]); // Trigger search whenever searchText changes
 
     return (
-        <div className="container-fluid manage-pharmacies">
-            <div className="row principal">
+        <div className="container-fluid i-maph-manage-pharmacies">
+            <div className="row i-maph-principal">
                 <div className="col-lg-3 col-12 px-0">
                     <SideBar />
                 </div>
 
-                <div className="col-lg-9 col-12 div2">
-                    <div className="row div3 align-items-end">
+                <div className="col-lg-9 col-12 i-maph-div2">
+                    <div className="row i-maph-div3 align-items-end">
                         <div className="col-12 div-gradient-header">
-                            <img className='imagen' src={gradient} alt="Manage Pharmacies" />
+                            <img className='i-maph-imagen' src={gradient} alt="Manage Pharmacies" />
                         </div>
                     </div>
 
@@ -62,7 +62,7 @@ const ManagePharmacy = () => {
                         <div className="col-md-8">
                             <input
                                 type="text"
-                                className="form-control"
+                                className="i-maph-form-control form-control"
                                 placeholder="Buscar farmacia"
                                 value={searchText}
                                 onChange={(e) => setSearchText(e.target.value)} // Update search text on input change
@@ -70,7 +70,7 @@ const ManagePharmacy = () => {
                         </div>
                         <div className="col-md-4 d-flex align-items-center">
                             <span>No hay coincidencias?</span>
-                            <a href="/registerpharmacy" className="gradient-link mx-2">Registrar nueva</a>
+                            <a href="/registerpharmacy" className="i-maph-gradient-link mx-2">Registrar nueva</a>
                         </div>
                     </div>
 

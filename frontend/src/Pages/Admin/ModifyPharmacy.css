@@ -1,58 +1,47 @@
-.modify-pharmacy {
+.i-moph-modify-pharmacy {
     background-color: rgba(8, 15, 43, 1);
     min-height: 100vh;
     padding-bottom: 20px;
   }
   
-  .principal {
+  .i-moph-principal {
     min-height: 100vh;
   }
   
-  .div2 {
+  .i-moph-div2 {
     background-color: rgba(8, 15, 43, 1);
     padding: 20px;
   }
   
-  .div3 {
+  .i-moph-div3 {
     padding: 20px;
     background-color: rgba(8, 15, 43, 1);
   }
   
-  .cuadrado {
-    background-color: #111A3D;
-    padding: 15px;
-    border-radius: 20px;
-    margin-top: 15px;
-  }
-  
-  .imagen {
+  .i-moph-imagen {
     max-width: 100%;
     height: auto;
   }
   
   /* Search bar styling */
-  .form-control {
+  .i-moph-form-control {
     background-color: rgb(27, 43, 107); /* Initial background color */
     color: white; /* Text color */
     border: 1px solid rgba(104, 104, 104, 0.2); /* Light border */
   }
   
-  .form-control:focus {
+  .i-moph-form-control:focus {
     background-color: rgba(15, 25, 55, 1); /* Lighter shade of blue on focus */
     color: white; /* Text color */
     border-color: rgba(255, 255, 255, 0.4); /* Lighter border on focus */
     box-shadow: none; /* Remove default box-shadow */
   }
   
-  .form-control::placeholder {
+  .i-moph-form-control::placeholder {
     color: rgba(255, 255, 255, 0.6); /* White placeholder text with opacity */
   }
   
-  .form-label, .form-control, .btn, p {
-    font-family: 'League Spartan', sans-serif;
-  }
-  
-  .form-select {
+  .i-moph-form-select {
     background-color: rgba(8, 15, 43, 1);
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -60,14 +49,14 @@
     padding: 0.5rem 1rem;
   }
   
-  .form-select:focus {
+  .i-moph-form-select:focus {
     background-color: rgba(15, 25, 55, 1); /* Slightly lighter blue on focus */
     color: white; /* White text color */
     border-color: rgba(255, 255, 255, 0.4); /* Lighter border on focus */
     box-shadow: none; /* Remove default box-shadow */
   }
   
-  .modify-pharmacy-button {
+  .i-moph-modify-pharmacy-button {
     padding: 10px;
     font-size: 20px;
     color: #fff;
@@ -77,7 +66,7 @@
     cursor: pointer;
   }
 
-  .delete-pharmacy-button {
+  .i-moph-delete-pharmacy-button {
     width: 25%;
     padding: 10px;
     font-size: 18px;

@@ -22,16 +22,16 @@ const RegisterPharmacy = () => {
   }, []);
 
   return (
-    <div className="container-fluid register-pharmacy">
-      <div className="row principal">
+    <div className="container-fluid i-reph-register-pharmacy">
+      <div className="row i-reph-principal">
         <div className="col-lg-3 col-12 px-0">
           <SideBar />
         </div>
 
-        <div className="col-lg-9 col-12 div2">
-          <div className="row div3 align-items-end">
+        <div className="col-lg-9 col-12 i-reph-div2">
+          <div className="row i-reph-div3 align-items-end">
             <div className="col-12 div-gradient-header">
-              <img className='imagen' src={gradient} alt="Registrar Farmacia" />
+              <img className='i-reph-imagen' src={gradient} alt="Registrar Farmacia" />
             </div>
           </div>
 
@@ -41,7 +41,7 @@ const RegisterPharmacy = () => {
               <p className="form-label text-white">Nombre</p>
             </div>
             <div className="col-md-6">
-              <input type="text" className="form-control" />
+              <input type="text" className="i-reph-form-control form-control" />
             </div>
           </div>
 
@@ -50,7 +50,7 @@ const RegisterPharmacy = () => {
               <p className="form-label text-white">Sede</p>
             </div>
             <div className="col-md-6">
-              <input type="text" className="form-control" />
+              <input type="text" className="i-reph-form-control form-control" />
             </div>
           </div>
 
@@ -59,7 +59,7 @@ const RegisterPharmacy = () => {
               <p className="form-label text-white">Número de Local</p>
             </div>
             <div className="col-md-6">
-              <input type="number" className="form-control" />
+              <input type="number" className="i-reph-form-control form-control" />
             </div>
           </div>
 
@@ -68,7 +68,7 @@ const RegisterPharmacy = () => {
               <p className="form-label text-white">Provincia</p>
             </div>
             <div className="col-md-6">
-              <select className="form-select">
+              <select className="i-reph-form-select form-select">
                 <option value="">Seleccione una provincia</option>
                 {states.map((state) => (
                   <option key={state._id} value={state.state}>
@@ -83,7 +83,7 @@ const RegisterPharmacy = () => {
           <div className="row mt-4">
             <div className="col-md-7"></div>
             <div className="col-md-2">
-              <button className="btn create-product-button w-100">Crear</button>
+              <button className="btn i-reph-create-pharmacy-button w-100">Crear</button>
             </div>
           </div>
         </div>

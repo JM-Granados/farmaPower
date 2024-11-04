@@ -7,14 +7,14 @@ const RegisterProduct = () => {
   const [searchText, setSearchText] = useState('');
 
   return (
-    <div className="container-fluid register-product">
+    <div className="container-fluid i-repr-register-product">
       <div className="row principal">
         <div className="col-lg-3 col-12 px-0">
           <SideBar />
         </div>
 
-        <div className="col-lg-9 col-12 div2">
-          <div className="row div3 align-items-end">
+        <div className="col-lg-9 col-12 i-repr-div2">
+          <div className="row i-repr-div3 align-items-end">
             <div className="col-12 div-gradient-header">
               <img className='imagen' src={gradient} alt="Registrar Producto" />
             </div>
@@ -29,7 +29,7 @@ const RegisterProduct = () => {
               <div className="input-group">
                 <input
                   type="text"
-                  className="form-control"
+                  className="i-repr-form-control form-control"
                   value={searchText}
                   onChange={(e) => setSearchText(e.target.value)}
                 />
@@ -40,7 +40,7 @@ const RegisterProduct = () => {
           {/* Display section for searched medications */}
           <div className="row mt-4">
             <div className="col-9">
-              <div className="cuadrado">
+              <div className="i-repr-cuadrado">
                 {/* Display cards or placeholder here */}
                 <p className="text-white">Aquí se mostrarán los medicamentos buscados.</p>
               </div>
@@ -53,7 +53,7 @@ const RegisterProduct = () => {
               <p className="form-label text-white">Puntos</p>
             </div>
             <div className="col-md-6">
-              <input type="text" className="form-control" />
+              <input type="text" className="i-repr-form-control form-control" />
             </div>
           </div>
 
@@ -62,7 +62,7 @@ const RegisterProduct = () => {
               <p className="form-label text-white">Cantidad para el canje</p>
             </div>
             <div className="col-md-6">
-              <input type="text" className="form-control" />
+              <input type="text" className="i-repr-form-control form-control" />
             </div>
           </div>
 
@@ -72,7 +72,7 @@ const RegisterProduct = () => {
               <p className="form-label text-white">Farmacia</p>
             </div>
             <div className="col-md-6">
-              <select className="form-select">
+              <select className="i-repr-form-select form-select">
                 <option value="">Seleccione una farmacia</option>
                 <option value="1">Farmacia 1</option>
                 <option value="2">Farmacia 2</option>
@@ -87,7 +87,7 @@ const RegisterProduct = () => {
           <div className="col-md-7">
           </div>
             <div className="col-md-2">
-              <button className="btn create-product-button w-100">Crear</button>
+              <button className="btn i-repr-create-product-button w-100">Crear</button>
             </div>
           </div>
         </div>

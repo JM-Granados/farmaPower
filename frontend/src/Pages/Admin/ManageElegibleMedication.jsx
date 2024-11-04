@@ -45,16 +45,16 @@ const ManageElegibleMedication = () => {
     }, [searchText]); // Trigger search whenever searchText changes
 
     return (
-        <div className="container-fluid manage-elegible-medications">
-            <div className="row principal">
+        <div className="container-fluid i-maem-manage-elegible-medications">
+            <div className="row i-maem-principal">
                 <div className="col-lg-3 col-12 px-0">
                     <SideBar />
                 </div>
 
-                <div className="col-lg-9 col-12 div2">
-                    <div className="row div3 align-items-end">
+                <div className="col-lg-9 col-12 i-maem-div2">
+                    <div className="row i-maem-div3 align-items-end">
                         <div className="col-12 div-gradient-header">
-                            <img className='imagen' src={gradient} alt="Logo" />
+                            <img className='i-maem-imagen' src={gradient} alt="Logo" />
                         </div>
                     </div>
 
@@ -63,7 +63,7 @@ const ManageElegibleMedication = () => {
                         <div className="col-md-8">
                             <input
                                 type="text"
-                                className="form-control"
+                                className="i-maem-form-control form-control"
                                 placeholder="Buscar medicamento"
                                 value={searchText}
                                 onChange={(e) => setSearchText(e.target.value)} // Update search text on input change
@@ -71,7 +71,7 @@ const ManageElegibleMedication = () => {
                         </div>
                         <div className="col-md-4 d-flex align-items-center">
                             <span>No hay coincidencias?</span>
-                            <a href="/registerproduct" className="gradient-link mx-2">Registrar nuevo</a>
+                            <a href="/registerproduct" className="i-maem-gradient-link mx-2">Registrar nuevo</a>
                         </div>
                     </div>
 

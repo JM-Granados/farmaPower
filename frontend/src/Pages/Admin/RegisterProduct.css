@@ -1,58 +1,58 @@
-.register-product {
+.i-repr-register-product {
   background-color: rgba(8, 15, 43, 1);
   min-height: 100vh;
   padding-bottom: 20px;
 }
 
-.principal {
+.i-repr-principal {
   min-height: 100vh;
 }
 
-.div2 {
+.i-repr-div2 {
   background-color: rgba(8, 15, 43, 1);
   padding: 20px;
 }
 
-.div3 {
+.i-repr-div3 {
   padding: 20px;
   background-color: rgba(8, 15, 43, 1);
 }
 
-.cuadrado {
+.i-repr-cuadrado {
   background-color: #111A3D;
   padding: 15px;
   border-radius: 20px;
   margin-top: 15px;
 }
 
-.imagen {
+.i-repr-imagen {
   max-width: 100%;
   height: auto;
 }
 
 /* Search bar styling */
-.form-control {
-  background-color: rgba(8, 15, 43, 1); /* Initial background color */
+.i-repr-form-control {
+  background-color: rgb(27, 43, 107); /* Initial background color */
   color: white; /* Text color */
   border: 1px solid rgba(104, 104, 104, 0.2); /* Light border */
 }
 
-.form-control:focus {
+.i-repr-form-control:focus {
   background-color: rgba(15, 25, 55, 1); /* Lighter shade of blue on focus */
   color: white; /* Text color */
   border-color: rgba(255, 255, 255, 0.4); /* Lighter border on focus */
   box-shadow: none; /* Remove default box-shadow */
 }
 
-.form-control::placeholder {
+.i-repr-form-control::placeholder {
   color: rgba(255, 255, 255, 0.6); /* White placeholder text with opacity */
 }
 
-.form-label, .form-control, .btn, p {
+.i-repr-form-label, .form-control, .btn, p {
   font-family: 'League Spartan', sans-serif;
 }
 
-.form-select {
+.i-repr-form-select {
   background-color: rgba(8, 15, 43, 1);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -60,14 +60,14 @@
   padding: 0.5rem 1rem;
 }
 
-.form-select:focus {
+.i-repr-form-select:focus {
   background-color: rgba(15, 25, 55, 1); /* Slightly lighter blue on focus */
   color: white; /* White text color */
   border-color: rgba(255, 255, 255, 0.4); /* Lighter border on focus */
   box-shadow: none; /* Remove default box-shadow */
 }
 
-.create-product-button {
+.i-repr-create-product-button {
   padding: 10px;
   font-size: 20px;
   color: #fff;

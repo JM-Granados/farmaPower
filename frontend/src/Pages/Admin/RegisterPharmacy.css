@@ -1,58 +1,47 @@
-.register-pharmacy {
+.i-reph-register-pharmacy {
   background-color: rgba(8, 15, 43, 1);
   min-height: 100vh;
   padding-bottom: 20px;
 }
 
-.principal {
+.i-reph-principal {
   min-height: 100vh;
 }
 
-.div2 {
+.i-reph-div2 {
   background-color: rgba(8, 15, 43, 1);
   padding: 20px;
 }
 
-.div3 {
+.i-reph-div3 {
   padding: 20px;
   background-color: rgba(8, 15, 43, 1);
 }
 
-.cuadrado {
-  background-color: #111A3D;
-  padding: 15px;
-  border-radius: 20px;
-  margin-top: 15px;
-}
-
-.imagen {
+.i-reph-imagen {
   max-width: 100%;
   height: auto;
 }
 
 /* Search bar styling */
-.form-control {
-  background-color: rgba(8, 15, 43, 1); /* Initial background color */
+.i-reph-form-control {
+  background-color: rgb(27, 43, 107); /* Initial background color */
   color: white; /* Text color */
   border: 1px solid rgba(104, 104, 104, 0.2); /* Light border */
 }
 
-.form-control:focus {
+.i-reph-form-control:focus {
   background-color: rgba(15, 25, 55, 1); /* Lighter shade of blue on focus */
   color: white; /* Text color */
   border-color: rgba(255, 255, 255, 0.4); /* Lighter border on focus */
   box-shadow: none; /* Remove default box-shadow */
 }
 
-.form-control::placeholder {
+.i-reph-form-control::placeholder {
   color: rgba(255, 255, 255, 0.6); /* White placeholder text with opacity */
 }
 
-.form-label, .form-control, .btn, p {
-  font-family: 'League Spartan', sans-serif;
-}
-
-.form-select {
+.i-reph-form-select {
   background-color: rgba(8, 15, 43, 1);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -60,14 +49,14 @@
   padding: 0.5rem 1rem;
 }
 
-.form-select:focus {
+.i-reph-form-select:focus {
   background-color: rgba(15, 25, 55, 1); /* Slightly lighter blue on focus */
   color: white; /* White text color */
   border-color: rgba(255, 255, 255, 0.4); /* Lighter border on focus */
   box-shadow: none; /* Remove default box-shadow */
 }
 
-.create-product-button {
+.i-reph-create-pharmacy-button {
   padding: 10px;
   font-size: 20px;
   color: #fff;
@@ -75,20 +64,4 @@
   border-radius: 10px;
   background: linear-gradient(to right, #0cc0df, #cb6ce6 50%, #7b2cbf) !important;
   cursor: pointer;
-}
-
-input[type="number"] {
-  background-color: rgba(8, 15, 43, 1); /* Match background color */
-  color: white; /* Match text color */
-  border: 1px solid rgba(104, 104, 104, 0.2); /* Match border style */
-  font-family: 'League Spartan', sans-serif; /* Match font */
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-}
-
-input[type="number"]:focus {
-  background-color: rgba(15, 25, 55, 1); /* Match focus background color */
-  border-color: rgba(255, 255, 255, 0.4); /* Match focus border color */
-  color: white; /* Match focus text color */
-  box-shadow: none; /* Remove default box-shadow */
 }
