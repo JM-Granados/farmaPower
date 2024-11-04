@@ -17,25 +17,28 @@
     margin-top: 50px;
 }
 
-.nav-link {
+.custom-nav-underline .nav-link {
     color: rgba(125, 125, 125, 1); 
     margin-right: 25px;
 }
 
-.nav-underline {
-    background-color: linear-gradient(90deg, rgb(255, 150, 84), rgb(255, 183, 83)) !important;
+.custom-nav-underline {
+    display: flex;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    border-bottom-color: linear-gradient(90deg, rgb(255, 150, 84), rgb(255, 183, 83)) !important; /* Cambia el color y grosor */
 }
 
-.nav-link .active {
+.custom-nav-underline .nav-link .active {
     color: rgba(255, 255, 255, 1) !important;
     border-bottom: linear-gradient(90deg, rgb(255, 150, 84), rgb(255, 183, 83)) !important;
 }
 
-.nav-link:hover {
+.custom-nav-underline .nav-link:hover {
     color: rgba(255, 255, 255, 1); 
 }
 
-.nav-link:focus {
+.custom-nav-underline .nav-link:focus {
     color: rgba(255, 255, 255, 1); 
     border-bottom: linear-gradient(90deg, rgb(255, 150, 84), rgb(255, 183, 83));
 }

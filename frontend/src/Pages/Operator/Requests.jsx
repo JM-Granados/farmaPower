@@ -60,7 +60,7 @@ function Requests() {
                 <img src={user} alt='User' id="top-user" className='kuser-image' />
             </div>
             <div>
-                <ul className="nav nav-underline text-wrapper-17 little-nav-bar"> {/*Aqui falta el color del underline */}
+                <ul className="nav custom-nav-underline nav-underline text-wrapper-17 little-nav-bar"> {/*Aqui falta el color del underline */}
                     <li className="nav-item">
                         <a className="nav-link" aria-current="page" href="#" onClick={() => handleFilter('Todas')}>Todas</a>
                     </li>

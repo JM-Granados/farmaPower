@@ -1,6 +1,3 @@
-// Importación de useState de React para manejo de estado dentro de los componentes (no utilizado aquí pero preparado para futura expansión).
-import { useState } from 'react'
-
 // Importación de componentes específicos de react-router-dom para manejar la navegación dentro de la aplicación.
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
