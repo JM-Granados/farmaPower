@@ -1,12 +1,4 @@
-:root {
-    --variable-collection-c1: rgb(255, 150, 84);
-    --variable-collection-c2: rgb(255, 183, 83);
-    --variable-collection-fondo: #040b27;
-    --variable-collection-inputs: rgba(40, 55, 115, 1);
-    --variable-collection-seleccionado: rgba(255, 255, 255, 1);
-}
-
-.sidebar-container {
+.ksidebar-container {
     width: 250px;
     position: fixed;
     height: 100%;
@@ -15,18 +7,18 @@
     background-color: #040b27; 
 }
 
-.content-container {
+.kcontent-container {
     margin-left: 300px; /* Igual al ancho del sidebar */
     padding: 20px;
     flex-grow: 1;
 }
 
-.gradient-title {
+.kgradient-title {
     margin-top: 80px;
     margin-left: 100px;
 }
 
-.gradient-image {
+.kgradient-image {
     max-height: 110px;
     width: auto;
 }
@@ -45,26 +37,26 @@
     border-radius: 20px; 
 }*/
 
-.label-text {
+.klabel-text {
     font-family: "League Spartan-Regular", Helvetica;
     font-size: 25px;
     font-weight: 400;
     border-radius: 0.2rem;
-    color: var(--variable-collection-seleccionado);
+    color: rgba(255, 255, 255, 1);
     padding-left: 25px;
 }
 
-.request-form {
+.krequest-form {
     margin-top: 60px;
     margin-left: 100px;
 }
 
 /* Estilo para los inputs */
-.form-control.custom-input {
-    background-color: var(--variable-collection-inputs); /* Color de fondo */
-    border: 1px solid var(--variable-collection-inputs); /* Color de borde */
+.kform-control.custom-input {
+    background-color: rgba(40, 55, 115, 1); /* Color de fondo */
+    border: 1px solid rgba(40, 55, 115, 1); /* Color de borde */
     border-radius: 26px; /* Bordes redondeados */
-    color: var(--variable-collection-seleccionado); /* Color del texto */
+    color: rgba(255, 255, 255, 1); /* Color del texto */
     padding-top: 10px;
     padding-bottom: 15px; /* Espaciado interno */
     font-size: 18px; /* Tamaño de la fuente */
@@ -74,22 +66,22 @@
     margin-left: 4rem;
 }
 
-.form-control.custom-input::placeholder {
+.kform-control.custom-input::placeholder {
     color: #aaa;
     opacity: 0.7; /* Opacidad para un look más sutil */
 }
 
-.form-control.custom-input:focus {
-    background-color: var(--variable-collection-inputs);
-    border-color: var(--variable-collection-fondo-exp); /* Color de borde al hacer focus */
+.kform-control.custom-input:focus {
+    background-color: rgba(40, 55, 115, 1);
+    border-color: #040b27; /* Color de borde al hacer focus */
     box-shadow: 0 0 5px rgba(40, 144, 255, 0.5); /* Sombra en el borde */
 }
 
-.mb-6 {
+.kmb-6 {
     margin-bottom: 2rem;
 }
 
-.save-button{
+.ksave-button{
     background: linear-gradient(to right, rgb(255, 150, 84), rgb(255, 183, 83));
     max-width: 165px;
     border-radius: 16px;
@@ -99,17 +91,17 @@
     font-weight: 400;
     padding-top: 4px;
     border: none;
-    color: var(--variable-collection-seleccionado) !important;
+    color: rgba(255, 255, 255, 1) !important;
 }
 
-.button-container {
+.kbutton-container {
     display: flex;
     margin-right: 1rem;
     justify-content: center; 
     margin-top: 3rem; /* Espaciado superior */
 }
 
-.green-button {
+.kgreen-button {
     background-color: rgb(48, 165, 25) !important;
     border-color: rgb(48, 165, 25) !important;
     margin-right: 20px;
@@ -118,7 +110,7 @@
     max-height: 40px;
 }
 
-.red-button {
+.kred-button {
     background-color: rgb(177, 0, 0) !important;
     border-color: rgb(177, 0, 0) !important;
     margin-right: 20px;
@@ -128,7 +120,7 @@
     max-height: 40px;
 }
 
-.grey-button{
+.kgrey-button{
     background-color: darkgray !important;
     border-color: darkgrey !important;
     max-width: 40px;
@@ -136,21 +128,21 @@
     max-height: 40px;
 }
 
-.green-button:hover {
+.kgreen-button:hover {
     background-color: rgb(67, 226, 36) !important;
     border-color: rgb(13, 58, 4) !important;
     border-width: 3px !important;
     transform: scale(1.05);
 }
 
-.red-button:hover {
+.kred-button:hover {
     background-color: rgb(243, 3, 3) !important;
     border-color: rgb(58, 4, 4) !important;
     border-width: 3px !important;
     transform: scale(1.05);
 }
 
-.grey-button:hover {
+.kgrey-button:hover {
     background-color: rgb(212, 212, 212) !important;
     border-color: rgb(88, 88, 88) !important;
     border-width: 3px !important;

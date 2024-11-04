@@ -1,23 +1,12 @@
-:root {
-    --variable-collection-c1: rgb(255, 150, 84);
-    --variable-collection-c2: rgb(255, 183, 83);
-    --variable-collection-fondo: rgba(20, 30, 70, 1);
-    --variable-collection-fondo-exp: rgba(8, 15, 43, 1);
-    --variable-collection-fondo-solicitudes: rgba(17, 26, 61, 1);
-    --variable-collection-inputs: rgba(40, 55, 115, 1);
-    --variable-collection-no-seleccionado: rgba(125, 125, 125, 1);
-    --variable-collection-seleccionado: rgba(255, 255, 255, 1);
-}
 
 .requests-list {
     margin-top: 50px;
     margin-left: 100px;
 }
 
-.text-wrapper-4 {
-    color: var(--variable-collection-seleccionado);
+.text-wrapper-17 {
+    color: rgba(255, 255, 255, 1);
     font-family: "League Spartan-Regular", Helvetica;
-    
     font-size: 20px;
     font-weight: 400;
     text-align: center;
@@ -29,7 +18,7 @@
 }
 
 .nav-link {
-    color: var(--variable-collection-no-seleccionado); 
+    color: rgba(125, 125, 125, 1); 
     margin-right: 25px;
 }
 
@@ -38,37 +27,37 @@
 }
 
 .nav-link .active {
-    color: var(--variable-collection-seleccionado) !important;
+    color: rgba(255, 255, 255, 1) !important;
     border-bottom: linear-gradient(90deg, rgb(255, 150, 84), rgb(255, 183, 83)) !important;
 }
 
 .nav-link:hover {
-    color: var(--variable-collection-seleccionado); 
+    color: rgba(255, 255, 255, 1); 
 }
 
 .nav-link:focus {
-    color: var(--variable-collection-seleccionado); 
+    color: rgba(255, 255, 255, 1); 
     border-bottom: linear-gradient(90deg, rgb(255, 150, 84), rgb(255, 183, 83));
 }
 
-.gradient-title {
+.kgradient-title {
     margin-top: 125px;
     margin-left: 100px;
 }
 
-.gradient-image {
+.kgradient-image {
     max-height: 110px;
     width: auto;
 }
 
-.user-image {
+.kuser-image {
     margin-right: 100px;
     margin-top: -150px;
 }
 
 .request-div {
     max-width: 250px;
-    background-color: var(--variable-collection-fondo);
+    background-color: rgba(20, 30, 70, 1);
 }
 
 .p-15{
