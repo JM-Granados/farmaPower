@@ -13,10 +13,9 @@ const MyRequests = () => {
     const [selectedStatus, setSelectedStatus] = useState('');
 
     useEffect(() => {
-        // Fetch all requests
         const fetchRequests = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/requests');
+                const response = await axios.get('http://localhost:3000/api/requests/671ea377b5f8eab5660a0011');
                 setRequests(response.data);
                 setFilteredRequests(response.data);
             } catch (error) {

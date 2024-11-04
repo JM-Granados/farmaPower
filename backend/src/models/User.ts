@@ -78,4 +78,4 @@ const userSchema = new Schema({
 
 // Exporta el modelo 'User', que utiliza 'userSchema' para interactuar con la colección 'users' en la base de datos.
 // Mongoose automáticamente busca una colección con el nombre plural del modelo, en este caso 'users'.
-export default model('User', userSchema);
+export default model('User', userSchema, 'user');

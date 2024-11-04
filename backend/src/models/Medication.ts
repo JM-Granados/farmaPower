@@ -8,5 +8,5 @@ const medicationSchema = new Schema({
   amount: { type: String, required: true }
 }, { timestamps: true });
 
-export default model('Medication', medicationSchema);
+export default model('Medication', medicationSchema, 'medication');
 
