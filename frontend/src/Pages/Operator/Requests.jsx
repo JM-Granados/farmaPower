@@ -78,7 +78,7 @@ function Requests() {
             <div className="container-fluid mt-2">
                 <div className="scrollable-container">
                     <div className="row g-4 p-15">
-                        {filteredRequests.map((index, request) => (
+                        {filteredRequests.map((request) => (
                             <div key={request._id} className="col-auto d-flex p-3">
                                 <Request id={request._id} date={request.timestamp} status={request.rStatus} />
                             </div>
