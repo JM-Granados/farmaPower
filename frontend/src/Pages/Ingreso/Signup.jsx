@@ -106,13 +106,13 @@ function Signup() {
     }
 
     return (
-        <div className="fullscreen">
+        <div className="jfullscreen">
 
-            <div className="container text-white position-absolute top-50 start-50 translate-middle">
+            <div className="hola container text-white position-absolute top-50 start-50 translate-middle">
                 {/* Formulario para el ingreso de usuario. */}
                 <form className='row g-3 needs-validation' novalidate onSubmit={handleSubmit}>
                     {/* Título del formulario. */}
-                    <h1 className='IngresarText text-center mb-5'>Registrarse</h1>
+                    <h1 className='IngresarTextj text-center mb-5'>Registrarse</h1>
 
                     {/* Div contenedor para el campo de nombre. */}
                     <div className="col-md-4">
@@ -191,7 +191,7 @@ function Signup() {
                     {/* Div contenedor para el campo de contraseña. */}
                     <div className="col-md-6">
                         <label htmlFor="validationPassword" className="form-label mt-3">Contraseña</label>
-                        <div className="password-container d-grid">
+                        <div className="contra password-container d-grid">
                             {/* Input para contraseña con estilos específicos. */}
                             <input
                                 type={PasswordInputType}
@@ -209,14 +209,14 @@ function Signup() {
                         </div>
 
 
-                        <div id="validationPassword" className="form-text-info">
+                        <div id="validationPassword" className="mensaje form-text-info">
                             Tu contraseña debe ser de 8-20 caracteres, contener letras, números y símbolos. No debe contener espacios ni emojis.
                         </div>
                     </div>
                     <div className="col-md-6">
                         <label htmlFor="validationCPassword" className="form-label mt-3">Confirmar contraseña</label>
                         {/* Input para contraseña con estilos específicos. */}
-                        <div className="password-container d-grid">
+                        <div className="contra password-container d-grid">
                             {/* Input para contraseña con estilos específicos. */}
                             <input
                                 type={PasswordInputType}

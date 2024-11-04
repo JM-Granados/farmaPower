@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Estilos de Bootstrap para diseño y respuesta.
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Funcionalidades de JavaScript de Bootstrap.
 import Header_Home from '../../NavBar/Header_Home_User'
-import Gestionar_Farmacias from '../assets/Gestionar_Farmacias.png'
-import Gestionar_Programa from '../assets/Gestionar_Programa.png'
-import Gestionar_Productos from '../assets/Gestionar_Productos.png'
+import Gestionar_Farmacias from '../../assets/Gestionar_Farmacias.png'
+import Gestionar_Programa from '../../assets/Gestionar_Programa.png'
+import Gestionar_Productos from '../../assets/Gestionar_Productos.png'
 
 import './Home_Admin.css'
 
@@ -18,39 +18,39 @@ function Home_Guest() {
         <div>
             <Header_Home />
             <div className="hcontainer container justify-content-start">
-                <ul className="nav nav-underline">
-                    <li className="nav-item">
-                        <a className="nav-link active text-white" aria-current="page" href="#">Inicio</a>
+                <ul className="barrita nav nav-underline">
+                    <li className="barrota nav-item">
+                        <a className="barritita nav-link active text-white" aria-current="page" href="#">Inicio</a>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link text-white" href="#">Medicamentos</a>
+                    <li className="barrota nav-item">
+                        <a className="barritita nav-link text-white" href="#">Medicamentos</a>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link text-white" href="#">Farmacias</a>
+                    <li className="barrota nav-item">
+                        <a className="barritita nav-link text-white" href="#">Farmacias</a>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link text-white" href="#">Programas</a>
+                    <li className="barrota nav-item">
+                        <a className="barritita nav-link text-white" href="#">Programas</a>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link text-white" href="#">Usuarios</a>
+                    <li className="barrota nav-item">
+                        <a className="barritita nav-link text-white" href="#">Usuarios</a>
                     </li>
                 </ul>
             </div>
 
-            <div className="container-fluid d-flex justify-content-center">
-                <Link to="/ruta-para-nueva-solicitud" className="ms-5 mt-5 me-5 card-link">
+            <div className="contiene container-fluid d-flex justify-content-center">
+                <Link to="/ruta-para-nueva-solicitud" className="ir ms-5 mt-5 me-5 card-link">
                     <div className="card">
                         <img src={Gestionar_Programa} className="card-img-top" alt="..." />
                     </div>
                 </Link>
 
-                <Link to="/ruta-para-oferta-nueva" className="ms-5 mt-5 me-5 card-link">
+                <Link to="/ruta-para-oferta-nueva" className="ir ms-5 mt-5 me-5 card-link">
                     <div className="card">
                         <img src={Gestionar_Farmacias} className="card-img-top" alt="..." />
                     </div>
                 </Link>
 
-                <Link to="/ruta-para-ayuda" className="ms-5 mt-5 me-5 card-link">
+                <Link to="/ruta-para-ayuda" className="ir ms-5 mt-5 me-5 card-link">
                     <div className="card">
                         <img src={Gestionar_Productos} className="card-img-top" alt="..." />
                     </div>

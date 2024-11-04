@@ -1,17 +1,17 @@
 /* Define el estilo del contenedor de fondo que cubre toda la pantalla. */
-.fullscreen {
+.jfullscreen {
     position: fixed; /* Posicionamiento fijo para que permanezca en su lugar al hacer scroll. */
     width: 100%; /* Ancho completo del viewport. */
     height: 100%; /* Altura completa del viewport. */
     background-attachment: fixed !important; /* La imagen de fondo no se mueve con el scroll. */
-    background: url('../assets/Background.png') no-repeat center right; /* Configuración de la imagen de fondo. */
+    background: url('../../assets/Background.png') no-repeat center right; /* Configuración de la imagen de fondo. */
     background-size: 150% 150%; /* Aumenta el tamaño de la imagen de fondo para que sea más grande que el contenedor. */
     background-position: right -1000px top -360px; /* Posiciona la imagen más a la derecha y hacia arriba para un corte específico. */
     background-position-x: left;
 }
 
 /* Estilos para el contenedor principal que centra el contenido de login en la pantalla. */
-.container {
+.hola {
     width: 100%; /* Ancho completo del contenedor padre. */
     height: 100%; /* Altura completa del contenedor padre. */
     display: flex; /* Utiliza Flexbox para facilitar la alineación de los elementos internos. */
@@ -21,19 +21,13 @@
     
 }
 
-/* Define estilos para la barra de navegación en la parte inferior. */
-.navbar {
-    display: grid; /* Utiliza Grid para la disposición de elementos. */
-    justify-content: center; /* Centra el contenido dentro de la barra de navegación. */
-}
-
 /* Estilos generales para textos dentro del formulario. */
-.form-text {
+.mensaje {
     color: #ffffff; /* Establece el color de texto a blanco para mejor contraste. */
 }
 
 /* Estilos para el título de la página de login. */
-.IngresarText {
+.IngresarTextj {
     font-size: 300%; /* Tamaño de fuente grande para el título. */
     font-family: sans-serif; /* Familia de fuente sans-serif para un look moderno. */
 }
@@ -44,7 +38,7 @@
     color: #ffffff; /* Texto en blanco para contraste. */
 }
 .CrearS {
-    background-image: url('../assets/FondoBoton.png'); /* Imagen de fondo específica para el botón Ingresar. */
+    background-image: url('../../assets/FondoBoton.png'); /* Imagen de fondo específica para el botón Ingresar. */
     background-position: center; /* Centra la imagen de fondo en el botón. */
     padding: 10px 40px; /* Padding adicional para este botón específico. */
     color: #080F2B;
@@ -57,13 +51,13 @@
     color: #111A3D;
 }
 
-.CrearS:focus, .Ingresar:focus {
+.CrearS:focus {
     outline: none; /* Elimina el borde de enfoque predeterminado para un look más limpio. */
     box-shadow: 0 0 12px rgba(0,0,0,0.5); /* Sombra intensa para indicar foco. */
 }
 
 /* Estilos comunes para ambos botones. */
-.button {
+.CrearS {
     flex-grow: 1; /* Permite que los botones crezcan y llenen el espacio disponible. */
     margin: 0 10px; /* Añade un pequeño margen entre los botones. */
     font-size: 18px; /* Tamaño de fuente grande para facilidad de lectura. */
@@ -73,13 +67,13 @@
     transition: all 0.3s; /* Transición suave para efectos de hover y focus. */
 }
 
-.form-text-info {
+.mensaje {
     margin-top: .25rem;
     font-size: .875em;
     color:darkcyan;
 }
 
-.password-container {
+.contra {
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* Alinea los elementos al inicio del contenedor */

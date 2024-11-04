@@ -1,24 +1,20 @@
-// Importación de useState de React para manejo de estado dentro de los componentes (no utilizado aquí pero preparado para futura expansión).
-import { useState } from 'react'
-
 // Importación de componentes específicos de react-router-dom para manejar la navegación dentro de la aplicación.
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-// Importación de los estilos CSS y JS de Bootstrap para aprovechar sus componentes y funcionalidades predefinidos.
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 // Importación de los componentes de las ventanas que se utilizarán en las rutas.
-import Home_Guest from './Home_Guest' // Componente que muestra la página de inicio para usuarios no autenticados.
-import Home_Admin from './Home_Admin'
-import Home_Client from './Home_Client'
-import Home_Operator from './Home_Operator'
-import Login from './Login'; // Componente para la página de login.
-import Requests from './Operator/Requests';
-import ThisRequest from './Operator/View_Request';
-import RegisterProgram from './Program/RegisterProgram';
-import Info from './Information/Info';
-import Help2 from './Help/Help';
+import Home_Guest from '../Pages/Home/Home_Guest' // Componente que muestra la página de inicio para usuarios no autenticados.
+import Home_Admin from '../Pages/Home/Home_Admin'
+import Home_Client from '../Pages/Home/Home_Client'
+import Home_Operator from '../Pages/Home/Home_Operator'
+import Login from '../Pages/Ingreso/Login'; // Componente para la página de login.
+import Signup from '../Pages/Ingreso/Signup'
+import Requests from '../Pages/Operator/Requests';
+import ThisRequest from '../Pages/Operator/View_Request';
+import RegisterProgram from '../Pages/Program/RegisterProgram';
+import Info from '../Pages/Information/Info';
+import Help2 from '../Pages/Help/Help';
 import My_Requests from '../Pages/Client/My_Requests'; // Componente para la página de solicitudes del usuario.
 import NewRequest from '../Pages/Client/New_Request';
 import Points from '../Pages/Client/My_Points';

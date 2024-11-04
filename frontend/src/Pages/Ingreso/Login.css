@@ -12,19 +12,19 @@ html, body {
 }
 
 /* Define el estilo del contenedor de fondo que cubre toda la pantalla. */
-.fullscreen-bg {
+.jfullscreen-bg {
     position: fixed; /* Posicionamiento fijo para que permanezca en su lugar al hacer scroll. */
     width: 100%; /* Ancho completo del viewport. */
     height: 100%; /* Altura completa del viewport. */
     background-attachment: fixed !important; /* La imagen de fondo no se mueve con el scroll. */
-    background: url('../assets/Background.png') no-repeat center right; /* Configuración de la imagen de fondo. */
+    background: url('../../assets/Background.png') no-repeat center right; /* Configuración de la imagen de fondo. */
     background-size: 150% 150%; /* Aumenta el tamaño de la imagen de fondo para que sea más grande que el contenedor. */
     background-position: right -1000px top -360px; /* Posiciona la imagen más a la derecha y hacia arriba para un corte específico. */
     background-position-x: left;
 }
 
 /* Estilos para el contenedor principal que centra el contenido de login en la pantalla. */
-.content {
+.jcontent {
     position: relative; /* Posición relativa dentro de su contenedor padre. */
     width: 100%; /* Ancho completo del contenedor padre. */
     height: 100%; /* Altura completa del contenedor padre. */
@@ -36,30 +36,30 @@ html, body {
 }
 
 /* Define estilos para la barra de navegación en la parte inferior. */
-.foot {
+.pie {
     display: grid; /* Utiliza Grid para la disposición de elementos. */
     justify-content: center; /* Centra el contenido dentro de la barra de navegación. */
 }
 
 /* Estilos generales para textos dentro del formulario. */
-.form-text {
+.PassRec {
     color: #ffffff; /* Establece el color de texto a blanco para mejor contraste. */
 }
 
 /* Estilos para el título de la página de login. */
-.IngresarText {
+.jIngresarText {
     font-size: 500%; /* Tamaño de fuente grande para el título. */
     font-family: sans-serif; /* Familia de fuente sans-serif para un look moderno. */
 }
 
 /* Estilos para las etiquetas de los campos del formulario. */
-.form-label {
+.lab {
     font-size: 120%; /* Tamaño de fuente moderado para las etiquetas. */
     font-family: sans-serif; /* Consistencia en la familia de fuente. */
 }
 
 /* Estilos para el contenedor de los botones en el formulario. */
-.form-button-container {
+.botones {
     display: flex; /* Dispone los botones en una fila usando Flexbox. */
     justify-content: space-between; /* Separa los botones uniformemente. */
     width: 100%; /* Ocupa todo el ancho disponible de su contenedor. */
@@ -67,7 +67,7 @@ html, body {
 }
 
 /* Estilos comunes para ambos botones. */
-.button {
+.jCrear, .jIngresar {
     flex-grow: 1; /* Permite que los botones crezcan y llenen el espacio disponible. */
     margin: 0 10px; /* Añade un pequeño margen entre los botones. */
     font-size: 18px; /* Tamaño de fuente grande para facilidad de lectura. */
@@ -78,38 +78,38 @@ html, body {
 }
 
 /* Estilos adicionales para botones específicos y sus estados interactivos. */
-.Crear, .Ingresar {
+.jCrear, .jIngresar {
     background-color: #141e46 !important; /* Color de fondo oscuro para ambos botones. */
     color: #ffffff !important; /* Texto en blanco para contraste. */
 }
-.Ingresar {
-    background-image: url('../assets/FondoBoton.png') !important; /* Imagen de fondo específica para el botón Ingresar. */
+.jIngresar {
+    background-image: url('../../assets/FondoBoton.png') !important; /* Imagen de fondo específica para el botón Ingresar. */
     background-position: center !important; /* Centra la imagen de fondo en el botón. */
     padding: 10px 40px !important; /* Padding adicional para este botón específico. */
     color: #080F2B !important;
 }
-.Crear:hover, .Ingresar:hover {
+.jCrear:hover, .jIngresar:hover {
     box-shadow: 6px 0 24px rgba(0,0,0,0.3) !important; /* Sombra más intensa al hacer hover. */
 }
 
-.Ingresar:hover {
+.jIngresar:hover {
     color: #111A3D;
 }
 
-.Crear:focus, .Ingresar:focus {
+.jCrear:focus, .jIngresar:focus {
     outline: none; /* Elimina el borde de enfoque predeterminado para un look más limpio. */
     box-shadow: 0 0 12px rgba(0,0,0,0.5); /* Sombra intensa para indicar foco. */
 }
 
 /* Estilos para controles de formulario cuando están en foco. */
-.form-control {
+.inputss {
     border-color: #ffffff; /* Color de borde blanco para consistencia. */
     color: #ffffff; /* Color de texto blanco. */
     background-color: transparent; /* Fondo transparente para un look integrado. */
     border-bottom: 1px solid #ffffff; /* Borde inferior para destacar el campo activo. */
     transition: box-shadow 0.3s ease-in-out, border-color 0.15s ease-in-out; /* Transiciones suaves para cambios visuales. */
 }
-.form-control:focus {
+.inputss:focus {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.8); /* Sombra intensa para un claro indicador de campo activo. */
     border-color: transparent; /* Hace el borde transparente en foco para destacar la sombra. */
 }
@@ -124,7 +124,7 @@ html, body {
     opacity: 0; /* Opacidad final es 0, totalmente transparente */
 }
 
-.password-container {
+.espacioPass {
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* Alinea los elementos al inicio del contenedor */
