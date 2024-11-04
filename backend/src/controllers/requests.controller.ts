@@ -124,3 +124,23 @@ export const getPointsByMedication: RequestHandler = async (req, res) => {
     res.status(500).json({ message: 'Error al recuperar puntos por medicación' });
   }
 };
+
+// Obtener una solicitud por su _id
+export const getRequestById: RequestHandler = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const request = await RequestModel.findById(id)
+      .populate('medication') //obtiene todo el objeto, no solo su id
+      .populate('client') // con esto evitamos realizar varias consultas 
+      .populate('pharmacy');
+
+    if (!request) {
+      return res.status(404).json({ message: 'Request not found' });
+    }
+
+    res.json(request);
+  } catch (error) {
+    console.error("Error fetching request by ID:", error);
+    res.status(500).json({ message: "Error fetching request" });
+  }
+};

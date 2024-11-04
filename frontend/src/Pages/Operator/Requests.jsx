@@ -77,13 +77,13 @@ function Requests() {
             </div>
             <div className="container-fluid mt-2">
                 <div className="scrollable-container">
-                    <div className="row g-4 p-15">
+                    {/* <div className="row g-4 p-15">
                         {requests.map((index, request) => (
                             <div key={request._id} className="col-auto d-flex p-3">
                                 <Request id={request._id} date={request.timestamp} status={request.rStatus} />
                             </div>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
             </div>
             {errorMessage && <p className="text-danger">{errorMessage}</p>}
