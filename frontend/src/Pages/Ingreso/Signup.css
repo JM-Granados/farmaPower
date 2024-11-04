@@ -1,0 +1,107 @@
+/* Define el estilo del contenedor de fondo que cubre toda la pantalla. */
+.jfullscreen {
+    position: fixed; /* Posicionamiento fijo para que permanezca en su lugar al hacer scroll. */
+    width: 100%; /* Ancho completo del viewport. */
+    height: 100%; /* Altura completa del viewport. */
+    background-attachment: fixed !important; /* La imagen de fondo no se mueve con el scroll. */
+    background: url('../../assets/Background.png') no-repeat center right; /* Configuración de la imagen de fondo. */
+    background-size: 150% 150%; /* Aumenta el tamaño de la imagen de fondo para que sea más grande que el contenedor. */
+    background-position: right -1000px top -360px; /* Posiciona la imagen más a la derecha y hacia arriba para un corte específico. */
+    background-position-x: left;
+}
+
+/* Estilos para el contenedor principal que centra el contenido de login en la pantalla. */
+.hola {
+    width: 100%; /* Ancho completo del contenedor padre. */
+    height: 100%; /* Altura completa del contenedor padre. */
+    display: flex; /* Utiliza Flexbox para facilitar la alineación de los elementos internos. */
+    justify-content: center; /* Centra los elementos horizontalmente en el contenedor. */
+    align-items: center; /* Centra los elementos verticalmente en el contenedor. */
+    color: #ffffff; /* Establece el color de texto a blanco. */
+    
+}
+
+/* Estilos generales para textos dentro del formulario. */
+.mensaje {
+    color: #ffffff; /* Establece el color de texto a blanco para mejor contraste. */
+}
+
+/* Estilos para el título de la página de login. */
+.IngresarTextj {
+    font-size: 300%; /* Tamaño de fuente grande para el título. */
+    font-family: sans-serif; /* Familia de fuente sans-serif para un look moderno. */
+}
+
+/* Estilos adicionales para botones específicos y sus estados interactivos. */
+.CrearS{
+    background-color: #141e46; /* Color de fondo oscuro para ambos botones. */
+    color: #ffffff; /* Texto en blanco para contraste. */
+}
+.CrearS {
+    background-image: url('../../assets/FondoBoton.png'); /* Imagen de fondo específica para el botón Ingresar. */
+    background-position: center; /* Centra la imagen de fondo en el botón. */
+    padding: 10px 40px; /* Padding adicional para este botón específico. */
+    color: #080F2B;
+}
+.CrearS:hover, .CrearS:hover {
+    box-shadow: 6px 0 24px rgba(0,0,0,0.3); /* Sombra más intensa al hacer hover. */
+}
+
+.CrearS:hover {
+    color: #111A3D;
+}
+
+.CrearS:focus {
+    outline: none; /* Elimina el borde de enfoque predeterminado para un look más limpio. */
+    box-shadow: 0 0 12px rgba(0,0,0,0.5); /* Sombra intensa para indicar foco. */
+}
+
+/* Estilos comunes para ambos botones. */
+.CrearS {
+    flex-grow: 1; /* Permite que los botones crezcan y llenen el espacio disponible. */
+    margin: 0 10px; /* Añade un pequeño margen entre los botones. */
+    font-size: 18px; /* Tamaño de fuente grande para facilidad de lectura. */
+    font-family: sans-serif; /* Familia de fuente para consistencia visual. */
+    padding: 10px 20px; /* Padding suficiente para que los botones sean fáciles de clickear. */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra suave para efecto visual. */
+    transition: all 0.3s; /* Transición suave para efectos de hover y focus. */
+}
+
+.mensaje {
+    margin-top: .25rem;
+    font-size: .875em;
+    color:darkcyan;
+}
+
+.contra {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea los elementos al inicio del contenedor */
+}
+
+.space-password {
+    flex-grow: 1; /* Permite que el input crezca y ocupe la mayor parte del contenedor */
+    display: flex;
+    align-items: center; /* Alinea los elementos internos verticalmente */
+}
+
+.password-toogle-icon {
+    position: absolute;
+    cursor: pointer; /* Cambia el cursor a pointer para indicar que el ícono es clickeable */
+    justify-self: end;
+    align-self: center;
+    margin-right: 3%;
+}
+
+/* Estilos para controles de formulario cuando están en foco. */
+.elinput {
+    border-color: #ffffff; /* Color de borde blanco para consistencia. */
+    color: #ffffff; /* Color de texto blanco. */
+    background-color: transparent; /* Fondo transparente para un look integrado. */
+    border-bottom: 1px solid #ffffff; /* Borde inferior para destacar el campo activo. */
+    transition: box-shadow 0.3s ease-in-out, border-color 0.15s ease-in-out; /* Transiciones suaves para cambios visuales. */
+}
+.elinput:focus {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.8); /* Sombra intensa para un claro indicador de campo activo. */
+    border-color: transparent; /* Hace el borde transparente en foco para destacar la sombra. */
+}

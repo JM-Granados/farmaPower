@@ -9,5 +9,4 @@ const pharmacySchema = new Schema({
   state: {type: Schema.Types.ObjectId, ref: 'State', required: true},  
 }, { timestamps: true });
 
-export default model('Pharmacy', pharmacySchema);
-
+export default model('Pharmacy', pharmacySchema, 'pharmacy');

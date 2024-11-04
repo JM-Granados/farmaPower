@@ -1,23 +1,36 @@
 // Importación de componentes específicos de react-router-dom para manejar la navegación dentro de la aplicación.
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-// Importación de los estilos CSS y JS de Bootstrap para aprovechar sus componentes y funcionalidades predefinidos.
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 // Importación de los componentes de las ventanas que se utilizarán en las rutas.
-import Home_Guest from './Home_Guest' // Componente que muestra la página de inicio para usuarios no autenticados.
-import Login from './Login'; // Componente para la página de login.
-import Requests from './Operator/Requests';
-import ThisRequest from './Operator/View_Request';
-import RegisterProgram from './Program/RegisterProgram';
-import Info from './Information/Info';
-import Help2 from './Help/Help';
+import Home_Guest from '../Pages/Home/Home_Guest' // Componente que muestra la página de inicio para usuarios no autenticados.
+import Home_Admin from '../Pages/Home/Home_Admin'
+import Home_Client from '../Pages/Home/Home_Client'
+import Home_Operator from '../Pages/Home/Home_Operator'
+import Login from '../Pages/Ingreso/Login'; // Componente para la página de login.
+import Signup from '../Pages/Ingreso/Signup'
+import Requests from '../Pages/Operator/Requests';
+import ThisRequest from '../Pages/Operator/View_Request';
+import RegisterProgram from '../Pages/Program/RegisterProgram';
+import Info from '../Pages/Information/Info';
+import Help2 from '../Pages/Help/Help';
 import My_Requests from '../Pages/Client/My_Requests'; // Componente para la página de solicitudes del usuario.
 import NewRequest from '../Pages/Client/New_Request';
 import Points from '../Pages/Client/My_Points';
 import Help from '../Pages/Client/Help';
+import Medication from '../Pages/Client/Participating_Medications';
+import Pharmacies from '../Pages/Client/Participating_Pharmacies';
+import Programs from '../Pages/Client/Programs';
 // import Home from '../Pages/Client/Home';
+import ManageElegibleMedication from '../Pages/Admin/ManageElegibleMedication';
+import ManagePharmacy from '../Pages/Admin/ManagePharmacy';
+import ManageProgram from '../Pages/Admin/ManageProgram';
+import RegisterProduct from '../Pages/Admin/RegisterProduct';
+import ModifyProduct from '../Pages/Admin/ModifyProduct';
+import RegisterPharmacy from '../Pages/Admin/RegisterPharmacy';
+import ModifyPharmacy from '../Pages/Admin/ModifyPharmacy';
+import ModifyProgram from '../Pages/Admin/ModifyProgram';
 
 /**
  * @fileoverview Aplicación principal para el proyecto React usando React Router y Bootstrap.
@@ -63,10 +76,25 @@ function App() {
         <Route path='/help2' element={<Help2/>}></Route> {/*No se como se vaya a manejar esto */}
 
         <Route path='/Login' element={<Login />}></Route>
+        <Route path='/Signup' element={<Signup/>}></Route>
+        <Route path='/Home_Admin' element={<Home_Admin/>}></Route>
+        <Route path='/Home_Client' element={<Home_Client/>}></Route>
+        <Route path='/Home_Operator' element={<Home_Operator/>}></Route>
         <Route path='/MyRequests' element={<My_Requests />}></Route>
         <Route path="/NewRequest" element={<NewRequest />}></Route>
         <Route path="/MyPoints" element={<Points />}></Route>
         <Route path="/Help" element={<Help />}></Route>
+        <Route path="/Medications" element={<Medication />}></Route>
+        <Route path="/Pharmacies" element={<Pharmacies />}></Route>
+        <Route path="/Programs" element={<Programs />}></Route>
+        <Route path='/ManageElegibleMedication' element={<ManageElegibleMedication/>}></Route>
+        <Route path='/ManagePharmacy' element={<ManagePharmacy/>}></Route>
+        <Route path='/ManageProgram' element={<ManageProgram/>}></Route>
+        <Route path='/RegisterProduct' element={<RegisterProduct/>}></Route>
+        <Route path='/ModifyProduct' element={<ModifyProduct/>}></Route>
+        <Route path='/RegisterPharmacy' element={<RegisterPharmacy/>}></Route>
+        <Route path='/ModifyPharmacy' element={<ModifyPharmacy/>}></Route>
+        <Route path='/ModifyProgram' element={<ModifyProgram/>}></Route>
       </Routes>
     </BrowserRouter>
   )

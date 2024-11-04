@@ -25,7 +25,12 @@ import cors from 'cors'
 //----------------------------------------------------------------------------------
 // Importa las rutas que se utilizarán en el proyecto
 import users from './routes/users'
+import states from './routes/states'
 import requests from './routes/requests'
+import elegibleMedications from './routes/elegiblemedications'
+import medications from './routes/medications'
+import pharmacies from './routes/pharmacies'
+import programs from './routes/programs'
 
 //----------------------------------------------------------------------------------
 // Carga las variables de entorno desde el archivo `.env` al entorno de ejecución.
@@ -51,9 +56,12 @@ app.use(express.urlencoded({ extended: true }));
 
 //----------------------------------------------------------------------------------
 //Crea las rutas
-app.use(users)
+app.use('/api/users',users)
 app.use('/api/requests',requests)
-
+app.use('/api/elegiblemedications',elegibleMedications)
+app.use('/api/medications', medications)
+app.use('/api/pharmacies', pharmacies)
+app.use('/api/programs', programs)
 
 // Exporta la instancia de la aplicación para su uso en otros archivos, como el servidor principal.
 export default app;

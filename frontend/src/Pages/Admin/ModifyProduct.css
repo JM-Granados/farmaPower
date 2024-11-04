@@ -1,0 +1,85 @@
+.i-mopr-modify-product {
+  background-color: rgba(8, 15, 43, 1);
+  min-height: 100vh;
+  padding-bottom: 20px;
+}
+
+.i-mopr-principal {
+  min-height: 100vh;
+}
+
+.i-mopr-div2 {
+  background-color: rgba(8, 15, 43, 1);
+  padding: 20px;
+}
+
+.i-mopr-div3 {
+  padding: 20px;
+  background-color: rgba(8, 15, 43, 1);
+}
+
+.i-mopr-cuadrado {
+  background-color: #111A3D;
+  padding: 15px;
+  border-radius: 20px;
+  margin-top: 15px;
+}
+
+.i-mopr-imagen {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Search bar styling */
+.i-mopr-form-control {
+  background-color: rgb(27, 43, 107); /* Initial background color */
+  color: white; /* Text color */
+  border: 1px solid rgba(104, 104, 104, 0.2); /* Light border */
+}
+
+.i-mopr-form-control:focus {
+  background-color: rgba(15, 25, 55, 1); /* Lighter shade of blue on focus */
+  color: white; /* Text color */
+  border-color: rgba(255, 255, 255, 0.4); /* Lighter border on focus */
+  box-shadow: none; /* Remove default box-shadow */
+}
+
+.i-mopr-form-control::placeholder {
+  color: rgba(255, 255, 255, 0.6); /* White placeholder text with opacity */
+}
+
+.i-mopr-form-select {
+  background-color: rgba(8, 15, 43, 1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+}
+
+.i-mopr-form-select:focus {
+  background-color: rgba(15, 25, 55, 1); /* Slightly lighter blue on focus */
+  color: white; /* White text color */
+  border-color: rgba(255, 255, 255, 0.4); /* Lighter border on focus */
+  box-shadow: none; /* Remove default box-shadow */
+}
+
+.i-mopr-modify-product-button {
+  padding: 10px;
+  font-size: 20px;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right, #00ffc9, #ffaccf 50%, #ff5da2) !important;
+  cursor: pointer;
+}
+
+.i-mopr-delete-product-button {
+  width: 25%;
+  padding: 10px;
+  font-size: 18px;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right, #f7ff63, #ff914d 50%, #ff1a1a);
+  cursor: pointer;
+}

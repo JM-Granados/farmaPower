@@ -1,9 +1,9 @@
-.nueva-solicitud{
-    background-color: rgba(8, 15, 43, 1);
-    height: 100vh;  /* 100% del alto de la ventana */
+.nueva-solicitud {
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+    /* 100% del alto de la ventana */
     width: 100%;
 }
-
 
 .principal {
     height: 100%;
@@ -15,21 +15,149 @@
     width: 20%;
     background-color: rgba(8, 15, 43, 1);
 }
+
 .div2 {
     width: 80%;
     height: 100%;
+    background-color: blue;
+}
+
+.div3 {
+    height: 30%;
     background-color: rgba(8, 15, 43, 1);
+    display: flex;
+    align-items: end;
+    justify-content: center;
 }
 
 
-.nueva-solicitud .selected-image-container img {
-    width: 209px;
-    height: 10px;
+.div5 {
+    height: 70%;
+    background-color: rgba(8, 15, 43, 1);
+    gap: 10px;
+    padding: 40px;
+    display: flex;
+    align-items: start;
 }
-.nueva-solicitud .selected-image-container {
-    width: 209px;
-    height: 10px;
-    position: fixed;
-    top: 658px;
-    left: 9999px;
+
+.div6 {
+    display: flex;
+    height: 90%;
+    width: 70%;
+    background-color: sandybrown;
+}
+
+.div7 {
+    display: flex;
+    height: 60%;
+    width: 30%;
+    background-color: #141E46;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagen-folder {
+
+    width: 150px;
+    height: 150px;
+}
+
+.input-group-column {
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    /* Espacio entre los elementos */
+}
+
+input[type="date"] {
+    color: #333;
+    /* Cambia el color del texto */
+    background-color: #f3f3f3;
+    /* Color de fondo */
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.form-select,
+.dropdown-toggle {
+    background-color: #f3f3f3;
+    color: #333;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+
+
+.div-gradient-header {
+    height: 30%;
+}
+
+.imagen {
+    width: 50%;
+    height: 50%;
+}
+
+.estado {
+    background-color: #141E46;
+    height: 50%;
+    width: 48%;
+    font-size: 25px;
+    color: white;
+    left: 1%;
+}
+
+.mbtn {
+    background-color: #141E46;
+    color: #404d81;
+    border: none;
+    width: 100%;
+    height: 100%;
+    font-size: 25px;
+}
+
+.cuadrado {
+    width: 300px;
+    height: 355px;
+    background-color: #111A3D;
+    padding: 0;
+    border-radius: 20px;
+}
+
+.mcard-img-top {
+    width: 150px;
+    height: 150px;
+}
+
+.row1 {
+    width: 100%;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row2 {
+    height: 25%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col1 {
+    width: 90%;
+    height: 80%;
+    background-color: #141E46;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.parrafo {
+    margin: 0;
 }

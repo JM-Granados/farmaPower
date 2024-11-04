@@ -15,7 +15,6 @@
     width: 20%;
     background-color: rgba(8, 15, 43, 1);
 }
-
 .div2 {
     width: 80%;
     height: 100%;
@@ -66,7 +65,7 @@ display: flex;
     left: 1%;
 }
 
-.btn{
+.mbtn{
     background-color: #141E46;
     color: #404d81;
     border: none;
@@ -83,7 +82,7 @@ display: flex;
     border-radius: 20px;
 }
 
-.card-img-top{
+.mcard-img-top{
     width: 150px;
     height: 150px;
 }
