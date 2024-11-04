@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './ManagePharmacy.css';
-import SideBar from '../../NavBar/SideBarAdmin';
+import SideBar from '../../NavBar/SideBar';
 import gradient from '../../assets/manage_pharmacy_title.png';
 
 const ManagePharmacy = () => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './ManageElegibleMedication.css';
-import SideBar from '../../NavBar/SideBarAdmin';
+import SideBar from '../../NavBar/SideBar';
 import gradient from '../../assets/elegible_medication_title.png';
 import pill from '../../assets/drugs1.png';
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './RegisterProduct.css';
-import SideBar from '../../NavBar/SideBarAdmin';
+import SideBar from '../../NavBar/SideBar';
 import gradient from '../../assets/register_product_title.png';
 
 const RegisterProduct = () => {

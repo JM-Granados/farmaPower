@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './RegisterPharmacy.css';
-import SideBar from '../../NavBar/SideBarAdmin';
+import SideBar from '../../NavBar/SideBar';
 import gradient from '../../assets/register_pharmacy_title.png';
 import axios from 'axios';
 

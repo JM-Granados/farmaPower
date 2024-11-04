@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './ManageProgram.css';
-import SideBar from '../../NavBar/SideBarAdmin';
+import SideBar from '../../NavBar/SideBar';
 import gradient from '../../assets/manage_program_title.png';
 
 const ManageProgram = () => {
