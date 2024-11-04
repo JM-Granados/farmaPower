@@ -49,7 +49,7 @@ const ParticipatingMedications = () => {
                                 {/* Imagen */}
                                 <div className="row1">
                                     <div className="col1">
-                                        <img src={medicine} className="card-img-top" alt="..." />
+                                        <img src={medicine} className="mcard-img-top" alt="..." />
                                     </div>
                                 </div>
 

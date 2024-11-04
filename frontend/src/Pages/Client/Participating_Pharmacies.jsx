@@ -50,7 +50,7 @@ const ParticipatingPharmacies = () => {
                                 {/* Imagen */}
                                 <div className="row1">
                                     <div className="col1">
-                                        <img src={pharmacy} className="card-img-top" alt="..." />
+                                        <img src={pharmacy} className="mcard-img-top" alt="..." />
                                     </div>
                                 </div>
 

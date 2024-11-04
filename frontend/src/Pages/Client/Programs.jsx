@@ -50,7 +50,7 @@ const Programs = () => {
                                 {/* Imagen */}
                                 <div className="row1">
                                     <div className="col1">
-                                        <img src={program} className="card-img-top" alt="..." />
+                                        <img src={program} className="mcard-img-top" alt="..." />
                                     </div>
                                 </div>
 

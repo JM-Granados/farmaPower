@@ -49,7 +49,7 @@ const MyPoints = () => {
                                 {/* Imagen */}
                                 <div className="row1">
                                     <div className="col1">
-                                        <img src={pill} className="card-img-top" alt="..." />
+                                        <img src={pill} className="mcard-img-top" alt="..." />
                                     </div>
                                 </div>
 
