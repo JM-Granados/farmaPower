@@ -16,6 +16,7 @@ function ThisRequest(){
     const [status, setStatus] = useState(null);
 
     useEffect(() => {
+        
         // obtener id de la url
         const idFromUrl = window.location.pathname.split("/").pop();
         // Llamada al backend para obtener los datos de la solicitud
@@ -105,7 +106,7 @@ function ThisRequest(){
                     </div>
                     <div className="mb-6 row">
                         <label className="col-md-2 col-form-label label-text">
-                            Cantidad comprada
+                            Cant. comprada
                         </label>
                         <div className="col-md-2">
                             <input
@@ -128,7 +129,7 @@ function ThisRequest(){
                         </div>
                     </div>
                     <div className='button-container'>
-                        <button className="btn save-button" type="submit" value="Guardar">
+                        <button className="btn save-button" type="submit">
                             Guardar
                         </button>
                     </div>

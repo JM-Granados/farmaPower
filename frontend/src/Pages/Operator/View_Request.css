@@ -22,12 +22,12 @@
 }
 
 .gradient-title {
-    margin-top: 100px;
+    margin-top: 80px;
     margin-left: 100px;
 }
 
 .gradient-image {
-    max-height: 90px;
+    max-height: 110px;
     width: auto;
 }
 
@@ -47,15 +47,15 @@
 
 .label-text {
     font-family: "League Spartan-Regular", Helvetica;
-    font-size: 22px;
+    font-size: 25px;
     font-weight: 400;
-    border-radius: 0.5rem;
+    border-radius: 0.2rem;
     color: var(--variable-collection-seleccionado);
     padding-left: 25px;
 }
 
 .request-form {
-    margin-top: 80px;
+    margin-top: 60px;
     margin-left: 100px;
 }
 
@@ -65,13 +65,13 @@
     border: 1px solid var(--variable-collection-inputs); /* Color de borde */
     border-radius: 26px; /* Bordes redondeados */
     color: var(--variable-collection-seleccionado); /* Color del texto */
-    padding-top: 15px;
+    padding-top: 10px;
     padding-bottom: 15px; /* Espaciado interno */
     font-size: 18px; /* Tamaño de la fuente */
     padding-left: 30px;
     width: 35rem;
     height: 3.5rem;
-    margin-left: 2rem;
+    margin-left: 4rem;
 }
 
 .form-control.custom-input::placeholder {
