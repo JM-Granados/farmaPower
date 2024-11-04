@@ -8,4 +8,4 @@ const elegibleMedicationSchema = new Schema({
   medication: { type: Schema.Types.ObjectId, ref: 'Medication', required: true }
 }, { timestamps: true });
 
-export default model('ElegibleMedication', elegibleMedicationSchema);
+export default model('ElegibleMedication', elegibleMedicationSchema, 'elegiblemedication');

@@ -19,6 +19,9 @@ import My_Requests from '../Pages/Client/My_Requests'; // Componente para la pá
 import NewRequest from '../Pages/Client/New_Request';
 import Points from '../Pages/Client/My_Points';
 import Help from '../Pages/Client/Help';
+import Medication from '../Pages/Client/Participating_Medications';
+import Pharmacies from '../Pages/Client/Participating_Pharmacies';
+import Programs from '../Pages/Client/Programs';
 // import Home from '../Pages/Client/Home';
 
 /**
@@ -73,6 +76,10 @@ function App() {
         <Route path="/NewRequest" element={<NewRequest />}></Route>
         <Route path="/MyPoints" element={<Points />}></Route>
         <Route path="/Help" element={<Help />}></Route>
+        <Route path="/Medications" element={<Medication />}></Route>
+        <Route path="/Pharmacies" element={<Pharmacies />}></Route>
+        <Route path="/Programs" element={<Programs />}></Route>
+        {/* <Route path="/Home" element={<Home />}></Route> */}
       </Routes>
     </BrowserRouter>
   )

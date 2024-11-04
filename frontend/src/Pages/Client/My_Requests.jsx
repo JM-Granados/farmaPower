@@ -13,10 +13,9 @@ const MyRequests = () => {
     const [selectedStatus, setSelectedStatus] = useState('');
 
     useEffect(() => {
-        // Fetch all requests
         const fetchRequests = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/requests');
+                const response = await axios.get('http://localhost:3000/api/requests/671ea377b5f8eab5660a0011');
                 setRequests(response.data);
                 setFilteredRequests(response.data);
             } catch (error) {
@@ -65,10 +64,10 @@ const MyRequests = () => {
                     {/* Pedazo del filtro - Sacado de bootstrap */}
                     <div className="row div4">
                         <div className="estado btn-group" role="group">
-                            <button type="button" className="btn" onClick={() => handleFilter('Aprobada')}>Aprobadas</button>
-                            <button type="button" className="btn" onClick={() => handleFilter('Pendiente')}>Pendientes</button>
-                            <button type="button" className="btn" onClick={() => handleFilter('Rechazada')}>Rechazadas</button>
-                            <button type="button" className="btn" onClick={() => handleFilter('Todas')}>Todas</button>
+                            <button type="button" className="mbtn" onClick={() => handleFilter('Aprobada')}>Aprobadas</button>
+                            <button type="button" className="mbtn" onClick={() => handleFilter('Pendiente')}>Pendientes</button>
+                            <button type="button" className="mbtn" onClick={() => handleFilter('Rechazada')}>Rechazadas</button>
+                            <button type="button" className="mbtn" onClick={() => handleFilter('Todas')}>Todas</button>
                         </div>
                     </div>
 
@@ -81,7 +80,7 @@ const MyRequests = () => {
                                 {/* Imagen */}
                                 <div className="row1">
                                     <div className="col1">
-                                        <img src={pill} className="card-img-top" alt="..." />
+                                        <img src={pill} className="mcard-img-top" alt="..." />
                                     </div>
                                 </div>
 

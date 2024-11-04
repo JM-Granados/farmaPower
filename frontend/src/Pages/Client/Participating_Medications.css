@@ -1,5 +1,5 @@
-.nueva-solicitud {
-    background-color: rgb(255, 255, 255);
+.medicamentos-participantes {
+    background-color: white;
     height: 100vh;
     /* 100% del alto de la ventana */
     width: 100%;
@@ -27,9 +27,8 @@
     background-color: rgba(8, 15, 43, 1);
     display: flex;
     align-items: end;
-    justify-content: center;
+    justify-content: end;
 }
-
 
 .div5 {
     height: 70%;
@@ -37,65 +36,15 @@
     gap: 10px;
     padding: 40px;
     display: flex;
-    align-items: start;
-}
-
-.div6 {
-    display: flex;
-    height: 90%;
-    width: 70%;
-    background-color: sandybrown;
-}
-
-.div7 {
-    display: flex;
-    height: 60%;
-    width: 30%;
-    background-color: #141E46;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
     align-items: center;
 }
 
-.imagen-folder {
-
-    width: 150px;
-    height: 150px;
-}
-
-.input-group-column {
-    display: flex;
-    flex-direction: column;
-    gap: 5%;
-    /* Espacio entre los elementos */
-}
-
-input[type="date"] {
-    color: #333;
-    /* Cambia el color del texto */
-    background-color: #f3f3f3;
-    /* Color de fondo */
-    padding: 8px;
-    border-radius: 4px;
-}
-
-.form-select,
-.dropdown-toggle {
-    background-color: #f3f3f3;
-    color: #333;
-    border-radius: 4px;
-    padding: 8px;
-}
-
-
-
 .div-gradient-header {
-    height: 30%;
+    height: 100%;
 }
 
 .imagen {
-    width: 50%;
+    width: 800%;
     height: 50%;
 }
 
@@ -132,14 +81,14 @@ input[type="date"] {
 
 .row1 {
     width: 100%;
-    height: 75%;
+    height: 70%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .row2 {
-    height: 25%;
+    height: 30%;
     width: 100%;
     display: flex;
     justify-content: center;
