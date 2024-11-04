@@ -20,7 +20,7 @@ function Request({id, date, status}){
         <div className="request-card" onClick={handleClick}>
             <div className="card-body">
                 <div className='pill-container'>
-                    <img src={pill} alt="medicamento" className="pills card-img-top" />
+                    <img src={pill} alt="medicamento" className="pills" />
                 </div>
                 <p className='request-card-text'>Solicitud #{id}</p>
                 <p className='request-card-text'>Fecha: {date}</p>
