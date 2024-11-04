@@ -8,7 +8,6 @@ import SideBar from '../../NavBar/SideBar';
 import '../../NavBar/SideBar.css'; 
 
 function ThisRequest(){
-    const [id, setId] = useState(null);
     const [date, setDate] = useState(null);
     const [number, setNumber] = useState(null);
     const [drugstore, setDrugstore] = useState(null);
@@ -17,15 +16,25 @@ function ThisRequest(){
     const [status, setStatus] = useState(null);
 
     useEffect(() => {
+        // obtener id de la url
         const idFromUrl = window.location.pathname.split("/").pop();
-        setId(idFromUrl);
-        setNumber(110012);
-        setDate('17-05-2024');
-        setDrugstore('Central');
-        setCount(20);
-        setMed('Escytalopram');
-        setStatus('Pendiente');
-        // llamar al endpoint que saque los datos de la solicitud
+        // Llamada al backend para obtener los datos de la solicitud
+        const fetchRequestData = async () => {
+            try {
+                const response = await fetch(`/api/requests/request/:id${idFromUrl}`);
+                const data = await response.json();
+                setDate(data.purchaseDate);
+                setNumber(data.invoiceNumber);
+                setDrugstore(data.pharmacy.name);
+                setCount(data.purchasedQuantity);
+                setMed(data.medication.name);
+                setStatus(data.rStatus);
+            } catch (error) {
+                console.error("Error fetching request data:", error);
+            }
+        };
+
+        fetchRequestData();
     }, []);
 
     return(
@@ -113,13 +122,15 @@ function ThisRequest(){
                             Estado
                         </label>
                         <div className="col-md-2 d-flex">
-                            <input className="btn red-button" type="button" value=""/>
-                            <input className="btn green-button" type="button" value=""/>
-                            <input className="btn grey-button" type="button" value=""/>
+                            <button className="btn red-button" type="button" value="" onClick={() => setStatus('Rechazada')}/> {/*Es como un lambda, sin () =>, se ejecuta directo */}
+                            <button className="btn green-button" type="button" value="" onClick={() => setStatus('Aprobada')}/>
+                            <button className="btn grey-button" type="button" value="" onClick={() => setStatus('Pendiente')}/>
                         </div>
                     </div>
                     <div className='button-container'>
-                        <input className="btn save-button" type="submit" value="Guardar"/>
+                        <button className="btn save-button" type="submit" value="Guardar">
+                            Guardar
+                        </button>
                     </div>
                 </form>
             </div>

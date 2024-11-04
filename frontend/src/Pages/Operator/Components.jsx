@@ -12,7 +12,7 @@ Request.propTypes = {
 function Request({id, date, status}){
     const navigate = useNavigate();
 
-    const handleClick = () => { // Maneja la acci'on de click
+    const handleClick = () => { // Maneja la acción de click
         navigate(`/viewrequest/${id}`); // Falta colocar la ruta y mandarle 
     }; //si esto no sirve, envolver en un LINK
 

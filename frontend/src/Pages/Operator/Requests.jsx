@@ -23,24 +23,35 @@ const mockRequests = [
 
 function Requests() {
     const [requests, setRequests] = useState([]);
+    const [filteredRequests, setFRequests] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
+    const [selectedStatus, setSelectedStatus] = useState([]);
 
     const endpoint = apiURL;
 
     useEffect(() => {
-        // Crear una función asíncrona dentro de useEffect para realizar la solicitud
         const fetchRequests = async () => {
             try {
                 const response = await axios.get(endpoint);
                 setRequests(response.data);
             } catch (error) {
                 setErrorMessage(error.response?.data.error || 'An error occurred.');
-                setRequests(mockRequests);
+                setRequests(mockRequests); //eliminar esta linea una vez se hayan hecho las pruebas
             }
         };
         
         fetchRequests(); 
     }, [endpoint]);
+
+    const handleFilter = (status) => {
+        setSelectedStatus(status);
+        console.log(status)
+        if (status === 'Todas') {
+            setFRequests(requests); 
+        } else {
+            setFRequests(requests.filter(request => request.rStatus === status)); 
+        }
+    };
 
     return (
         <div className=''>
@@ -51,25 +62,25 @@ function Requests() {
             <div>
                 <ul className="nav nav-underline text-wrapper-4 little-nav-bar"> {/*Aqui falta el color del underline */}
                     <li className="nav-item">
-                        <a className="nav-link" aria-current="page" href="#">Todas</a>
+                        <a className="nav-link" aria-current="page" href="#" onClick={() => handleFilter('Todas')}>Todas</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Pendientes</a>
+                        <a className="nav-link" href="#" onClick={() => handleFilter('Pendiente')}>Pendientes</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Aprobadas</a>
+                        <a className="nav-link" href="#" onClick={() => handleFilter('Aprobada')}>Aprobadas</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Rechazadas</a>
+                        <a className="nav-link" href="#" onClick={() => handleFilter('Rechazada')}>Rechazadas</a>
                     </li>
                 </ul>
             </div>
             <div className="container-fluid mt-2">
                 <div className="scrollable-container">
                     <div className="row g-4 p-15">
-                        {requests.map((request) => (
-                            <div key={request.id} className="col-auto d-flex p-3">
-                                <Request id={request.id + 1} date={request.date} status={request.status} />
+                        {requests.map((index, request) => (
+                            <div key={request._id} className="col-auto d-flex p-3">
+                                <Request id={request._id} date={request.timestamp} status={request.rStatus} />
                             </div>
                         ))}
                     </div>
