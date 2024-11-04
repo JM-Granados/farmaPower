@@ -60,7 +60,7 @@ function Home_Guest() {
 
             {/* // Barra de navegación fija en la parte inferior. */}
             <nav className="foot navbar navbar-expand-lg fixed-bottom">
-                <div className="container-md">
+                <div className="container-md justify-content-center">
                     {/* // Texto para mostrar en la barra de navegación. */}
                     <a className="navbar-brand text-white fs-6" href="#">
                         FarmaTEC 2024

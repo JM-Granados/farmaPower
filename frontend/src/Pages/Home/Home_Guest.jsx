@@ -17,6 +17,7 @@ function Home_Guest() {
             <div className="hcontainer container justify-content-start">
                 <ul className="nav nav-underline">
                     <li className="nav-item">
+<<<<<<< Updated upstream
                         <a className="nav-link active text-white" aria-current="page" href="#">Inicio</a>
                     </li>
                     <li className="nav-item">
@@ -24,6 +25,15 @@ function Home_Guest() {
                     </li>
                     <li className="nav-item">
                         <a className="nav-link text-white" href="#">Farmacias participantes</a>
+=======
+                        <a className="barritita nav-link active text-white" aria-current="page" href="#">Inicio</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="barritita nav-link text-white" href="#">Medicamentos participantes</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="barritita nav-link text-white" href="#">Farmacias participantes</a>
+>>>>>>> Stashed changes
                     </li>
                     <li className="nav-item">
                         <a className="nav-link text-white" href="#">Programas</a>
@@ -53,8 +63,8 @@ function Home_Guest() {
 
 
             {/* // Barra de navegación fija en la parte inferior. */}
-            <nav className="foot navbar navbar-expand-lg fixed-bottom">
-                <div className="container-md">
+            <nav className="foot navbar navbar-expand-lg fixed-bottom justify-content-center">
+                <div className="container-md justify-content-center">
                     {/* // Texto para mostrar en la barra de navegación. */}
                     <a className="navbar-brand text-white fs-6" href="#">
                         FarmaTEC 2024

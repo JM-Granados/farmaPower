@@ -15,7 +15,11 @@
     margin-right: 36px;
 }
 
+<<<<<<< Updated upstream
 .IngresarButton {
+=======
+.IngresarjButton {
+>>>>>>> Stashed changes
     background-image: url('../assets/FondoBoton.png') !important; /* Imagen de fondo específica para el botón Ingresar. */
     background-position: center !important; /* Centra la imagen de fondo en el botón. */
     padding: 10px 40px !important; /* Padding adicional para este botón específico. */

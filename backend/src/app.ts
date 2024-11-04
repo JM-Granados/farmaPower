@@ -51,7 +51,11 @@ app.use(express.urlencoded({ extended: true }));
 
 //----------------------------------------------------------------------------------
 //Crea las rutas
+<<<<<<< Updated upstream
 app.use('/api/users', users)
+=======
+app.use('/api/users',users)
+>>>>>>> Stashed changes
 app.use('/api/requests',requests)
 
 

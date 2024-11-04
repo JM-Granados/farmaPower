@@ -98,3 +98,16 @@
     align-self: center;
     margin-right: 3%;
 }
+
+/* Estilos para controles de formulario cuando están en foco. */
+.elinput {
+    border-color: #ffffff; /* Color de borde blanco para consistencia. */
+    color: #ffffff; /* Color de texto blanco. */
+    background-color: transparent; /* Fondo transparente para un look integrado. */
+    border-bottom: 1px solid #ffffff; /* Borde inferior para destacar el campo activo. */
+    transition: box-shadow 0.3s ease-in-out, border-color 0.15s ease-in-out; /* Transiciones suaves para cambios visuales. */
+}
+.elinput:focus {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.8); /* Sombra intensa para un claro indicador de campo activo. */
+    border-color: transparent; /* Hace el borde transparente en foco para destacar la sombra. */
+}

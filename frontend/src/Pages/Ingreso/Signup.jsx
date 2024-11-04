@@ -121,7 +121,7 @@ function Signup() {
                         <input
                             type="text"
                             name="firstName"
-                            className="form-control bg-transparent border-0 border-bottom rounded-0 text-white"
+                            className="elinput form-control bg-transparent border-0 border-bottom rounded-0 text-white"
                             id="validationFirstName"
                             aria-describedby="firstNameHelp"
                             required
@@ -140,7 +140,7 @@ function Signup() {
                         <input
                             type="text"
                             name="firstLastName"
-                            className="form-control bg-transparent border-0 border-bottom rounded-0 text-white"
+                            className="elinput form-control bg-transparent border-0 border-bottom rounded-0 text-white"
                             id="validationFirstLastName"
                             aria-describedby="firstLastNameHelp"
                             required
@@ -159,7 +159,7 @@ function Signup() {
                         <input
                             type="text"
                             name="SecondLastName"
-                            className="form-control bg-transparent border-0 border-bottom rounded-0 text-white"
+                            className="elinput form-control bg-transparent border-0 border-bottom rounded-0 text-white"
                             id="validationSecondLastName"
                             aria-describedby="SecondLastNameHelp"
                             required
@@ -180,7 +180,7 @@ function Signup() {
                         <input
                             type="email"
                             name="email"
-                            className="form-control bg-transparent border-0 border-bottom rounded-0 text-white"
+                            className="elinput form-control bg-transparent border-0 border-bottom rounded-0 text-white"
                             id="validationEmail"
                             aria-describedby="emailHelp"
                             required
@@ -196,7 +196,7 @@ function Signup() {
                             <input
                                 type={PasswordInputType}
                                 name="password"
-                                className="space-password form-control bg-transparent border-0 border-bottom rounded-0 text-white"
+                                className="elinput space-password form-control bg-transparent border-0 border-bottom rounded-0 text-white"
                                 id="validationPassword"
                                 aria-describedby="passwordHelpInline"
                                 required
@@ -221,7 +221,7 @@ function Signup() {
                             <input
                                 type={PasswordInputType}
                                 name="password"
-                                className="space-password form-control bg-transparent border-0 border-bottom rounded-0 text-white"
+                                className="elinput space-password form-control bg-transparent border-0 border-bottom rounded-0 text-white"
                                 id="validationCPassword"
                                 aria-describedby="passwordHelpInline"
                                 required
@@ -241,7 +241,7 @@ function Signup() {
                         <input
                             type="file"
                             name="Photo"
-                            className="file form-control bg-transparent border-0 border-bottom rounded-2 text-white"
+                            className="elinput file form-control bg-transparent border-0 border-bottom rounded-2 text-white"
                             id="validationEmail"
                             aria-describedby="emailHelp"
                             onChange={(e) => setPhoto(e.target.value)}
