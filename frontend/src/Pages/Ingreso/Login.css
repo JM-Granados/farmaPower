@@ -36,7 +36,7 @@ html, body {
 }
 
 /* Define estilos para la barra de navegación en la parte inferior. */
-.navbar {
+.foot {
     display: grid; /* Utiliza Grid para la disposición de elementos. */
     justify-content: center; /* Centra el contenido dentro de la barra de navegación. */
 }
@@ -48,13 +48,13 @@ html, body {
 
 /* Estilos para el título de la página de login. */
 .IngresarText {
-    font-size: 6rem; /* Tamaño de fuente grande para el título. */
+    font-size: 500%; /* Tamaño de fuente grande para el título. */
     font-family: sans-serif; /* Familia de fuente sans-serif para un look moderno. */
 }
 
 /* Estilos para las etiquetas de los campos del formulario. */
 .form-label {
-    font-size: 1.2rem; /* Tamaño de fuente moderado para las etiquetas. */
+    font-size: 120%; /* Tamaño de fuente moderado para las etiquetas. */
     font-family: sans-serif; /* Consistencia en la familia de fuente. */
 }
 
@@ -79,17 +79,17 @@ html, body {
 
 /* Estilos adicionales para botones específicos y sus estados interactivos. */
 .Crear, .Ingresar {
-    background-color: #141e46; /* Color de fondo oscuro para ambos botones. */
-    color: #ffffff; /* Texto en blanco para contraste. */
+    background-color: #141e46 !important; /* Color de fondo oscuro para ambos botones. */
+    color: #ffffff !important; /* Texto en blanco para contraste. */
 }
 .Ingresar {
-    background-image: url('../assets/FondoBoton.png'); /* Imagen de fondo específica para el botón Ingresar. */
-    background-position: center; /* Centra la imagen de fondo en el botón. */
-    padding: 10px 40px; /* Padding adicional para este botón específico. */
-    color: #080F2B;
+    background-image: url('../assets/FondoBoton.png') !important; /* Imagen de fondo específica para el botón Ingresar. */
+    background-position: center !important; /* Centra la imagen de fondo en el botón. */
+    padding: 10px 40px !important; /* Padding adicional para este botón específico. */
+    color: #080F2B !important;
 }
 .Crear:hover, .Ingresar:hover {
-    box-shadow: 6px 0 24px rgba(0,0,0,0.3); /* Sombra más intensa al hacer hover. */
+    box-shadow: 6px 0 24px rgba(0,0,0,0.3) !important; /* Sombra más intensa al hacer hover. */
 }
 
 .Ingresar:hover {
@@ -114,4 +114,33 @@ html, body {
     border-color: transparent; /* Hace el borde transparente en foco para destacar la sombra. */
 }
 
+/* Define las clases para mostrar y ocultar el mensaje con transiciones */
+.alert {
+    transition: opacity 1s ease-in-out; /* Transición de 1 segundo para la opacidad */
+    opacity: 1; /* Inicio con opacidad completa */
+}
+
+.alert.fade-out {
+    opacity: 0; /* Opacidad final es 0, totalmente transparente */
+}
+
+.password-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea los elementos al inicio del contenedor */
+}
+
+.space-password {
+    flex-grow: 1; /* Permite que el input crezca y ocupe la mayor parte del contenedor */
+    display: flex;
+    align-items: center; /* Alinea los elementos internos verticalmente */
+}
+
+.password-toogle-icon {
+    position: absolute;
+    cursor: pointer; /* Cambia el cursor a pointer para indicar que el ícono es clickeable */
+    justify-self: end;
+    align-self: center;
+    margin-right: 2%;
+}
 

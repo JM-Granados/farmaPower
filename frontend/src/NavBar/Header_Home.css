@@ -1,0 +1,109 @@
+/* Configuraciones específicas para la barra de navegación, asegurando consistencia en todos los dispositivos. */
+.navbar-custom {
+    color: #FDFFFA; /* Texto claro para legibilidad. */
+    height: auto; /* Altura fija para mantener una apariencia uniforme. */
+    width: auto; /* Ancho que se adapta al contenedor para flexibilidad en diferentes tamaños de pantalla. */
+}
+
+/* Configuración para el ícono de usuario, asegurando que esté visiblemente separado de otros elementos. */
+.User_icon {
+    margin-left: 26px; /* Espacio desde el borde izquierdo o elementos adyacentes para evitar superposición. */
+}
+
+/* Margen derecho para el botón de alternancia, asegurando una separación adecuada del borde o elementos adyacentes. */
+.navbar-toggler {
+    margin-right: 36px;
+}
+
+.IngresarButton {
+    background-image: url('../assets/FondoBoton.png') !important; /* Imagen de fondo específica para el botón Ingresar. */
+    background-position: center !important; /* Centra la imagen de fondo en el botón. */
+    padding: 10px 40px !important; /* Padding adicional para este botón específico. */
+    color: #080F2B !important;
+    border: none;
+}
+
+.IngresarButton:hover {
+    box-shadow: 6px 0 24px rgba(0,0,0,0.3) !important; /* Sombra más intensa al hacer hover. */
+    color: #FDFFFA !important;
+}
+
+.IngresarButton:focus {
+    outline: none; /* Elimina el borde de enfoque predeterminado para un look más limpio. */
+    box-shadow: 0 0 12px rgba(0,0,0,0.5); /* Sombra intensa para indicar foco. */
+    color: #FDFFFA;
+}
+
+.navbar-brand {
+    margin-top: -15px !important;
+    font-size: 500%;
+    margin-left: 36px; /* Separación desde el borde izquierdo para evitar amontonamiento. */
+}
+
+/* Estilos básicos para el menú dropdown. */
+.dropdown-menu {
+    position: absolute;
+    right: 0; /* Alinea el menú con el lado derecho del toggler para una apariencia ordenada. */
+    top: 110px; /* Altura ajustada para alinear justo debajo del NavBar. */
+    left: auto; /* Anula cualquier otro ajuste de posición izquierda heredado. */
+    background-color: #3B4290; /* Fondo oscuro para coherencia con el estilo del NavBar. */
+    border: none; /* Elimina el borde para un look más limpio y moderno. */
+}
+
+/* Estilo para mostrar el menú dropdown. */
+.dropdown-menu.show {
+    margin-right: 86px; /* Margen derecho para mantener el menú alineado con los bordes del NavBar. */
+    display: block; /* Hace que el menú sea visible cuando se activa. */
+}
+
+/* Estilos para los ítems dentro de los menús dropdown. */
+.dropdown-item {
+    background-color: #3B4290; /* Establece un fondo oscuro para los ítems del dropdown. */
+    color: #FDFFFA; /* Texto blanco para asegurar la legibilidad contra el fondo oscuro. */
+    border-color: #FDFFFA; /* Color de borde claro para delimitar claramente los ítems dentro del dropdown. */
+    border-left-color: #FDFFFA; /* Especifica el color del borde izquierdo, manteniendo coherencia con el resto del borde. */
+}
+
+/* Estilos para los divisores dentro de los menús dropdown. */
+.dropdown-divider {
+    background-color: #FDFFFA; /* Utiliza un color claro para los divisores, proporcionando un contraste visual que separa los ítems del menú. */
+}
+
+/* Ajuste para el botón toggler del menú dropdown, asegurando que no haya bordes visibles que distraigan. */
+.navbar-toggler {
+    border-color: transparent; /* Borde transparente para un diseño limpio y sin distracciones. */
+}
+
+/* Elimina el borde cuando el botón toggler está enfocado, para mantener la interfaz limpia y sin distracciones visuales. */
+button.navbar-toggler:focus {
+    border-color: transparent; /* Configura el color del borde como transparente, eliminando el contorno predeterminado que podría distraer. */
+    box-shadow: none; /* Sin sombra para mantener la interfaz limpia y profesional. */
+}
+
+::marker {
+    display: none;
+}
+
+/* Media query para ajustes en dispositivos con un ancho máximo de 768px */
+@media (max-width: 768px) {
+    /* Ajustes para la imagen del logo, asegurando adecuada visibilidad y estética en dispositivos móviles. */
+    .navbar-brand {
+        font-size: 250%;
+        margin-left: 16px; /* Reducción del margen izquierdo en dispositivos móviles para evitar amontonamiento. */
+        margin-right: 26px; /* Espacio suficiente después del logo antes de otros elementos o bordes. */
+    }
+
+    /* Ajustes para el botón de alternancia, mejorando la accesibilidad en interfaces táctiles pequeñas. */
+    .navbar-toggler {
+        margin-right: 16px; /* Ajusta el margen derecho para mejorar la manipulación en dispositivos móviles. */
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        right: 0; /* Alinea el menú con el lado derecho del toggler para una apariencia ordenada. */
+        top: 75px; /* Altura ajustada para alinear justo debajo del NavBar. */
+        left: auto; /* Anula cualquier otro ajuste de posición izquierda heredado. */
+        background-color: #3B4290; /* Fondo oscuro para coherencia con el estilo del NavBar. */
+        border: none; /* Elimina el borde para un look más limpio y moderno. */
+    }
+}

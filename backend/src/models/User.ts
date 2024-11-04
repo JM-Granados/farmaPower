@@ -31,14 +31,20 @@
 // Importa 'Schema' y 'model' desde el paquete 'mongoose'.
 // 'Schema' es utilizado para definir la estructura de los documentos dentro de una colección.
 // 'model' es utilizado para proporcionar una interfaz a la base de datos para crear, consultar, actualizar, eliminar registros, etc.
-import {Schema, model} from 'mongoose';
+import { Schema, model } from 'mongoose';
+import bcrypt from 'bcrypt'
+
+// considerando la posibilidad de manejar estos valores de manera más dinámica, especialmente si se espera que la lista de roles pueda 
+// crecer o cambiar en el futuro. 
+const roles = ['Client', 'Admin', 'Operator'];
+const userStatuses = ['Activated', 'Deactivated'];
 
 // Define 'userSchema' como una nueva instancia de Schema para modelar los datos de usuario.
 const userSchema = new Schema({
     firstName: {
         type: String,       // Especifica el tipo de dato como String.
         required: true,     // Hace este campo obligatorio.
-        trim: true          // Aplica la función trim para eliminar espacios en blanco al inicio y al final antes de guardar el dato.
+        trim: true,          // Aplica la función trim para eliminar espacios en blanco al inicio y al final antes de guardar el dato.
     },
     firstLastName: {
         type: String,       // Especifica el tipo de dato como String.
@@ -54,28 +60,55 @@ const userSchema = new Schema({
         type: String,       // Especifica el tipo de dato como String.
         required: true,     // Hace este campo obligatorio.
         unique: true,       // Asegura que cada email en la base de datos sea único.
-        trim: true          // Elimina espacios en blanco al inicio y al final.
+        trim: true,         // Elimina espacios en blanco al inicio y al final.
+        lowercase: true,    // Convertir el email a minúsculas antes de guardarlo
+        validate: {
+            validator: function (email) {
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            },
+            message: 'Please provide a valid email address'
+        }
     },
     password: {
         type: String,       // Especifica el tipo de dato como String.
         required: true,     // Hace este campo obligatorio.
-        trim: true          // Elimina espacios en blanco al inicio y al final.
+        trim: true,          // Elimina espacios en blanco al inicio y al final.
+        validate: {
+            validator: function(v) {
+                return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z\d\s:]).{8,}$/.test(v);
+            },
+            message: 'Password is not strong enough.'
+        }
     },
     role: {
-        type: String,       // Especifica el tipo de dato como String.
-        enum: ['user', 'admin'],  // Restringe los valores de este campo a 'user' o 'admin'.
-        default: 'user'     // Establece 'user' como valor predeterminado si no se especifica otro.
+        type: String,
+        enum: roles,
+        default: 'Client'
     },
     status: {
-        type: String,       // Especifica el tipo de dato como String.
-        enum: ['active', 'inactive'],  // Restringe los valores de este campo a 'active' o 'inactive'.
-        default: 'active'   // Establece 'active' como valor predeterminado si no se especifica otro.
+        type: String,
+        enum: userStatuses,
+        default: 'Activated'
     }
 }, {
     versionKey: false,    // Desactiva la propiedad __v que Mongoose usa internamente para seguir la versión del documento.
     timestamps: true      // Habilita la creación automática de dos campos: createdAt y updatedAt en cada documento.
 });
 
+// Pre-save hook para hashear la contraseña antes de guardar el usuario
+userSchema.pre('save', async function (next) {
+    // Si la contraseña no ha sido modificada (en caso de actualización), no hacer nada
+    if (!this.isModified('password')) return next();
+
+    // Generar un salt y hashear la contraseña
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+
+    // Continuar al siguiente middleware
+    next();
+});
+
 // Exporta el modelo 'User', que utiliza 'userSchema' para interactuar con la colección 'users' en la base de datos.
 // Mongoose automáticamente busca una colección con el nombre plural del modelo, en este caso 'users'.
-export default model('User', userSchema);
+export default model('User', userSchema, 'users');

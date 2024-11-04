@@ -32,6 +32,8 @@ import * as userCtrl from '../controllers/users.controller'
 // y después devolver información del usuario si la autenticación es exitosa.
 router.post('/login', userCtrl.loginUser);
 
+router.post('/signup', userCtrl.signupUser);
+
 // Exporta el objeto 'router'. Esto permite que las rutas definidas en este archivo sean usadas en otras partes de la aplicación Express,
 // típicamente mediante el uso de app.use() en el archivo principal de la aplicación.
 export default router;
