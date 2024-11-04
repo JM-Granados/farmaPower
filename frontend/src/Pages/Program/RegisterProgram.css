@@ -1,0 +1,27 @@
+.all-page {
+    display: flex; 
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Asegura que ocupe el 100% de la altura de la ventana */
+    width: 100%; /* Asegura que ocupe el 100% del ancho de la ventana */
+}
+
+.k-sidebar-container {
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #f8f9fa;
+}
+
+.k-content-container {
+    margin-left: 250px; /* Ajusta este margen para que coincida con el ancho del sidebar */
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.elConito {
+    max-width: 23rem;           
+    height: auto;                 
+}

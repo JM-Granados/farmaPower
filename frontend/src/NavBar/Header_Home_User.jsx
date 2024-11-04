@@ -30,16 +30,16 @@ const Header_Home = () => {
      */
     return (
         /* Contenedor principal de la barra de navegación utilizando clases de Bootstrap para el diseño. */
-        <nav className="navbar navbar-expand-lg navbar-custom fixed-top d-flex justify-content-start">
+        <nav className="barra navbar navbar-expand-lg navbar-custom fixed-top d-flex justify-content-start">
             {/* 'container-fluid' permite que el contenido de la navbar se extienda de borde a borde, ocupando todo el ancho disponible. */}
             <div className="container-fluid align-center">
                 {/* Área del logo o nombre de la empresa en la barra de navegación, actúa como enlace a la página de inicio. */}
-                <a className="navbar-brand text-white">
+                <a className="bienvenido navbar-brand text-white">
                     {/* Imagen del logo, especificando una clase para estilos adicionales y fijando la altura a 40 píxeles. */}
                     Bienvenido, {user.firstName}
                 </a>
                 {/* Botón de alternancia para dispositivos con pantallas pequeñas, controla la visibilidad del menú colapsable. */}
-                <button className="navbar-toggler"
+                <button className="cayendo navbar-toggler"
                     type="button"
                     onClick={toggleDropdown}
                     aria-expanded={isDropdownOpen}
@@ -54,10 +54,10 @@ const Header_Home = () => {
                             <img src={User_icon} alt="User_icon" className="User_icon" height={50} />
                         </a>
                         {/* Elementos del menú desplegable para acciones adicionales del usuario. */}
-                        <ul className="dropdown-menu shadow-lg">
+                        <ul className="navegacion dropdown-menu shadow-lg">
                             <li><a className="dropdown-item" href="/Login">Perfil</a></li>
                             <li><a className="dropdown-item" href="/Nosotros">Ayuda</a></li>
-                            <li><hr className="dropdown-divider"></hr></li>
+                            <li><hr className="divide dropdown-divider"></hr></li>
                             <li>
                                 <button className="dropdown-item" onClick={handleLogout}>Salir</button>  {/* Cambio de <a> a <button> para el manejo correcto */}
                             </li>

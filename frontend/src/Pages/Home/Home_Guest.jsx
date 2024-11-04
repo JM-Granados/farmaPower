@@ -4,9 +4,9 @@ import axios from 'axios'; // Utilizado para realizar solicitudes HTTP.
 import 'bootstrap/dist/css/bootstrap.min.css'; // Estilos de Bootstrap para diseño y respuesta.
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Funcionalidades de JavaScript de Bootstrap.
 import Header_Home from '../../NavBar/Header_Home'
-import nuevaSolicitud from '../assets/Nueva_Solicitud.png'
-import Ayuda from '../assets/Ayuda.png'
-import OfertaNueva from '../assets/OfertaNueva.png'
+import nuevaSolicitud from '../../assets/Nueva_Solicitud.png'
+import Ayuda from '../../assets/Ayuda.png'
+import OfertaNueva from '../../assets/OfertaNueva.png'
 
 import './Home_Guest.css'
 
@@ -17,7 +17,6 @@ function Home_Guest() {
             <div className="hcontainer container justify-content-start">
                 <ul className="nav nav-underline">
                     <li className="nav-item">
-<<<<<<< Updated upstream
                         <a className="nav-link active text-white" aria-current="page" href="#">Inicio</a>
                     </li>
                     <li className="nav-item">
@@ -25,15 +24,6 @@ function Home_Guest() {
                     </li>
                     <li className="nav-item">
                         <a className="nav-link text-white" href="#">Farmacias participantes</a>
-=======
-                        <a className="barritita nav-link active text-white" aria-current="page" href="#">Inicio</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="barritita nav-link text-white" href="#">Medicamentos participantes</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="barritita nav-link text-white" href="#">Farmacias participantes</a>
->>>>>>> Stashed changes
                     </li>
                     <li className="nav-item">
                         <a className="nav-link text-white" href="#">Programas</a>
@@ -63,7 +53,7 @@ function Home_Guest() {
 
 
             {/* // Barra de navegación fija en la parte inferior. */}
-            <nav className="foot navbar navbar-expand-lg fixed-bottom justify-content-center">
+            <nav className="foot navbar navbar-expand-lg fixed-bottom">
                 <div className="container-md justify-content-center">
                     {/* // Texto para mostrar en la barra de navegación. */}
                     <a className="navbar-brand text-white fs-6" href="#">

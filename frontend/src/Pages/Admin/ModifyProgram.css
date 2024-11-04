@@ -1,0 +1,85 @@
+.i-moprg-modify-program {
+  background-color: rgba(8, 15, 43, 1);
+  min-height: 100vh;
+  padding-bottom: 20px;
+}
+
+.i-moprg-principal {
+  min-height: 100vh;
+}
+
+.i-moprg-div2 {
+  background-color: rgba(8, 15, 43, 1);
+  padding: 20px;
+}
+
+.i-moprg-div3 {
+  padding: 20px;
+  background-color: rgba(8, 15, 43, 1);
+}
+
+.i-moprg-cuadrado {
+  background-color: #111A3D;
+  padding: 15px;
+  border-radius: 20px;
+  margin-top: 15px;
+}
+
+.i-moprg-imagen {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Search bar styling */
+.i-moprg-form-control {
+  background-color: rgb(27, 43, 107); /* Initial background color */
+  color: white; /* Text color */
+  border: 1px solid rgba(104, 104, 104, 0.2); /* Light border */
+}
+
+.i-moprg-form-control:focus {
+  background-color: rgba(15, 25, 55, 1); /* Lighter shade of blue on focus */
+  color: white; /* Text color */
+  border-color: rgba(255, 255, 255, 0.4); /* Lighter border on focus */
+  box-shadow: none; /* Remove default box-shadow */
+}
+
+.i-moprg-form-control::placeholder {
+  color: rgba(255, 255, 255, 0.6); /* White placeholder text with opacity */
+}
+
+.i-moprg-form-select {
+  background-color: rgb(27, 43, 107); /* Initial background color */
+  color: white; /* Text color */
+  border: 1px solid rgba(104, 104, 104, 0.2); /* Light border */
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+}
+
+.i-moprg-form-select:focus {
+  background-color: rgba(15, 25, 55, 1); /* Slightly lighter blue on focus */
+  color: white; /* White text color */
+  border-color: rgba(255, 255, 255, 0.4); /* Lighter border on focus */
+  box-shadow: none; /* Remove default box-shadow */
+}
+
+.i-moprg-modify-program-button {
+  padding: 10px;
+  font-size: 20px;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right, #8decb4, #38b6ff 50%, #004cff) !important;
+  cursor: pointer;
+}
+
+.i-moprg-delete-program-button {
+  width: 25%;
+  padding: 10px;
+  font-size: 18px;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right, #f7ff63, #ff914d 50%, #ff1a1a);
+  cursor: pointer;
+}

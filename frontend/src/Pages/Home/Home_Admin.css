@@ -4,34 +4,31 @@
     margin-right: 36px;
 }
 
-.nav-underline .nav-link.active {
-    border-image: url('../assets/FondoBotonAdmin.png') !important;
+.barrita .barritita.active {
+    border-image: url('../../assets/FondoBotonAdmin.png') !important;
     border-image-slice: 0 0 30 0 !important; /* Esto especifica que solo el borde inferior usará la imagen */
 }
 
-.nav-underline .nav-link:hover {
-    border-image: url('../assets/FondoBotonAdmin.png') !important;
+.barrita .barritita:hover {
+    border-image: url('../../assets/FondoBotonAdmin.png') !important;
     border-image-slice: 0 0 30 0 !important; /* Esto especifica que solo el borde inferior usará la imagen */
 }
 
-.nav-item {
+.barrota {
     margin-right: 55px; /* Aumenta el espacio a la derecha de cada ítem */
 }
 
-.nav-link {
+.barritita {
     padding: 10px 20px; /* Ajusta el padding para aumentar el espacio dentro de los enlaces */
 }
 
-.card-link{
+.ir{
     max-width: 27%;
-}
-
-.card-link {
     text-decoration: none; /* Elimina el subrayado del texto */
     color: inherit; /* Hereda el color de texto del padre o especifica uno */
 }
 
-.card-link:hover {
+.ir:hover {
     text-decoration: none; /* Opcional: asegura que no haya subrayado al pasar el mouse */
     box-shadow: 0 4px 8px rgb(255, 255, 255);
 }
@@ -43,18 +40,18 @@
         margin-top: 70px;
     }
 
-    .nav-item {
+    .barrota {
         margin-right: 10px; /* Menor margen en dispositivos móviles */
     }
-    .nav-link {
+    .barritita {
         padding: 5px 10px; /* Menor padding en dispositivos móviles */
     }
 
-    .nav {
+    .barrita {
         margin-top: 50px;
     }
 
-    .d-flex {
+    .contiene {
         flex-direction: column;
         align-items: center;
         

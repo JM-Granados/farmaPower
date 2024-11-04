@@ -5,12 +5,12 @@
 }
 
 .nav-underline .nav-link.active {
-    border-image: url('../assets/bottom.png') !important;
+    border-image: url('../../assets/bottom.png') !important;
     border-image-slice: 0 0 30 0 !important; /* Esto especifica que solo el borde inferior usará la imagen */
 }
 
 .nav-underline .nav-link:hover {
-    border-image: url('../assets/bottom.png') !important;
+    border-image: url('../../assets/bottom.png') !important;
     border-image-slice: 0 0 30 0 !important; /* Esto especifica que solo el borde inferior usará la imagen */
 }
 

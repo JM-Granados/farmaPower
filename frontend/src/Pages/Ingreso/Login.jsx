@@ -103,24 +103,24 @@ function Login() {
          * Div contenedor con clase para fondo de pantalla completa. Este es especial porque 
          * trae una imagen que es única para esta ventana. No es necesario este div para las demás ventanas
          */
-        <div className="fullscreen-bg">
+        <div className="jfullscreen-bg">
 
             {/* Div contenedor para el contenido central. */}
-            <div className="content">
+            <div className="jcontent">
 
                 {/* Formulario para el ingreso de usuario. */}
                 <form className='form' onSubmit={handleSubmit}>
                     {/* Título del formulario. */}
-                    <h1 className='IngresarText text-center mb-5'>Ingresar</h1>
+                    <h1 className='jIngresarText text-center mb-5'>Ingresar</h1>
 
                     {/* Div contenedor para el campo de correo electrónico. */}
                     <div className="mb-5">
-                        <label htmlFor="exampleInputEmail1" className="form-label">Correo electrónico</label>
+                        <label htmlFor="exampleInputEmail1" className="lab form-label">Correo electrónico</label>
                         {/* Input para correo electrónico con estilos específicos. */}
                         <input
                             type="email"
                             name="email"
-                            className="form-control bg-transparent border-0 border-bottom rounded-0 text-white"
+                            className="inputss form-control bg-transparent border-0 border-bottom rounded-0 text-white"
                             id="exampleInputEmail1"
                             aria-describedby="emailHelp"
                             onChange={(e) => setEmail(e.target.value)}
@@ -129,14 +129,14 @@ function Login() {
 
                     {/* Div contenedor para el campo de contraseña. */}
                     <div className="mb-5">
-                        <label htmlFor="exampleInputPassword1" className="form-label">Contraseña</label>
+                        <label htmlFor="exampleInputPassword1" className="lab form-label">Contraseña</label>
                         {/* Input para contraseña con estilos específicos. */}
-                        <div className="password-container d-grid">
+                        <div className="espacioPass password-container d-grid">
                             {/* Input para contraseña con estilos específicos. */}
                             <input
                                 type={PasswordInputType}
                                 name="password"
-                                className="space-password form-control bg-transparent border-0 border-bottom rounded-0 text-white"
+                                className="space-password inputss form-control bg-transparent border-0 border-bottom rounded-0 text-white"
                                 id="validationPassword"
                                 aria-describedby="passwordHelpInline"
                                 required
@@ -150,23 +150,23 @@ function Login() {
                     </div>
 
                     {/* Div contenedor para los botones del formulario. */}
-                    <div className='form-button-container'>
+                    <div className='botones form-button-container'>
                         {/* Link para navegar a la página de registro. */}
-                        <Link to="/Signup" className="Crear button btn">Crear cuenta</Link>
+                        <Link to="/Signup" className="jCrear button btn">Crear cuenta</Link>
                         {/* Link para navegar a la página principal después de ingresar. */}
-                        <button type="submit" className="Ingresar button btn">Ingresar</button>
+                        <button type="submit" className="jIngresar button btn">Ingresar</button>
                     </div>
 
                     {errorMessage && <div className={`alert alert-danger text-white bg-danger mt-5 text-center ${fade ? 'fade-out' : ''}`} >{errorMessage}</div>}
 
-                    <div className="form-text text-center mt-5" id="basic-addon4">
+                    <div className="PassRec form-text text-center mt-5" id="basic-addon4">
                         <Link to="/PassRecovery">¿Olvidaste tu contraseña?</Link>
                     </div>
                 </form>
             </div>
 
             {/* // Barra de navegación fija en la parte inferior. */}
-            <nav className="foot navbar navbar-expand-lg fixed-bottom">
+            <nav className="pie foot navbar navbar-expand-lg fixed-bottom">
                 <div className="container-md">
 
                     {/* // Texto para mostrar en la barra de navegación. */}

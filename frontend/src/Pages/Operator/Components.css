@@ -1,0 +1,50 @@
+.pills{
+    max-width: 140px;
+    height: auto; 
+    display: block; /* Asegura que la imagen se muestre como un bloque */
+}
+
+.pill-container{
+    background-color: rgba(20, 30, 70, 1);
+    height: 12rem;
+    width: 19rem;
+    justify-items: center;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.request-card {
+    min-width: 10rem; /* Ancho máximo de la tarjeta */
+    height: 24rem; 
+    margin: 0.5rem; /* Añade un margen para separación */
+    border-radius: 0.5rem; /* Bordes redondeados */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Añade una sombra */
+    overflow: hidden; /* Asegura que el contenido no desborde */
+    background-color: rgba(20, 30, 70, 1);
+    cursor: pointer;
+}
+
+.request-card:hover {
+    transform: scale(1.05);
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+}
+
+.request-card-title{  
+    font-size:15px;
+    cursor:pointer;
+    color: rgba(255, 255, 255, 1);
+}
+
+.request-card-text{
+    font-family: "League Spartan-Regular", Helvetica;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 0.5rem;
+    margin-left: 2rem;
+    color: rgba(255, 255, 255, 1);
+}
+
+.card-body{
+    background-color: rgba(20, 30, 70, 1);
+    gap: 0.5rem;
+}
