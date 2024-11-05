@@ -11,7 +11,7 @@
 }
 
 .sidebar-link {
-    font-size: 1.50rem;
+    font-size: 2rem;
     text-decoration: none;
     color: white;
 }
@@ -28,4 +28,5 @@
 
 .sidebar-user {
     font-size: 1.25rem;
+    color: white;
 }
