@@ -16,6 +16,9 @@ import Home_Operator from '../Pages/Home/Home_Operator'
 import Login from '../Pages/Ingreso/Login'; // Componente para la página de login.
 import Signup from '../Pages/Ingreso/Signup'
 import PassRecovery from '../Pages/Ingreso/PassRecovery'
+import Registrar_User from '../Pages/Usuarios/Registrar_User'
+import Modificar_User from '../Pages/Usuarios/Modificar_User'
+import Users from '../Pages/Usuarios/Users'
 import Requests from '../Pages/Operator/Requests';
 import ThisRequest from '../Pages/Operator/View_Request';
 import RegisterProgram from '../Pages/Program/RegisterProgram';
@@ -28,7 +31,6 @@ import Help from '../Pages/Client/Help';
 import Medication from '../Pages/Client/Participating_Medications';
 import Pharmacies from '../Pages/Client/Participating_Pharmacies';
 import Programs from '../Pages/Client/Programs';
-// import Home from '../Pages/Client/Home';
 import ManageElegibleMedication from '../Pages/Admin/ManageElegibleMedication';
 import ManagePharmacy from '../Pages/Admin/ManagePharmacy';
 import ManageProgram from '../Pages/Admin/ManageProgram';
@@ -82,6 +84,9 @@ function App() {
         <Route path='/Login' element={<Login />}></Route>
         <Route path='/Signup' element={<Signup/>}></Route>
         <Route path='/PassRecovery' element={<PassRecovery/>}></Route>
+        <Route path='/Registrar_User' element={<Registrar_User/>}></Route>
+        <Route path='/Modificar_User' element={<Modificar_User/>}></Route>
+        <Route path='/Users' element={<Users/>}></Route>
         <Route path='/Home_Admin' element={<Home_Admin/>}></Route>
         <Route path='/Home_Client' element={<Home_Client/>}></Route>
         <Route path='/Home_Operator' element={<Home_Operator/>}></Route>

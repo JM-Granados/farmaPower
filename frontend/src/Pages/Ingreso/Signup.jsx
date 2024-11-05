@@ -236,7 +236,7 @@ function Signup() {
 
                     {/* Div contenedor para el campo de correo electrónico. */}
                     <div className="col-12">
-                        <label htmlFor="validationPhoto" className="form-label mt-3">Correo electrónico</label>
+                        <label htmlFor="validationPhoto" className="form-label mt-3">Foto de perfil</label>
                         {/* Input para correo electrónico con estilos específicos. */}
                         <input
                             type="file"

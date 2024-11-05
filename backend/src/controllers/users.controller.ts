@@ -54,6 +54,7 @@ export const signupUser: RequestHandler = async (req, res) => {
             secondLastName: req.body.secondLastName,
             email: req.body.email,
             password: req.body.password,
+            role: req.body.role,
         });
         
         const savedUser = await newUser.save();
@@ -107,3 +108,89 @@ export const passRecovery: RequestHandler = async (req, res) => {
         }
     }
 }
+
+export const getAllUsers: RequestHandler = async (req, res) => {
+    try {
+        // Buscar todos los usuarios en la base de datos y seleccionar campos específicos
+        const users = await User.find({}).select('firstName firstLastName secondLastName email role status createdAt');
+        
+        // Enviar la lista de usuarios al frontend
+        res.status(200).json(users);
+    } catch (error) {
+        // Manejar posibles errores de la base de datos
+        if (error instanceof Error) {
+            res.status(500).json({ message: "Error retrieving users: ", error: error.message });
+        } else {
+            res.status(500).json({ message: "Unknown error occurred" });
+        }
+    }
+};
+
+export const getUsersSearched: RequestHandler = async (req, res) => {
+    try {
+        // Obtiene el término de búsqueda del query string y asegura que sea un string
+        const search = typeof req.query.search === 'string' ? req.query.search : '';
+
+        // Asegúrate de que search no es solo espacios en blanco o vacío
+        if (!search.trim()) {
+            return res.status(400).json({ message: "Search query cannot be empty." });
+        }
+
+        const query = {
+            $or: [
+                { firstName: { $regex: `^${search}`, $options: 'i' } },
+                { firstLastName: { $regex: `^${search}`, $options: 'i' } },
+                { secondLastName: { $regex: `^${search}`, $options: 'i' } },
+                { email: { $regex: `^${search}`, $options: 'i' } }
+            ]
+        };
+
+        const users = await User.find(query).select('firstName firstLastName secondLastName email role status createdAt');
+
+        // Enviar la lista de usuarios al frontend
+        res.status(200).json(users);
+    } catch (error) {
+        // Manejar posibles errores de la base de datos
+        if (error instanceof Error) {
+            res.status(500).json({ message: "Error retrieving users: ", error: error.message });
+        } else {
+            res.status(500).json({ message: "Unknown error occurred" });
+        }
+    }
+}
+
+export const modifyUser: RequestHandler = async (req, res) => {
+    const { firstName, firstLastName, secondLastName, email, role, status } = req.body;
+
+    console.log(email);
+
+    try {
+        const user = await User.findOne({ email: email });
+
+        if (!user) {
+            return res.status(200).json({ message: "User not found." });
+        }
+
+        // Actualiza los campos solo si son diferentes a los existentes
+        let isChanged = false;
+        if (firstName && user.firstName !== firstName) { user.firstName = firstName; isChanged = true; }
+        if (firstLastName && user.firstLastName !== firstLastName) { user.firstLastName = firstLastName; isChanged = true; }
+        if (secondLastName && user.secondLastName !== secondLastName) { user.secondLastName = secondLastName; isChanged = true; }
+        if (email && user.email !== email) { user.email = email; isChanged = true; }
+        if (role && user.role !== role) { user.role = role; isChanged = true; }
+        if (status && user.status !== status) { user.status = status; isChanged = true; }
+
+        if (isChanged) {
+            await user.save();
+            res.status(200).json({ message: "User updated successfully", user });
+        } else {
+            res.status(200).json({ message: "No changes detected" });
+        }
+    } catch (error) {
+        if (error instanceof Error) {
+            res.status(500).json({ message: "Error updating user: ", error: error.message });
+        } else {
+            res.status(500).json({ message: "Unknown error occurred" });
+        }
+    }
+};

@@ -36,6 +36,12 @@ router.post('/signup', userCtrl.signupUser);
 
 router.post('/passRecovery', userCtrl.passRecovery);
 
+router.get('/getUsers', userCtrl.getAllUsers);
+
+router.get('/getUsersSearched', userCtrl.getUsersSearched);
+
+router.patch('/modifyUser', userCtrl.modifyUser);
+
 // Exporta el objeto 'router'. Esto permite que las rutas definidas en este archivo sean usadas en otras partes de la aplicación Express,
 // típicamente mediante el uso de app.use() en el archivo principal de la aplicación.
 export default router;
