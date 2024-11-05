@@ -91,32 +91,35 @@ const ManagePharmacy = () => {
                         </div>
                     </div>
 
-                    <div className="row mt-4">
-                        {pharmacies.length > 0 ? (
-                            pharmacies.map((pharmacy) => (
-                                <div className="col-md-4" key={pharmacy._id}>
-                                    <div className="mt-3 card i-maph-card p-2">
-                                        <button
-                                            className="btn i-maph-modify-link"
-                                            onClick={() => handleModifyClick(pharmacy)}
-                                            style={{ position: 'absolute', top: '10px', right: '10px' }}
-                                        >
-                                            <FontAwesomeIcon icon={faPencilAlt} />
-                                        </button>
-                                        <div className="card-body i-maph-card-body">
-                                            <h5 className="card-title i-maph-card-title">{pharmacy.name}</h5>
-                                            <p className="card-text i-maph-card-text">
-                                                Ubicación: {pharmacy.location} <br />
-                                                Número Local: {pharmacy.localNumber} <br />
-                                                Estado: {pharmacy.state.state}
-                                            </p>
+                    {/* Pharmacies Displayed as Horizontal Slider */}
+                    <div className="row mt-2">
+                        <div className="i-maph-pharmacies-slider">
+                            {pharmacies.length > 0 ? (
+                                pharmacies.map((pharmacy) => (
+                                    <div className="i-maph-pharmacy-card" key={pharmacy._id}>
+                                        <div className="card i-maph-card p-2 position-relative">
+                                            <button
+                                                className="btn i-maph-modify-link"
+                                                onClick={() => handleModifyClick(pharmacy)}
+                                                style={{ position: 'absolute', top: '10px', right: '10px' }}
+                                            >
+                                                <FontAwesomeIcon icon={faPencilAlt} />
+                                            </button>
+                                            <div className="card-body i-maph-card-body">
+                                                <h5 className="card-title i-maph-card-title">{pharmacy.name}</h5>
+                                                <p className="card-text i-maph-card-text">
+                                                    <strong>Ubicación:</strong> {pharmacy.location} <br />
+                                                    <strong>Número Local:</strong> {pharmacy.localNumber} <br />
+                                                    <strong>Estado:</strong> {pharmacy.state.state}
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            ))
-                        ) : (
-                            <p className="i-maph-no-results">No hay farmacias que coincidan con la búsqueda.</p>
-                        )}
+                                ))
+                            ) : (
+                                <p className="i-maph-no-results">No hay farmacias que coincidan con la búsqueda.</p>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

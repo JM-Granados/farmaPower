@@ -26,13 +26,19 @@ export const searchElegibleMedications: RequestHandler = async (req, res) => {
 
 // Create a new eligible medication
 export const createElegibleMedication: RequestHandler = async (req, res) => {
-    try {
-        const newMedication = new ElegibleMedicationModel(req.body);
-        const savedMedication = await newMedication.save();
-        res.json(savedMedication);
-    } catch (error) {
-        res.status(500).json({ message: "Error creating eligible medication", error });
+    const { medication, points, exchangeAmount } = req.body;
+  
+    if (!medication || !points || !exchangeAmount) {
+      return res.status(400).json({ message: "All fields are required" });
     }
-}
+  
+    try {
+      const newMedication = new ElegibleMedicationModel({ medication, points, exchangeAmount });
+      const savedMedication = await newMedication.save();
+      res.status(201).json(savedMedication);
+    } catch (error) {
+      res.status(500).json({ message: "Error creating eligible medication", error });
+    }
+  };
 
 

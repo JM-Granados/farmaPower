@@ -89,40 +89,41 @@ const ManageElegibleMedication = () => {
                         </div>
                     </div>
 
-                    {/* Medications Displayed as Cards */}
-                    <div className="row mt-4">
-                        {medications.length > 0 ? (
-                            medications.map((eligibleMedication) => (
-                                <div className="col-md-4" key={eligibleMedication._id}>
-                                    <div className="card i-maem-card p-3">
-                                        <img
-                                            src={eligibleMedication.medication?.imageUrl || pill}
-                                            className="card-img-top i-maem-card-img"
-                                            alt="Medication"
-                                        />
-                                        <div className="card-body i-maem-card-body">
-                                            <h5 className="card-title i-maem-card-title">
-                                                {eligibleMedication.medication?.name || 'Nombre no disponible'}
-                                            </h5>
-                                            <p className="card-text i-maem-card-text">
-                                                <strong>Tipo:</strong> {eligibleMedication.medication?.type?.typeMedication || 'Tipo no disponible'} <br />
-                                                <strong>Cantidad:</strong> {eligibleMedication.medication?.amount || 'Cantidad no disponible'} <br />
-                                                <strong>Puntos:</strong> {eligibleMedication.points} <br />
-                                                <strong>Cantidad de Intercambio:</strong> {eligibleMedication.exchangeAmount}
-                                            </p>
-                                            <button
-                                                className="btn i-maem-modify-link"
-                                                style={{ position: 'absolute', top: '10px', right: '10px' }}
-                                            >
-                                                <FontAwesomeIcon icon={faPencilAlt} />
-                                            </button>
+                    <div className="row mt-2">
+                        <div className="i-maem-medications-slider">
+                            {medications.length > 0 ? (
+                                medications.map((eligibleMedication) => (
+                                    <div className="i-maem-medication-card" key={eligibleMedication._id}>
+                                        <div className="card i-maem-card p-3 position-relative">
+                                            <img
+                                                src={eligibleMedication.medication?.imageUrl || pill}
+                                                className="mb-3 card-img-top i-maem-card-img"
+                                                alt="Medication"
+                                            />
+                                            <div className="card-body i-maem-card-body">
+                                                <h5 className="card-title i-maem-card-title">
+                                                    {eligibleMedication.medication?.name || 'Nombre no disponible'}
+                                                </h5>
+                                                <p className="card-text i-maem-card-text">
+                                                    <strong>Tipo:</strong> {eligibleMedication.medication?.type?.typeMedication || 'Tipo no disponible'} <br />
+                                                    <strong>Cantidad:</strong> {eligibleMedication.medication?.amount || 'Cantidad no disponible'} <br />
+                                                    <strong>Puntos:</strong> {eligibleMedication.points} <br />
+                                                    <strong>Cantidad de Intercambio:</strong> {eligibleMedication.exchangeAmount}
+                                                </p>
+                                                <button
+                                                    className="btn i-maem-modify-link"
+                                                    style={{ position: 'absolute', top: '10px', right: '10px' }}
+                                                >
+                                                    <FontAwesomeIcon icon={faPencilAlt} />
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            ))
-                        ) : (
-                            <p className="i-maem-no-results">No hay medicamentos elegibles que coincidan con la búsqueda.</p>
-                        )}
+                                ))
+                            ) : (
+                                <p className="i-maem-no-results">No hay medicamentos elegibles que coincidan con la búsqueda.</p>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

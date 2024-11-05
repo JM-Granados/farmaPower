@@ -81,3 +81,24 @@
 .i-maph-card-text{
     color: white;
 }
+
+.i-maph-pharmacies-slider {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+  }
+  
+  .i-maph-pharmacy-card {
+    flex: 0 0 auto; /* Prevent cards from shrinking */
+    width: 300px;
+    margin: 10px; /* Spacing between cards */
+  }
+  
+  /* Optional: Customize the scrollbar for a better appearance */
+  .i-maph-pharmacies-slider::-webkit-scrollbar {
+    height: 8px; /* Customize scrollbar height */
+  }
+  
+  .i-maph-pharmacies-slider::-webkit-scrollbar-thumb {
+    background: linear-gradient(to right, #0cc0df, #ffde59 50%, #ffde59) !important;
+    border-radius: 10px;
+  }
