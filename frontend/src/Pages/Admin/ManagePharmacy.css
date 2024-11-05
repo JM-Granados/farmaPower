@@ -61,3 +61,19 @@
 .i-maph-no-results {
     color: white;
 }
+
+.i-maph-card{
+    background-color: rgb(27, 43, 107);;
+}
+
+.i-maph-card-body{
+    background-color: rgb(40, 64, 157);;
+}
+
+.i-maph-card-title{
+    color: white;
+}
+
+.i-maph-card-text{
+    color: white;
+}

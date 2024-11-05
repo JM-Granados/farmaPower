@@ -5,4 +5,4 @@ const stateSchema = new Schema({
     state: { type: String, required: true, trim: true }
 }, { timestamps: true });
 
-export default model('State', stateSchema);
+export default model('State', stateSchema, 'state');

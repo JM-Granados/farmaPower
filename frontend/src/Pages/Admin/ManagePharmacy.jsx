@@ -14,6 +14,7 @@ const ManagePharmacy = () => {
             try {
                 const response = await axios.get('http://localhost:3000/api/pharmacies');
                 setPharmacies(response.data);
+                console.log(response.data);
             } catch (error) {
                 console.error("Error fetching pharmacies:", error);
             }
@@ -79,13 +80,13 @@ const ManagePharmacy = () => {
                         {pharmacies.length > 0 ? (
                             pharmacies.map((pharmacy, index) => (
                                 <div className="col-md-4" key={pharmacy._id}>
-                                    <div className="card p-3">
-                                        <div className="card-body">
-                                            <h5 className="card-title">{pharmacy.name}</h5>
-                                            <p className="card-text">
+                                    <div className="mt-3 card i-maph-card p-2">
+                                        <div className="card-body i-maph-card-body">
+                                            <h5 className="card-title i-maph-card-title">{pharmacy.name}</h5>
+                                            <p className="card-text i-maph-card-text">
                                                 Ubicación: {pharmacy.location} <br />
                                                 Número Local: {pharmacy.localNumber} <br />
-                                                Estado: {pharmacy.state.name} {/* Assuming state has a name field */}
+                                                Estado: {pharmacy.state.state}
                                             </p>
                                         </div>
                                     </div>
