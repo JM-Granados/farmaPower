@@ -4,43 +4,43 @@
     padding-bottom: 20px;
 }
 
-.i-maph-principal {
+.i-mapr-principal {
     min-height: 100vh;
 }
 
-.i-maph-div2 {
+.i-mapr-div2 {
     background-color: rgba(8, 15, 43, 1);
     padding: 20px;
 }
 
-.i-maph-div3 {
+.i-mapr-div3 {
     padding: 20px;
     background-color: rgba(8, 15, 43, 1);
 }
 
-.i-maph-imagen {
+.i-mapr-imagen {
     max-width: 100%;
     height: auto;
 }
 
-.i-maph-form-control {
+.i-mapr-form-control {
     background-color: rgb(27, 43, 107); /* Initial background color */
     color: white; /* Text color */
     border: 1px solid rgba(104, 104, 104, 0.2); /* Light border */
 }
 
-.i-maph-form-control:focus {
+.i-mapr-form-control:focus {
     background-color: rgba(15, 25, 55, 1);
     color: white;
     border-color: rgba(255, 255, 255, 0.4);
     box-shadow: none;
 }
 
-.i-maph-form-control::placeholder {
+.i-mapr-form-control::placeholder {
     color: rgba(255, 255, 255, 0.6);
 }
 
-.i-maph-gradient-link {
+.i-mapr-gradient-link {
     background: linear-gradient(90deg, #0cc0df, #ffde59); /* Adjust colors as desired */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; /* Makes text transparent to show gradient */
@@ -48,6 +48,15 @@
     text-decoration: none; /* Removes underline */
 }
 
-.i-maph-gradient-link:hover {
+.i-mapr-gradient-link:hover {
     opacity: 0.8;
+}
+
+.i-mapr-no-coincidences {
+    color: white;
+}
+
+/* Style for "No hay farmacias que coincidan con la búsqueda." text */
+.i-mapr-no-results {
+    color: white;
 }
