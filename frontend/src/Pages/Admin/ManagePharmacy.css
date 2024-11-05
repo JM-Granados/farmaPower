@@ -51,3 +51,29 @@
 .i-maph-gradient-link:hover {
     opacity: 0.8;
 }
+
+/* Style for "No hay coincidencias?" text */
+.i-maph-no-coincidences {
+    color: white;
+}
+
+/* Style for "No hay farmacias que coincidan con la búsqueda." text */
+.i-maph-no-results {
+    color: white;
+}
+
+.i-maph-card{
+    background-color: rgb(27, 43, 107);;
+}
+
+.i-maph-card-body{
+    background-color: rgb(40, 64, 157);;
+}
+
+.i-maph-card-title{
+    color: white;
+}
+
+.i-maph-card-text{
+    color: white;
+}

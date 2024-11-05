@@ -1,7 +1,12 @@
+// Importación de useState de React para manejo de estado dentro de los componentes (no utilizado aquí pero preparado para futura expansión).
+import { useState } from 'react'
 // Importación de componentes específicos de react-router-dom para manejar la navegación dentro de la aplicación.
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// Importación de los estilos CSS y JS de Bootstrap para aprovechar sus componentes y funcionalidades predefinidos.
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-
+import Header_User from '../NavBar/Header_Home_User'
 
 // Importación de los componentes de las ventanas que se utilizarán en las rutas.
 import Home_Guest from '../Pages/Home/Home_Guest' // Componente que muestra la página de inicio para usuarios no autenticados.
@@ -10,6 +15,7 @@ import Home_Client from '../Pages/Home/Home_Client'
 import Home_Operator from '../Pages/Home/Home_Operator'
 import Login from '../Pages/Ingreso/Login'; // Componente para la página de login.
 import Signup from '../Pages/Ingreso/Signup'
+import PassRecovery from '../Pages/Ingreso/PassRecovery'
 import Requests from '../Pages/Operator/Requests';
 import ThisRequest from '../Pages/Operator/View_Request';
 import RegisterProgram from '../Pages/Program/RegisterProgram';
@@ -61,8 +67,6 @@ function App() {
       <Routes>
         {/* Ruta para la página de inicio accesible desde la URL base '/' */}
         <Route path='/' element={<Home_Guest />}></Route>
-        {/* Ruta para la página de login accesible desde '/Login' */}
-        <Route path='/Login' element={<Login/>}></Route>
         {/* Ruta para la página de requests de operador accesible desde '/requests' */}
         <Route path='/Requests' element={<Requests/>}></Route>
         {/* Ruta para la página de request específico accesible desde '/viewrequest/id' */}
@@ -76,6 +80,7 @@ function App() {
 
         <Route path='/Login' element={<Login />}></Route>
         <Route path='/Signup' element={<Signup/>}></Route>
+        <Route path='/PassRecovery' element={<PassRecovery/>}></Route>
         <Route path='/Home_Admin' element={<Home_Admin/>}></Route>
         <Route path='/Home_Client' element={<Home_Client/>}></Route>
         <Route path='/Home_Operator' element={<Home_Operator/>}></Route>
@@ -94,6 +99,9 @@ function App() {
         <Route path='/RegisterPharmacy' element={<RegisterPharmacy/>}></Route>
         <Route path='/ModifyPharmacy' element={<ModifyPharmacy/>}></Route>
         <Route path='/ModifyProgram' element={<ModifyProgram/>}></Route>
+
+
+        <Route path='/Header_User' element={<Header_User/>}></Route>
       </Routes>
     </BrowserRouter>
   )

@@ -1,0 +1,31 @@
+.sidebar {
+    background: #141E46;
+    padding: 1rem;
+    color: white;
+    border-radius: 0.5rem;
+    height: 100%;
+}
+
+.sidebar-title {
+    font-size: 3rem;
+}
+
+.sidebar-link {
+    font-size: 1.50rem;
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar-user-container {
+    gap: 1rem;
+}
+
+.user_image_container img {
+    width: 100%;
+    max-width: 50px;
+    border-radius: 50%;
+}
+
+.sidebar-user {
+    font-size: 1.25rem;
+}
