@@ -6,6 +6,9 @@ import back1 from '../assets/back1.png';
 import user from '../assets/user.png';
 
 const SideBar = () => {
+
+    const user = JSON.parse(localStorage.getItem('user'));
+
     return (
         <div className="sidebar d-flex flex-column align-items-start">
             <div className="sidebar-title mb-3">Panel de navegación</div>
