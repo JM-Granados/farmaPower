@@ -12,16 +12,6 @@ import Request from './Components';
 
 const apiURL = import.meta.env.VITE_BACKEND_URL;
 
-const mockRequests = [
-    { id: 1, date: '17-05-2024', status: 'pending' },
-    { id: 2, date: '18-05-2024', status: 'approved' },
-    { id: 3, date: '19-05-2024', status: 'rejected' },
-    { id: 4, date: '20-05-2024', status: 'pending' },
-    { id: 5, date: '21-05-2024', status: 'approved' },
-    { id: 6, date: '22-05-2024', status: 'pending' },
-    { id: 7, date: '23-05-2024', status: 'rejected' },
-];
-
 function Requests() {
     const [requests, setRequests] = useState([]);
     const [filteredRequests, setFRequests] = useState([]);
@@ -82,9 +72,9 @@ function Requests() {
             <div className="container-fluid mt-2">
                 <div className="scrollable-container">
                     <div className="row g-4 p-15">
-                        {filteredRequests.map((request) => (
+                        {filteredRequests.map((request, index) => (
                             <div key={request._id} className="col-auto d-flex p-3">
-                                <Request id={request._id} date={request.createdAt} status={request.rStatus} />
+                                <Request id={request._id} date={request.createdAt} status={request.rStatus} number={index}/>
                             </div>
                         ))}
                     </div>

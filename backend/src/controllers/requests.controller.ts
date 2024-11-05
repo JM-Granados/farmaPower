@@ -130,7 +130,13 @@ export const getRequestById: RequestHandler = async (req, res) => {
   try {
     const { id } = req.params;
     const request = await RequestModel.findById(id)
-      .populate('medication') //obtiene todo el objeto, no solo su id
+      .populate({
+        path: 'medication',
+        populate: {
+          path: 'medication', 
+          model: 'Medication', 
+        },
+      }) //obtiene todo el objeto, no solo su id
       .populate('client') // con esto evitamos realizar varias consultas 
       .populate('pharmacy');
 
@@ -145,7 +151,13 @@ export const getRequestById: RequestHandler = async (req, res) => {
 export const getAllRequests: RequestHandler = async (req, res) => {
   try {
     const requests = await RequestModel.find()
-      .populate('medication')
+      .populate({
+        path: 'medication',
+        populate: {
+          path: 'medication', 
+          model: 'Medication', 
+        },
+      })
       .populate('client')
       .populate('pharmacy');
 

@@ -38,7 +38,7 @@ function ThisRequest(){
                 setNumber(data.invoiceNumber);
                 setDrugstore(data.pharmacy.name);
                 setCount(data.purchasedQuantity);
-                setMed(data.medication.name);
+                setMed(data.medication.medication.name);
                 setStatus(data.rStatus);
             } catch (error) {
                 console.error("Error fetching request data:", error);
@@ -52,7 +52,7 @@ function ThisRequest(){
         console.info(status);
         const idFromUrl = window.location.pathname.split("/").pop();
         try {
-            const response = await axios.put(`${endpoint}/api/requests/send/${idFromUrl}`, {
+            const response = await axios.put(`${endpoint}/api/requests/save/${idFromUrl}`, {
                 rStatus: status, 
             });
             
