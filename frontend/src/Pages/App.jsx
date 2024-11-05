@@ -14,11 +14,10 @@ import Requests from '../Pages/Operator/Requests';
 import ThisRequest from '../Pages/Operator/View_Request';
 import RegisterProgram from '../Pages/Program/RegisterProgram';
 import Info from '../Pages/Information/Info';
-import Help2 from '../Pages/Help/Help';
+import Help from '../Pages/Help/Help';
 import My_Requests from '../Pages/Client/My_Requests'; // Componente para la página de solicitudes del usuario.
 import NewRequest from '../Pages/Client/New_Request';
 import Points from '../Pages/Client/My_Points';
-import Help from '../Pages/Client/Help';
 import Medication from '../Pages/Client/Participating_Medications';
 import Pharmacies from '../Pages/Client/Participating_Pharmacies';
 import Programs from '../Pages/Client/Programs';
@@ -67,13 +66,13 @@ function App() {
         {/* Ruta para la página de requests de operador accesible desde '/requests' */}
         <Route path='/Requests' element={<Requests/>}></Route>
         {/* Ruta para la página de request específico accesible desde '/viewrequest/id' */}
-        <Route path='/viewrequest/:id' element={<ThisRequest/>}></Route>
+        <Route path='/Viewrequest/:id' element={<ThisRequest/>}></Route>
         {/* Ruta para la página de registrar programa accesible desde '/registerProgram' */}
-        <Route path='/registerProgram' element={<RegisterProgram/>}></Route>
+        <Route path='/RegisterProgram' element={<RegisterProgram/>}></Route>
         {/* Ruta para la página de registrar programa accesible desde '/info/id' */}
-        <Route path='/info/:id' element={<Info/>}></Route> {/*No se como se vaya a manejar esto */}
+        <Route path='/Info/:id' element={<Info/>}></Route> {/*No se como se vaya a manejar esto */}
         {/* Ruta para la página de registrar programa accesible desde '/help' */}
-        <Route path='/help2' element={<Help2/>}></Route> {/*No se como se vaya a manejar esto */}
+        <Route path='/Help' element={<Help/>}></Route> {/*No se como se vaya a manejar esto */}
 
         <Route path='/Login' element={<Login />}></Route>
         <Route path='/Signup' element={<Signup/>}></Route>
@@ -83,7 +82,7 @@ function App() {
         <Route path='/MyRequests' element={<My_Requests />}></Route>
         <Route path="/NewRequest" element={<NewRequest />}></Route>
         <Route path="/MyPoints" element={<Points />}></Route>
-        <Route path="/Help" element={<Help />}></Route>
+
         <Route path="/Medications" element={<Medication />}></Route>
         <Route path="/Pharmacies" element={<Pharmacies />}></Route>
         <Route path="/Programs" element={<Programs />}></Route>

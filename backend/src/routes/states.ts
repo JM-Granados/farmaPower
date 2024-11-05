@@ -1,8 +1,8 @@
-import { Router } from 'express';
-import * as stateCtrl from '../controllers/state.controller';
+// import { Router } from 'express';
+// import * as stateCtrl from '../controllers/state.controller';
 
-const router = Router();
+// const router = Router();
 
-router.get('/', stateCtrl.getStates); // Route to get states in alphabetical order
+// router.get('/', stateCtrl.getStates); // Route to get states in alphabetical order
 
-export default router;
+// export default router;

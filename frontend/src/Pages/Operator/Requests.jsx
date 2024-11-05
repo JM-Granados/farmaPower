@@ -11,6 +11,7 @@ import user from '../../assets/user.png';
 import Request from './Components';
 
 const apiURL = import.meta.env.VITE_BACKEND_URL;
+
 const mockRequests = [
     { id: 1, date: '17-05-2024', status: 'pending' },
     { id: 2, date: '18-05-2024', status: 'approved' },
@@ -32,26 +33,29 @@ function Requests() {
     useEffect(() => {
         const fetchRequests = async () => {
             try {
-                const response = await axios.get(endpoint + "/api/requests");
-                setRequests(response.data);
+                const response = await axios.get(endpoint + "/api/requests/all");
+                const data = Array.isArray(response.data) ? response.data : []; // Verifica si data es un array
+                setRequests(data);
+                setFRequests(data);
             } catch (error) {
-                setErrorMessage(error.response?.data.error || 'An error occurred.');
-                setRequests(mockRequests); //eliminar esta linea una vez se hayan hecho las pruebas
-            }
-        };
-        
+                setErrorMessage(error.response?.data?.message || 'Error al obtener las solicitudes.');
+                setRequests([]);
+                setFRequests([]);
+            };  
+        }
         fetchRequests(); 
     }, [endpoint]);
+    
 
-    const handleFilter = (status) => {
+    function handleFilter(status) {
         setSelectedStatus(status);
-        console.log(status)
+        console.log(status);
         if (status === 'Todas') {
-            setFRequests(requests); 
+            setFRequests(requests);
         } else {
-            setFRequests(requests.filter(request => request.rStatus === status)); 
+            setFRequests(requests.filter(request => request.rStatus === status));
         }
-    };
+    }
 
     return (
         <div className=''>
@@ -80,7 +84,7 @@ function Requests() {
                     <div className="row g-4 p-15">
                         {filteredRequests.map((request) => (
                             <div key={request._id} className="col-auto d-flex p-3">
-                                <Request id={request._id} date={request.timestamp} status={request.rStatus} />
+                                <Request id={request._id} date={request.createdAt} status={request.rStatus} />
                             </div>
                         ))}
                     </div>

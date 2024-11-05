@@ -25,7 +25,7 @@ import cors from 'cors'
 //----------------------------------------------------------------------------------
 // Importa las rutas que se utilizarán en el proyecto
 import users from './routes/users'
-import states from './routes/states'
+// import states from './routes/states'
 import requests from './routes/requests'
 import elegibleMedications from './routes/elegiblemedications'
 import medications from './routes/medications'

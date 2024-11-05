@@ -44,7 +44,7 @@ function Home_Guest() {
                     </div>
                 </Link>
 
-                <Link to="/ruta-para-ayuda" className="ms-5 mt-5 me-5 card-link">
+                <Link to="/Help" className="ms-5 mt-5 me-5 card-link">
                     <div className="card">
                         <img src={Ayuda} className="card-img-top" alt="..." />
                     </div>
