@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Participating_Medications.css';
-import SideBar2 from '../../NavBar/SideBar2';
-import '../../NavBar/SideBar2.css';
+import SideBar2 from '../../NavBar/SideBar';
+import '../../NavBar/SideBar.css';
 import gradient from '../../assets/participating_medications.png';
 import medicine from '../../assets/medicine.png';
 

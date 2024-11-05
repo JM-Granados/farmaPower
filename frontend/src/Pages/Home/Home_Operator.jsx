@@ -15,13 +15,13 @@ function Home_Guest() {
             <div className="hcontainer container justify-content-start">
                 <ul className="barrita nav nav-underline">
                     <li className="barrota nav-item">
-                        <a className="barritita nav-link active text-white" aria-current="page" href="#">Inicio</a>
+                        <a className="barritita nav-link active text-white" aria-current="page" href="/Home_Operator">Inicio</a>
                     </li>
                 </ul>
             </div>
 
             <div className="contiene container-fluid d-flex justify-content-center">
-                <Link to="/ruta-para-nueva-solicitud" className="ir ms-5 mt-5 me-5 card-link">
+                <Link to="/Requests" className="ir ms-5 mt-5 me-5 card-link">
                     <div className="card">
                         <img src={Administrar_Solicitudes} className="card-img-top" alt="..." />
                     </div>
@@ -31,7 +31,7 @@ function Home_Guest() {
 
             {/* // Barra de navegación fija en la parte inferior. */}
             <nav className="foot navbar navbar-expand-lg fixed-bottom">
-                <div className="container-md">
+                <div className="container-md justify-content-center">
                     {/* // Texto para mostrar en la barra de navegación. */}
                     <a className="navbar-brand text-white fs-6" href="#">
                         FarmaTEC 2024

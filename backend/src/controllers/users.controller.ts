@@ -78,3 +78,32 @@ export const signupUser: RequestHandler = async (req, res) => {
         }
     }
 }
+
+// Define 'recoverPassword' como una función asíncrona que cumple con la firma de 'RequestHandler'.
+export const passRecovery: RequestHandler = async (req, res) => {
+    const { email, newPassword } = req.body;  // Obtiene el correo electrónico y la nueva contraseña del cuerpo de la solicitud.
+
+    try {
+        const user = await User.findOne({ email: email });
+        if (!user) {
+            return res.status(200).json({ message: "Email not found." });
+        }
+
+        // Actualiza la contraseña del usuario en la base de datos.
+        user.password = newPassword;
+        await user.save();
+
+        res.status(200).json({ message: "Password updated successfully." });
+    } catch (error) {
+        const mongoError = error as MongoError;
+        if (error instanceof Error) {
+            if (error.message == "User validation failed: password: Password is not strong enough.") {
+                res.status(200).json({ message: "Update error: Password is not strong enough." });
+            } else {
+                res.status(400).json({ message: "Update error: ", error: error.message });
+            }
+        }  else {
+            res.status(500).json({ message: "Unknown error occurred" });
+        }
+    }
+}
