@@ -56,16 +56,16 @@ function Requests() {
             <div>
                 <ul className="nav custom-nav-underline nav-underline text-wrapper-17 little-nav-bar"> {/*Aqui falta el color del underline */}
                     <li className="nav-item">
-                        <a className="nav-link" aria-current="page" href="#" onClick={() => handleFilter('Todas')}>Todas</a>
+                        <a className="nav-link" aria-current="page" href="javascript:void(0);" onClick={() => handleFilter('Todas')}>Todas</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#" onClick={() => handleFilter('Pendiente')}>Pendientes</a>
+                        <a className="nav-link" href="javascript:void(0);" onClick={() => handleFilter('Pendiente')}>Pendientes</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#" onClick={() => handleFilter('Aprobada')}>Aprobadas</a>
+                        <a className="nav-link" href="javascript:void(0);" onClick={() => handleFilter('Aprobada')}>Aprobadas</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#" onClick={() => handleFilter('Rechazada')}>Rechazadas</a>
+                        <a className="nav-link" href="javascript:void(0);" onClick={() => handleFilter('Rechazada')}>Rechazadas</a>
                     </li>
                 </ul>
             </div>
