@@ -4,5 +4,7 @@ import * as elegibleMedicationCtrl from '../controllers/elegibleMedications.cont
 const router = Router();
 
 router.get('/', elegibleMedicationCtrl.getElegibleMedications);
+router.get('/search', elegibleMedicationCtrl.searchElegibleMedications);
+
 
 export default router;

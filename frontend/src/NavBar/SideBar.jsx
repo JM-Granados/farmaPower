@@ -25,10 +25,10 @@ const SideBar = () => {
         links = (
             <>
                 <Link to="/" className="sidebar-link mb-2">Inicio</Link>
-                <Link to="/MedicamentosParticipantes" className="sidebar-link mb-2">Medicamentos participantes</Link>
-                <Link to="/FarmaciasParticipantes" className="sidebar-link mb-2">Farmacias participantes</Link>
-                <Link to="/Programas" className="sidebar-link mb-2">Programas</Link>
-                <Link to="/Usuarios" className="sidebar-link mb-3">Usuarios</Link>
+                <Link to="/ManageElegibleMedication" className="sidebar-link mb-2">Medicamentos participantes</Link>
+                <Link to="/ManagePharmacy" className="sidebar-link mb-2">Farmacias participantes</Link>
+                <Link to="/ManageProgram" className="sidebar-link mb-2">Programas</Link>
+                <Link to="/" className="sidebar-link mb-3">Usuarios</Link>
             </>
         );
     } else if (user && user.role === 'Operator') {

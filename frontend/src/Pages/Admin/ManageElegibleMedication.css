@@ -48,6 +48,10 @@
     text-decoration: none; /* Removes underline */
 }
 
+.i-maem-modify-link {
+    color: #0cc0df;
+}
+
 .i-maem-gradient-link:hover {
     opacity: 0.8;
 }
@@ -59,4 +63,27 @@
 /* Style for "No hay farmacias que coincidan con la búsqueda." text */
 .i-maem-no-results {
     color: white;
+}
+
+.i-maem-card{
+    background-color: rgb(27, 43, 107);;
+}
+
+.i-maem-card-body{
+    background-color: rgb(40, 64, 157);;
+}
+
+.i-maem-card-title{
+    color: white;
+}
+
+.i-maem-card-text{
+    color: white;
+}
+
+.i-maem-card-img {
+    width: 50%; /* Adjust this to your desired width */
+    height: auto; /* Keeps aspect ratio */
+    margin: 0 auto; /* Center-aligns the image */
+    display: block;
 }

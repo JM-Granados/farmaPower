@@ -1,10 +1,55 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './RegisterProduct.css';
 import SideBar from '../../NavBar/SideBar';
 import gradient from '../../assets/register_product_title.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+
+const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 const RegisterProduct = () => {
   const [searchText, setSearchText] = useState('');
+  const [pharmacies, setPharmacies] = useState([]);
+  const [medications, setMedications] = useState([]);
+  const [selectedMedications, setSelectedMedications] = useState({}); // Track selected medications
+
+  useEffect(() => {
+    const fetchPharmacies = async () => {
+      try {
+        const response = await axios.get(`${apiURL}/api/pharmacies/get`);
+        setPharmacies(response.data);
+      } catch (error) {
+        console.error("Error fetching pharmacies:", error);
+      }
+    };
+
+    const fetchMedications = async () => {
+      try {
+        const response = await axios.get(`${apiURL}/api/medications/`);
+        setMedications(response.data);
+      } catch (error) {
+        console.error("Error fetching medications:", error);
+      }
+    };
+
+    fetchPharmacies();
+    fetchMedications();
+  }, []);
+
+  // Determine which medications to display based on the search text
+  const displayedMedications = searchText
+    ? medications.filter(medication =>
+        medication.name.toLowerCase().includes(searchText.toLowerCase())
+      )
+    : medications;
+
+  const handleCheckboxChange = (medicationId) => {
+    setSelectedMedications(prevSelected => ({
+      ...prevSelected,
+      [medicationId]: !prevSelected[medicationId], // Toggle selection
+    }));
+  };
 
   return (
     <div className="container-fluid i-repr-register-product">
@@ -20,7 +65,7 @@ const RegisterProduct = () => {
             </div>
           </div>
 
-          {/* Search bar and label */}
+          {/* Search bar */}
           <div className="row align-items-center mt-3">
             <div className="col-md-3">
               <p className="form-label text-white">Seleccione su producto</p>
@@ -38,12 +83,31 @@ const RegisterProduct = () => {
           </div>
 
           {/* Display section for searched medications */}
-          <div className="row mt-4">
-            <div className="col-9">
-              <div className="i-repr-cuadrado">
-                {/* Display cards or placeholder here */}
+          <div className="row mt-2">
+            <div className="medications-slider">
+              {displayedMedications.length > 0 ? (
+                displayedMedications.map(medication => (
+                  <div className="medication-card" key={medication._id}>
+                    <div className="mt-1 i-repr-card card p-2 position-relative">
+                      <div style={{ position: 'absolute', top: '10px', right: '10px' }}>
+                        <input
+                          type="checkbox"
+                          checked={!!selectedMedications[medication._id]}
+                          onChange={() => handleCheckboxChange(medication._id)}
+                        />
+                      </div>
+                      <img src={medication.imageUrl} className="card-img-top" alt={medication.name} />
+                      <div className="card-body i-repr-card-body">
+                        <h5 className="card-title i-repr-card-title">{medication.name}</h5>
+                        <p className="card-text i-repr-card-text">Amount: {medication.amount}</p>
+                        <p className="card-text i-repr-card-text">Type: {medication.type?.medicationType}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              ) : (
                 <p className="text-white">Aquí se mostrarán los medicamentos buscados.</p>
-              </div>
+              )}
             </div>
           </div>
 
@@ -74,18 +138,18 @@ const RegisterProduct = () => {
             <div className="col-md-6">
               <select className="i-repr-form-select form-select">
                 <option value="">Seleccione una farmacia</option>
-                <option value="1">Farmacia 1</option>
-                <option value="2">Farmacia 2</option>
-                <option value="3">Farmacia 3</option>
-                {/* Add more options as needed */}
+                {pharmacies.map(pharmacy => (
+                  <option key={pharmacy._id} value={pharmacy._id}>
+                    {`${pharmacy.name} - ${pharmacy.location}`}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
 
           {/* Submit button */}
           <div className="row mt-4">
-          <div className="col-md-7">
-          </div>
+            <div className="col-md-7"></div>
             <div className="col-md-2">
               <button className="btn i-repr-create-product-button w-100">Crear</button>
             </div>

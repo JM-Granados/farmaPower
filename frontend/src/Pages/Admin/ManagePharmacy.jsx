@@ -3,14 +3,19 @@ import axios from 'axios';
 import './ManagePharmacy.css';
 import SideBar from '../../NavBar/SideBar';
 import gradient from '../../assets/manage_pharmacy_title.png';
+import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+
 const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 const ManagePharmacy = () => {
     const [pharmacies, setPharmacies] = useState([]);
     const [searchText, setSearchText] = useState('');
+    const navigate = useNavigate();
 
+    // Fetch all pharmacies on initial load
     useEffect(() => {
-        // Fetch all pharmacies on initial load
         const fetchPharmacies = async () => {
             try {
                 const response = await axios.get(`${apiURL}/api/pharmacies/get`);
@@ -23,6 +28,38 @@ const ManagePharmacy = () => {
 
         fetchPharmacies();
     }, []);
+
+    // Fetch pharmacies based on the search text
+    useEffect(() => {
+        const fetchSearchedPharmacies = async () => {
+            if (searchText) {
+                try {
+                    const response = await axios.get(`${apiURL}/api/pharmacies/search?name=${searchText}`);
+                    setPharmacies(response.data);
+                } catch (error) {
+                    console.error("Error searching pharmacies:", error);
+                }
+            } else {
+                // When searchText is empty, fetch all pharmacies again
+                const fetchAllPharmacies = async () => {
+                    try {
+                        const response = await axios.get(`${apiURL}/api/pharmacies/get`);
+                        setPharmacies(response.data);
+                    } catch (error) {
+                        console.error("Error fetching pharmacies:", error);
+                    }
+                };
+
+                fetchAllPharmacies();
+            }
+        };
+
+        fetchSearchedPharmacies();
+    }, [searchText]); // Trigger search when searchText changes
+
+    const handleModifyClick = (pharmacy) => {
+        navigate('/modifypharmacy', { state: { pharmacy } });
+    };
 
     return (
         <div className="container-fluid i-maph-manage-pharmacies">
@@ -38,7 +75,6 @@ const ManagePharmacy = () => {
                         </div>
                     </div>
 
-                    {/* Search bar */}
                     <div className="row mt-3">
                         <div className="col-md-8">
                             <input
@@ -46,7 +82,7 @@ const ManagePharmacy = () => {
                                 className="i-maph-form-control form-control"
                                 placeholder="Buscar farmacia"
                                 value={searchText}
-                                onChange={(e) => setSearchText(e.target.value)} // Update search text on input change
+                                onChange={(e) => setSearchText(e.target.value)}
                             />
                         </div>
                         <div className="col-md-4 d-flex align-items-center">
@@ -55,12 +91,18 @@ const ManagePharmacy = () => {
                         </div>
                     </div>
 
-                    {/* Pharmacies Displayed as Cards */}
                     <div className="row mt-4">
                         {pharmacies.length > 0 ? (
-                            pharmacies.map((pharmacy, index) => (
+                            pharmacies.map((pharmacy) => (
                                 <div className="col-md-4" key={pharmacy._id}>
                                     <div className="mt-3 card i-maph-card p-2">
+                                        <button
+                                            className="btn i-maph-modify-link"
+                                            onClick={() => handleModifyClick(pharmacy)}
+                                            style={{ position: 'absolute', top: '10px', right: '10px' }}
+                                        >
+                                            <FontAwesomeIcon icon={faPencilAlt} />
+                                        </button>
                                         <div className="card-body i-maph-card-body">
                                             <h5 className="card-title i-maph-card-title">{pharmacy.name}</h5>
                                             <p className="card-text i-maph-card-text">

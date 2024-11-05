@@ -48,6 +48,10 @@
     text-decoration: none; /* Removes underline */
 }
 
+.i-maph-modify-link {
+    color: #0cc0df;
+}
+
 .i-maph-gradient-link:hover {
     opacity: 0.8;
 }

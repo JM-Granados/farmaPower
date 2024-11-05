@@ -5,12 +5,24 @@ import mongoose from "mongoose";
 
 export const getElegibleMedications: RequestHandler = async (req, res) => {
     try {
-        const elegibleMedications = await ElegibleMedicationModel.find().populate('medication');
+        const elegibleMedications = await ElegibleMedicationModel.find().populate({path: 'medication',populate: {path: 'type', }});
         res.json(elegibleMedications);
     } catch (error) {
-        res.json(error);
+        res.status(500).json({ message: "Error fetching eligible medications", error });
     }
 }
+
+export const searchElegibleMedications: RequestHandler = async (req, res) => {
+    try {
+        const { name } = req.query;
+        const medications = await ElegibleMedicationModel.find({'medication.name': { $regex: name, $options: 'i' }}).populate({path: 'medication',populate: {path: 'type',model: 'TypeMedication'}});
+        res.json(medications);
+    } catch (error) {
+        console.error("Error searching medications:", error);
+        res.status(500).json({ message: "Error searching medications", error });
+    }
+};
+
 
 // Create a new eligible medication
 export const createElegibleMedication: RequestHandler = async (req, res) => {
@@ -23,25 +35,4 @@ export const createElegibleMedication: RequestHandler = async (req, res) => {
     }
 }
 
-// Search eligible medications based on the input text in the search bar
-export const searchElegibleMedications = async (req: Request, res: Response) => {
-    try {
-        const { searchText } = req.query; // Expecting searchText as a query parameter
-        
-        // Case-insensitive regex search to find medications starting with the search text
-        const medications = await ElegibleMedicationModel.find()
-            .populate({
-                path: 'medication',
-                match: { name: new RegExp(`^${searchText}`, 'i') } // 'i' makes it case-insensitive
-            })
-            .exec();
 
-        // Filter out medications where no match was found in 'medication' population
-        const filteredMedications = medications.filter(med => med.medication !== null);
-        
-        res.json(filteredMedications);
-    } catch (error) {
-        console.error("Error searching eligible medications:", error);
-        res.status(500).json({ message: "Error searching eligible medications" });
-    }
-};
