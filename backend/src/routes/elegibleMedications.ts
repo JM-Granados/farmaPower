@@ -6,5 +6,7 @@ const router = express.Router();
 router.get('/', elegibleMedicationCtrl.getElegibleMedications);
 router.get('/search', elegibleMedicationCtrl.searchElegibleMedications);
 router.post('/create', elegibleMedicationCtrl.createElegibleMedication);
+router.put('/modify/:id', elegibleMedicationCtrl.updateElegibleMedication); // For updating
+router.delete('/delete/:id', elegibleMedicationCtrl.deleteElegibleMedication); // For deleting
 
 export default router;

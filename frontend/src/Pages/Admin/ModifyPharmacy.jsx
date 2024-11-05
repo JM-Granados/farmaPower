@@ -3,12 +3,13 @@ import './ModifyPharmacy.css';
 import SideBar from '../../NavBar/SideBar';
 import gradient from '../../assets/modify_pharmacy_title.png';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 const ModifyPharmacy = () => {
   const location = useLocation();
+  const navigate = useNavigate(); // Initialize useNavigate for navigation
   const pharmacy = location.state?.pharmacy || {}; // Get pharmacy data from location state
   const [states, setStates] = useState([]);
   const [formData, setFormData] = useState({
@@ -23,7 +24,6 @@ const ModifyPharmacy = () => {
       try {
         const response = await axios.get(`${apiURL}/api/states/get`);
         setStates(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error("Error fetching states:", error);
       }
@@ -34,6 +34,31 @@ const ModifyPharmacy = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleUpdate = async () => {
+    try {
+      await axios.put(`${apiURL}/api/pharmacies/update/${pharmacy._id}`, formData);
+      alert("Pharmacy updated successfully");
+      navigate('/ManagePharmacy'); // Change this to your pharmacy list route
+    } catch (error) {
+      console.error("Error updating pharmacy:", error);
+      alert("Failed to update pharmacy");
+    }
+  };
+
+  const handleDelete = async () => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this pharmacy?");
+    if (confirmDelete) {
+      try {
+        await axios.delete(`${apiURL}/api/pharmacies/delete/${pharmacy._id}`);
+        alert("Pharmacy deleted successfully");
+        navigate('/ManagePharmacy'); // Change this to your pharmacy list route
+      } catch (error) {
+        console.error("Error deleting pharmacy:", error);
+        alert("Failed to delete pharmacy");
+      }
+    }
   };
 
   return (
@@ -118,11 +143,11 @@ const ModifyPharmacy = () => {
 
           <div className="row mt-4">
             <div className="col-md-2">
-              <button className="btn i-moph-delete-pharmacy-button w-100">Eliminar</button>
+              <button className="btn i-moph-delete-pharmacy-button w-100" onClick={handleDelete}>Eliminar</button>
             </div>
             <div className="col-md-5"></div>
             <div className="col-md-2">
-              <button className="btn i-moph-modify-pharmacy-button w-100">Modificar</button>
+              <button className="btn i-moph-modify-pharmacy-button w-100" onClick={handleUpdate}>Modificar</button>
             </div>
           </div>
         </div>

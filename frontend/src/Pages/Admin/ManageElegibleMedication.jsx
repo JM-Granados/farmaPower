@@ -6,12 +6,14 @@ import gradient from '../../assets/elegible_medication_title.png';
 import pill from '../../assets/drugs1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 const ManageElegibleMedication = () => {
     const [medications, setMedications] = useState([]);
     const [searchText, setSearchText] = useState('');
+    const navigate = useNavigate(); // Initialize useNavigate
 
     // Fetch all medications on component mount
     useEffect(() => {
@@ -19,7 +21,6 @@ const ManageElegibleMedication = () => {
             try {
                 const response = await axios.get(`${apiURL}/api/elegiblemedications`);
                 setMedications(response.data);
-                console.log("Fetched all medications:", response.data);
             } catch (error) {
                 console.error("Error fetching eligible medications:", error);
             }
@@ -28,35 +29,11 @@ const ManageElegibleMedication = () => {
         fetchMedications();
     }, []);
 
-    // Fetch medications based on the search text
-    useEffect(() => {
-        const fetchSearchedMedications = async () => {
-            if (searchText) {
-                try {
-                    const response = await axios.get(`${apiURL}/api/elegiblemedications/search?name=${searchText}`);
-                    console.log("Searched medications response:", response.data); // Log search response
-                    setMedications(response.data);
-                } catch (error) {
-                    console.error("Error searching medications:", error);
-                }
-            } else {
-                // When searchText is empty, fetch all medications again
-                const fetchAllMedications = async () => {
-                    try {
-                        const response = await axios.get(`${apiURL}/api/elegiblemedications`);
-                        setMedications(response.data);
-                        console.log("Fetched all medications after clearing search:", response.data); // Log all medications fetched
-                    } catch (error) {
-                        console.error("Error fetching all medications:", error);
-                    }
-                };
-
-                fetchAllMedications();
-            }
-        };
-
-        fetchSearchedMedications();
-    }, [searchText]);
+    // Redirect function to ModifyProduct page with selected medication data
+    const handleModifyClick = (medication) => {
+        console.log("Navigating with medication:", medication); // Debug: Log medication data
+        navigate('/modifyproduct', { state: medication }); // Pass the medication data as state
+    };
 
     return (
         <div className="container-fluid i-maem-manage-elegible-medications">
@@ -72,7 +49,6 @@ const ManageElegibleMedication = () => {
                         </div>
                     </div>
 
-                    {/* Search bar and text */}
                     <div className="row mt-3">
                         <div className="col-md-8">
                             <input
@@ -112,6 +88,7 @@ const ManageElegibleMedication = () => {
                                                 </p>
                                                 <button
                                                     className="btn i-maem-modify-link"
+                                                    onClick={() => handleModifyClick(eligibleMedication)} // Pass medication to handler
                                                     style={{ position: 'absolute', top: '10px', right: '10px' }}
                                                 >
                                                     <FontAwesomeIcon icon={faPencilAlt} />
