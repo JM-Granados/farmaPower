@@ -11,17 +11,17 @@ const ModifyProduct = () => {
   const [searchText, setSearchText] = useState('');
   const [medications, setMedications] = useState([]);
   const [selectedMedicationId, setSelectedMedicationId] = useState(null);
+  const [selectedElegibleMedicationId, setSelectedElegibleMedicationId] = useState(null);
   const [points, setPoints] = useState('');
   const [exchangeAmount, setExchangeAmount] = useState('');
   const location = useLocation();
-  const navigate = useNavigate(); // Import useNavigate for navigation
+  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Location state in ModifyProduct:", location.state);
-
     if (location.state) {
-      const { _id, points, exchangeAmount } = location.state;
-      setSelectedMedicationId(_id);
+      const { _id, points, exchangeAmount, medication } = location.state;
+      setSelectedElegibleMedicationId(_id); // Store the elegiblemedication ID
+      setSelectedMedicationId(medication); // Store the associated medication ID
       setPoints(points || '');
       setExchangeAmount(exchangeAmount || '');
     }
@@ -33,11 +33,10 @@ const ModifyProduct = () => {
         const response = await axios.get(`${apiURL}/api/medications/`);
         setMedications(response.data);
 
-        // Check if the selected medication is in the list
-        if (location.state && location.state._id) {
-          const selected = response.data.find(med => med._id === location.state._id);
+        if (location.state && location.state.medication) {
+          const selected = response.data.find(med => med._id === location.state.medication);
           if (selected) {
-            setSelectedMedicationId(location.state._id);
+            setSelectedMedicationId(location.state.medication);
           } else {
             console.warn("Selected medication not found in the fetched list.");
           }
@@ -64,18 +63,35 @@ const ModifyProduct = () => {
     if (selectedMedicationId) {
       const confirmUpdate = window.confirm("Are you sure you want to update this eligible medication?");
       if (confirmUpdate) {
+        // Ensure points and exchangeAmount have valid values
+        if (!points || !exchangeAmount) {
+          alert("Please fill in both points and exchange amount.");
+          return;
+        }
+  
         try {
-          const response = await axios.put(`${apiURL}/api/elegiblemedications/modify/${selectedMedicationId}`, {
-            medicationId: selectedMedicationId, // Include the medication ID
-            points,
-            exchangeAmount
-          });
+          // Rename medicationId to medication to match backend schema
+          const payload = {
+            medication: selectedMedicationId, // Correct field name based on schema
+            points: parseInt(points, 10),     // Convert to integer
+            exchangeAmount: parseInt(exchangeAmount, 10) // Convert to integer
+          };
+  
+          console.log("Payload:", payload); // Log the payload for debugging
+  
+          const response = await axios.put(`${apiURL}/api/elegiblemedications/modify/${selectedMedicationId}`, payload);
+          
           console.log("Modified medication:", response.data);
           alert("Eligible medication updated successfully"); // Success message
-          navigate('/ManageEligibleMedication'); // Navigate to eligible medication list
+          navigate('/ManageElegibleMedication'); // Navigate to eligible medication list
         } catch (error) {
           console.error("Error modifying medication:", error);
-          alert("Failed to update eligible medication"); // Error message
+          if (error.response) {
+            console.error("Backend error message:", error.response.data);
+            alert(`Failed to update eligible medication: ${error.response.data.message || error.response.data}`);
+          } else {
+            alert("Failed to update eligible medication"); // General error message
+          }
         }
       }
     } else {
@@ -83,28 +99,26 @@ const ModifyProduct = () => {
       alert("No eligible medication selected for modification."); // Alert for no selection
     }
   };
-
+  
   const handleDelete = async () => {
     const confirmDelete = window.confirm("Are you sure you want to delete this eligible medication?");
     if (confirmDelete) {
-      if (selectedMedicationId) {
+      if (selectedElegibleMedicationId) {
         try {
-          const deleteUrl = `${apiURL}/api/elegiblemedications/delete/${selectedMedicationId}`;
-          console.log("DELETE URL:", deleteUrl); // Log the delete URL
+          const deleteUrl = `${apiURL}/api/elegiblemedications/delete/${selectedElegibleMedicationId}`;
           await axios.delete(deleteUrl);
-          console.log("Deleted medication with ID:", selectedMedicationId);
-          alert("Eligible medication deleted successfully"); // Success message
-          setSelectedMedicationId(null); // Clear selection
-          setPoints(''); // Clear points
-          setExchangeAmount(''); // Clear exchange amount
-          navigate('/ManageEligibleMedication'); // Navigate to eligible medication list
+          alert("Eligible medication deleted successfully");
+          setSelectedMedicationId(null);
+          setPoints('');
+          setExchangeAmount('');
+          navigate('/ManageElegibleMedication');
         } catch (error) {
           console.error("Error deleting medication:", error);
-          alert("Failed to delete eligible medication"); // Error message
+          alert("Failed to delete eligible medication");
         }
       } else {
-        console.error("No medication selected for deletion.");
-        alert("No eligible medication selected for deletion."); // Alert for no selection
+        console.error("No eligible medication selected for deletion.");
+        alert("No eligible medication selected for deletion.");
       }
     }
   };

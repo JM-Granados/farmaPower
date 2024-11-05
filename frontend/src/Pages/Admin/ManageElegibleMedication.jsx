@@ -6,33 +6,39 @@ import gradient from '../../assets/elegible_medication_title.png';
 import pill from '../../assets/drugs1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 const ManageElegibleMedication = () => {
     const [medications, setMedications] = useState([]);
     const [searchText, setSearchText] = useState('');
-    const navigate = useNavigate(); // Initialize useNavigate
+    const navigate = useNavigate();
 
-    // Fetch all medications on component mount
+    // Fetch medications based on searchText
     useEffect(() => {
         const fetchMedications = async () => {
             try {
-                const response = await axios.get(`${apiURL}/api/elegiblemedications`);
-                setMedications(response.data);
+                if (searchText) {
+                    // Search for medications by name
+                    const response = await axios.get(`${apiURL}/api/elegiblemedications/search?name=${searchText}`);
+                    setMedications(response.data);
+                } else {
+                    // Fetch all medications if no search text is entered
+                    const response = await axios.get(`${apiURL}/api/elegiblemedications`);
+                    setMedications(response.data);
+                }
             } catch (error) {
                 console.error("Error fetching eligible medications:", error);
             }
         };
 
         fetchMedications();
-    }, []);
+    }, [searchText]); // Re-fetch when searchText changes
 
-    // Redirect function to ModifyProduct page with selected medication data
+    // Redirect to ModifyProduct page
     const handleModifyClick = (medication) => {
-        console.log("Navigating with medication:", medication); // Debug: Log medication data
-        navigate('/modifyproduct', { state: medication }); // Pass the medication data as state
+        navigate('/modifyproduct', { state: medication });
     };
 
     return (
@@ -88,7 +94,7 @@ const ManageElegibleMedication = () => {
                                                 </p>
                                                 <button
                                                     className="btn i-maem-modify-link"
-                                                    onClick={() => handleModifyClick(eligibleMedication)} // Pass medication to handler
+                                                    onClick={() => handleModifyClick(eligibleMedication)}
                                                     style={{ position: 'absolute', top: '10px', right: '10px' }}
                                                 >
                                                     <FontAwesomeIcon icon={faPencilAlt} />

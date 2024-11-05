@@ -3,6 +3,7 @@ import './RegisterPharmacy.css';
 import SideBar from '../../NavBar/SideBar';
 import gradient from '../../assets/register_pharmacy_title.png';
 import axios from 'axios';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const apiURL = import.meta.env.VITE_BACKEND_URL; // Ensure you declare apiURL here
 
