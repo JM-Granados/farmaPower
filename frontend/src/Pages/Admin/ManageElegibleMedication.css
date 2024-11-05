@@ -51,3 +51,12 @@
 .i-maem-gradient-link:hover {
     opacity: 0.8;
 }
+
+.i-maem-no-coincidences {
+    color: white;
+}
+
+/* Style for "No hay farmacias que coincidan con la búsqueda." text */
+.i-maem-no-results {
+    color: white;
+}
