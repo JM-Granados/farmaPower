@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import './SideBar.css';
 import gradient from '../assets/lightblue_yellow_gradient.png';
 import back1 from '../assets/back1.png';
-import user from '../assets/user.png';
+import userImage from '../assets/user.png';
 
 const SideBar = () => {
     const user = JSON.parse(localStorage.getItem('user'));
+    console.log("User data:", user); // Log the user data to verify
 
     let links;
 
@@ -52,9 +53,11 @@ const SideBar = () => {
             {links}
             <div className="sidebar-user-container d-flex align-items-center">
                 <div className="user_image_container">
-                    <img src={user ? user.imgUrl : 'default_user_image.png'} alt="Logo" id="user" className="img-fluid" />
+                    <img src={user && user.imgUrl ? user.imgUrl : userImage} alt="Logo" id="user" className="img-fluid" />
                 </div>
-                <div className="sidebar-user ms-2">{user ? user.name : 'Nombre usuario'}</div>
+                <div className="sidebar-user ms-2">
+                    {user && user.name ? user.name : 'Nombre usuario'}
+                </div>
             </div>
         </div>
     );

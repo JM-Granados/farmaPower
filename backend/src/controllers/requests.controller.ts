@@ -130,17 +130,67 @@ export const getRequestById: RequestHandler = async (req, res) => {
   try {
     const { id } = req.params;
     const request = await RequestModel.findById(id)
-      .populate('medication') //obtiene todo el objeto, no solo su id
+      .populate({
+        path: 'medication',
+        populate: {
+          path: 'medication', 
+          model: 'Medication', 
+        },
+      }) //obtiene todo el objeto, no solo su id
       .populate('client') // con esto evitamos realizar varias consultas 
       .populate('pharmacy');
-
-    if (!request) {
-      return res.status(404).json({ message: 'Request not found' });
-    }
 
     res.json(request);
   } catch (error) {
     console.error("Error fetching request by ID:", error);
     res.status(500).json({ message: "Error fetching request" });
+  }
+};
+
+// Obtener todas las solicitudes
+export const getAllRequests: RequestHandler = async (req, res) => {
+  try {
+    const requests = await RequestModel.find()
+      .populate({
+        path: 'medication',
+        populate: {
+          path: 'medication', 
+          model: 'Medication', 
+        },
+      })
+      .populate('client')
+      .populate('pharmacy');
+
+    res.json(requests);
+  } catch (error) {
+    console.error("Error al obtener los requests:", error); 
+    res.status(500).json({
+      message: "Error al obtener los requests",
+      error: error, 
+    });
+  }
+}
+
+// Actualizar estado
+export const updateRStatus: RequestHandler = async (req, res) => {
+  try {
+    const { id } = req.params; 
+    const { rStatus } = req.body; 
+
+    // Busca y actualiza el campo `rStatus` de la solicitud específica
+    const updatedRequest = await RequestModel.findByIdAndUpdate(
+      id,
+      { rStatus },
+      { new: true } // Para devolver el documento actualizado
+    )
+      .populate('medication')
+      .populate('client')
+      .populate('pharmacy');
+
+    // Responde con la solicitud actualizada
+    res.json(updatedRequest);
+  } catch (error) {
+    console.error("Error updating request status:", error);
+    res.status(500).json({ message: "Error updating request status" });
   }
 };

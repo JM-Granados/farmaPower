@@ -1,11 +1,14 @@
-/* eslint-disable no-unused-vars */
+
 import { useEffect, useState } from 'react';
 import gradient from '../../assets/orange-yellow-gradient.png';
-
+import axios from 'axios';
 import './View_Request.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SideBar from '../../NavBar/SideBar';
 import '../../NavBar/SideBar.css'; 
+import { useNavigate } from 'react-router-dom';
+
+const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 function ThisRequest(){
     const [date, setDate] = useState(null);
@@ -13,7 +16,13 @@ function ThisRequest(){
     const [drugstore, setDrugstore] = useState(null);
     const [med, setMed] = useState(null);
     const [medCount, setCount] = useState(null);
-    const [status, setStatus] = useState(null);
+    const [status, setStatus] = useState('Pendiente');
+    const [errorMessage, setErrorMessage] = useState(null);
+    const [successMessage, setSuccessMessage] = useState(null);
+    const navigate = useNavigate();
+
+
+    const endpoint = apiURL;
 
     useEffect(() => {
         
@@ -22,13 +31,14 @@ function ThisRequest(){
         // Llamada al backend para obtener los datos de la solicitud
         const fetchRequestData = async () => {
             try {
-                const response = await fetch(`/api/requests/request/:id${idFromUrl}`);
-                const data = await response.json();
+                const response = await axios.get(`${endpoint}/api/requests/request/${idFromUrl}`);
+                const data = response.data;
+
                 setDate(data.purchaseDate);
                 setNumber(data.invoiceNumber);
                 setDrugstore(data.pharmacy.name);
                 setCount(data.purchasedQuantity);
-                setMed(data.medication.name);
+                setMed(data.medication.medication.name);
                 setStatus(data.rStatus);
             } catch (error) {
                 console.error("Error fetching request data:", error);
@@ -36,7 +46,26 @@ function ThisRequest(){
         };
 
         fetchRequestData();
-    }, []);
+    }, [endpoint]);
+
+    const handleSave = async () => {
+        console.info(status);
+        const idFromUrl = window.location.pathname.split("/").pop();
+        try {
+            const response = await axios.put(`${endpoint}/api/requests/save/${idFromUrl}`, {
+                rStatus: status, 
+            });
+            
+            console.info("Estado actualizado:", response.data);
+            setSuccessMessage('Estado actualizado correctamente')
+
+            // Redirige al operador a la pantalla de requests después de éxito
+            navigate("/Requests");
+          } catch (error) {
+            console.error("Error al guardar el estado:", error);
+            setErrorMessage("Hubo un problema al guardar el estado."); // Mensaje de error
+          }
+    };
 
     return(
         <div className="d-flex big">
@@ -129,10 +158,12 @@ function ThisRequest(){
                         </div>
                     </div>
                     <div className='kbutton-container'>
-                        <button className="btn ksave-button" type="submit">
+                        <button className="btn ksave-button" type="button" onClick={handleSave}>
                             Guardar
                         </button>
                     </div>
+                    {errorMessage && <p className="text-danger">{errorMessage}</p>}
+                    {successMessage && <p className="text-success">{successMessage}</p>}
                 </form>
             </div>
         </div>

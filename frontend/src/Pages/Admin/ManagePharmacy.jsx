@@ -3,6 +3,7 @@ import axios from 'axios';
 import './ManagePharmacy.css';
 import SideBar from '../../NavBar/SideBar';
 import gradient from '../../assets/manage_pharmacy_title.png';
+const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 const ManagePharmacy = () => {
     const [pharmacies, setPharmacies] = useState([]);
@@ -12,7 +13,7 @@ const ManagePharmacy = () => {
         // Fetch all pharmacies on initial load
         const fetchPharmacies = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/pharmacies');
+                const response = await axios.get(`${apiURL}/api/pharmacies/get`);
                 setPharmacies(response.data);
                 console.log(response.data);
             } catch (error) {
@@ -22,27 +23,6 @@ const ManagePharmacy = () => {
 
         fetchPharmacies();
     }, []);
-
-    useEffect(() => {
-        // Fetch pharmacies based on search text whenever it changes
-        const searchPharmacies = async () => {
-            if (searchText === '') {
-                // Fetch all pharmacies if search text is cleared
-                const response = await axios.get('http://localhost:3000/api/pharmacies');
-                setPharmacies(response.data);
-            } else {
-                // Fetch pharmacies that match the search text
-                try {
-                    const response = await axios.get(`http://localhost:3000/api/pharmacies/search?searchText=${searchText}`);
-                    setPharmacies(response.data);
-                } catch (error) {
-                    console.error("Error searching pharmacies:", error);
-                }
-            }
-        };
-
-        searchPharmacies();
-    }, [searchText]); // Trigger search whenever searchText changes
 
     return (
         <div className="container-fluid i-maph-manage-pharmacies">

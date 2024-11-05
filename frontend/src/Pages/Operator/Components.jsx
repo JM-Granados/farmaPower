@@ -6,10 +6,11 @@ import './Components.css';
 Request.propTypes = {
     id: PropTypes.number.isRequired,
     date: PropTypes.string.isRequired,
-    status: PropTypes.string.isRequired
+    status: PropTypes.string.isRequired,
+    number: PropTypes.number.isRequired
 };
 
-function Request({id, date, status}){
+function Request({id, date, status, number}){
     const navigate = useNavigate();
 
     const handleClick = () => { // Maneja la acción de click
@@ -22,8 +23,8 @@ function Request({id, date, status}){
                 <div className='pill-container'>
                     <img src={pill} alt="medicamento" className="pills" />
                 </div>
-                <p className='request-card-text'>Solicitud #{id}</p>
-                <p className='request-card-text'>Fecha: {date}</p>
+                <p className='request-card-text'>Solicitud #{number+1}</p>
+                <p className='request-card-text'>Fecha: {date.split("T")[0]}</p>
                 <p className='request-card-text'>Estado: {status}</p>
             </div>
         </div>

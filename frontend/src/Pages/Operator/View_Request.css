@@ -54,10 +54,10 @@
 /* Estilo para los inputs */
 .kform-control.custom-input {
     background-color: rgba(40, 55, 115, 1); /* Color de fondo */
-    border: 1px solid rgba(40, 55, 115, 1); /* Color de borde */
+    border: 1px solid rgb(0, 15, 73); /* Color de borde */
     border-radius: 26px; /* Bordes redondeados */
     color: rgba(255, 255, 255, 1); /* Color del texto */
-    padding-top: 10px;
+    padding-top: 1rem;
     padding-bottom: 15px; /* Espaciado interno */
     font-size: 18px; /* Tamaño de la fuente */
     padding-left: 30px;
@@ -73,8 +73,8 @@
 
 .kform-control.custom-input:focus {
     background-color: rgba(40, 55, 115, 1);
-    border-color: #040b27; /* Color de borde al hacer focus */
-    box-shadow: 0 0 5px rgba(40, 144, 255, 0.5); /* Sombra en el borde */
+    border-color: #040b27 !important; /* Color de borde al hacer focus */
+    box-shadow: 0 0 5px rgba(14, 56, 102, 0.5) !important; /* Sombra en el borde */
 }
 
 .kmb-6 {
@@ -84,12 +84,13 @@
 .ksave-button{
     background: linear-gradient(to right, rgb(255, 150, 84), rgb(255, 183, 83));
     max-width: 165px;
+    min-width: 165px;
     border-radius: 16px;
-    min-height: 50px;
+    max-height: 50px;
     font-family: "League Spartan-Regular", Helvetica;
     font-size: 30px;
     font-weight: 400;
-    padding-top: 4px;
+    padding-top: 5px;
     border: none;
     color: rgba(255, 255, 255, 1) !important;
 }
@@ -105,47 +106,53 @@
     background-color: rgb(48, 165, 25) !important;
     border-color: rgb(48, 165, 25) !important;
     margin-right: 20px;
+    min-width: 40px;
     max-width: 40px;
     border-radius: 30px;
     max-height: 40px;
+    min-height: 40px;
 }
 
 .kred-button {
     background-color: rgb(177, 0, 0) !important;
     border-color: rgb(177, 0, 0) !important;
     margin-right: 20px;
-    margin-left: 40px;
+    margin-left: 4rem;
+    min-width: 40px;
     max-width: 40px;
     border-radius: 30px;
     max-height: 40px;
+    min-height: 40px;
 }
 
 .kgrey-button{
     background-color: darkgray !important;
     border-color: darkgrey !important;
+    min-width: 40px;
     max-width: 40px;
     border-radius: 30px;
     max-height: 40px;
+    min-height: 40px;
 }
 
 .kgreen-button:hover {
     background-color: rgb(67, 226, 36) !important;
-    border-color: rgb(13, 58, 4) !important;
-    border-width: 3px !important;
+    /* border-color: rgb(13, 58, 4) !important;
+    border-width: 3px !important; */
     transform: scale(1.05);
 }
 
 .kred-button:hover {
     background-color: rgb(243, 3, 3) !important;
-    border-color: rgb(58, 4, 4) !important;
-    border-width: 3px !important;
+    /* border-color: rgb(58, 4, 4) !important;
+    border-width: 3px !important; */
     transform: scale(1.05);
 }
 
 .kgrey-button:hover {
     background-color: rgb(212, 212, 212) !important;
-    border-color: rgb(88, 88, 88) !important;
-    border-width: 3px !important;
+    /* border-color: rgb(88, 88, 88) !important;
+    border-width: 3px !important; */
     transform: scale(1.05);
 }
 
