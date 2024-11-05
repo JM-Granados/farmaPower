@@ -1,6 +1,6 @@
 /* Configuraciones específicas para la barra de navegación, asegurando consistencia en todos los dispositivos. */
 .barra {
-    color: #FDFFFA; /* Texto claro para legibilidad. */
+    color: transparent; /* Texto claro para legibilidad. */
     height: auto; /* Altura fija para mantener una apariencia uniforme. */
     width: auto; /* Ancho que se adapta al contenedor para flexibilidad en diferentes tamaños de pantalla. */
 }
@@ -16,7 +16,7 @@
 }
 
 .IngresarjButton {
-    background-image: url('../assets/FondoBoton.png') no-repeat !important; /* Imagen de fondo específica para el botón Ingresar. */
+    background-image: url('../assets/FondoBoton.png') !important; /* Imagen de fondo específica para el botón Ingresar. */
     background-position: center !important; /* Centra la imagen de fondo en el botón. */
     padding: 10px 40px !important; /* Padding adicional para este botón específico. */
     color: #080F2B !important;
@@ -40,6 +40,11 @@
     margin-left: 36px; /* Separación desde el borde izquierdo para evitar amontonamiento. */
 }
 
+.espacioBoton {
+    background-color: transparent !important;
+    color:#FDFFFA !important;
+}
+
 /* Estilos básicos para el menú dropdown. */
 .navegacion {
     position: absolute;
@@ -48,6 +53,7 @@
     left: auto; /* Anula cualquier otro ajuste de posición izquierda heredado. */
     background-color: #3B4290; /* Fondo oscuro para coherencia con el estilo del NavBar. */
     border: none; /* Elimina el borde para un look más limpio y moderno. */
+    z-index: 1050; /* Un valor más alto para asegurar que esté sobre otros elementos */
 }
 
 /* Estilo para mostrar el menú dropdown. */
@@ -55,6 +61,7 @@
     margin-right: 86px; /* Margen derecho para mantener el menú alineado con los bordes del NavBar. */
     display: block; /* Hace que el menú sea visible cuando se activa. */
 }
+
 
 /* Estilos para los ítems dentro de los menús dropdown. */
 .log {
@@ -78,6 +85,22 @@
 button.cayendo:focus {
     border-color: transparent; /* Configura el color del borde como transparente, eliminando el contorno predeterminado que podría distraer. */
     box-shadow: none; /* Sin sombra para mantener la interfaz limpia y profesional. */
+}
+
+
+/* Estilos para enlaces dentro de la barra de navegación, definidos para mejorar la experiencia del usuario. */
+.espacioBoton {
+    color: #FDFFFA; /* Texto claro para destacar sobre fondos oscuros. */
+}
+
+/* Estilo para enlaces activos, haciéndolos más visibles para indicar la página actual. */
+.espacioBoton.active {
+    color: #E53F67; /* Rojo para resaltar el enlace de la página actual. */
+}
+
+/* Efecto hover para enlaces, aumentando la interactividad y la respuesta visual. */
+.espacioBoton:hover {
+    color: #E53F67; /* Cambia a rojo al pasar el mouse para indicar interactividad. */
 }
 
 /* Media query para ajustes en dispositivos con un ancho máximo de 768px */

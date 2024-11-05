@@ -6,3 +6,9 @@ Content-Type: application/json
     "email": "example@example.com",
     "password": "yourPassword123**"
 }
+
+###
+GET http://localhost:3000/api/requests/all
+
+###
+GET http://localhost:3000/api/elegiblemedications/

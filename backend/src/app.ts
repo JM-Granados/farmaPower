@@ -25,7 +25,7 @@ import cors from 'cors'
 //----------------------------------------------------------------------------------
 // Importa las rutas que se utilizarán en el proyecto
 import users from './routes/users'
-import states from './routes/states'
+// import states from './routes/states'
 import requests from './routes/requests'
 import elegibleMedications from './routes/elegiblemedications'
 import medications from './routes/medications'
@@ -56,7 +56,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //----------------------------------------------------------------------------------
 //Crea las rutas
-app.use(users)
+app.use('/api/users',users)
 app.use('/api/requests',requests)
 app.use('/api/elegiblemedications',elegibleMedications)
 app.use('/api/medications', medications)

@@ -11,7 +11,7 @@
 }
 
 .help-section {
-    margin-top: 5rem;
+    margin-top: 4rem;
     align-items: center;
     display: flex;
     justify-content: center;
@@ -44,4 +44,30 @@
     font-size: 3rem;
     font-weight: 300;
     
+}
+
+.help-paragraph {
+    font-family: "League Spartan-Regular", Helvetica;
+    color: rgba(255, 255, 255, 0.9); 
+    font-size: 1.5rem; 
+    font-weight: 300;
+    line-height: 1.6; 
+    padding: 1.5rem; 
+    text-align: justify; 
+}
+
+.help-list {
+    font-family: "League Spartan-Regular", Helvetica;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1.5;
+    padding-left: 3rem;
+    padding-right: 0.5rem; /* Añadir sangría para diferenciarlo de los párrafos */
+    margin-top: 1rem;
+    
+}
+
+.help-list li {
+    margin-bottom: 0.5rem; 
 }

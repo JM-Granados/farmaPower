@@ -40,7 +40,7 @@ const Header_Home = () => {
                 </button>
                 <div className={`navegacion dropdown-menu${isDropdownOpen ? ' show' : ''} shadow-lg`} aria-expanded={isDropdownOpen}>
                     <li>
-                        <Link to="/Login" className="log dropdown-item">Inciar sesión</Link>
+                        <Link to="/Login" className="log dropdown-item">Iniciar sesión</Link>
                     </li>
                 </div>
 
@@ -51,7 +51,7 @@ const Header_Home = () => {
                         <li className="nav-item">
                             {/* Botón para 'Ingresar', con estilos Bootstrap para botones. */}
                             <Link to="/Login" className="IngresarjButton btn btn-primary">
-                                Inciar sesión
+                                Iniciar sesión
                             </Link>
                         </li>
                         {/* Menú desplegable para opciones de usuario, mostrando un icono de usuario como indicador. */}
