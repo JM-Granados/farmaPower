@@ -62,6 +62,7 @@ app.use('/api/elegiblemedications',elegibleMedications)
 app.use('/api/medications', medications)
 app.use('/api/pharmacies', pharmacies)
 app.use('/api/programs', programs)
+app.use('/api/states', states)
 
 // Exporta la instancia de la aplicación para su uso en otros archivos, como el servidor principal.
 export default app;

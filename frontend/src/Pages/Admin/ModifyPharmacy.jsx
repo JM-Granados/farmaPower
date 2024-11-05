@@ -3,21 +3,22 @@ import './ModifyPharmacy.css';
 import SideBar from '../../NavBar/SideBar';
 import gradient from '../../assets/modify_pharmacy_title.png';
 import axios from 'axios';
+const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 const ModifyPharmacy = () => {
-    const [states, setStates] = useState([]);
+  const [states, setStates] = useState([]);
 
   useEffect(() => {
     const fetchStates = async () => {
       try {
-        const response = await axios.get('/api/states'); // Adjust the endpoint as needed
-        // Ensure the response data is an array
-        setStates(Array.isArray(response.data) ? response.data : []);
+        const response = await axios.get(`${apiURL}/api/states/get`);
+        setStates(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error("Error fetching states:", error);
-        setStates([]); // Set to an empty array on error
       }
     };
+
     fetchStates();
   }, []);
 
@@ -71,7 +72,7 @@ const ModifyPharmacy = () => {
               <select className="i-moph-form-select form-select">
                 <option value="">Seleccione una provincia</option>
                 {states.map((state) => (
-                  <option key={state._id} value={state.state}>
+                  <option key={state._id} value={state._id}>
                     {state.state}
                   </option>
                 ))}
