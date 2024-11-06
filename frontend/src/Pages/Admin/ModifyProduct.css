@@ -83,3 +83,8 @@
   background: linear-gradient(to right, #f7ff63, #ff914d 50%, #ff1a1a);
   cursor: pointer;
 }
+
+.i-mopr-name-label {
+  color: white;
+  font-size: 2rem;
+}

@@ -62,15 +62,14 @@ export const createElegibleMedication: RequestHandler = async (req, res) => {
 
 export const updateElegibleMedication: RequestHandler = async (req, res) => {
     const { id } = req.params; // Get the ID from the URL parameters
-    const { medication, points, exchangeAmount } = req.body;
+    const { points, exchangeAmount } = req.body;
 
-    // Log incoming request data for debugging
     console.log("Request Params:", req.params);
     console.log("Request Body:", req.body);
 
     // Check for required fields
-    if (!medication || points === undefined || exchangeAmount === undefined) {
-        return res.status(400).json({ message: "All fields are required" });
+    if (points === undefined || exchangeAmount === undefined) {
+        return res.status(400).json({ message: "Both points and exchange amount are required" });
     }
 
     try {
@@ -83,11 +82,10 @@ export const updateElegibleMedication: RequestHandler = async (req, res) => {
         // Attempt to update the eligible medication
         const updatedMedication = await ElegibleMedicationModel.findByIdAndUpdate(
             id,
-            { medication, points, exchangeAmount },
+            { points, exchangeAmount }, // Only update points and exchangeAmount
             { new: true } // Return the updated document
         );
 
-        // Check if the update was successful
         if (!updatedMedication) {
             return res.status(500).json({ message: "Failed to update eligible medication" });
         }
