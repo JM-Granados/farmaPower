@@ -120,7 +120,12 @@ const Users = () => {
                                                 {user.status === 'Activated' ? 'Activo' : 'No activo'}
                                             </p>
                                         </div>
-                                        <img src={userIcon} className="j-fotitoUser card-img-top mb-3 rounded-2" alt="user" />
+                                        <img
+                                            src={user.principalImage ? user.imageUrl : userIcon}
+                                            className="j-fotitoUser card-img-top mb-3 rounded-2"
+                                            alt="user"
+                                            height={404}
+                                        />
                                         <div className="card-body text-white rounded-2">
                                             <h5 className="card-title">{user.firstName} {user.firstLastName} {user.secondLastName}</h5>
                                             <p className="card-text">

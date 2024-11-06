@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './SideBar.css';
 import gradient from '../assets/lightblue_yellow_gradient.png';
 import back1 from '../assets/back1.png';
@@ -7,14 +8,15 @@ import userImage from '../assets/user.png';
 
 const SideBar = () => {
     const user = JSON.parse(localStorage.getItem('user'));
-    console.log("User data:", user); // Log the user data to verify
+
+    const navigate = useNavigate();
 
     let links;
 
     if (user && user.role === 'Client') {
         links = (
             <>
-                <Link to="/" className="sidebar-link mb-2">Inicio</Link>
+                <Link to="/Home_Client" className="sidebar-link mb-2">Inicio</Link>
                 <Link to="/MyRequests" className="sidebar-link mb-2">Mis solicitudes</Link>
                 <Link to="/NewRequest" className="sidebar-link mb-2">Nueva solicitud</Link>
                 <Link to="/MyPoints" className="sidebar-link mb-2">Mis puntos</Link>
@@ -24,17 +26,17 @@ const SideBar = () => {
     } else if (user && user.role === 'Admin') {
         links = (
             <>
-                <Link to="/" className="sidebar-link mb-2">Inicio</Link>
+                <Link to="/Home_Admin" className="sidebar-link mb-2">Inicio</Link>
                 <Link to="/ManageElegibleMedication" className="sidebar-link mb-2">Medicamentos participantes</Link>
                 <Link to="/ManagePharmacy" className="sidebar-link mb-2">Farmacias participantes</Link>
                 <Link to="/ManageProgram" className="sidebar-link mb-2">Programas</Link>
-                <Link to="/" className="sidebar-link mb-3">Usuarios</Link>
+                <Link to="/Users" className="sidebar-link mb-3">Usuarios</Link>
             </>
         );
     } else if (user && user.role === 'Operator') {
         links = (
             <>
-                <Link to="/" className="sidebar-link mb-2">Inicio</Link>
+                <Link to="/Home_Operator" className="sidebar-link mb-2">Inicio</Link>
                 <Link to="/Todas" className="sidebar-link mb-2">Todas</Link>
                 <Link to="/Pendientes" className="sidebar-link mb-2">Pendientes</Link>
                 <Link to="/Rechazadas" className="sidebar-link mb-2">Rechazadas</Link>
@@ -49,14 +51,16 @@ const SideBar = () => {
     return (
         <div className="sidebar d-flex flex-column align-items-start">
             <div className="sidebar-title mb-3">Panel de navegación</div>
-            <img className="back-1 mb-3" alt="Back" src={back1} />
+            <a href="#" onClick={(e) => { e.preventDefault(); navigate(-1); }}>
+                <img className="back-1 mb-3" alt="Back" src={back1} />
+            </a>
             {links}
             <div className="sidebar-user-container d-flex align-items-center">
                 <div className="user_image_container">
-                    <img src={user && user.imgUrl ? user.imgUrl : userImage} alt="Logo" id="user" className="img-fluid" />
+                    <img src={user && user.imageUrl ? user.imageUrl : userImage} alt="Logo" id="user" className="img-fluid" />
                 </div>
                 <div className="sidebar-user ms-2">
-                    {user? user.name : 'Nombre usuario'}
+                    {user.firstName}
                 </div>
             </div>
         </div>

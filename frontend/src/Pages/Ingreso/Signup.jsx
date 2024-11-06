@@ -6,6 +6,7 @@ import usePasswordToggle from "../../ComponentsLogin/usePasswordToggle";
 import { useNavigate } from 'react-router-dom'; // Importa useNavigate para la navegación programática.
 import './Signup.css'; // Importa los estilos específicos para la pantalla de login.
 const apiURL = import.meta.env.VITE_BACKEND_URL;
+import user_Icon from '../../assets/user.png'
 
 function Signup() {
     const [PasswordInputType, ToggleIcon] = usePasswordToggle();
@@ -76,20 +77,29 @@ function Signup() {
             return; // Detiene la ejecución si las contraseñas no coinciden
         }
 
-        console.log(photo); //C:\fakepath\Captura de pantalla 2024-08-16 120708.png
-
 
         setErrorMessage(''); // Limpia el mensaje de error
+
+        const formData = new FormData();
+        formData.append('firstName', firstName);
+        formData.append('firstLastName', firstLastName);
+        formData.append('secondLastName', secondLastName);
+        formData.append('email', email);
+        formData.append('password', password);
+
+        if (photo) {
+            formData.append('image', photo); // Añade la foto que el usuario seleccionó
+        } else {
+             // Si no hay una foto seleccionada, no agregues nada aquí y maneja el valor predeterminado en el backend
+        }
 
         const endpoint = `${apiURL}/api/users/signup`;  // URL del endpoint de signup.
 
         try {
-            const response = await axios.post(endpoint, {
-                firstName,
-                firstLastName,
-                secondLastName,
-                email,
-                password
+            const response = await axios.post(endpoint, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'  // Esta línea es importante para el correcto manejo del FormData
+                }
             });
 
             // Verifica si la respuesta del servidor indica un registro exitoso.
@@ -240,11 +250,11 @@ function Signup() {
                         {/* Input para correo electrónico con estilos específicos. */}
                         <input
                             type="file"
-                            name="Photo"
+                            name="image"
                             className="elinput file form-control bg-transparent border-0 border-bottom rounded-2 text-white"
                             id="validationEmail"
                             aria-describedby="emailHelp"
-                            onChange={(e) => setPhoto(e.target.value)}
+                            onChange={(e) => setPhoto(e.target.files[0])}
                         />
                     </div>
 

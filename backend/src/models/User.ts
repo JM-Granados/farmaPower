@@ -90,7 +90,15 @@ const userSchema = new Schema({
         type: String,
         enum: userStatuses,
         default: 'Activated'
-    }
+    },
+    imageUrl: {
+        type: String,
+        required: false,  // No es requerido para que el usuario pueda ser creado sin una imagen inicialmente.
+    },
+    principalImage: {
+        type: Boolean,
+        required: false,  // No es requerido para que el usuario pueda ser creado sin una imagen inicialmente.
+    },
 }, {
     versionKey: false,    // Desactiva la propiedad __v que Mongoose usa internamente para seguir la versión del documento.
     timestamps: true      // Habilita la creación automática de dos campos: createdAt y updatedAt en cada documento.

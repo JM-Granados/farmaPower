@@ -9,13 +9,12 @@ const apiURL = import.meta.env.VITE_BACKEND_URL;
 const Modificar_User = () => {
     const user = JSON.parse(localStorage.getItem('userToEdit'));
 
-    console.log(user);
-
     const [role, setRole] = useState(user.role || "");
     const [firstName, setFirstName] = useState(user.firstName || "");
     const [firstLastName, setFirstLastName] = useState(user.firstLastName || "");
     const [secondLastName, setSecondLastName] = useState(user.secondLastName || "");
     const [email, setEmail] = useState(user.email || "");
+    const [photo, setPhoto] = useState(user.imageUrl || "");
     const [isActive, setIsActive] = useState(user.status || "");
 
     const prepareUpdateData = () => {
@@ -25,7 +24,8 @@ const Modificar_User = () => {
             secondLastName: secondLastName,
             email: email,
             role: role,
-            status: isActive
+            status: isActive,
+            imageUrl: photo
         };
     };
 
@@ -36,6 +36,10 @@ const Modificar_User = () => {
     // Estado para manejar mensajes de error.
     const [errorMessage, setErrorMessage] = useState('');
     const [fade, setFade] = useState(false);
+
+    const handlePhotoChange = (e) => {
+        setPhoto(e.target.files[0]); // Almacena el archivo seleccionado
+    };
 
     const [selectedRole, setSelectedRole] = useState('');
 
@@ -107,8 +111,35 @@ const Modificar_User = () => {
             return;  // No hay nada que actualizar.
         }
 
+        console.log(updateData)
+
+        const formData = new FormData();
+
+        // Agregar datos de texto
+        formData.append("firstName", updateData.firstName);
+        formData.append("firstLastName", updateData.firstLastName);
+        formData.append("secondLastName", updateData.secondLastName);
+        formData.append("email", updateData.email);
+        formData.append("role", updateData.role);
+        formData.append("status", updateData.status);
+
+        // Agregar la imagen si es nueva (si se seleccionó una nueva imagen en `photo`)
+        if (typeof photo !== 'string') { // Esto asegura que no estamos enviando la URL de la imagen, sino un archivo
+            formData.append("image", updateData.imageUrl);  // 'image' debería ser el mismo nombre que tu backend espera
+        }
+
+        // Mostrar los contenidos de formData
+        for (let [key, value] of formData.entries()) {
+            console.log(key, value);
+        }
+
+
         try {
-            const response = await axios.patch(endpoint, updateData);
+            const response = await axios.patch(endpoint, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
 
             // Verifica si la respuesta del servidor indica un registro exitoso.
             if (response.data.message === "User updated successfully") {
@@ -132,6 +163,7 @@ const Modificar_User = () => {
                 <div className="col-lg-9 col-12 i-moph-div2">
                     <div className="row j-moph-div3 align-items-end">
                         <div className="col-12 div-gradient-header">
+                            <img className='j-moph-imagenUser me-5 rounded-circle' src={user.imageUrl} alt="ModificarUsuario" height={125} />
                             <img className='j-moph-imagen' src={ModificarUsuario} alt="ModificarUsuario" />
                         </div>
                     </div>
@@ -232,11 +264,25 @@ const Modificar_User = () => {
                             <input
                                 type="email"
                                 name="email"
-                                className="elinput form-control bg-transparent border-0 border-bottom rounded-0 text-white mb-3"
+                                className="elinput form-control bg-transparent border-0 border-bottom rounded-0 text-white"
                                 id="validationEmail"
                                 aria-describedby="emailHelp"
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder={user.email}
+                            />
+                        </div>
+
+                        {/* Div contenedor para el campo de correo electrónico. */}
+                        <div className="col-12">
+                            <label htmlFor="validationPhoto" className="form-label mt-3">¿Actualizar foto de perfil?</label>
+                            {/* Input para correo electrónico con estilos específicos. */}
+                            <input
+                                type="file"
+                                name="image"
+                                className="elinput file form-control bg-transparent border-0 border-bottom rounded-2 text-white mb-3"
+                                id="validationEmail"
+                                aria-describedby="emailHelp"
+                                onChange={(e) => setPhoto(e.target.files[0])}
                             />
                         </div>
 
@@ -270,6 +316,8 @@ const Modificar_User = () => {
                                 </label>
                             </div>
                         </div>
+
+
 
                         <div className="row mt-4">
                             {/* Column for the button */}

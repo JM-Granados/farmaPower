@@ -67,7 +67,7 @@ const Header_Home = () => {
                 <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <li className="nav-item dropdown">
                         <a className="espacioBoton nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src={User_icon} alt="User_icon" className="User_icon" height={50} />
+                            <img src={user.imageUrl} alt="User_icon" className="User_icon rounded-circle" height={50} />
                         </a>
                         
                         {/* Elementos del menú desplegable para acciones adicionales del usuario. */}

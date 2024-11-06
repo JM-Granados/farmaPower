@@ -26,13 +26,15 @@ const router = Router();
 // Esto generalmente incluye funciones que actúan como controladores de solicitudes HTTP para las rutas relacionadas con usuarios.
 import * as userCtrl from '../controllers/users.controller'
 
+import { upload } from '../multerConfig';
+
 // Define una ruta POST en el path '/login'. Esto maneja las solicitudes POST enviadas a 'http://dominio.com/login'.
 // 'userCtrl.loginUser' es una función controladora importada que se encarga de autenticar a un usuario.
 // La función loginUser asume responsabilidades como verificar la existencia del usuario y validar la contraseña,
 // y después devolver información del usuario si la autenticación es exitosa.
 router.post('/login', userCtrl.loginUser);
 
-router.post('/signup', userCtrl.signupUser);
+router.post('/signup', upload.single('image'), userCtrl.signupUser);
 
 router.post('/passRecovery', userCtrl.passRecovery);
 
@@ -40,7 +42,7 @@ router.get('/getUsers', userCtrl.getAllUsers);
 
 router.get('/getUsersSearched', userCtrl.getUsersSearched);
 
-router.patch('/modifyUser', userCtrl.modifyUser);
+router.patch('/modifyUser', upload.single('image'), userCtrl.modifyUser);
 
 // Exporta el objeto 'router'. Esto permite que las rutas definidas en este archivo sean usadas en otras partes de la aplicación Express,
 // típicamente mediante el uso de app.use() en el archivo principal de la aplicación.
