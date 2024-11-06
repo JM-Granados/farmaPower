@@ -15,8 +15,9 @@ const MyRequests = () => {
     useEffect(() => {
         const fetchRequests = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/requests/671ea377b5f8eab5660a0011');
+                const response = await axios.get('http://localhost:3000/api/requests/x/671f4fb9159e507ef744c97d');
                 setRequests(response.data);
+                console.log(response.data);
                 setFilteredRequests(response.data);
             } catch (error) {
                 console.error("Error fetching requests:", error);
@@ -53,17 +54,17 @@ const MyRequests = () => {
 
                 {/* Segundo pedazo
                 Este pedazo se divide en 3. Esta el titulo, el filtro y las solicitudes */}
-                <div className="col div2">
+                <div className="col mrdiv2">
                     {/* Pedazo del titulo */}
-                    <div className="row div3">
-                        <div className="div-gradient-header d-flex justify-content-start align-items-end" style={{ height: '100%' }}>
-                            <img className='imagen' src={gradient} alt="Logo" id="gradient" />
+                    <div className="row mrdiv3">
+                        <div className="mrdiv-gradient-header d-flex justify-content-start align-items-end" style={{ height: '100%' }}>
+                            <img className='mrimagen' src={gradient} alt="Logo" id="gradient" />
                         </div>
                     </div>
 
                     {/* Pedazo del filtro - Sacado de bootstrap */}
-                    <div className="row div4">
-                        <div className="estado btn-group" role="group">
+                    <div className="row mrdiv4">
+                        <div className="mrestado btn-group" role="group">
                             <button type="button" className="mbtn" onClick={() => handleFilter('Aprobada')}>Aprobadas</button>
                             <button type="button" className="mbtn" onClick={() => handleFilter('Pendiente')}>Pendientes</button>
                             <button type="button" className="mbtn" onClick={() => handleFilter('Rechazada')}>Rechazadas</button>
@@ -72,10 +73,10 @@ const MyRequests = () => {
                     </div>
 
                     {/* Pedazo de las solicitudes */}
-                    <div className="row div5 overflow-auto">
+                    <div className="row mrdiv5 overflow-auto">
                         {filteredRequests.map((request, index) => (
                             // Cada tarjeta es un cuadrado
-                            <div className="cuadrado" key={request._id}>
+                            <div className="mrcuadrado" key={request._id}>
                                 {/* Se divide en 2, la imagen y el texto. En el CSS  esta la configuraicion */}
                                 {/* Imagen */}
                                 <div className="row1">
@@ -86,8 +87,8 @@ const MyRequests = () => {
 
                                 {/* Texto */}
                                 <div className="row2">
-                                    <div className="col1">
-                                        <p>Solicitud #{index + 1} <br />Estado: {request.rStatus}</p>
+                                    <div className="col2">
+                                        <p> <br /> Solicitud #{index + 1} <br />Estado: {request.rStatus} <br />Medicamento: {request.medication.medication.name} <br />Puntos: {request.medication.points}</p>
                                     </div>
                                 </div>
                             </div>

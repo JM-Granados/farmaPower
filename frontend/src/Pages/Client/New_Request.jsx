@@ -8,6 +8,10 @@ import folder from '../../assets/folder.png';
 import upload from '../../assets/upload.png';
 import Search from '../../assets/search.png';
 
+const reader = new FileReader();
+
+const apiURL = import.meta.env.VITE_BACKEND_URL;
+
 const NewRequest = () => {
   // Definir el estado para cada campo
   const [purchaseDate, setPurchaseDate] = useState('');
@@ -16,7 +20,10 @@ const NewRequest = () => {
   const [pharmacies, setPharmacies] = useState([]);
   const [purchasedQuantity, setPurchasedQuantity] = useState('');
   const [searchText, setSearchText] = useState('');
-
+  const [medicines, setMedicines] = useState('');
+  const [medication, setSelectedMedicineId] = useState(null);
+  const [client, setClient] = useState(null);
+  const [invoiceImage, setinvoiceImage] = useState(null);
 
 
   useEffect(() => {
@@ -38,31 +45,55 @@ const NewRequest = () => {
 
     try {
       if (searchText == "") {
-        const response = await axios.get(`${apiURL}/api/users/getUsers`);
-        console.log(response.data)
-        setUsers(response.data);
+        const response = await axios.get(`http://localhost:3000/api/elegiblemedications`);
+
+        setMedicines(response.data);
       } else {
-        const response = await axios.get(`${apiURL}/api/users/getUsersSearched?search=${searchText}`);
-        setUsers(response.data);
+        const response = await axios.get(`http://localhost:3000/api/elegiblemedications/getMedicineSearched?search=${searchText}`);
+        setMedicines(response.data);
+        console.log(response.data)
       }
     } catch (error) {
-      console.error("Error searching users:", error);
+      console.error("Error searching medications:", error);
     }
   };
 
-
+  const handleMedicineClick = (medicineId) => {
+    // Al hacer clic en el nombre del medicamento, actualizamos el estado con su ID
+    setSelectedMedicineId(medicineId);
+    console.log("Medicamento seleccionado con ID:", medicineId); // Imprimir ID seleccionado para depuración
+  };
 
   // Manejar el envío del formulario
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Crear un objeto con los datos del formulario
     const formData = {
       purchaseDate,
       invoiceNumber,
-      pharmacy,
+      medication,
+      client: '671f4fb9159e507ef744c97d', // Puedes agregar el ID del cliente aquí
       purchasedQuantity,
+      invoiceImage, // Si es necesario, puedes enviar el archivo como base64 o por separado
+      pharmacy,
     };
+
     console.log('Datos enviados:', formData);
-    // Aquí puedes hacer la lógica para enviar los datos a un servidor
+
+    // Enviar los datos al backend con axios
+    try {
+      const response = await axios.post('http://localhost:3000/api/requests/', formData, {
+        headers: {
+          'Content-Type': 'application/json', // Asegúrate de enviar el tipo de contenido correcto
+        },
+      });
+
+      // Manejar la respuesta si la solicitud es exitosa
+      console.log('Respuesta del servidor:', response.data);
+    } catch (error) {
+      console.error("Error al enviar los datos:", error);
+    }
   };
 
   return (
@@ -79,7 +110,7 @@ const NewRequest = () => {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="row nrdiv5">
+          <form onSubmit={handleSubmit} className="row nrdiv5 overflow-auto">
             <div className="col rndiv6 input-group-column">
               <div className="row mt-4 align-items-center">
                 <div className="col-md-4">
@@ -138,14 +169,32 @@ const NewRequest = () => {
                   <input
                     type="text"
                     className="j-maem-form-control form-control"
-                    placeholder="Buscar usuario"
+                    placeholder="Busque su producto"
                     onChange={(e) => setSearchText(e.target.value)}
                   />
                   <button className="search-icon-btn" onClick={handleSearch}>
                     <img src={Search} alt="Buscar" />
                   </button>
                 </div>
+              </div>
 
+              <div className="row mt-4">
+                {medicines.length > 0 && (
+                  <div className="col-10 overflow-auto nrresult">
+                    <ul>
+                      {medicines.map((med, index) => (
+                        <li key={index}>
+                          <p
+                            className="selectable-medicine"
+                            onClick={() => setSelectedMedicineId(med._id)} // Al hacer clic en el nombre del medicamento, lo seleccionamos
+                          >
+                            {med.medication.name} - {med.points} puntos
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
 
 
@@ -166,24 +215,25 @@ const NewRequest = () => {
 
             <div className="col-3 rndiv8">
               <div className="col-3 rndiv7">
-                <div className="div-upload d-flex justify-content-center align-items-end">
+                <div className="div-upload d-flex flex-column justify-content-center align-items-center">
                   <img
                     className='imagen-upload'
                     src={folder}
                     alt="Upload icon"
                     onClick={() => document.getElementById('file-upload').click()}
-                    style={{ cursor: 'pointer' }}
+                    style={{ cursor: 'pointer', maxWidth: '1000px' }}
                   />
                   <input
                     id="file-upload"
                     type="file"
                     style={{ display: 'none' }}
-                    onChange={(e) => console.log(e.target.files[0])} // Aquí manejas el archivo seleccionado
+                    onChange={(e) => setinvoiceImage(e.target.files[0].name)}
                   />
+                  <p>{invoiceImage}</p> {/* El texto que se muestra debajo de la imagen */}
                 </div>
 
               </div>
-              <div className="div-upload d-flex justify-content-center align-items-end">
+              <div className="div-upload d-flex justify-content-center align-items-center">
                 <img
                   className="imagen-upload"
                   src={upload}
@@ -191,6 +241,7 @@ const NewRequest = () => {
                   onClick={handleSubmit}
                   style={{ cursor: 'pointer' }}
                 />
+
               </div>
 
 

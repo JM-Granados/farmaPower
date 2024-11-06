@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './My_Points.css';
 import SideBar from '../../NavBar/SideBar';
-import gradient from '../../assets/g.png';
+import gradient from '../../assets/my_points.png';
 import pill from '../../assets/drugs1.png';
 
 const MyPoints = () => {
@@ -11,7 +11,7 @@ const MyPoints = () => {
     useEffect(() => {
         const fetchRequests = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/requests/totalPointsByMedication/671ea377b5f8eab5660a0011');
+                const response = await axios.get('http://localhost:3000/api/requests/p/totalPointsByMedication/671f4fb9159e507ef744c97d');
                 setRequests(response.data);
                 setFilteredRequests(response.data);
             } catch (error) {
@@ -32,37 +32,45 @@ const MyPoints = () => {
                     <SideBar />
                 </div>
 
-                {/* Segundo pedazo
-                Este pedazo se divide en 3. Esta el titulo, el filtro y las solicitudes */}
-                <div className="col div2">
-                    {/* Pedazo del titulo */}
-                    <div className="row div3">
-                        <div className="div-gradient-header d-flex justify-content-start align-items-end" style={{ height: '100%' }}>
-                            <img className='imagen' src={gradient} alt="Logo" id="gradient" />
+                <div className="col mpdiv2">
+                    <div className="row mpdiv3">
+                        <div className="mpdiv-gradient-header d-flex justify-content-start align-items-end" style={{ height: '100%' }}>
+                            <img className='mpimagen' src={gradient} alt="Logo" id="gradient" />
                         </div>
                     </div>
-                    <div className="row div5 overflow-auto">
-                        {requests.map((request, index) => (
-                            // Cada tarjeta es un cuadrado
-                            <div className="cuadrado" key={request._id}>
-                                {/* Se divide en 2, la imagen y el texto. En el CSS  esta la configuraicion */}
-                                {/* Imagen */}
-                                <div className="row1">
-                                    <div className="col1">
-                                        <img src={pill} className="mcard-img-top" alt="..." />
-                                    </div>
+                    <div className="row mpdiv5 overflow-auto">
+                        {requests.map((request) => (
+                            <div className="mpcuadrado" key={request.medicationId}>
+                                {/* Medication Header */}
+                                <div className="mpcol2">
+                                    <h4>{request.medicationName}</h4>
                                 </div>
 
-                                {/* Texto */}
+                                {/* Points Info */}
+                                <div className="mpcol1">
+                                    <p><br /> Puntos por solicitud: {request.originalPoints}</p>
+                                    <p>Puntos actuales: {request.totalPoints}</p>
+                                    <p>Puntos faltantes: {(request.originalPoints * request.exchangeAmount) - request.totalPoints}</p>
+                                </div>
+
+                                {/* Progress Bar */}
                                 <div className="row2">
-                                    <div className="col1">
-                                        <p>Nombre: {request.name}
-                                            <br /> {request.pharmacies}</p>
+                                    <div className="progress-bar-container">
+                                        <div
+                                            className="progress-bar"
+                                            style={{
+                                                width: `${(request.totalPoints / (request.originalPoints * request.exchangeAmount)) * 100}%`
+                                            }}
+                                        >
+                                            <span>{Math.round((request.totalPoints / (request.originalPoints * request.exchangeAmount)) * 100)}%</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         ))}
                     </div>
+
+
 
                 </div>
             </div>

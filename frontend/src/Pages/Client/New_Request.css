@@ -51,15 +51,10 @@
 
 .form-control {
     background-color: #141E46;
-    ;
-    /* Cambia este color a tu preferencia */
     color: white;
-    /* Color del texto */
     border: 1px solid #141E46;
-    ;
-    /* Borde del input */
     border-radius: 20px;
-    /* Opcional: da forma redondeada al borde */
+    height: 50px;
 }
 
 .rndiv8 {
@@ -77,45 +72,37 @@
     background-color: #141E46;
     border-radius: 20px;
     display: flex;
-    justify-content: left;
-    align-items: left;
+    flex-direction: column;  
+    justify-content: center; 
+    align-items: center;     
+    height: 100%;   
 }
-
+  
+.div-upload {
+    color:rgba(8, 15, 43, 1);
+    font-size: 26px;
+    margin: 10px 0; 
+    width: 50%;
+  }
+  
 .imagen-folder {
     width: 150px;
     height: 150px;
-
-
-}
-
-.div-upload {
-    margin-top: 160%;
 }
 
 .input-group-column {
     display: flex;
     flex-direction: column;
     gap: 5%;
-    /* Espacio entre los elementos */
+    
 }
 
 input[type="date"] {
     color: #333;
-    /* Cambia el color del texto */
     background-color: #f3f3f3;
-    /* Color de fondo */
     padding: 8px;
     border-radius: 4px;
 }
-
-.form-select,
-.dropdown-toggle {
-    background-color: #f3f3f3;
-    color: #333;
-    border-radius: 4px;
-    padding: 8px;
-}
-
 
 
 .nrdiv-gradient-header {
@@ -134,14 +121,14 @@ input[type="date"] {
 
 .j-maem-form-control {
     background-color: #141E46;
-    /* Initial background color */
     color: white;
-    /* Text color */
     border: 1px solid rgba(104, 104, 104, 0.2);
-    /* Light border */
 }
 
-
+.j-buscador button {
+    margin-left: 10px; /* Ajusta el espacio entre el input y el botón */
+  }
+  
 
 .search-icon-btn {
     position: absolute;
@@ -153,4 +140,13 @@ input[type="date"] {
     outline: none;
     cursor: pointer;
     margin-right: 15px;
+}
+
+.nrresult{
+    font-size: 20px;
+    background-color: #141E46;
+    border-radius: 20px;
+    display: flex;
+    justify-content: left;
+    align-items: left;
 }
