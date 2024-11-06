@@ -48,9 +48,11 @@ app.set('port', config.MONGO_PORT);
 // Utiliza morgan para saber explícitamente las url que se visitan
 app.use(morgan('dev'));
 // Utiliza cors para decirle que cualquier servidor del frontend pude pedir cosas
-app.use(cors({
-    origin: process.env.FRONTEND_URL
-}));
+// app.use(cors({
+//     origin: process.env.FRONTEND_URL
+// }));
+app.use(cors()); //documentar esto cuando termine pruebas locales
+
 // Utilizada para que se puedan entender las peticiones json como los post que vienen con datos
 app.use(express.json());
 // Para entender los post

@@ -60,3 +60,67 @@
 .i-mapr-no-results {
     color: white;
 }
+
+.program-card {
+    min-width: 7rem; /* Ancho máximo de la tarjeta */
+    max-width: 24rem;
+    height: 28.5rem; 
+    margin: 0.5rem; /* Añade un margen para separación */
+    border-radius: 0.7rem; /* Bordes redondeados */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Añade una sombra */
+    overflow: hidden; /* Asegura que el contenido no desborde */
+    background-color: #111A3D;
+}
+
+.program-card:hover {
+    transform: scale(1.05);
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+}
+
+.p-card-body {
+    background-color: rgba(20, 30, 70, 1);
+    gap: 0.5rem;
+    padding-left: 0.9rem;
+    border-radius: 0.7rem; 
+    padding-top: 0.8rem;
+    padding-bottom: 0.1rem;
+
+}
+
+.p-card-title {
+    font-size:1.5rem;
+    color: rgba(255, 255, 255, 1);
+}
+
+.p-card-text {
+    font-family: "League Spartan-Regular", Helvetica;
+    font-size: 15px;
+    font-weight: 400;
+    border-radius: 0.5rem;
+    color: rgba(255, 255, 255, 1);
+}
+
+.lists-container {
+    background-color: rgba(20, 30, 70, 1);
+    height: 12rem;
+    max-width: 19rem;
+    justify-items: center;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    border-radius: 0.7rem; 
+}
+
+.lists {
+    max-width: 140px;
+    height: auto; 
+    display: block;
+}
+
+.k-edit-icon {
+    position: absolute;
+    top: 0.5rem; /* Ajusta este valor según sea necesario para el margen superior */
+    right: 0.5rem; /* Asegura que el icono esté 10px alejado del borde derecho del contenedor de la tarjeta */
+    width: 35px; /* Establece el ancho, o puedes removerlo si ya lo defines en el atributo width del elemento img */
+    height: 35px; /* Establece la altura, o puedes removerlo si ya lo defines en el atributo height del elemento img */
+    cursor: pointer; /* Opcional, para hacer el cursor como una mano cuando se pasa sobre el icono */
+}

@@ -19,10 +19,10 @@ function Request({id, date, status, number}){
 
     return(
         <div className="request-card" onClick={handleClick}>
-            <div className="card-body">
-                <div className='pill-container'>
-                    <img src={pill} alt="medicamento" className="pills" />
-                </div>
+            <div className='pill-container'>
+                <img src={pill} alt="medicamento" className="pills" />
+            </div>
+            <div className="request-card-body">
                 <p className='request-card-text'>Solicitud #{number+1}</p>
                 <p className='request-card-text'>Fecha: {date.split("T")[0]}</p>
                 <p className='request-card-text'>Estado: {status}</p>
