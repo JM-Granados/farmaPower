@@ -6,6 +6,7 @@ import '../../NavBar/SideBar.css';
 import gradient from '../../assets/new_request.png';
 import folder from '../../assets/folder.png';
 import upload from '../../assets/upload.png';
+import Search from '../../assets/search.png';
 
 const NewRequest = () => {
   // Definir el estado para cada campo
@@ -14,6 +15,8 @@ const NewRequest = () => {
   const [pharmacy, setPharmacy] = useState('');
   const [pharmacies, setPharmacies] = useState([]);
   const [purchasedQuantity, setPurchasedQuantity] = useState('');
+  const [searchText, setSearchText] = useState('');
+
 
 
   useEffect(() => {
@@ -28,6 +31,24 @@ const NewRequest = () => {
 
     fetchPharmacies();
   }, []);
+
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+
+    try {
+      if (searchText == "") {
+        const response = await axios.get(`${apiURL}/api/users/getUsers`);
+        console.log(response.data)
+        setUsers(response.data);
+      } else {
+        const response = await axios.get(`${apiURL}/api/users/getUsersSearched?search=${searchText}`);
+        setUsers(response.data);
+      }
+    } catch (error) {
+      console.error("Error searching users:", error);
+    }
+  };
 
 
 
@@ -98,7 +119,7 @@ const NewRequest = () => {
                     value={pharmacy}
                     onChange={(e) => setPharmacy(e.target.value)}
                   >
-                    <option value="">Selecciona una opción</option> 
+                    <option value="">Selecciona una opción</option>
                     {pharmacies.map((pharmacy) => (
                       <option key={pharmacy._id} value={pharmacy._id}>
                         {pharmacy.name}
@@ -108,6 +129,25 @@ const NewRequest = () => {
                 </div>
 
               </div>
+
+              <div className="row mt-4 align-items-center">
+                <div className="col-md-4">
+                  <p className="form-label text-white">Busque su producto</p>
+                </div>
+                <div className="j-buscador col-md-5 position-relative">
+                  <input
+                    type="text"
+                    className="j-maem-form-control form-control"
+                    placeholder="Buscar usuario"
+                    onChange={(e) => setSearchText(e.target.value)}
+                  />
+                  <button className="search-icon-btn" onClick={handleSearch}>
+                    <img src={Search} alt="Buscar" />
+                  </button>
+                </div>
+
+              </div>
+
 
               <div className="row mt-4 align-items-center">
                 <div className="col-md-4">
