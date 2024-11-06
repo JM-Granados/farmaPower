@@ -7,20 +7,22 @@
 .pill-container{
     background-color: rgba(20, 30, 70, 1);
     height: 12rem;
-    width: 19rem;
+    max-width: 19rem;
     justify-items: center;
     padding: 2rem;
     margin-bottom: 2rem;
+    border-radius: 0.7rem;
+    margin: 1rem;
 }
 
 .request-card {
-    min-width: 10rem; /* Ancho máximo de la tarjeta */
+    min-width: 18rem; /* Ancho mínimo de la tarjeta */
     height: 24rem; 
     margin: 0.5rem; /* Añade un margen para separación */
     border-radius: 0.5rem; /* Bordes redondeados */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Añade una sombra */
     overflow: hidden; /* Asegura que el contenido no desborde */
-    background-color: rgba(20, 30, 70, 1);
+    background-color: #111A3D;
     cursor: pointer;
 }
 
@@ -44,7 +46,12 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.card-body{
+.request-card-body{
     background-color: rgba(20, 30, 70, 1);
     gap: 0.5rem;
+    padding-left: 0.5rem;
+    border-radius: 0.7rem; 
+    padding-top: 0.8rem;
+    padding-bottom: 0.1rem;
+    margin: 1rem;
 }

@@ -51,6 +51,8 @@ app.use(morgan('dev'));
 app.use(cors({
     origin: process.env.FRONTEND_URL
 }));
+// app.use(cors()); //documentar esto cuando termine pruebas locales
+
 // Utilizada para que se puedan entender las peticiones json como los post que vienen con datos
 app.use(express.json());
 // Para entender los post
