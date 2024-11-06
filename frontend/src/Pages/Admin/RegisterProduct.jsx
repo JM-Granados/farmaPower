@@ -9,6 +9,7 @@ const apiURL = import.meta.env.VITE_BACKEND_URL;
 const RegisterProduct = () => {
   const [searchText, setSearchText] = useState('');
   const [pharmacies, setPharmacies] = useState([]);
+  const [type, setType] = useState('points');
   const [medications, setMedications] = useState([]);
   const [selectedMedicationId, setSelectedMedicationId] = useState(null); // Track selected medication
   const [points, setPoints] = useState('');
@@ -38,25 +39,26 @@ const RegisterProduct = () => {
   };
 
   const handleCreate = async () => {
-    if (!selectedMedicationId || !points || !exchangeAmount) {
-      alert("Please select a medication and fill in both points and exchange amount.");
-      return;
+    if (!selectedMedicationId || !type || !exchangeAmount || (type === 'points' && !points)) {
+        alert("Please select a medication, type, and fill in the required fields.");
+        return;
     }
 
     try {
-      const payload = {
-        medication: selectedMedicationId,
-        points: Number(points),
-        exchangeAmount: Number(exchangeAmount),
-      };
-      
-      await axios.post(`${apiURL}/api/elegiblemedications/create`, payload);
-      alert("Eligible medication registered successfully!");
+        const payload = {
+            medication: selectedMedicationId,
+            type,
+            points: type === 'points' ? Number(points) : undefined,
+            exchangeAmount: Number(exchangeAmount),
+        };
+
+        await axios.post(`${apiURL}/api/elegiblemedications/create`, payload);
+        alert("Eligible medication registered successfully!");
     } catch (error) {
-      console.error("Error creating eligible medication:", error);
-      alert("There was an error registering the eligible medication.");
+        console.error("Error creating eligible medication:", error);
+        alert("There was an error registering the eligible medication.");
     }
-  };
+};
 
   return (
     <div className="container-fluid i-repr-register-product">

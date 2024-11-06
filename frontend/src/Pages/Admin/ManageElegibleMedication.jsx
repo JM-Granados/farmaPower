@@ -89,7 +89,15 @@ const ManageElegibleMedication = () => {
                                                 <p className="card-text i-maem-card-text">
                                                     <strong>Tipo:</strong> {eligibleMedication.medication?.type?.typeMedication || 'Tipo no disponible'} <br />
                                                     <strong>Cantidad:</strong> {eligibleMedication.medication?.amount || 'Cantidad no disponible'} <br />
-                                                    <strong>Puntos:</strong> {eligibleMedication.points} <br />
+                                                    {(eligibleMedication.type === 'points') ? (
+                                                        <>
+                                                            <strong>Puntos:</strong> {eligibleMedication.points} <br />
+                                                        </>
+                                                    ) : (eligibleMedication.type === 'percentage') ? (
+                                                        <>
+                                                            <strong>Porcentaje:</strong> {eligibleMedication.percentage} <br />
+                                                        </>
+                                                    ) : null}
                                                     <strong>Cantidad de Intercambio:</strong> {eligibleMedication.exchangeAmount}
                                                 </p>
                                                 <button

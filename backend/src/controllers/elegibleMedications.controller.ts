@@ -1,6 +1,7 @@
 import { RequestHandler } from 'express';
 import { Request, Response } from 'express';
 import ElegibleMedicationModel from '../models/ElegibleMedication';
+import { ElegibleMedicationFactory } from '../factories/ElegibleMedicationFactory';
 import mongoose from "mongoose";
 
 export const getElegibleMedications: RequestHandler = async (req, res) => {
@@ -34,17 +35,27 @@ export const searchElegibleMedications: RequestHandler = async (req, res) => {
 
 // Create a new eligible medication
 export const createElegibleMedication: RequestHandler = async (req, res) => {
-    const { medication, points, exchangeAmount } = req.body;
+    const { medication, type, points, exchangeAmount } = req.body;
 
-    if (!medication || !points || !exchangeAmount) {
+    if (!medication || !type || !exchangeAmount || (type === 'points' && !points)) {
         return res.status(400).json({ message: "All fields are required" });
     }
 
     try {
-        const newMedication = new ElegibleMedicationModel({ medication, points, exchangeAmount });
+        // Create eligible medication instance using the factory
+        const elegibleMedicationInstance = ElegibleMedicationFactory.createElegibleMedication(type, {
+            medication,
+            points,
+            exchangeAmount,
+        });
+
+        // Use the instance details to create a new MongoDB document
+        const newMedication = new ElegibleMedicationModel(elegibleMedicationInstance.getDetails());
         const savedMedication = await newMedication.save();
+        
         res.status(201).json(savedMedication);
     } catch (error) {
+        console.error("Error creating eligible medication:", error);
         res.status(500).json({ message: "Error creating eligible medication", error });
     }
 };
