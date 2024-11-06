@@ -162,8 +162,6 @@ export const getUsersSearched: RequestHandler = async (req, res) => {
 export const modifyUser: RequestHandler = async (req, res) => {
     const { firstName, firstLastName, secondLastName, email, role, status } = req.body;
 
-    console.log(email);
-
     try {
         const user = await User.findOne({ email: email });
 

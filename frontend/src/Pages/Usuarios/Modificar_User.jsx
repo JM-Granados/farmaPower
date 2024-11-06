@@ -106,8 +106,6 @@ const Modificar_User = () => {
             setErrorMessage("No hay cambios para actualizar.");
             return;  // No hay nada que actualizar.
         }
-        console.log("hola")
-        console.log(updateData)
 
         try {
             const response = await axios.patch(endpoint, updateData);

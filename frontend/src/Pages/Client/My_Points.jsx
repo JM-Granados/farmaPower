@@ -14,7 +14,7 @@ const MyPoints = () => {
     useEffect(() => {
         const fetchRequests = async () => {
             try {
-                const response = await axios.get(`${apiURL}/api/requests/q/totalPointsByMedication/:${user._id}`);
+                const response = await axios.get(`${apiURL}/api/requests/totalPointsByMedication/:${user._id}`);
                 setRequests(response.data);
                 setFilteredRequests(response.data);
             } catch (error) {

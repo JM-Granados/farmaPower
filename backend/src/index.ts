@@ -20,6 +20,8 @@ import dotenv from 'dotenv';
 // Carga las variables de entorno desde el archivo `.env` al proceso actual.
 dotenv.config();
 
+import config from './config';
+
 // Importa la configuración de la aplicación Express desde el archivo `app`.
 import app from './app';
 // Importa la configuración inicial de la base de datos.
@@ -29,7 +31,7 @@ import './database'
 app.get('/', (req, res) => res.send('Hello World with TypeScript! :D'));
 
 // Inicia el servidor para escuchar en el puerto especificado en las variables de entorno.
-app.listen(app.get('port'), () => {
+app.listen(config.MONGO_PORT, () => {
   // Imprime un mensaje en la consola indicando en qué puerto está corriendo el servidor.
   console.log(`Server is running at`, app.get('port'));
 });

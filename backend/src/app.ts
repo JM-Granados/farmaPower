@@ -44,7 +44,7 @@ const app = express();
 //CONFIG
 // Establece el puerto de la aplicación basado en la variable de entorno PORT.
 // Si no se especifica un puerto en las variables de entorno, usar el puerto por defecto de Express.
-app.set('port', config.MONGO_PORT || 3000);
+app.set('port', config.MONGO_PORT);
 // Utiliza morgan para saber explícitamente las url que se visitan
 app.use(morgan('dev'));
 // Utiliza cors para decirle que cualquier servidor del frontend pude pedir cosas
