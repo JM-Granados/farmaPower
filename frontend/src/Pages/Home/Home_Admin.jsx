@@ -32,7 +32,7 @@ function Home_Guest() {
                         <a className="barritita nav-link text-white" href="/ManageProgram">Programas</a>
                     </li>
                     <li className="barrota nav-item">
-                        <a className="barritita nav-link text-white" href="/">Usuarios</a>
+                        <a className="barritita nav-link text-white" href="/Users">Usuarios</a>
                     </li>
                 </ul>
             </div>

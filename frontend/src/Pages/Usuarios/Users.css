@@ -1,0 +1,108 @@
+.j-maem-manage-elegible-medications {
+    background-color: rgba(8, 15, 43, 1);
+    min-height: 100vh;
+    padding-bottom: 20px;
+}
+
+.j-maem-principal {
+    min-height: 100vh;
+}
+
+.j-maem-div2 {
+    background-color: rgba(8, 15, 43, 1);
+    padding: 20px;
+}
+
+.j-maem-div3 {
+    padding: 20px;
+    background-color: rgba(8, 15, 43, 1);
+}
+
+.j-maem-imagen {
+    max-width: 100%;
+    height: auto;
+}
+
+.j-maem-form-control {
+    background-color: rgb(27, 43, 107); /* Initial background color */
+    color: white; /* Text color */
+    border: 1px solid rgba(104, 104, 104, 0.2); /* Light border */
+}
+
+.j-maem-form-control:focus {
+    background-color: rgba(15, 25, 55, 1);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: none;
+}
+
+.j-maem-form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.j-maem-gradient-link {
+    background: linear-gradient(90deg, #0cc0df, #ffde59); /* Adjust colors as desired */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Makes text transparent to show gradient */
+    font-weight: bold;
+    text-decoration: none; /* Removes underline */
+}
+
+.j-maem-gradient-link:hover {
+    opacity: 0.8;
+}
+
+.j-maem-no-coincidences {
+    color: white;
+}
+
+/* Style for "No hay farmacias que coincidan con la búsqueda." text */
+.j-maem-no-results {
+    color: white;
+}
+
+.j-cartaUsers {
+    background-color: #111a3c;
+}
+
+.j-fotitoUser {
+    background-color: #141e46;
+}
+
+.j-maem-card-container {
+    overflow-y: auto; /* Habilita el desplazamiento vertical si es necesario */
+    max-height: 650px; /* Puedes ajustar esta altura según tus necesidades o la altura disponible en la pantalla */
+}
+
+.edit-icon {
+    position: absolute;
+    top: 20px; /* Ajusta este valor según sea necesario para el margen superior */
+    right: 20px; /* Asegura que el icono esté 10px alejado del borde derecho del contenedor de la tarjeta */
+    width: 35px; /* Establece el ancho, o puedes removerlo si ya lo defines en el atributo width del elemento img */
+    height: 35px; /* Establece la altura, o puedes removerlo si ya lo defines en el atributo height del elemento img */
+    cursor: pointer; /* Opcional, para hacer el cursor como una mano cuando se pasa sobre el icono */
+}
+
+.j-buscador {
+    position: relative;
+}
+
+.j-maem-form-control {
+    padding-right: 40px; /* Asegúrate de que el texto no se solape con la imagen de la lupa */
+}
+
+.search-icon-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border: none;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.search-icon-btn img {
+    height: 80%;
+}

@@ -1,0 +1,104 @@
+.elinput::placeholder {
+    /* Selector más específico */
+    color: lightgray;
+    /* Cambia esto por cualquier color que prefieras */
+    opacity: 1;
+    /* Esto asegura que el color se aplique plenamente */
+}
+
+/* Si el color aún no se aplica, puedes aumentar la especificidad */
+input.elinput::placeholder {
+    color: lightgray;
+    opacity: 1;
+}
+
+.j-moph-modify-pharmacy {
+    background-color: rgba(8, 15, 43, 1);
+    min-height: 100vh;
+    padding-bottom: 20px;
+}
+
+.j-moph-principal {
+    min-height: 100vh;
+}
+
+.j-moph-div2 {
+    background-color: rgba(8, 15, 43, 1);
+    padding: 20px;
+}
+
+.j-moph-div3 {
+    padding: 20px;
+    background-color: rgba(8, 15, 43, 1);
+}
+
+.j-moph-imagen {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Search bar styling */
+.j-moph-form-control {
+    background-color: rgb(27, 43, 107);
+    /* Initial background color */
+    color: white;
+    /* Text color */
+    border: 1px solid rgba(104, 104, 104, 0.2);
+    /* Light border */
+}
+
+.j-moph-form-control:focus {
+    background-color: rgba(15, 25, 55, 1);
+    /* Lighter shade of blue on focus */
+    color: white;
+    /* Text color */
+    border-color: rgba(255, 255, 255, 0.4);
+    /* Lighter border on focus */
+    box-shadow: none;
+    /* Remove default box-shadow */
+}
+
+.j-moph-form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    /* White placeholder text with opacity */
+}
+
+.j-moph-form-select {
+    background-color: rgba(8, 15, 43, 1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+}
+
+.j-moph-form-select:focus {
+    background-color: rgba(15, 25, 55, 1);
+    /* Slightly lighter blue on focus */
+    color: white;
+    /* White text color */
+    border-color: rgba(255, 255, 255, 0.4);
+    /* Lighter border on focus */
+    box-shadow: none;
+    /* Remove default box-shadow */
+}
+
+.j-moph-modify-pharmacy-button {
+    padding: 10px;
+    font-size: 20px;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(to right, #0cc0df, #cb6ce6 50%, #7b2cbf) !important;
+    cursor: pointer;
+}
+
+.j-moph-delete-pharmacy-button {
+    width: 25%;
+    padding: 10px;
+    font-size: 18px;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(to right, #f7ff63, #ff914d 50%, #ff1a1a);
+    cursor: pointer;
+}
