@@ -48,6 +48,10 @@
     text-decoration: none; /* Removes underline */
 }
 
+.i-maem-modify-link {
+    color: #0cc0df;
+}
+
 .i-maem-gradient-link:hover {
     opacity: 0.8;
 }
@@ -60,3 +64,50 @@
 .i-maem-no-results {
     color: white;
 }
+
+.i-maem-card{
+    background-color: rgb(27, 43, 107);;
+}
+
+.i-maem-card-body{
+    background-color: rgb(40, 64, 157);;
+}
+
+.i-maem-card-title{
+    color: white;
+}
+
+.i-maem-card-text{
+    color: white;
+}
+
+.i-maem-card-img {
+    width: 40%; /* Adjust this to your desired width */
+    height: auto; /* Keeps aspect ratio */
+    margin: 0 auto; /* Center-aligns the image */
+    display: block;
+}
+
+.i-maem-medications-slider {
+    display: flex;
+    overflow-x: auto; /* Allow horizontal scrolling */
+  }
+  
+  .i-maem-medication-card {
+    flex: 0 0 auto; /* Prevent cards from shrinking */
+    margin: 10px; /* Add some margin between cards */
+  }
+  
+  /* Optional: Customize the scrollbar for a better appearance */
+  .i-maem-medications-slider::-webkit-scrollbar {
+    height: 8px; /* Change the height of the scrollbar */
+  }
+  
+  .i-maem-medications-slider::-webkit-scrollbar-thumb {
+    background: linear-gradient(to right, #0cc0df, #ffde59 50%, #ffde59) !important;
+    border-radius: 10px; /* Rounded corners */
+  }
+  
+  .i-maem-medications-slider::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color on hover */
+  }

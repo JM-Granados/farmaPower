@@ -4,45 +4,42 @@ import './ManageElegibleMedication.css';
 import SideBar from '../../NavBar/SideBar';
 import gradient from '../../assets/elegible_medication_title.png';
 import pill from '../../assets/drugs1.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
+
+const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 const ManageElegibleMedication = () => {
     const [medications, setMedications] = useState([]);
     const [searchText, setSearchText] = useState('');
+    const navigate = useNavigate();
 
+    // Fetch medications based on searchText
     useEffect(() => {
-        // Fetch all eligible medications on initial load
         const fetchMedications = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/elegiblemedication');
-                setMedications(response.data);
+                if (searchText) {
+                    // Search for medications by name
+                    const response = await axios.get(`${apiURL}/api/elegiblemedications/search?name=${searchText}`);
+                    setMedications(response.data);
+                } else {
+                    // Fetch all medications if no search text is entered
+                    const response = await axios.get(`${apiURL}/api/elegiblemedications`);
+                    setMedications(response.data);
+                }
             } catch (error) {
                 console.error("Error fetching eligible medications:", error);
             }
         };
 
         fetchMedications();
-    }, []);
+    }, [searchText]); // Re-fetch when searchText changes
 
-    useEffect(() => {
-        // Fetch medications based on search text whenever it changes
-        const searchMedications = async () => {
-            if (searchText === '') {
-                // Fetch all medications if search text is cleared
-                const response = await axios.get('http://localhost:3000/api/elegiblemedication');
-                setMedications(response.data);
-            } else {
-                // Fetch medications that match the search text
-                try {
-                    const response = await axios.get(`http://localhost:3000/api/elegiblemedication/search?searchText=${searchText}`);
-                    setMedications(response.data);
-                } catch (error) {
-                    console.error("Error searching medications:", error);
-                }
-            }
-        };
-
-        searchMedications();
-    }, [searchText]); // Trigger search whenever searchText changes
+    // Redirect to ModifyProduct page
+    const handleModifyClick = (medication) => {
+        navigate('/modifyproduct', { state: medication });
+    };
 
     return (
         <div className="container-fluid i-maem-manage-elegible-medications">
@@ -58,7 +55,6 @@ const ManageElegibleMedication = () => {
                         </div>
                     </div>
 
-                    {/* Search bar and text */}
                     <div className="row mt-3">
                         <div className="col-md-8">
                             <input
@@ -66,35 +62,59 @@ const ManageElegibleMedication = () => {
                                 className="i-maem-form-control form-control"
                                 placeholder="Buscar medicamento"
                                 value={searchText}
-                                onChange={(e) => setSearchText(e.target.value)} // Update search text on input change
+                                onChange={(e) => setSearchText(e.target.value)}
                             />
                         </div>
                         <div className="col-md-4 d-flex align-items-center">
-                            <span className='i-maem-no-coincidences'>No hay coincidencias?</span>
+                            <span className="i-maem-no-coincidences">No hay coincidencias?</span>
                             <a href="/registerproduct" className="i-maem-gradient-link mx-2">Registrar nuevo</a>
                         </div>
                     </div>
 
-                    {/* Medications Displayed as Cards */}
-                    <div className="row mt-4">
-                        {medications.length > 0 ? (
-                            medications.map((medication, index) => (
-                                <div className="col-md-4" key={medication._id}>
-                                    <div className="card p-3">
-                                        <img src={pill} className="card-img-top" alt="Medication" />
-                                        <div className="card-body">
-                                            <h5 className="card-title">Medication #{index + 1}</h5>
-                                            <p className="card-text">
-                                                Puntos: {medication.points} <br />
-                                                Cantidad de Intercambio: {medication.exchangeAmount}
-                                            </p>
+                    <div className="row mt-2">
+                        <div className="i-maem-medications-slider">
+                            {medications.length > 0 ? (
+                                medications.map((eligibleMedication) => (
+                                    <div className="i-maem-medication-card" key={eligibleMedication._id}>
+                                        <div className="card i-maem-card p-3 position-relative">
+                                            <img
+                                                src={eligibleMedication.medication?.imageUrl || pill}
+                                                className="mb-3 card-img-top i-maem-card-img"
+                                                alt="Medication"
+                                            />
+                                            <div className="card-body i-maem-card-body">
+                                                <h5 className="card-title i-maem-card-title">
+                                                    {eligibleMedication.medication?.name || 'Nombre no disponible'}
+                                                </h5>
+                                                <p className="card-text i-maem-card-text">
+                                                    <strong>Tipo:</strong> {eligibleMedication.medication?.type?.typeMedication || 'Tipo no disponible'} <br />
+                                                    <strong>Cantidad:</strong> {eligibleMedication.medication?.amount || 'Cantidad no disponible'} <br />
+                                                    {(eligibleMedication.type === 'points') ? (
+                                                        <>
+                                                            <strong>Puntos:</strong> {eligibleMedication.points} <br />
+                                                        </>
+                                                    ) : (eligibleMedication.type === 'percentage') ? (
+                                                        <>
+                                                            <strong>Porcentaje:</strong> {eligibleMedication.percentage} <br />
+                                                        </>
+                                                    ) : null}
+                                                    <strong>Cantidad de Intercambio:</strong> {eligibleMedication.exchangeAmount}
+                                                </p>
+                                                <button
+                                                    className="btn i-maem-modify-link"
+                                                    onClick={() => handleModifyClick(eligibleMedication)}
+                                                    style={{ position: 'absolute', top: '10px', right: '10px' }}
+                                                >
+                                                    <FontAwesomeIcon icon={faPencilAlt} />
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            ))
-                        ) : (
-                            <p className="i-maem-no-results">No hay medicamentos elegibles que coincidan con la búsqueda.</p>
-                        )}
+                                ))
+                            ) : (
+                                <p className="i-maem-no-results">No hay medicamentos elegibles que coincidan con la búsqueda.</p>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
