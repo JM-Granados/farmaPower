@@ -11,7 +11,7 @@ const requestSchema = new Schema({
     client: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     purchasedQuantity: { type: Number, required: true }, // quantityPurchased
     invoiceImage: { type: String, required: true },
-    rStatus: { type: String, enum: ['Aprobada', 'Rechazada', 'Pendiente'], default: 'active'},
+    rStatus: { type: String, enum: ['Aprobada', 'Rechazada', 'Pendiente'], default: 'Pendiente'},
     pharmacy: { type: Schema.Types.ObjectId, ref: 'Pharmacy', required: true },
 }, { timestamps: true });
 

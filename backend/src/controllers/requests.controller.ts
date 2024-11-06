@@ -6,7 +6,17 @@ import mongoose from "mongoose";
 export const getRequests: RequestHandler = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const requests = await RequestModel.find({ client: new mongoose.Types.ObjectId(id) }).populate("medication").populate("medication").exec();
+    const requests = await RequestModel.find({ client: new mongoose.Types.ObjectId(id) })
+      .populate({
+        path: 'medication',               
+        populate: {
+          path: 'medication',            
+          model: 'Medication',            
+          select: 'name',                 
+        },
+      })
+      .exec();
+      
     res.json(requests);
   } catch (error) {
     console.error("Error al obtener los requests:", error);
@@ -42,26 +52,17 @@ export const getRequests_RStatus = async (req: Request, res: Response) => {
   }
 };
 
-
-
-// Define una función asincrónica de manejador de solicitudes llamada getPointsByMedication
 export const getPointsByMedication: RequestHandler = async (req, res) => {
   try {
-    // Extrae clientId de los parámetros de la solicitud
     const { clientId } = req.params;
 
-    // Realiza una agregación en la colección RequestModel
     const results = await RequestModel.aggregate([
-      // Coincide documentos donde el campo client coincide con el clientId proporcionado
       {
         $match: {
           client: new mongoose.Types.ObjectId(clientId),
-          rStatus: "Aprobada" // Filtra solo las solicitudes aprobadas
+          rStatus: "Aprobada"
         },
-
       },
-
-      // Realiza una búsqueda para unirse con la colección elegiblemedication
       {
         $lookup: {
           from: 'elegiblemedication',
@@ -70,10 +71,7 @@ export const getPointsByMedication: RequestHandler = async (req, res) => {
           as: 'medicationInfo'
         }
       },
-      // Descompone el array medicationInfo
       { $unwind: '$medicationInfo' },
-
-      // Realiza una búsqueda para unirse con la colección medication
       {
         $lookup: {
           from: 'medication',
@@ -82,48 +80,55 @@ export const getPointsByMedication: RequestHandler = async (req, res) => {
           as: 'medicationDetails'
         }
       },
-      // Descompone el array medicationDetails
       { $unwind: '$medicationDetails' },
-
-      // Añade un nuevo campo totalPoints multiplicando purchasedQuantity y medicationInfo.points
+      {
+        $lookup: {
+          from: 'typemedication',
+          localField: 'medicationDetails.type',
+          foreignField: '_id',
+          as: 'medicationType'
+        }
+      },
+      { $unwind: '$medicationType' },
       {
         $addFields: {
           totalPoints: { $multiply: ['$purchasedQuantity', '$medicationInfo.points'] },
-          originalPoints: '$medicationInfo.points'
-
+          originalPoints: '$medicationInfo.points'  // Calculate originalPoints
         }
       },
-
-      // Agrupa los resultados por medicationInfo._id y calcula totalPoints, medicationName y exchangeAmount
       {
         $group: {
-          _id: '$medicationInfo._id',
+          _id: {
+            medicationId: '$medicationInfo._id',
+            presentation: '$medicationType.typeMedication' // Correct field name
+          },
           totalPoints: { $sum: '$totalPoints' },
           medicationName: { $first: '$medicationDetails.name' },
-          exchangeAmount: { $first: '$medicationInfo.exchangeAmount' }
+          exchangeAmount: { $first: '$medicationInfo.exchangeAmount' },
+          originalPoints: { $first: '$originalPoints' }  // Include originalPoints in the group
         }
       },
-
-      // Proyecta los campos de salida finales
       {
         $project: {
           _id: 0,
-          medicationId: '$_id',
+          medicationId: '$_id.medicationId',
           medicationName: '$medicationName',
           totalPoints: 1,
-          exchangeAmount: 1
+          exchangeAmount: 1,
+          originalPoints: 1,  // Project originalPoints to the output
+          presentation: '$_id.presentation' // Correctly reference presentation
         }
       }
     ]);
 
-    // Envía los resultados como una respuesta JSON
     res.json(results);
   } catch (error) {
-    // Registra el error y envía un estado 500 con un mensaje de error
     console.error('Error al recuperar puntos por medicación:', error);
     res.status(500).json({ message: 'Error al recuperar puntos por medicación' });
   }
 };
+
+
 
 // Obtener una solicitud por su _id
 export const getRequestById: RequestHandler = async (req, res) => {
