@@ -5,9 +5,12 @@ import SideBar from '../../NavBar/SideBar';
 import '../../NavBar/SideBar.css'; 
 import gradient from '../../assets/g.png'; // Corrected path
 import pill from '../../assets/drugs1.png';
+const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 
 const MyRequests = () => {
+    const user = JSON.parse(localStorage.getItem('user')); 
+
     const [requests, setRequests] = useState([]);
     const [filteredRequests, setFilteredRequests] = useState([]);
     const [selectedStatus, setSelectedStatus] = useState('');
@@ -15,7 +18,7 @@ const MyRequests = () => {
     useEffect(() => {
         const fetchRequests = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/requests/671ea377b5f8eab5660a0011');
+                const response = await axios.get(`${apiURL}/api/requests/${user._id}`);
                 setRequests(response.data);
                 setFilteredRequests(response.data);
             } catch (error) {

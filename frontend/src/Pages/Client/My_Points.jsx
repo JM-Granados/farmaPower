@@ -4,14 +4,17 @@ import './My_Points.css';
 import SideBar from '../../NavBar/SideBar';
 import gradient from '../../assets/g.png';
 import pill from '../../assets/drugs1.png';
+const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 const MyPoints = () => {
+    const user = JSON.parse(localStorage.getItem('user')); 
+
     const [requests, setRequests] = useState([]);
 
     useEffect(() => {
         const fetchRequests = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/requests/totalPointsByMedication/671ea377b5f8eab5660a0011');
+                const response = await axios.get(`${apiURL}/api/requests/q/totalPointsByMedication/:${user._id}`);
                 setRequests(response.data);
                 setFilteredRequests(response.data);
             } catch (error) {

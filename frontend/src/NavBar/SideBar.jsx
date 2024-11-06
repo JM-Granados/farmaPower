@@ -56,7 +56,7 @@ const SideBar = () => {
                     <img src={user && user.imgUrl ? user.imgUrl : userImage} alt="Logo" id="user" className="img-fluid" />
                 </div>
                 <div className="sidebar-user ms-2">
-                    {user && user.name ? user.name : 'Nombre usuario'}
+                    {user? user.name : 'Nombre usuario'}
                 </div>
             </div>
         </div>
