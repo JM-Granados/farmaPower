@@ -39,6 +39,7 @@
     padding: 30px;
     display: flex;
     align-items: start;
+    color: white;
 }
 
 .rndiv6 {
@@ -48,12 +49,18 @@
     background-color: rgba(8, 15, 43, 1);
 }
 
-form-control {
-    background-color: #141E46;; /* Cambia este color a tu preferencia */
-    color:white; /* Color del texto */
-    border: 1px solid  #141E46;; /* Borde del input */
-    border-radius: 20px; /* Opcional: da forma redondeada al borde */
-  }
+.form-control {
+    background-color: #141E46;
+    ;
+    /* Cambia este color a tu preferencia */
+    color: white;
+    /* Color del texto */
+    border: 1px solid #141E46;
+    ;
+    /* Borde del input */
+    border-radius: 20px;
+    /* Opcional: da forma redondeada al borde */
+}
 
 .rndiv8 {
     display: flex;
@@ -122,4 +129,28 @@ input[type="date"] {
 
 .dropdown {
     width: 50%;
+}
+
+
+.j-maem-form-control {
+    background-color: #141E46;
+    /* Initial background color */
+    color: white;
+    /* Text color */
+    border: 1px solid rgba(104, 104, 104, 0.2);
+    /* Light border */
+}
+
+
+
+.search-icon-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border: none;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+    margin-right: 15px;
 }

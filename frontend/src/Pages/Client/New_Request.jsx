@@ -83,7 +83,7 @@ const NewRequest = () => {
             <div className="col rndiv6 input-group-column">
               <div className="row mt-4 align-items-center">
                 <div className="col-md-4">
-                  <p className="form-label text-white">Fecha de compra</p>
+                  <p className="form-label ">Fecha de compra</p>
                 </div>
                 <div className="col-md-6">
                   <input
@@ -97,7 +97,7 @@ const NewRequest = () => {
 
               <div className="row mt-4 align-items-center">
                 <div className="col-md-4">
-                  <p className="form-label text-white">Número de factura</p>
+                  <p className="form-label ">Número de factura</p>
                 </div>
                 <div className="col-md-6">
                   <input
@@ -111,7 +111,7 @@ const NewRequest = () => {
 
               <div className="row mt-4 align-items-center">
                 <div className="col-md-4">
-                  <p className="form-label text-white">Farmacia</p>
+                  <p className="form-label ">Farmacia</p>
                 </div>
                 <div className="dropdown">
                   <select
@@ -132,7 +132,7 @@ const NewRequest = () => {
 
               <div className="row mt-4 align-items-center">
                 <div className="col-md-4">
-                  <p className="form-label text-white">Busque su producto</p>
+                  <p className="form-label ">Busque su producto</p>
                 </div>
                 <div className="j-buscador col-md-5 position-relative">
                   <input
@@ -151,7 +151,7 @@ const NewRequest = () => {
 
               <div className="row mt-4 align-items-center">
                 <div className="col-md-4">
-                  <p className="form-label text-white">Cantidad comprada</p>
+                  <p className="form-label">Cantidad comprada</p>
                 </div>
                 <div className="col-md-6">
                   <input
