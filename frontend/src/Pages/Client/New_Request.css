@@ -58,11 +58,10 @@
 }
 
 .rndiv8 {
-    display: flex;
+
     height: 80%;
     width: 30%;
-    display: flex;
-    align-items: left;
+
 }
 
 .rndiv7 {
@@ -75,7 +74,8 @@
     flex-direction: column;  
     justify-content: center; 
     align-items: center;     
-    height: 100%;   
+ 
+
 }
   
 .div-upload {
@@ -83,6 +83,7 @@
     font-size: 26px;
     margin: 10px 0; 
     width: 50%;
+    height: 20%;
   }
   
 .imagen-folder {
@@ -150,3 +151,10 @@ input[type="date"] {
     justify-content: left;
     align-items: left;
 }
+
+.selected-medicine {
+    background-color: #223376; 
+    color: white;
+    border-radius: 20px;
+  }
+  

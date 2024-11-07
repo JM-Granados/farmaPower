@@ -25,11 +25,14 @@ const NewRequest = () => {
   const [client, setClient] = useState(null);
   const [invoiceImage, setinvoiceImage] = useState(null);
 
+  const user = JSON.parse(localStorage.getItem('user')); 
+
 
   useEffect(() => {
     const fetchPharmacies = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/pharmacies/get');
+        //const response = await axios.get('http://localhost:3000/api/pharmacies/get');
+        const response = await axios.get('${apiURL}/api/pharmacies/get');
         setPharmacies(response.data);
       } catch (error) {
         console.error("Error fetching pharmacies:", error);
@@ -45,11 +48,13 @@ const NewRequest = () => {
 
     try {
       if (searchText == "") {
-        const response = await axios.get(`http://localhost:3000/api/elegiblemedications`);
+        //const response = await axios.get(`http://localhost:3000/api/elegiblemedications`);
+        const response = await axios.get(`${apiURL}/api/elegiblemedications`);
 
         setMedicines(response.data);
       } else {
-        const response = await axios.get(`http://localhost:3000/api/elegiblemedications/getMedicineSearched?search=${searchText}`);
+        //const response = await axios.get(`http://localhost:3000/api/elegiblemedications/getMedicineSearched?search=${searchText}`);
+        const response = await axios.get(`${apiURL}/api/elegiblemedications/getMedicineSearched?search=${searchText}`);
         setMedicines(response.data);
         console.log(response.data)
       }
@@ -64,43 +69,41 @@ const NewRequest = () => {
     console.log("Medicamento seleccionado con ID:", medicineId); // Imprimir ID seleccionado para depuración
   };
 
-  // Manejar el envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
+    const formData = new FormData();
+    formData.append('purchaseDate', purchaseDate);
+    formData.append('invoiceNumber', invoiceNumber);
+    formData.append('medication', medication);
+    //formData.append('client', '671f4fb9159e507ef744c97d'); 
+    formData.append('client', user._id); 
+    formData.append('purchasedQuantity', purchasedQuantity);
+    formData.append('invoiceImage', invoiceImage); 
+    formData.append('pharmacy', pharmacy);
 
-    // Crear un objeto con los datos del formulario
-    const formData = {
-      purchaseDate,
-      invoiceNumber,
-      medication,
-      client: '671f4fb9159e507ef744c97d', // Puedes agregar el ID del cliente aquí
-      purchasedQuantity,
-      invoiceImage, // Si es necesario, puedes enviar el archivo como base64 o por separado
-      pharmacy,
-    };
-
-    console.log('Datos enviados:', formData);
-
-    // Enviar los datos al backend con axios
+    for (const [key, value] of formData.entries()) {
+      console.log(`${key}:`, value);
+    }
+  
+  
     try {
-      const response = await axios.post('http://localhost:3000/api/requests/', formData, {
-        headers: {
-          'Content-Type': 'application/json', // Asegúrate de enviar el tipo de contenido correcto
-        },
+      const response = await axios.post('http://localhost:3000/api/requests/c/', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
       });
 
-      // Manejar la respuesta si la solicitud es exitosa
       console.log('Respuesta del servidor:', response.data);
     } catch (error) {
       console.error("Error al enviar los datos:", error);
     }
   };
+  
 
   return (
     <div className="nueva-solicitud">
       <div className="row principal">
         <div className="div">
-          <SideBar />
+          {/* <SideBar /> */}
         </div>
 
         <div className="col nrdiv2">
@@ -185,8 +188,8 @@ const NewRequest = () => {
                       {medicines.map((med, index) => (
                         <li key={index}>
                           <p
-                            className="selectable-medicine"
-                            onClick={() => setSelectedMedicineId(med._id)} // Al hacer clic en el nombre del medicamento, lo seleccionamos
+                            className={`selectable-medicine ${med._id === medication ? 'selected-medicine' : ''}`}
+                            onClick={() => handleMedicineClick(med._id)} // Usa la función handleMedicineClick
                           >
                             {med.medication.name} - {med.points} puntos
                           </p>
@@ -196,6 +199,7 @@ const NewRequest = () => {
                   </div>
                 )}
               </div>
+
 
 
               <div className="row mt-4 align-items-center">
@@ -227,13 +231,14 @@ const NewRequest = () => {
                     id="file-upload"
                     type="file"
                     style={{ display: 'none' }}
-                    onChange={(e) => setinvoiceImage(e.target.files[0].name)}
+                    onChange={(e) => setinvoiceImage(e.target.files[0])}
                   />
-                  <p>{invoiceImage}</p> {/* El texto que se muestra debajo de la imagen */}
+                  <p>{invoiceImage ? invoiceImage.name : "Seleccione la fotografia de su factura"}</p>
+
                 </div>
 
               </div>
-              <div className="div-upload d-flex justify-content-center align-items-center">
+              <div className="row div-upload d-flex justify-content-center align-items-center">
                 <img
                   className="imagen-upload"
                   src={upload}

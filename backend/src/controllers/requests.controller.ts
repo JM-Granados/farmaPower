@@ -1,7 +1,10 @@
 import { RequestHandler } from 'express';
+import { cloudinary } from '../cloudinaryConfig';
+import fs from 'fs';
 import { Request, Response } from 'express';
 import RequestModel from '../models/Request';
 import mongoose from "mongoose";
+import { MongoError } from 'mongodb';
 
 export const getRequests: RequestHandler = async (req: Request, res: Response) => {
   try {
@@ -27,13 +30,56 @@ export const getRequests: RequestHandler = async (req: Request, res: Response) =
 
 export const createRequest: RequestHandler = async (req, res) => {
   try {
-    const newRequest = new RequestModel(req.body);
+    let invoiceImageUrl = process.env.DEFAULT_INVOICE_IMAGE_URL;
+    let principalImage = false;
+    console.log("Datos recibidos:", req.body); 
+    // Verifica si el archivo está en la solicitud
+    if (req.file) {
+      try {
+        const result = await cloudinary.uploader.upload(req.file.path, {
+          folder: 'Requests-invoices',
+        });
+        invoiceImageUrl = result.secure_url;  // URL de la imagen en Cloudinary
+        fs.unlinkSync(req.file.path);  // Elimina el archivo local después de subirlo
+        principalImage = true;
+      } catch (cloudError: unknown) {
+        const error = cloudError as Error;
+        console.error("Cloudinary error:", error.message);
+        return res.status(500).json({ message: "Failed to upload image to Cloudinary.", error: error.message });
+      }
+    }
+
+    // Crear un nuevo Request con los datos de la solicitud y la URL de la imagen
+    const newRequest = new RequestModel({
+      purchaseDate: req.body.purchaseDate,
+      invoiceNumber: req.body.invoiceNumber,
+      medication: req.body.medication,
+      client: req.body.client,
+      purchasedQuantity: req.body.purchasedQuantity,
+      invoiceImage: invoiceImageUrl, // Guarda la URL de la imagen
+      pharmacy: req.body.pharmacy,
+      rStatus: req.body.rStatus || 'Pendiente', // Estado predeterminado
+    });
+
     const savedRequest = await newRequest.save();
-    res.json(savedRequest);
+    res.status(200).json({
+      message: "Request created successfully",
+      requestId: savedRequest._id,
+      invoiceImageUrl, // Devuelve la URL de la imagen para referencia
+    });
   } catch (error) {
-    res.json(error);
+    // Manejo de errores para la base de datos y otras excepciones
+    const mongoError = error as MongoError;
+    if (mongoError.code === 11000) {
+      res.status(400).json({ message: "Request creation error: Duplicate entry." });
+    } else if (error instanceof Error) {
+      res.status(400).json({ message: "Request creation error:", error: error.message });
+    } else {
+      res.status(500).json({ message: "Unknown error occurred" });
+    }
   }
-}
+};
+
 
 export const getRequests_RStatus = async (req: Request, res: Response) => {
   try {
