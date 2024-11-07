@@ -8,7 +8,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/api/requests/all
+GET http://localhost:3000/api/requests/request/672960ed0e65c6257d4e7591
 
 ###
 GET http://localhost:3000/api/elegiblemedications/
@@ -43,3 +43,4 @@ Content-Type: image/jpeg
 
 < C:\fakepath\Captura de pantalla 2024-08-13 112524.png
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
+GET http://localhost:3000/api/programs/

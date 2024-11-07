@@ -54,8 +54,8 @@
 }
 
 .kuser-image {
-    margin-right: 100px;
-    margin-top: -150px;
+    margin-right: 175px;
+    height: 100px;
 }
 
 .request-div {
@@ -68,8 +68,13 @@
 }
 
 .scrollable-container {
-    max-height: 660px; 
+    max-height: 640px; 
     overflow-y: auto;
     overflow-x: hidden; /* Evita el desplazamiento horizontal */
     width: 100%;
+}
+
+.fotonga {
+    margin-top: 110px;
+    margin-right: 125px;
 }
