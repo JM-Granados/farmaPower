@@ -8,7 +8,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/api/requests/all
+GET http://localhost:3000/api/requests/request/672960ed0e65c6257d4e7591
 
 ###
 GET http://localhost:3000/api/elegiblemedications/

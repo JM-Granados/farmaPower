@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 import { useEffect, useState } from 'react';
 import gradient from '../../assets/orange-yellow-gradient.png';
@@ -7,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SideBar from '../../NavBar/SideBar';
 import '../../NavBar/SideBar.css'; 
 import { useNavigate } from 'react-router-dom';
+import propRequest from '../../assets/folder-back.png';
 
 const apiURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -19,6 +21,8 @@ function ThisRequest(){
     const [status, setStatus] = useState('Pendiente');
     const [errorMessage, setErrorMessage] = useState(null);
     const [successMessage, setSuccessMessage] = useState(null);
+    const [image, setImage] = useState(null);
+
     const navigate = useNavigate();
 
 
@@ -40,13 +44,22 @@ function ThisRequest(){
                 setCount(data.purchasedQuantity);
                 setMed(data.medication.medication.name);
                 setStatus(data.rStatus);
+                setImage(data.invoiceImage);
             } catch (error) {
+                setDate('');
+                setNumber('');
+                setDrugstore('');
+                setCount('');
+                setMed('');
+                setStatus('');
+                setImage(null);
                 console.error("Error fetching request data:", error);
             }
         };
 
         fetchRequestData();
-    }, [endpoint]);
+        console.info(image);
+    }, [endpoint, image]);
 
     const handleSave = async () => {
         console.info(status);
@@ -87,7 +100,7 @@ function ThisRequest(){
                                 readOnly
                                 className="kform-control custom-input"
                                 id="staticDate"
-                                defaultValue={date}
+                                defaultValue={date ? date.split('T')[0] : ''}
                             />
                         </div>
                     </div>
@@ -165,6 +178,9 @@ function ThisRequest(){
                     {errorMessage && <p className="text-danger">{errorMessage}</p>}
                     {successMessage && <p className="text-success">{successMessage}</p>}
                 </form>
+            </div>
+            <div className='kcontent-container2'>
+                <img src={image && image.startsWith('https') ? image : propRequest} alt="Invoice Image" id="gradient" className={`request-image ${image && image.startsWith('https') ? 'request-image' : 'image-local'}`} />
             </div>
         </div>
     );

@@ -68,7 +68,7 @@
 }
 
 .scrollable-container {
-    max-height: 660px; 
+    max-height: 640px; 
     overflow-y: auto;
     overflow-x: hidden; /* Evita el desplazamiento horizontal */
     width: 100%;

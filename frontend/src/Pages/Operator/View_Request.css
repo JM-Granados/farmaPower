@@ -8,9 +8,17 @@
 }
 
 .kcontent-container {
-    margin-left: 300px; /* Igual al ancho del sidebar */
+    margin-left: 180px; /* Igual al ancho del sidebar */
     padding: 20px;
     flex-grow: 1;
+}
+
+.kcontent-container2 {
+    margin-left: 250px; /* Igual al ancho del sidebar */
+    padding: 20px;
+    flex-grow: 2;
+    justify-content: center;
+    align-content: center;
 }
 
 .kgradient-title {
@@ -44,6 +52,7 @@
     border-radius: 0.2rem;
     color: rgba(255, 255, 255, 1);
     padding-left: 25px;
+    width: 16rem;
 }
 
 .krequest-form {
@@ -63,7 +72,7 @@
     padding-left: 30px;
     width: 35rem;
     height: 3.5rem;
-    margin-left: 4rem;
+    margin-left: 1rem;
 }
 
 .kform-control.custom-input::placeholder {
@@ -93,13 +102,20 @@
     padding-top: 5px;
     border: none;
     color: rgba(255, 255, 255, 1) !important;
+    margin-left: auto
+}
+
+.ksave-button:hover {
+    transform: scale(1.05);
 }
 
 .kbutton-container {
     display: flex;
-    margin-right: 1rem;
-    justify-content: center; 
+    margin-right: 0.5rem;
+    justify-content: flex-end; 
     margin-top: 3rem; /* Espaciado superior */
+    width: 100%;
+    margin-left: 14rem;
 }
 
 .kgreen-button {
@@ -117,7 +133,7 @@
     background-color: rgb(177, 0, 0) !important;
     border-color: rgb(177, 0, 0) !important;
     margin-right: 20px;
-    margin-left: 4rem;
+    margin-left: 1rem;
     min-width: 40px;
     max-width: 40px;
     border-radius: 30px;
@@ -154,5 +170,22 @@
     /* border-color: rgb(88, 88, 88) !important;
     border-width: 3px !important; */
     transform: scale(1.05);
+}
+
+.request-image {
+    max-width: 35rem;
+    max-height: auto;
+    min-width: 20rem;
+    margin-top: 2rem;
+    margin-right: 3rem;
+}
+
+.image-local {
+    max-width: 35rem;
+    max-height: auto;
+    min-width: 20rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    margin-right: 3rem;
 }
 
