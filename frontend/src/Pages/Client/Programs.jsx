@@ -35,28 +35,28 @@ const Programs = () => {
 
                 {/* Segundo pedazo
                 Este pedazo se divide en 3. Esta el titulo, el filtro y las solicitudes */}
-                <div className="col div2">
+                <div className="col pdiv2">
                     {/* Pedazo del titulo */}
-                    <div className="row div3">
-                        <div className="div-gradient-header d-flex justify-content-start align-items-end" style={{ height: '100%' }}>
-                            <img className='imagen' src={gradient} alt="Logo" id="gradient" />
+                    <div className="row pdiv3">
+                        <div className="pdiv-gradient-header d-flex justify-content-start align-items-end" style={{ height: '100%' }}>
+                            <img className='pimagen' src={gradient} alt="Logo" id="gradient" />
                         </div>
                     </div>
-                    <div className="row div5 overflow-auto">
+                    <div className="row pdiv5 overflow-auto">
                         {programs.map((request, index) => (
                             // Cada tarjeta es un cuadrado
-                            <div className="cuadrado" key={request._id}>
+                            <div className="pcuadrado" key={request._id}>
                                 {/* Se divide en 2, la imagen y el texto. En el CSS  esta la configuraicion */}
                                 {/* Imagen */}
-                                <div className="row1">
-                                    <div className="col1">
+                                <div className="prow1">
+                                    <div className="pcol1">
                                         <img src={program} className="mcard-img-top" alt="..." />
                                     </div>
                                 </div>
 
                                 {/* Texto */}
-                                <div className="row2">
-                                    <div className="col1">
+                                <div className="prow2">
+                                    <div className="pcol1">
                                         <p>Nombre: {request.name} 
                                              <br /> {request.pharmacies}</p>
                                     </div>

@@ -34,28 +34,28 @@ const ParticipatingMedications = () => {
 
                 {/* Segundo pedazo
                 Este pedazo se divide en 3. Esta el titulo, el filtro y las solicitudes */}
-                <div className="col div2">
+                <div className="col pmdiv2">
                     {/* Pedazo del titulo */}
-                    <div className="row div3">
-                        <div className="div-gradient-header d-flex justify-content-start align-items-end" style={{ height: '100%' }}>
-                            <img className='imagen' src={gradient} alt="Logo" id="gradient" />
+                    <div className="row pmdiv3">
+                        <div className="pmdiv-gradient-header d-flex justify-content-start align-items-end" style={{ height: '100%' }}>
+                            <img className='pmimagen' src={gradient} alt="Logo" id="gradient" />
                         </div>
                     </div>
-                    <div className="row div5 overflow-auto">
+                    <div className="row pmdiv5 overflow-auto">
                         {elegibleMedications.map((request, index) => (
                             // Cada tarjeta es un cuadrado
-                            <div className="cuadrado" key={request._id}>
+                            <div className="pmcuadrado" key={request._id}>
                                 {/* Se divide en 2, la imagen y el texto. En el CSS  esta la configuraicion */}
                                 {/* Imagen */}
-                                <div className="row1">
-                                    <div className="col1">
+                                <div className="pmrow1">
+                                    <div className="pmcol1">
                                         <img src={medicine} className="mcard-img-top" alt="..." />
                                     </div>
                                 </div>
 
                                 {/* Texto */}
-                                <div className="row2">
-                                    <div className="col1">
+                                <div className="pmrow2">
+                                    <div className="pmcol1">
                                         <p>Nombre: {request.medication.name}  <br /> Puntos: {request.points} </p>
                                     </div>
                                 </div>

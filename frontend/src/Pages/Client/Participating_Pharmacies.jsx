@@ -35,28 +35,28 @@ const ParticipatingPharmacies = () => {
 
                 {/* Segundo pedazo
                 Este pedazo se divide en 3. Esta el titulo, el filtro y las solicitudes */}
-                <div className="col div2">
+                <div className="col ppdiv2">
                     {/* Pedazo del titulo */}
-                    <div className="row div3">
-                        <div className="div-gradient-header d-flex justify-content-start align-items-end" style={{ height: '100%' }}>
-                            <img className='imagen' src={gradient} alt="Logo" id="gradient" />
+                    <div className="row ppdiv3">
+                        <div className="ppdiv-gradient-header d-flex justify-content-start align-items-end" style={{ height: '100%' }}>
+                            <img className='ppimagen' src={gradient} alt="Logo" id="gradient" />
                         </div>
                     </div>
-                    <div className="row div5 overflow-auto">
+                    <div className="row ppdiv5 overflow-auto">
                         {pharmacies.map((request, index) => (
                             // Cada tarjeta es un cuadrado
-                            <div className="cuadrado" key={request._id}>
+                            <div className="ppcuadrado" key={request._id}>
                                 {/* Se divide en 2, la imagen y el texto. En el CSS  esta la configuraicion */}
                                 {/* Imagen */}
-                                <div className="row1">
-                                    <div className="col1">
-                                        <img src={pharmacy} className="mcard-img-top" alt="..." />
+                                <div className="pprow1">
+                                    <div className="ppcol1">
+                                        <img src={pharmacy} className="ppcard-img-top" alt="..." />
                                     </div>
                                 </div>
 
                                 {/* Texto */}
-                                <div className="row2">
-                                    <div className="col1">
+                                <div className="pprow2">
+                                    <div className="ppcol1">
                                         <p>Nombre: {request.name}  <br /> {request.location} </p>
                                     </div>
                                 </div>

@@ -88,7 +88,8 @@ const NewRequest = () => {
   
   
     try {
-      const response = await axios.post('http://localhost:3000/api/requests/c/', formData, {
+      //const response = await axios.post('http://localhost:3000/api/requests/c/', formData, {
+      const response = await axios.post(`${apiURL}/api/requests/c/`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
