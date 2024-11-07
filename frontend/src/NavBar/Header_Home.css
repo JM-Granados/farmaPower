@@ -49,7 +49,7 @@
 .navegacion {
     position: absolute;
     right: 0; /* Alinea el menú con el lado derecho del toggler para una apariencia ordenada. */
-    top: 110px; /* Altura ajustada para alinear justo debajo del NavBar. */
+    top: 75px; /* Altura ajustada para alinear justo debajo del NavBar. */
     left: auto; /* Anula cualquier otro ajuste de posición izquierda heredado. */
     background-color: #3B4290; /* Fondo oscuro para coherencia con el estilo del NavBar. */
     border: none; /* Elimina el borde para un look más limpio y moderno. */
@@ -58,7 +58,7 @@
 
 /* Estilo para mostrar el menú dropdown. */
 .navegacion.show {
-    margin-right: 86px; /* Margen derecho para mantener el menú alineado con los bordes del NavBar. */
+    margin-right: auto; /* Margen derecho para mantener el menú alineado con los bordes del NavBar. */
     display: block; /* Hace que el menú sea visible cuando se activa. */
 }
 
@@ -101,6 +101,10 @@ button.cayendo:focus {
 /* Efecto hover para enlaces, aumentando la interactividad y la respuesta visual. */
 .espacioBoton:hover {
     color: #E53F67; /* Cambia a rojo al pasar el mouse para indicar interactividad. */
+}
+
+.bajado {
+    width: auto !important;
 }
 
 /* Media query para ajustes en dispositivos con un ancho máximo de 768px */

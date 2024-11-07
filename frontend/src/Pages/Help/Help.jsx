@@ -2,12 +2,16 @@ import "./Help.css"
 import back1 from '../../assets/back1.png';
 import { Link } from "react-router-dom";
 
+import { useNavigate } from 'react-router-dom';
+
 function Help(){
+    const navigate = useNavigate();
+
     return (
         <div className="big-container">
-            <Link to='/'>
-                <img className="back-1" alt="Back" src={back1} />
-            </Link>
+            <a href="" onClick={(e) => { e.preventDefault(); navigate(-1); }}>
+                <img className="back-1 mb-3" alt="Back" src={back1} />
+            </a>
             <div className="help-section">
                 <div className="card1">
                     <div className="card-body-k">

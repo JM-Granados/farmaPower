@@ -1,17 +1,21 @@
 .sidebar {
     background: #141E46;
-    padding: 1rem;
+    padding: 1.2rem;
     color: white;
     border-radius: 0.5rem;
-    height: 100%;
+    height: 90%;
+    width: auto;
+    margin-top: 8%;
+    margin-left: 10%;
+    margin-right: 5%;
 }
 
 .sidebar-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 
-.sidebar-link {
-    font-size: 2rem;
+.yendo  {
+    font-size: 1.8rem;
     text-decoration: none;
     color: white;
 }
@@ -22,11 +26,11 @@
 
 .user_image_container img {
     width: 100%;
-    max-width: 50px;
+    max-width: 25%;
     border-radius: 50%;
 }
 
 .sidebar-user {
-    font-size: 1.25rem;
+    font-size: 2rem;
     color: white;
 }
