@@ -13,7 +13,7 @@ const ParticipatingPharmacies = () => {
     useEffect(() => {
         const fetchPharmacies = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/pharmacies');
+                const response = await axios.get('http://localhost:3000/api/pharmacies/g/get');
                 setPharmacies(response.data);
             } catch (error) {
                 console.error("Error fetching requests:", error);

@@ -18,7 +18,7 @@ const MyRequests = () => {
     useEffect(() => {
         const fetchRequests = async () => {
             try {
-                const response = await axios.get(`${apiURL}/api/requests/${user._id}`);
+                const response = await axios.get(`${apiURL}/api/requests/x/${user._id}`);
                 setRequests(response.data);
                 console.log(response.data);
                 setFilteredRequests(response.data);

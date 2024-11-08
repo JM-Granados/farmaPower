@@ -4,6 +4,7 @@ import * as pharmacyCtrl from '../controllers/pharmacies.controller';
 const router = Router();
 
 router.get('/get', pharmacyCtrl.getPharmacies);
+router.get('/g/get', pharmacyCtrl.getPharmacies);
 router.get('/s', pharmacyCtrl.getStates);
 router.put('/update/:id', pharmacyCtrl.updatePharmacy); // Route to update pharmacy
 router.delete('/delete/:id', pharmacyCtrl.deletePharmacy); // Route to delete pharmacy

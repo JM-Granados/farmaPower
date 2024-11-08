@@ -8,7 +8,8 @@ import folder from '../../assets/folder.png';
 import upload from '../../assets/upload.png';
 import Search from '../../assets/search.png';
 
-const reader = new FileReader();
+import { useNavigate } from 'react-router-dom';
+
 
 const apiURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -26,14 +27,16 @@ const NewRequest = () => {
   const [invoiceImage, setinvoiceImage] = useState(null);
 
   const user = JSON.parse(localStorage.getItem('user')); 
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPharmacies = async () => {
       try {
-        //const response = await axios.get('http://localhost:3000/api/pharmacies/get');
-        const response = await axios.get('${apiURL}/api/pharmacies/get');
+        //const response = await axios.get(`http://localhost:3000/api/pharmacies/get`);
+        const response = await axios.get(`${apiURL}/api/pharmacies/g/get`);
         setPharmacies(response.data);
+        console.log("Pharmacies data:", response.data);
+
       } catch (error) {
         console.error("Error fetching pharmacies:", error);
       }
@@ -64,9 +67,8 @@ const NewRequest = () => {
   };
 
   const handleMedicineClick = (medicineId) => {
-    // Al hacer clic en el nombre del medicamento, actualizamos el estado con su ID
     setSelectedMedicineId(medicineId);
-    console.log("Medicamento seleccionado con ID:", medicineId); // Imprimir ID seleccionado para depuración
+    console.log("Medicamento seleccionado con ID:", medicineId); 
   };
 
   const handleSubmit = async (e) => {
@@ -81,6 +83,7 @@ const NewRequest = () => {
     formData.append('purchasedQuantity', purchasedQuantity);
     formData.append('invoiceImage', invoiceImage); 
     formData.append('pharmacy', pharmacy);
+    formData.append('program', '672ba5bec3d393392dee336b')
 
     for (const [key, value] of formData.entries()) {
       console.log(`${key}:`, value);
@@ -94,6 +97,7 @@ const NewRequest = () => {
       });
 
       console.log('Respuesta del servidor:', response.data);
+      navigate('/MyRequests')
     } catch (error) {
       console.error("Error al enviar los datos:", error);
     }
@@ -104,7 +108,7 @@ const NewRequest = () => {
     <div className="nueva-solicitud">
       <div className="row principal">
         <div className="div">
-          {/* <SideBar /> */}
+          <SideBar />
         </div>
 
         <div className="col nrdiv2">

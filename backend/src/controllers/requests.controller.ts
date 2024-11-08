@@ -3,6 +3,7 @@ import { cloudinary } from '../cloudinaryConfig';
 import fs from 'fs';
 import { Request, Response } from 'express';
 import RequestModel from '../models/Request';
+import ProgramModel from '../models/Program'
 import mongoose from "mongoose";
 import { MongoError } from 'mongodb';
 
@@ -62,6 +63,16 @@ export const createRequest: RequestHandler = async (req, res) => {
     });
 
     const savedRequest = await newRequest.save();
+
+    const programId = req.body.program;
+    const program = await ProgramModel.findById(programId);
+    if (!program) {
+      return res.status(404).json({ message: "Program not found" });
+    }
+
+    program.requests.push(savedRequest._id);
+    await program.save();
+
     res.status(200).json({
       message: "Request created successfully",
       requestId: savedRequest._id,

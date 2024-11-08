@@ -43,9 +43,9 @@ const Programs = () => {
                         </div>
                     </div>
                     <div className="row pdiv5 overflow-auto">
-                        {programs.map((request, index) => (
+                        {programs.map((program, index) => (
                             // Cada tarjeta es un cuadrado
-                            <div className="pcuadrado" key={request._id}>
+                            <div className="pcuadrado" key={program._id}>
                                 {/* Se divide en 2, la imagen y el texto. En el CSS  esta la configuraicion */}
                                 {/* Imagen */}
                                 <div className="prow1">
@@ -57,8 +57,8 @@ const Programs = () => {
                                 {/* Texto */}
                                 <div className="prow2">
                                     <div className="pcol1">
-                                        <p>Nombre: {request.name} 
-                                             <br /> {request.pharmacies}</p>
+                                        <p>Nombre: {program.name} 
+                                             </p>
                                     </div>
                                 </div>
                             </div>
