@@ -49,7 +49,8 @@
 }
 
 .i-maph-modify-link {
-    color: #0cc0df;
+    color: #ffffff;
+    font-size: 1.5rem;
 }
 
 .i-maph-gradient-link:hover {
@@ -67,19 +68,37 @@
 }
 
 .i-maph-card{
-    background-color: rgb(27, 43, 107);;
+    position: relative;
+    min-width: 7rem; /* Ancho máximo de la tarjeta */
+    max-width: 24rem;
+    height: 15rem; 
+    margin: 0.5rem; /* Añade un margen para separación */
+    border-radius: 0.7rem; /* Bordes redondeados */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Añade una sombra */
+    overflow: hidden; /* Asegura que el contenido no desborde */
+    background-color: #111A3D;
 }
 
 .i-maph-card-body{
-    background-color: rgb(40, 64, 157);;
+    background-color: rgba(20, 30, 70, 1);
+    gap: 0.5rem;
+    padding-left: 0.9rem;
+    border-radius: 0.7rem; 
+    padding-top: 0.8rem;
+    padding-bottom: 0.1rem;
 }
 
 .i-maph-card-title{
-    color: white;
+    font-size:2rem;
+    color: rgba(255, 255, 255, 1);
 }
 
 .i-maph-card-text{
-    color: white;
+    font-family: "League Spartan-Regular", Helvetica;
+    font-size: 1rem;
+    font-weight: 400;
+    border-radius: 0.5rem;
+    color: rgba(255, 255, 255, 1);
 }
 
 .i-maph-pharmacies-slider {

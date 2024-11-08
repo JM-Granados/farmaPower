@@ -77,11 +77,13 @@ const ManageElegibleMedication = () => {
                                 medications.map((eligibleMedication) => (
                                     <div className="i-maem-medication-card" key={eligibleMedication._id}>
                                         <div className="card i-maem-card p-3 position-relative">
-                                            <img
-                                                src={eligibleMedication.medication?.imageUrl || pill}
-                                                className="mb-3 card-img-top i-maem-card-img"
-                                                alt="Medication"
-                                            />
+                                            <div className='i-maem-img-container'>
+                                                <img
+                                                    src={eligibleMedication.medication?.imageUrl || pill}
+                                                    className="mb-3 card-img-top i-maem-card-img"
+                                                    alt="Medication"
+                                                />
+                                            </div>
                                             <div className="card-body i-maem-card-body">
                                                 <h5 className="card-title i-maem-card-title">
                                                     {eligibleMedication.medication?.name || 'Nombre no disponible'}
