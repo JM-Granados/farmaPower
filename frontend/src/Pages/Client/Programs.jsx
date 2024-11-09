@@ -4,7 +4,7 @@ import './Programs.css';
 import SideBar2 from '../../NavBar/SideBar';
 import '../../NavBar/SideBar.css'; 
 import gradient from '../../assets/programs_gradient.png'; 
-import program from '../../assets/programs.png';
+import programimg from '../../assets/programs.png';
 
 const Programs = () => {
 
@@ -43,26 +43,35 @@ const Programs = () => {
                         </div>
                     </div>
                     <div className="row pdiv5 overflow-auto">
-                        {programs.map((program, index) => (
-                            // Cada tarjeta es un cuadrado
-                            <div className="pcuadrado" key={program._id}>
-                                {/* Se divide en 2, la imagen y el texto. En el CSS  esta la configuraicion */}
-                                {/* Imagen */}
-                                <div className="prow1">
-                                    <div className="pcol1">
-                                        <img src={program} className="mcard-img-top" alt="..." />
-                                    </div>
-                                </div>
-
-                                {/* Texto */}
-                                <div className="prow2">
-                                    <div className="pcol1">
-                                        <p>Nombre: {program.name} 
-                                             </p>
-                                    </div>
-                                </div>
+                    {programs.map((program, index) => (
+                        <div className="pcuadrado" key={program._id}>
+                            {/* Sección de la imagen */}
+                            <div className="prow1">
+                            <div className="pcol1"> <img src={programimg} className="mcard-img-top" alt={program.name} />
                             </div>
+                            </div>
+
+                            {/* Sección del texto */}
+                            <div className="prow2">
+                            <div className="pcol1">
+                                <p>Nombre: {program.name}</p>
+                                <p>Descripción: {program.description}</p>
+
+                                {/* Renderizado de las farmacias
+                                {program.pharmacies && program.pharmacies.length > 0 ? (
+                                program.pharmacies.map((pharmacy) => (
+                                    <p key={pharmacy._id}>
+                                    {pharmacy.name} - Ubicación: {pharmacy.location}
+                                    </p>
+                                ))
+                                ) : (
+                                <p>No hay farmacias asociadas.</p>
+                                )} */}
+                            </div>
+                            </div>
+                        </div>
                         ))}
+
                     </div>
                     
                 </div>
