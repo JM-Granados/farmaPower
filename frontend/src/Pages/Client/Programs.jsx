@@ -5,6 +5,7 @@ import SideBar2 from '../../NavBar/SideBar';
 import '../../NavBar/SideBar.css'; 
 import gradient from '../../assets/programs_gradient.png'; 
 import program from '../../assets/programs.png';
+const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 const Programs = () => {
 
@@ -13,13 +14,12 @@ const Programs = () => {
     useEffect(() => {
         const fetchPrograms = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/programs');
+                const response = await axios.get(`${apiURL}/api/programs`);
                 setPrograms(response.data);
             } catch (error) {
                 console.error("Error fetching requests:", error);
             }
         };
-
         fetchPrograms();
     }, []);
 
@@ -47,18 +47,13 @@ const Programs = () => {
                             // Cada tarjeta es un cuadrado
                             <div className="pcuadrado" key={program._id}>
                                 {/* Se divide en 2, la imagen y el texto. En el CSS  esta la configuraicion */}
-                                {/* Imagen */}
-                                <div className="prow1">
-                                    <div className="pcol1">
-                                        <img src={program} className="mcard-img-top" alt="..." />
-                                    </div>
-                                </div>
-
+                                
                                 {/* Texto */}
                                 <div className="prow2">
                                     <div className="pcol1">
-                                        <p>Nombre: {program.name} 
-                                             </p>
+                                        <p>
+                                            Nombre: {program.name} 
+                                        </p>
                                     </div>
                                 </div>
                             </div>
