@@ -14,7 +14,6 @@ const ManagePharmacy = () => {
     const [searchText, setSearchText] = useState('');
     const navigate = useNavigate();
 
-    // Fetch all pharmacies on initial load
     useEffect(() => {
         const fetchPharmacies = async () => {
             try {
@@ -29,7 +28,6 @@ const ManagePharmacy = () => {
         fetchPharmacies();
     }, []);
 
-    // Fetch pharmacies based on the search text
     useEffect(() => {
         const fetchSearchedPharmacies = async () => {
             if (searchText) {
@@ -40,7 +38,6 @@ const ManagePharmacy = () => {
                     console.error("Error searching pharmacies:", error);
                 }
             } else {
-                // When searchText is empty, fetch all pharmacies again
                 const fetchAllPharmacies = async () => {
                     try {
                         const response = await axios.get(`${apiURL}/api/pharmacies/get`);
@@ -55,7 +52,7 @@ const ManagePharmacy = () => {
         };
 
         fetchSearchedPharmacies();
-    }, [searchText]); // Trigger search when searchText changes
+    }, [searchText]);
 
     const handleModifyClick = (pharmacy) => {
         navigate('/modifypharmacy', { state: { pharmacy } });
@@ -91,7 +88,6 @@ const ManagePharmacy = () => {
                         </div>
                     </div>
 
-                    {/* Pharmacies Displayed as Horizontal Slider */}
                     <div className="row mt-2">
                         <div className="i-maph-pharmacies-slider">
                             {pharmacies.length > 0 ? (

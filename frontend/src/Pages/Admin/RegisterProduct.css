@@ -30,22 +30,21 @@
   height: auto;
 }
 
-/* Search bar styling */
 .i-repr-form-control {
-  background-color: rgb(27, 43, 107); /* Initial background color */
-  color: white; /* Text color */
-  border: 1px solid rgba(104, 104, 104, 0.2); /* Light border */
+  background-color: rgb(27, 43, 107);
+  color: white;
+  border: 1px solid rgba(104, 104, 104, 0.2);
 }
 
 .i-repr-form-control:focus {
-  background-color: rgba(15, 25, 55, 1); /* Lighter shade of blue on focus */
-  color: white; /* Text color */
-  border-color: rgba(255, 255, 255, 0.4); /* Lighter border on focus */
-  box-shadow: none; /* Remove default box-shadow */
+  background-color: rgba(15, 25, 55, 1);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: none;
 }
 
 .i-repr-form-control::placeholder {
-  color: rgba(255, 255, 255, 0.6); /* White placeholder text with opacity */
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .i-repr-form-label, .form-control, .btn, p {
@@ -61,10 +60,10 @@
 }
 
 .i-repr-form-select:focus {
-  background-color: rgba(15, 25, 55, 1); /* Slightly lighter blue on focus */
-  color: white; /* White text color */
-  border-color: rgba(255, 255, 255, 0.4); /* Lighter border on focus */
-  box-shadow: none; /* Remove default box-shadow */
+  background-color: rgba(15, 25, 55, 1);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: none;
 }
 
 .i-repr-create-product-button {
@@ -80,46 +79,45 @@
 
 .i-repr-card {
   background-color: rgb(27, 43, 107);
-  padding: 10px; /* Reduce padding for a smaller card */
-  border-radius: 10px; /* Optional: round the corners */
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .i-repr-card-body {
   background-color: rgb(40, 64, 157);
-  padding: 10px; /* Adjust padding inside the card body */
+  padding: 10px;
 }
 
 .i-repr-card-title {
   color: white;
-  font-size: 1.2rem; /* Reduce font size for the title */
+  font-size: 1.2rem;
 }
 
 .i-repr-card-text {
   color: white;
-  font-size: 0.9rem; /* Reduce font size for the text */
+  font-size: 0.9rem;
 }
 
 .i-repr-medications-slider {
   display: flex;
-  overflow-x: auto; /* Allow horizontal scrolling */
+  overflow-x: auto;
 }
 
 .i-repr-medication-card {
-  flex: 0 0 auto; /* Prevent cards from shrinking */
-  width: 200px; /* Adjust the width to make cards smaller */
-  margin: 10px; /* Add some margin between cards */
+  flex: 0 0 auto;
+  width: 200px;
+  margin: 10px;
 }
 
-/* Optional: Customize the scrollbar for a better appearance */
 .i-repr-medications-slider::-webkit-scrollbar {
-  height: 8px; /* Change the height of the scrollbar */
+  height: 8px;
 }
 
 .i-repr-medications-slider::-webkit-scrollbar-thumb {
   background: linear-gradient(to right, #00ffc9, #ffaccf 50%, #ff5da2) !important;
-  border-radius: 10px; /* Rounded corners */
+  border-radius: 10px;
 }
 
 .i-repr-medications-slider::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Color on hover */
+  background: #555;
 }

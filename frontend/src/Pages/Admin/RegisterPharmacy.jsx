@@ -5,7 +5,7 @@ import gradient from '../../assets/register_pharmacy_title.png';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const apiURL = import.meta.env.VITE_BACKEND_URL; // Ensure you declare apiURL here
+const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 const RegisterPharmacy = () => {
     const [states, setStates] = useState([]);
@@ -37,7 +37,6 @@ const RegisterPharmacy = () => {
         try {
             const response = await axios.post(`${apiURL}/api/pharmacies/create`, formData);
             console.log('Pharmacy created successfully:', response.data);
-            // Optionally reset the form or show a success message
             setFormData({ name: '', location: '', localNumber: '', stateId: '' });
         } catch (error) {
             console.error('Error creating pharmacy:', error);
@@ -58,7 +57,6 @@ const RegisterPharmacy = () => {
                         </div>
                     </div>
 
-                    {/* Input fields with labels to the left */}
                     <div className="row mt-4 align-items-center">
                         <div className="col-md-3">
                             <p className="form-label text-white">Nombre</p>
@@ -125,7 +123,6 @@ const RegisterPharmacy = () => {
                         </div>
                     </div>
 
-                    {/* Submit button */}
                     <div className="row mt-4">
                         <div className="col-md-7"></div>
                         <div className="col-md-2">

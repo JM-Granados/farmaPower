@@ -11,7 +11,7 @@ const RegisterProduct = () => {
   const [pharmacies, setPharmacies] = useState([]);
   const [type, setType] = useState('points');
   const [medications, setMedications] = useState([]);
-  const [selectedMedicationId, setSelectedMedicationId] = useState(null); // Track selected medication
+  const [selectedMedicationId, setSelectedMedicationId] = useState(null);
   const [points, setPoints] = useState('');
   const [exchangeAmount, setExchangeAmount] = useState('');
 
@@ -106,8 +106,7 @@ const RegisterProduct = () => {
                       <img src={medication.imageUrl} className="card-img-top" alt={medication.name} />
                       <div className="card-body i-repr-card-body">
                         <h5 className="card-title i-repr-card-title">{medication.name}</h5>
-                        <p className="card-text i-repr-card-text">Amount: {medication.amount}</p>
-                        <p className="card-text i-repr-card-text">Type: {medication.type?.medicationType}</p>
+                        <p className="card-text i-repr-card-text">Cantidad: {medication.amount}</p>
                       </div>
                     </div>
                   </div>

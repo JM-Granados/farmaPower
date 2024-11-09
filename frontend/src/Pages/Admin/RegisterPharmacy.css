@@ -23,22 +23,21 @@
   height: auto;
 }
 
-/* Search bar styling */
 .i-reph-form-control {
-  background-color: rgb(27, 43, 107); /* Initial background color */
-  color: white; /* Text color */
-  border: 1px solid rgba(104, 104, 104, 0.2); /* Light border */
+  background-color: rgb(27, 43, 107);
+  color: white;
+  border: 1px solid rgba(104, 104, 104, 0.2);
 }
 
 .i-reph-form-control:focus {
-  background-color: rgba(15, 25, 55, 1); /* Lighter shade of blue on focus */
-  color: white; /* Text color */
-  border-color: rgba(255, 255, 255, 0.4); /* Lighter border on focus */
-  box-shadow: none; /* Remove default box-shadow */
+  background-color: rgba(15, 25, 55, 1);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: none;
 }
 
 .i-reph-form-control::placeholder {
-  color: rgba(255, 255, 255, 0.6); /* White placeholder text with opacity */
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .i-reph-form-select {
@@ -50,10 +49,10 @@
 }
 
 .i-reph-form-select:focus {
-  background-color: rgba(15, 25, 55, 1); /* Slightly lighter blue on focus */
-  color: white; /* White text color */
-  border-color: rgba(255, 255, 255, 0.4); /* Lighter border on focus */
-  box-shadow: none; /* Remove default box-shadow */
+  background-color: rgba(15, 25, 55, 1);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: none;
 }
 
 .i-reph-create-pharmacy-button {

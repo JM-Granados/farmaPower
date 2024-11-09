@@ -18,7 +18,7 @@ const ModifyProduct = () => {
   useEffect(() => {
     if (location.state) {
       const { _id, points, exchangeAmount } = location.state;
-      setSelectedElegibleMedicationId(_id); // Store the elegiblemedication ID
+      setSelectedElegibleMedicationId(_id);
       setPoints(points || '');
       setExchangeAmount(exchangeAmount || '');
     }
@@ -28,7 +28,6 @@ const ModifyProduct = () => {
     if (selectedElegibleMedicationId) {
       const confirmUpdate = window.confirm("Are you sure you want to update this eligible medication?");
       if (confirmUpdate) {
-        // Ensure points and exchangeAmount have valid values
         if (!points || !exchangeAmount) {
           alert("Please fill in both points and exchange amount.");
           return;
@@ -36,30 +35,30 @@ const ModifyProduct = () => {
 
         try {
           const payload = {
-            points: parseInt(points, 10),     // Convert to integer
-            exchangeAmount: parseInt(exchangeAmount, 10) // Convert to integer
+            points: parseInt(points, 10),
+            exchangeAmount: parseInt(exchangeAmount, 10)
           };
 
-          console.log("Payload:", payload); // Log the payload for debugging
+          console.log("Payload:", payload);
 
           const response = await axios.put(`${apiURL}/api/elegiblemedications/modify/${selectedElegibleMedicationId}`, payload);
 
           console.log("Modified medication:", response.data);
-          alert("Eligible medication updated successfully"); // Success message
-          navigate('/ManageElegibleMedication'); // Navigate to eligible medication list
+          alert("Eligible medication updated successfully");
+          navigate('/ManageElegibleMedication'); 
         } catch (error) {
           console.error("Error modifying medication:", error);
           if (error.response) {
             console.error("Backend error message:", error.response.data);
             alert(`Failed to update eligible medication: ${error.response.data.message || error.response.data}`);
           } else {
-            alert("Failed to update eligible medication"); // General error message
+            alert("Failed to update eligible medication");
           }
         }
       }
     } else {
       console.error("No eligible medication selected for modification.");
-      alert("No eligible medication selected for modification."); // Alert for no selection
+      alert("No eligible medication selected for modification.");
     }
   };
 

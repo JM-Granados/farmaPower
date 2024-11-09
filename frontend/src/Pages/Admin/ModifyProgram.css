@@ -30,37 +30,36 @@
   height: auto;
 }
 
-/* Search bar styling */
 .i-moprg-form-control {
-  background-color: rgb(27, 43, 107); /* Initial background color */
-  color: white; /* Text color */
-  border: 1px solid rgba(104, 104, 104, 0.2); /* Light border */
+  background-color: rgb(27, 43, 107);
+  color: white;
+  border: 1px solid rgba(104, 104, 104, 0.2);
 }
 
 .i-moprg-form-control:focus {
-  background-color: rgba(15, 25, 55, 1); /* Lighter shade of blue on focus */
-  color: white; /* Text color */
-  border-color: rgba(255, 255, 255, 0.4); /* Lighter border on focus */
-  box-shadow: none; /* Remove default box-shadow */
+  background-color: rgba(15, 25, 55, 1);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: none;
 }
 
 .i-moprg-form-control::placeholder {
-  color: rgba(255, 255, 255, 0.6); /* White placeholder text with opacity */
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .i-moprg-form-select {
-  background-color: rgb(27, 43, 107); /* Initial background color */
-  color: white; /* Text color */
-  border: 1px solid rgba(104, 104, 104, 0.2); /* Light border */
+  background-color: rgb(27, 43, 107);
+  color: white;
+  border: 1px solid rgba(104, 104, 104, 0.2);
   border-radius: 0.25rem;
   padding: 0.5rem 1rem;
 }
 
 .i-moprg-form-select:focus {
-  background-color: rgba(15, 25, 55, 1); /* Slightly lighter blue on focus */
-  color: white; /* White text color */
-  border-color: rgba(255, 255, 255, 0.4); /* Lighter border on focus */
-  box-shadow: none; /* Remove default box-shadow */
+  background-color: rgba(15, 25, 55, 1);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: none;
 }
 
 .i-moprg-modify-program-button {
@@ -85,48 +84,86 @@
 }
 
 
-.i-moprg-card {
-  background-color: rgb(27, 43, 107);
-  padding: 10px; /* Reduce padding for a smaller card */
-  border-radius: 10px; /* Optional: round the corners */
+.i-moprg-card{
+  position: relative;
+  min-width: 7rem;
+  max-width: 24rem;
+  height: 15rem; 
+  margin: 0.5rem;
+  border-radius: 0.7rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #111A3D;
 }
 
-.i-moprg-card-body {
-  background-color: rgb(40, 64, 157);
-  padding: 10px; /* Adjust padding inside the card body */
+.i-moprg-card-body{
+  background-color: rgba(20, 30, 70, 1);
+  gap: 0.5rem;
+  padding-left: 0.9rem;
+  border-radius: 0.7rem; 
+  padding-top: 0.8rem;
+  padding-bottom: 0.1rem;
 }
 
-.i-moprg-card-title {
-  color: white;
-  font-size: 1.2rem; /* Reduce font size for the title */
+.i-moprg-card-title{
+  font-size:2rem;
+  color: rgba(255, 255, 255, 1);
 }
 
-.i-moprg-card-text {
-  color: white;
-  font-size: 0.9rem; /* Reduce font size for the text */
+.i-moprg-card-text{
+  font-family: "League Spartan-Regular", Helvetica;
+  font-size: 1rem;
+  font-weight: 400;
+  border-radius: 0.5rem;
+  color: rgba(255, 255, 255, 1);
 }
 
-.i-moprg-medications-slider {
+.i-moprg-pharmacies-slider {
   display: flex;
-  overflow-x: auto; /* Allow horizontal scrolling */
+  overflow-x: auto;
+  gap: -3rem;
 }
 
-.i-moprg-medication-card {
-  flex: 0 0 auto; /* Prevent cards from shrinking */
-  width: 200px; /* Adjust the width to make cards smaller */
-  margin: 10px; /* Add some margin between cards */
+.i-moprg-pharmacy-card {
+  flex: 0 0 auto;
+  width: 300px;
+  margin: 10px;
 }
 
-/* Optional: Customize the scrollbar for a better appearance */
-.i-moprg-medications-slider::-webkit-scrollbar {
-  height: 8px; /* Change the height of the scrollbar */
+.i-moprg-pharmacies-slider::-webkit-scrollbar {
+  height: 8px;
+}
+
+.i-moprg-pharmacies-slider::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, #0cc0df, #ffde59 50%, #ffde59) !important;
+  border-radius: 10px;
 }
 
 .i-moprg-medications-slider::-webkit-scrollbar-thumb {
   background: linear-gradient(to right, #00ffc9, #ffaccf 50%, #ff5da2) !important;
-  border-radius: 10px; /* Rounded corners */
+  border-radius: 10px;
 }
 
-.i-moprg-medications-slider::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Color on hover */
+.i-moprg-modify-link {
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.i-moprg-text-area {
+  background-color: rgb(27, 43, 107);
+  color: white;
+  border: 1px solid rgba(104, 104, 104, 0.2);
+  height: 6rem;
+  resize: none;
+}
+
+.i-moprg-text-area:focus {
+  background-color: rgba(15, 25, 55, 1);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: none;
+}
+
+.i-moprg-text-area::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }

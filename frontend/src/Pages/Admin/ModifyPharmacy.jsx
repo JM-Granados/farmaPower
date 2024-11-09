@@ -9,8 +9,8 @@ const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 const ModifyPharmacy = () => {
   const location = useLocation();
-  const navigate = useNavigate(); // Initialize useNavigate for navigation
-  const pharmacy = location.state?.pharmacy || {}; // Get pharmacy data from location state
+  const navigate = useNavigate();
+  const pharmacy = location.state?.pharmacy || {};
   const [states, setStates] = useState([]);
   const [formData, setFormData] = useState({
     name: pharmacy.name || '',
@@ -40,7 +40,7 @@ const ModifyPharmacy = () => {
     try {
       await axios.put(`${apiURL}/api/pharmacies/update/${pharmacy._id}`, formData);
       alert("Pharmacy updated successfully");
-      navigate('/ManagePharmacy'); // Change this to your pharmacy list route
+      navigate('/ManagePharmacy');
     } catch (error) {
       console.error("Error updating pharmacy:", error);
       alert("Failed to update pharmacy");
@@ -53,7 +53,7 @@ const ModifyPharmacy = () => {
       try {
         await axios.delete(`${apiURL}/api/pharmacies/delete/${pharmacy._id}`);
         alert("Pharmacy deleted successfully");
-        navigate('/ManagePharmacy'); // Change this to your pharmacy list route
+        navigate('/ManagePharmacy');
       } catch (error) {
         console.error("Error deleting pharmacy:", error);
         alert("Failed to delete pharmacy");

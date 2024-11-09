@@ -15,16 +15,13 @@ const ManageElegibleMedication = () => {
     const [searchText, setSearchText] = useState('');
     const navigate = useNavigate();
 
-    // Fetch medications based on searchText
     useEffect(() => {
         const fetchMedications = async () => {
             try {
                 if (searchText) {
-                    // Search for medications by name
                     const response = await axios.get(`${apiURL}/api/elegiblemedications/search?name=${searchText}`);
                     setMedications(response.data);
                 } else {
-                    // Fetch all medications if no search text is entered
                     const response = await axios.get(`${apiURL}/api/elegiblemedications`);
                     setMedications(response.data);
                 }
@@ -34,9 +31,8 @@ const ManageElegibleMedication = () => {
         };
 
         fetchMedications();
-    }, [searchText]); // Re-fetch when searchText changes
+    }, [searchText]);
 
-    // Redirect to ModifyProduct page
     const handleModifyClick = (medication) => {
         navigate('/modifyproduct', { state: medication });
     };
