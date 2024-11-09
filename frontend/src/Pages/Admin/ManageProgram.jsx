@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './ManageProgram.css';
@@ -20,7 +19,6 @@ const ManageProgram = () => {
             try {
                 const response = await axios.get(apiURL + '/api/programs');
                 setPrograms(response.data);
-                console.info("Respuesta" +response.data);
             } catch (error) {
                 console.error("Error fetching programs:", error);
             }
@@ -29,28 +27,27 @@ const ManageProgram = () => {
         fetchPrograms();
     }, []);
 
+    useEffect(() => {
+        const searchPrograms = async () => {
+            if (searchText === '') {
+                const response = await axios.get(apiURL + '/api/programs');
+                setPrograms(response.data);
+            } else {
+                try {
+                    const response = await axios.get(`${apiURL}/api/programs/search?name=${searchText}`);
+                    setPrograms(response.data);
+                } catch (error) {
+                    console.error("Error searching programs:", error);
+                }
+            }
+        };
+
+        searchPrograms();
+    }, [searchText]);
+
     const handleEditClick = (program) => {
-        // Navegar a la página de edición (esta mandando el programa completo)
-        navigate(`/ModifyProgram`,{ state: program });
+        navigate(`/ModifyProgram`, { state: program });
     };
-
-    // useEffect(() => {
-    //     const searchPrograms = async () => {
-    //         if (searchText === '') {
-    //             const response = await axios.get('http://localhost:3000/api/programs');
-    //             setPrograms(response.data);
-    //         } else {
-    //             try {
-    //                 const response = await axios.get(`http://localhost:3000/api/programs/search?searchText=${searchText}`);
-    //                 setPrograms(response.data);
-    //             } catch (error) {
-    //                 console.error("Error searching programs:", error);
-    //             }
-    //         }
-    //     };
-
-    //     searchPrograms();
-    // }, [searchText]);
 
     return (
         <div className="container-fluid i-mapr-manage-programs">
@@ -96,15 +93,15 @@ const ManageProgram = () => {
                                         <div className="p-card-body">
                                             <h5 className="p-card-title">{program.name}</h5>
                                             <p className="p-card-text">
-                                                Descripción: {program.description.length > 40 
-                                                    ? program.description.slice(0, 40) + "..." 
+                                                Descripción: {program.description.length > 40
+                                                    ? program.description.slice(0, 40) + "..."
                                                     : program.description}
                                             </p>
                                             <p className="p-card-text">
                                                 Medicamentos elegibles: {program.medications.length}
                                             </p>
                                             <p className="p-card-text">
-                                                Reglas aplicables: {program.rule.rule} {/* Adjust based on schema */}
+                                                Reglas aplicables: {program.rule ? program.rule.rule : 'No disponible'}
                                             </p>
                                         </div>
                                     </div>

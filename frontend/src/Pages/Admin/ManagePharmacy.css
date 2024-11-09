@@ -24,9 +24,9 @@
 }
 
 .i-maph-form-control {
-    background-color: rgb(27, 43, 107); /* Initial background color */
-    color: white; /* Text color */
-    border: 1px solid rgba(104, 104, 104, 0.2); /* Light border */
+    background-color: rgb(27, 43, 107); 
+    color: white;
+    border: 1px solid rgba(104, 104, 104, 0.2);
 }
 
 .i-maph-form-control:focus {
@@ -41,61 +41,77 @@
 }
 
 .i-maph-gradient-link {
-    background: linear-gradient(90deg, #0cc0df, #ffde59); /* Adjust colors as desired */
+    background: linear-gradient(90deg, #0cc0df, #ffde59);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; /* Makes text transparent to show gradient */
+    -webkit-text-fill-color: transparent;
     font-weight: bold;
-    text-decoration: none; /* Removes underline */
+    text-decoration: none;
 }
 
 .i-maph-modify-link {
-    color: #0cc0df;
+    color: #ffffff;
+    font-size: 1.5rem;
 }
 
 .i-maph-gradient-link:hover {
     opacity: 0.8;
 }
 
-/* Style for "No hay coincidencias?" text */
 .i-maph-no-coincidences {
     color: white;
 }
 
-/* Style for "No hay farmacias que coincidan con la búsqueda." text */
 .i-maph-no-results {
     color: white;
 }
 
 .i-maph-card{
-    background-color: rgb(27, 43, 107);;
+    position: relative;
+    min-width: 7rem;
+    max-width: 24rem;
+    height: 15rem; 
+    margin: 0.5rem;
+    border-radius: 0.7rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: #111A3D;
 }
 
 .i-maph-card-body{
-    background-color: rgb(40, 64, 157);;
+    background-color: rgba(20, 30, 70, 1);
+    gap: 0.5rem;
+    padding-left: 0.9rem;
+    border-radius: 0.7rem; 
+    padding-top: 0.8rem;
+    padding-bottom: 0.1rem;
 }
 
 .i-maph-card-title{
-    color: white;
+    font-size:2rem;
+    color: rgba(255, 255, 255, 1);
 }
 
 .i-maph-card-text{
-    color: white;
+    font-family: "League Spartan-Regular", Helvetica;
+    font-size: 1rem;
+    font-weight: 400;
+    border-radius: 0.5rem;
+    color: rgba(255, 255, 255, 1);
 }
 
 .i-maph-pharmacies-slider {
     display: flex;
-    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-x: auto;
   }
   
   .i-maph-pharmacy-card {
-    flex: 0 0 auto; /* Prevent cards from shrinking */
+    flex: 0 0 auto;
     width: 300px;
-    margin: 10px; /* Spacing between cards */
+    margin: 10px;
   }
   
-  /* Optional: Customize the scrollbar for a better appearance */
   .i-maph-pharmacies-slider::-webkit-scrollbar {
-    height: 8px; /* Customize scrollbar height */
+    height: 8px;
   }
   
   .i-maph-pharmacies-slider::-webkit-scrollbar-thumb {

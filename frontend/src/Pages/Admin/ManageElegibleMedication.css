@@ -24,9 +24,9 @@
 }
 
 .i-maem-form-control {
-    background-color: rgb(27, 43, 107); /* Initial background color */
-    color: white; /* Text color */
-    border: 1px solid rgba(104, 104, 104, 0.2); /* Light border */
+    background-color: rgb(27, 43, 107);
+    color: white;
+    border: 1px solid rgba(104, 104, 104, 0.2);
 }
 
 .i-maem-form-control:focus {
@@ -41,15 +41,16 @@
 }
 
 .i-maem-gradient-link {
-    background: linear-gradient(90deg, #0cc0df, #ffde59); /* Adjust colors as desired */
+    background: linear-gradient(90deg, #0cc0df, #ffde59);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; /* Makes text transparent to show gradient */
+    -webkit-text-fill-color: transparent;
     font-weight: bold;
-    text-decoration: none; /* Removes underline */
+    text-decoration: none;
 }
 
 .i-maem-modify-link {
-    color: #0cc0df;
+    color: #ffffff;
+    font-size: 1.5rem;
 }
 
 .i-maem-gradient-link:hover {
@@ -60,54 +61,88 @@
     color: white;
 }
 
-/* Style for "No hay farmacias que coincidan con la búsqueda." text */
 .i-maem-no-results {
     color: white;
 }
 
 .i-maem-card{
-    background-color: rgb(27, 43, 107);;
+    position: relative;
+    min-width: 7rem;
+    max-width: 24rem;
+    height: 28.5rem; 
+    margin: 0.5rem;
+    border-radius: 0.7rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: #111A3D;
 }
 
 .i-maem-card-body{
-    background-color: rgb(40, 64, 157);;
+    background-color: rgba(20, 30, 70, 1);
+    gap: 0.5rem;
+    padding-left: 0.9rem;
+    border-radius: 0.7rem; 
+    padding-top: 0.8rem;
+    padding-bottom: 0.1rem;
 }
 
 .i-maem-card-title{
-    color: white;
+    font-size:1.5rem;
+    color: rgba(255, 255, 255, 1);
 }
 
 .i-maem-card-text{
-    color: white;
+    font-family: "League Spartan-Regular", Helvetica;
+    font-size: 15px;
+    font-weight: 400;
+    border-radius: 0.5rem;
+    color: rgba(255, 255, 255, 1);
+}
+
+.i-maem-img-container {
+    background-color: rgba(20, 30, 70, 1);
+    height: 12rem;
+    max-width: 19rem;
+    justify-items: center;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    border-radius: 0.7rem; 
 }
 
 .i-maem-card-img {
-    width: 40%; /* Adjust this to your desired width */
-    height: auto; /* Keeps aspect ratio */
-    margin: 0 auto; /* Center-aligns the image */
+    max-width: 140px;
+    height: auto; 
     display: block;
 }
 
 .i-maem-medications-slider {
     display: flex;
-    overflow-x: auto; /* Allow horizontal scrolling */
+    overflow-x: auto;
+    white-space: nowrap;
   }
   
   .i-maem-medication-card {
-    flex: 0 0 auto; /* Prevent cards from shrinking */
-    margin: 10px; /* Add some margin between cards */
+    position: relative;
+    min-width: 18rem;
+    max-width: 18rem;
+    height: 28.5rem; 
+    margin: 0.5rem;
+    border-radius: 0.7rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: #111A3D;
+    flex-shrink: 0;
   }
   
-  /* Optional: Customize the scrollbar for a better appearance */
   .i-maem-medications-slider::-webkit-scrollbar {
-    height: 8px; /* Change the height of the scrollbar */
+    height: 8px;
   }
   
   .i-maem-medications-slider::-webkit-scrollbar-thumb {
     background: linear-gradient(to right, #0cc0df, #ffde59 50%, #ffde59) !important;
-    border-radius: 10px; /* Rounded corners */
+    border-radius: 10px;
   }
   
   .i-maem-medications-slider::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Color on hover */
+    background: #555;
   }

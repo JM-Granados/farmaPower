@@ -15,16 +15,13 @@ const ManageElegibleMedication = () => {
     const [searchText, setSearchText] = useState('');
     const navigate = useNavigate();
 
-    // Fetch medications based on searchText
     useEffect(() => {
         const fetchMedications = async () => {
             try {
                 if (searchText) {
-                    // Search for medications by name
                     const response = await axios.get(`${apiURL}/api/elegiblemedications/search?name=${searchText}`);
                     setMedications(response.data);
                 } else {
-                    // Fetch all medications if no search text is entered
                     const response = await axios.get(`${apiURL}/api/elegiblemedications`);
                     setMedications(response.data);
                 }
@@ -34,9 +31,8 @@ const ManageElegibleMedication = () => {
         };
 
         fetchMedications();
-    }, [searchText]); // Re-fetch when searchText changes
+    }, [searchText]);
 
-    // Redirect to ModifyProduct page
     const handleModifyClick = (medication) => {
         navigate('/modifyproduct', { state: medication });
     };
@@ -77,11 +73,13 @@ const ManageElegibleMedication = () => {
                                 medications.map((eligibleMedication) => (
                                     <div className="i-maem-medication-card" key={eligibleMedication._id}>
                                         <div className="card i-maem-card p-3 position-relative">
-                                            <img
-                                                src={eligibleMedication.medication?.imageUrl || pill}
-                                                className="mb-3 card-img-top i-maem-card-img"
-                                                alt="Medication"
-                                            />
+                                            <div className='i-maem-img-container'>
+                                                <img
+                                                    src={eligibleMedication.medication?.imageUrl || pill}
+                                                    className="mb-3 card-img-top i-maem-card-img"
+                                                    alt="Medication"
+                                                />
+                                            </div>
                                             <div className="card-body i-maem-card-body">
                                                 <h5 className="card-title i-maem-card-title">
                                                     {eligibleMedication.medication?.name || 'Nombre no disponible'}

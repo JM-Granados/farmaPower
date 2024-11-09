@@ -24,9 +24,9 @@
 }
 
 .i-mapr-form-control {
-    background-color: rgb(27, 43, 107); /* Initial background color */
-    color: white; /* Text color */
-    border: 1px solid rgba(104, 104, 104, 0.2); /* Light border */
+    background-color: rgb(27, 43, 107);
+    color: white;
+    border: 1px solid rgba(104, 104, 104, 0.2);
 }
 
 .i-mapr-form-control:focus {
@@ -41,11 +41,11 @@
 }
 
 .i-mapr-gradient-link {
-    background: linear-gradient(90deg, #0cc0df, #ffde59); /* Adjust colors as desired */
+    background: linear-gradient(90deg, #0cc0df, #ffde59);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; /* Makes text transparent to show gradient */
+    -webkit-text-fill-color: transparent;
     font-weight: bold;
-    text-decoration: none; /* Removes underline */
+    text-decoration: none; 
 }
 
 .i-mapr-gradient-link:hover {
@@ -56,20 +56,19 @@
     color: white;
 }
 
-/* Style for "No hay farmacias que coincidan con la búsqueda." text */
 .i-mapr-no-results {
     color: white;
 }
 
 .program-card {
     position: relative;
-    min-width: 7rem; /* Ancho máximo de la tarjeta */
+    min-width: 7rem; 
     max-width: 24rem;
     height: 28.5rem; 
-    margin: 0.5rem; /* Añade un margen para separación */
-    border-radius: 0.7rem; /* Bordes redondeados */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Añade una sombra */
-    overflow: hidden; /* Asegura que el contenido no desborde */
+    margin: 0.5rem;
+    border-radius: 0.7rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
     background-color: #111A3D;
 }
 
@@ -124,9 +123,9 @@
 .k-edit-icon {
     position: absolute;
     display: none;
-    top: 0.5rem; /* Ajusta este valor según sea necesario para el margen superior */
-    right: 0.5rem; /* Asegura que el icono esté 10px alejado del borde derecho del contenedor de la tarjeta */
-    width: 35px; /* Establece el ancho, o puedes removerlo si ya lo defines en el atributo width del elemento img */
-    height: 35px; /* Establece la altura, o puedes removerlo si ya lo defines en el atributo height del elemento img */
-    cursor: pointer; /* Opcional, para hacer el cursor como una mano cuando se pasa sobre el icono */
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
 }

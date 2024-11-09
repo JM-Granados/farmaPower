@@ -5,6 +5,7 @@ import SideBar2 from '../../NavBar/SideBar';
 import '../../NavBar/SideBar.css'; 
 import gradient from '../../assets/programs_gradient.png'; 
 import programimg from '../../assets/programs.png';
+const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 const Programs = () => {
 
@@ -13,7 +14,7 @@ const Programs = () => {
     useEffect(() => {
         const fetchPrograms = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/programs');
+                const response = await axios.get(`${apiURL}/api/programs`);
                 setPrograms(response.data);
             } catch (error) {
                 console.error("Error fetching requests:", error);

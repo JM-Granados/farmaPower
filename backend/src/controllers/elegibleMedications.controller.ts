@@ -18,20 +18,30 @@ export const searchElegibleMedications: RequestHandler = async (req, res) => {
     try {
         const { name } = req.query;
 
-        const medications = await ElegibleMedicationModel.find({
-            medication: { $exists: true },
-            'medication.name': { $regex: name, $options: 'i' }
+        // Primero encuentra los IDs de Medication que coinciden con el nombre
+        const medications = await MedicationModel.find({
+            name: { $regex: name, $options: 'i' }
+        }).select('_id');
+
+        // Convierte los resultados en un array de IDs
+        const medicationIds = medications.map(med => med._id);
+
+        // Ahora encuentra los ElegibleMedication que tienen un medication ID que coincide con los encontrados
+        const elegibleMedications = await ElegibleMedicationModel.find({
+            medication: { $in: medicationIds }
         }).populate({
             path: 'medication',
             populate: { path: 'type', model: 'TypeMedication' }
         });
 
-        res.json(medications);
+        res.json(elegibleMedications);
     } catch (error) {
         console.error("Error searching medications:", error);
         res.status(500).json({ message: "Error searching medications", error });
     }
 };
+
+
 
 
 // Create a new eligible medication
