@@ -5,6 +5,7 @@ import axios from 'axios'; // Importa axios para realizar llamadas HTTP.
 import usePasswordToggle from "../../ComponentsLogin/usePasswordToggle";
 import { useNavigate } from 'react-router-dom'; // Importa useNavigate para la navegación programática.
 import './Login.css'; // Importa los estilos específicos para la pantalla de login.
+import Logo from '../../../public/LogoReadme.png'
 const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 /**
@@ -79,9 +80,9 @@ function Login() {
             if (response.data.message === "User logged in successfully") {
                 // Guarda los datos del usuario en el almacenamiento local y redirige a la página Home.
                 localStorage.setItem('user', JSON.stringify(response.data.user));
-                if(response.data.user.role == "Client") {
+                if (response.data.user.role == "Client") {
                     navigate('/Home_Client');
-                } else if(response.data.user.role == "Admin") {
+                } else if (response.data.user.role == "Admin") {
                     navigate('/Home_Admin');
                 } else {
                     navigate('/Home_Operator');
@@ -109,9 +110,13 @@ function Login() {
             <div className="jcontent">
 
                 {/* Formulario para el ingreso de usuario. */}
-                <form className='form' onSubmit={handleSubmit}>
+                <form className='form ' onSubmit={handleSubmit}>
+                    <div className="d-flex justify-content-center">
+                        <img src={Logo} alt="DesdeHasta" className="LogoIS" height={200} />
+                    </div>
+
                     {/* Título del formulario. */}
-                    <h1 className='jIngresarText text-center mb-5'>Ingresar</h1>
+                    <h1 className='jIngresarText text-center mb-5 mt-5'>Ingresar</h1>
 
                     {/* Div contenedor para el campo de correo electrónico. */}
                     <div className="mb-5">
