@@ -185,16 +185,15 @@ const NewRequest = () => {
                   </button>
                 </div>
               </div>
-
               <div className="row mt-4">
-                {medicines.length > 0 && (
+                {medicines.length > 0 ? (
                   <div className="col-10 overflow-auto nrresult">
                     <ul>
                       {medicines.map((med, index) => (
                         <li key={index}>
                           <p
                             className={`selectable-medicine ${med._id === medication ? 'selected-medicine' : ''}`}
-                            onClick={() => handleMedicineClick(med._id)} // Usa la función handleMedicineClick
+                            onClick={() => handleMedicineClick(med._id)}
                           >
                             {med.medication.name} - {med.points} puntos
                           </p>
@@ -202,6 +201,8 @@ const NewRequest = () => {
                       ))}
                     </ul>
                   </div>
+                ) : (
+                  <p className="m-maem-no-results">No hay medicamentos que coincidan con la búsqueda.</p>
                 )}
               </div>
 
