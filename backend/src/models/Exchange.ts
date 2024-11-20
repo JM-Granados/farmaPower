@@ -1,8 +1,4 @@
-const mongoose = require('mongoose');
-import { Schema, model } from 'mongoose';
-import ElegibleMedication from './ElegibleMedication';
-import User from './User';
-import Pharmacy from './Pharmacy';
+import mongoose, { Schema, model } from 'mongoose';
 
 const exchangeSchema = new Schema({
     exchangeNumber: { type: Number, required: true },
