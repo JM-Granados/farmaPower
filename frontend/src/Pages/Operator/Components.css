@@ -55,3 +55,57 @@
     padding-bottom: 0.1rem;
     margin: 1rem;
 }
+
+.kexchange-card-text{
+    font-family: "League Spartan-Regular", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 0.5rem;
+    margin-left: 1rem;
+    color: rgba(255, 255, 255, 1);
+}
+
+.kexchange-card {
+    min-width: 17rem; /* Ancho mínimo de la tarjeta */
+    height: 26rem; 
+    margin: 0.5rem; /* Añade un margen para separación */
+    border-radius: 1rem; /* Bordes redondeados */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Añade una sombra */
+    overflow: hidden; /* Asegura que el contenido no desborde */
+    background-color: #111A3D;
+    cursor: pointer;
+    
+}
+
+.kexchange-card:hover {
+    transform: scale(1.05);
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+}
+
+.khand-container{
+    background-color: rgba(20, 30, 70, 1);
+    height: 12rem;
+    max-width: 19rem;
+    justify-items: center;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 0.7rem;
+    margin: 1rem;
+}
+
+.k-handbox {
+    max-width: 150px;
+    height: auto; 
+    display: block; /* Asegura que la imagen se muestre como un bloque */
+}
+
+.kexchange-card-body{
+    background-color: rgba(20, 30, 70, 1);
+    gap: 0.5rem;
+    padding-left: 0.5rem;
+    border-radius: 0.7rem; 
+    padding-top: 0.8rem;
+    padding-bottom: 0.1rem;
+    margin: 1rem;
+}
+
