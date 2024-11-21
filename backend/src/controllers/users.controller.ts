@@ -258,3 +258,20 @@ export const modifyUser: RequestHandler = async (req, res) => {
         }
     }
 };
+
+export const getClients: RequestHandler = async (req, res) => {
+    try {
+        // Buscar todos los usuarios en la base de datos y seleccionar campos específicos
+        const users = await User.find({role: 'Client'}).select('firstName firstLastName secondLastName email');
+
+        // Enviar la lista de usuarios al frontend
+        res.status(200).json(users);
+    } catch (error) {
+        // Manejar posibles errores de la base de datos
+        if (error instanceof Error) {
+            res.status(500).json({ message: "Error retrieving users: ", error: error.message });
+        } else {
+            res.status(500).json({ message: "Unknown error occurred" });
+        }
+    }
+};

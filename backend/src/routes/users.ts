@@ -41,7 +41,7 @@ router.post('/passRecovery', userCtrl.passRecovery);
 
 router.get('/getUsers', userCtrl.getAllUsers);
 
-router.get('/clients', userCtrl.getAllUsers); //aqui modificar a solo clientes
+router.get('/clients', userCtrl.getClients); //aqui modificar a solo clientes
 
 router.get('/getUsersSearched', userCtrl.getUsersSearched);
 
