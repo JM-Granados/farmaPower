@@ -42,6 +42,7 @@ import ModifyProduct from '../Pages/Admin/ModifyProduct';
 import RegisterPharmacy from '../Pages/Admin/RegisterPharmacy';
 import ModifyPharmacy from '../Pages/Admin/ModifyPharmacy';
 import ModifyProgram from '../Pages/Admin/ModifyProgram';
+import Exchanges from './Pharmacy/Exchanges';
 
 /**
  * @fileoverview Aplicación principal para el proyecto React usando React Router y Bootstrap.
@@ -82,7 +83,8 @@ function App() {
         {/* Ruta para la página de registrar programa accesible desde '/info/id' */}
         <Route path='/Info/:id' element={<Info/>}></Route> {/*No se como se vaya a manejar esto */}
         {/* Ruta para la página de registrar programa accesible desde '/help' */}
-        <Route path='/Help' element={<Help/>}></Route> {/*No se como se vaya a manejar esto */}
+        <Route path='/Help' element={<Help/>}></Route>
+        <Route path='/Exchanges' element={<Exchanges/>}></Route> 
 
         <Route path='/Login' element={<Login />}></Route>
         <Route path='/Signup' element={<Signup/>}></Route>

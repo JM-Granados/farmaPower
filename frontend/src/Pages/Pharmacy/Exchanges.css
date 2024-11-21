@@ -1,0 +1,102 @@
+.ksidebar-container-exchanges{
+    width: 325px;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(20, 30, 70, 1);
+}
+
+.kcontent-container-exchanges {
+    margin-left: 280px; /* Igual al ancho del sidebar */
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.kcontent-container2-exchanges {
+    padding: 0px;
+    flex-grow: 2;
+    justify-content: center;
+    align-content: center;
+}
+
+.kgradient-title-exchanges {
+    margin-top: 60px;
+    margin-left: 100px;
+}
+
+.kgradient-image-exchanges{
+    max-height: 110px;
+    width: auto;
+}
+
+.k-search-control {
+    background-color: #141E46;
+    color: white;
+    border: 1px solid rgba(0, 4, 53, 0.2);
+    width: 550px;
+}
+
+.k-search-control:focus {
+    background-color: rgba(15, 25, 55, 1);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: none;
+}
+
+.k-search-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.krow2 {
+    margin-top: 2.3rem;
+    margin-left: 100px;
+}
+
+.kbig-global-card {
+    width: 28rem;
+    height: 37rem;
+    border-radius: 1rem;
+    margin-top: 14rem;
+    margin-right: 1rem;
+    background-color: #111A3D;
+    padding: 2rem;
+}
+
+.kglobal-text {
+    color: rgba(255, 255, 255, 1);
+    font-family: "League Spartan-Regular", Helvetica;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.knumber-text{
+    color: rgba(255, 255, 255, 1);
+    font-family: "League Spartan-Regular", Helvetica;
+    font-size: 50px;
+    font-weight: 400;
+    margin-top: 2rem;
+    margin-bottom: 2.2rem;
+    justify-self: center;
+}
+
+.kline{
+    border-top: 3px solid rgb(74, 87, 112);
+    margin-bottom: 2rem;
+}
+
+.kscrollable-container-exchanges{
+    margin-top: 2rem;
+    margin-left: 1.7rem;
+    max-height: 640px; 
+    overflow-y: auto;
+    overflow-x: hidden; /* Evita el desplazamiento horizontal */
+    width: 1000px;
+    scrollbar-width: 0px; /* Oculta scrollbar en Firefox */
+    -ms-overflow-style: none; /* Oculta scrollbar en Edge/IE */
+}
+
+.kscrollable-container-exchanges::-webkit-scrollbar {
+    height: 0px; /* Oculta la barra vertical */
+    width: 0px;
+}

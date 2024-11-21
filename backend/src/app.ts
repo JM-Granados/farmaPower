@@ -32,6 +32,7 @@ import elegibleMedications from './routes/elegiblemedications'
 import medications from './routes/medications'
 import pharmacies from './routes/pharmacies'
 import programs from './routes/programs'
+import exchanges from './routes/exchanges'
 
 //----------------------------------------------------------------------------------
 // Carga las variables de entorno desde el archivo `.env` al entorno de ejecución.
@@ -65,6 +66,7 @@ app.use('/api/users',users)
 app.use('/api/pharmacyUser',pharmacyUser)
 app.use('/api/requests',requests)
 app.use('/api/elegiblemedications',elegibleMedications)
+app.use('/api/exchanges', exchanges)
 app.use('/api/medications', medications)
 app.use('/api/pharmacies', pharmacies)
 app.use('/api/programs', programs)
