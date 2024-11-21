@@ -13,34 +13,106 @@ const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 // cuidao con esto porque aun no se define un modelo, por lo que hay que cambiarlo despues
 const mockExchanges = [
-    {number: 1, date: '17/02/2024', producto: 'Ibuprofeno', farmacia: 'La Bomba'},
-    {number: 2, date: '15/02/2024', producto: 'Escitalopram', farmacia: 'La Bomba'},
-    {number: 3, date: '12/02/2024', producto: 'Paracetamol', farmacia: 'La Bomba'},
-    {number: 4, date: '19/02/2024', producto: 'Enantium', farmacia: 'La Bomba'}
+    {_id: '1', exchangeNumber: 1, createdAt: '17/02/2024', product: 'Ibuprofeno', pharmacy: 'La Bomba', client: '672b6733dd60abf5b47dd07c'},
+    {_id: '1', exchangeNumber: 2, createdAt: '15/02/2024', product: 'Escitalopram', pharmacy: 'La Bomba', client: '672b6733dd60abf5b47dd07c'},
+    {_id: '1', exchangeNumber: 3, createdAt: '12/02/2024', product: 'Paracetamol', pharmacy: 'La Bomba', client: '672b6733dd60abf5b47dd07c'},
+    {_id: '1', exchangeNumber: 4, createdAt: '19/02/2024', product: 'Enantium', pharmacy: 'La Bomba', client: 4}
+]
+
+const mockClients = [
+    {_id: 1, firstName: 'Adriana', firstLastName: 'Mora', secondLastName: 'Solano', email: 'adrianita@gmail.com'},
+    {_id: '672b6733dd60abf5b47dd07c', firstName: 'Cliente', firstLastName: 'del', secondLastName: 'Sistema', email: 'client@client.com'},
+    {_id: 3, firstName: 'Karol', firstLastName: 'Montero', secondLastName: 'Chaves', email: 'montero@gmail.com'},
+    {_id: 4, firstName: 'Meli', firstLastName: 'Carvajal', secondLastName: 'Charpentier', email: 'melicarvajalcharpentier.me@gmail.com'}
 ]
 
 //falta configurar la barra de búsqueda
 
 function Exchanges(){
     const [exchanges, setExchanges] = useState([]);
+    const [filteredExchanges, setFExchanges] = useState([]);
     const [searchText, setSearchText] = useState('');
     const [pointsTotal, setPT] = useState('0');
     const [pointsAvailable, setPA] = useState('0');
     const [pointsExchanged, setPE] = useState('0');
+    const [clients, setClients] = useState('');
+    const [clientName, setClientName] = useState('Todos');
 
     const endpoint = apiURL;
 
+    
+
+    useEffect(() => {
+
+        if (searchText === '') {
+            setFExchanges(exchanges); // Mostrar todas las exchanges si el campo de búsqueda está vacío
+            setClientName('Todos');
+            setPT('0');  
+            setPE('0');
+            setPA('0');
+            return;
+        }
+
+        const client = clients.find((c) => c.email.toLowerCase().includes(searchText.toLowerCase()));
+        if (!client) {
+            setClientName('No encontrado');
+            setFExchanges([]); // Si no encuentra cliente, no muestra exchanges
+            setPT(0);    
+            setPE(0);
+            setPA(0);
+            return;
+        }
+
+        setClientName(`${client.firstName} ${client.firstLastName} ${client.secondLastName}`);
+
+        // Filtrar exchanges del cliente
+        const clientExchanges = exchanges.filter((exchange) => exchange.client._id === client._id); //cuidao aqui
+        setFExchanges(clientExchanges);
+        const fetchPoints = async () => {
+            try {
+                const response = await axios.get(endpoint + `/api/exchanges/points/${client._id}`);
+                const data = response.data;
+                setPT(data.totalPoints);
+                setPE(data.usedPoints);
+                setPA(data.availablePoints);
+            } catch (error) {
+                console.error(error.response?.data?.message || 'Error al obtener puntos');
+                setPT(0); // Valores por defecto en caso de error
+                setPE(0);
+                setPA(0);
+            }
+        };
+        fetchPoints();
+    }, [searchText, exchanges, clients, endpoint]);
+
+    //Actualizar los datos dinamicamente
     useEffect(() => {
         const fetchRequests = async () => {
             try {
-                const response = await axios.get(endpoint + "/api/requests/all");
+                const response = await axios.get(endpoint + "/api/exchanges/all");
                 const data = Array.isArray(response.data) ? response.data : []; // Verifica si data es un array
+                // setExchanges(mockExchanges);
+                // setFExchanges(mockExchanges)
                 setExchanges(data);
+                setFExchanges(data);
             } catch (error) {
-                console.error(error.response?.data?.message || 'Error al obtener las solicitudes.');
-                setExchanges(mockExchanges);
+                console.error(error.response?.data?.message || 'Error al obtener las canjes');
+                setExchanges([]);
+                setFExchanges([]);
             };
         }
+        const fetchClients = async () => {
+            try {
+                const response = await axios.get(endpoint + "/api/users/clients");
+                const data = Array.isArray(response.data) ? response.data : []; // Verifica si data es un array
+                setClients(data);
+                // setClients(data);
+            } catch (error) {
+                console.error(error.response?.data?.message || 'Error al obtener las clientes');
+                setClients(mockClients);
+            };
+        }
+        fetchClients();
         fetchRequests();
     }, [endpoint]);
 
@@ -62,13 +134,21 @@ function Exchanges(){
                         value={searchText}
                         onChange={(e) => setSearchText(e.target.value)}
                     />
+                    {/* <button
+                        className="ksearch-button-ex btn"
+                        onClick={handleSearch}
+                    >
+                        <img src={searching} alt="Buscar" id="searching" className='ksearching-image'/>
+                    </button> */}
+                    <h3 className='kglobal-text'>
+                        Cliente: {clientName}
+                    </h3>
                 </div>
                 <div className="kscrollable-container-exchanges">
                     <div className="row g-4 p-15">
-                        {exchanges.map((exchange, index) => (
+                        {filteredExchanges.map((exchange, index) => (
                             <div key={exchange._id} className="col-auto d-flex p-2">
-                                {/*Cuidao, esto se tiene que cambiar porque no se cuales nombres tiene en la base */}
-                                <Exchange id={exchange._id} number={exchange.number} date={exchange.date} product={exchange.producto} farmacia={exchange.farmacia} /> 
+                                <Exchange id={exchange._id} number={exchange.exchangeNumber} date={exchange.createdAt} product={exchange.product.medication.name} farmacia={exchange.pharmacy.name} /> 
                             </div>
                         ))}
                     </div>

@@ -59,3 +59,9 @@ Content-Type: application/json
     "pharmacy": "672957359be06fe9f9cf390b",
     "requests": ["672eccd9b82b89340e98246c","672eca82b82b89340e9823ae"]
 }
+
+###
+GET http://localhost:3000/api/exchanges/all
+
+###
+GET http://localhost:3000/api/exchanges/points/672b6733dd60abf5b47dd07c
