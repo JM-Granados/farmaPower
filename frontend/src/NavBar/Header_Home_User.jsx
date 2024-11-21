@@ -33,7 +33,10 @@ const Header_Home = () => {
         <nav className="navbar navbar-expand-lg navbar-custom fixed-top d-flex justify-content-start barra">
             <div className="container-fluid align-center">
                 <a className="bienvenido navbar-brand text-white">
-                    Bienvenido, {user.firstName}
+                    {user.role === 'Pharmacy' ?
+                        `Bienvenido, ${user.firstName} de la farmacia ${user.secondLastName}` :
+                        `Bienvenido, ${user.firstName}`
+                    }
                 </a>
 
                 {/* Botón de Android */}

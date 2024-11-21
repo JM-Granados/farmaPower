@@ -154,7 +154,7 @@ const NewRequest = () => {
                 </div>
                 <div className="dropdown">
                   <select
-                    className="form-control"
+                    className="j-farmacias form-control"
                     value={pharmacy}
                     onChange={(e) => setPharmacy(e.target.value)}
                   >

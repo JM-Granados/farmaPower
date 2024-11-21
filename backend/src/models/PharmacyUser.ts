@@ -32,15 +32,16 @@
 // 'Schema' es utilizado para definir la estructura de los documentos dentro de una colección.
 // 'model' es utilizado para proporcionar una interfaz a la base de datos para crear, consultar, actualizar, eliminar registros, etc.
 import { Schema, model } from 'mongoose';
+const Pharmacy = require('./Pharmacy'); 
 import bcrypt from 'bcrypt'
 
 // considerando la posibilidad de manejar estos valores de manera más dinámica, especialmente si se espera que la lista de roles pueda 
 // crecer o cambiar en el futuro. 
-const roles = ['Client', 'Admin', 'Operator', 'Pharmacy'];
+const roles = ['Pharmacy'];
 const userStatuses = ['Activated', 'Deactivated'];
 
 // Define 'userSchema' como una nueva instancia de Schema para modelar los datos de usuario.
-const userSchema = new Schema({
+const pharmacyUserSchema = new Schema({
     firstName: {
         type: String,       // Especifica el tipo de dato como String.
         required: true,     // Hace este campo obligatorio.
@@ -99,13 +100,18 @@ const userSchema = new Schema({
         type: Boolean,
         required: false,  // No es requerido para que el usuario pueda ser creado sin una imagen inicialmente.
     },
+    pharmacy: {
+        type: Schema.Types.ObjectId,
+        ref: 'Pharmacy',
+        required: true
+    }
 }, {
     versionKey: false,    // Desactiva la propiedad __v que Mongoose usa internamente para seguir la versión del documento.
     timestamps: true      // Habilita la creación automática de dos campos: createdAt y updatedAt en cada documento.
 });
 
 // Pre-save hook para hashear la contraseña antes de guardar el usuario
-userSchema.pre('save', async function (next) {
+pharmacyUserSchema.pre('save', async function (next) {
     // Si la contraseña no ha sido modificada (en caso de actualización), no hacer nada
     if (!this.isModified('password')) return next();
 
@@ -119,4 +125,4 @@ userSchema.pre('save', async function (next) {
 
 // Exporta el modelo 'User', que utiliza 'userSchema' para interactuar con la colección 'users' en la base de datos.
 // Mongoose automáticamente busca una colección con el nombre plural del modelo, en este caso 'users'.
-export default model('User', userSchema, 'users');
+export default model('pharmacyUser', pharmacyUserSchema, 'pharmacyUsers');

@@ -16,6 +16,7 @@ import Home_Guest from '../Pages/Home/Home_Guest' // Componente que muestra la p
 import Home_Admin from '../Pages/Home/Home_Admin'
 import Home_Client from '../Pages/Home/Home_Client'
 import Home_Operator from '../Pages/Home/Home_Operator'
+import Home_Pharmacy from '../Pages/Home/Home_Pharmacy'
 import Login from '../Pages/Ingreso/Login'; // Componente para la página de login.
 import Signup from '../Pages/Ingreso/Signup'
 import PassRecovery from '../Pages/Ingreso/PassRecovery'
@@ -92,6 +93,7 @@ function App() {
         <Route path='/Home_Admin' element={<Home_Admin/>}></Route>
         <Route path='/Home_Client' element={<Home_Client/>}></Route>
         <Route path='/Home_Operator' element={<Home_Operator/>}></Route>
+        <Route path='/Home_Pharmacy' element={<Home_Pharmacy/>}></Route>
         <Route path='/MyRequests' element={<My_Requests />}></Route>
         <Route path="/NewRequest" element={<NewRequest />}></Route>
         <Route path="/MyPoints" element={<Points />}></Route>
