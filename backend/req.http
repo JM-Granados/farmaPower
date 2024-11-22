@@ -47,3 +47,15 @@ Content-Type: image/jpeg
 < C:\fakepath\Captura de pantalla 2024-08-13 112524.png
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 GET http://localhost:3000/api/programs/
+
+###
+
+POST http://localhost:3000/api/exchanges/newExchange HTTP/1.1
+Content-Type: application/json
+
+{
+    "product": "672aca04035a3d6cbf6741e6",
+    "client": "672b6733dd60abf5b47dd07c",
+    "pharmacy": "672957359be06fe9f9cf390b",
+    "requests": ["672eccd9b82b89340e98246c","672eca82b82b89340e9823ae"]
+}

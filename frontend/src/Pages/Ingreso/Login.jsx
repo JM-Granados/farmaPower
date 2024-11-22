@@ -84,6 +84,8 @@ function Login() {
                     navigate('/Home_Client');
                 } else if (response.data.user.role == "Admin") {
                     navigate('/Home_Admin');
+                } else if (response.data.user.role == "Pharmacy") {
+                    navigate('/Home_Pharmacy');
                 } else {
                     navigate('/Home_Operator');
                 }

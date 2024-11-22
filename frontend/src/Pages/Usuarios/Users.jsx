@@ -62,6 +62,8 @@ const Users = () => {
                 return 'Cliente';
             case 'Operator':
                 return 'Operador';
+            case 'Pharmacy':
+                return 'Farmacia';
             default:
                 return 'Rol no definido';
         }

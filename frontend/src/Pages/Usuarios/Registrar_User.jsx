@@ -20,6 +20,24 @@ const Registrar_User = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [photo, setPhoto] = useState("");
+    const [pharmacy, setPharmacy] = useState('');
+    const [pharmacies, setPharmacies] = useState([]);
+
+    useEffect(() => {
+        const fetchPharmacies = async () => {
+            try {
+                //const response = await axios.get(`http://localhost:3000/api/pharmacies/get`);
+                const response = await axios.get(`${apiURL}/api/pharmacies/g/get`);
+                setPharmacies(response.data);
+                console.log("Pharmacies data:", response.data);
+
+            } catch (error) {
+                console.error("Error fetching pharmacies:", error);
+            }
+        };
+
+        fetchPharmacies();
+    }, []);
 
 
     // Hook useNavigate de React Router para la navegación programática.
@@ -98,7 +116,13 @@ const Registrar_User = () => {
             // Si no hay una foto seleccionada, no agregues nada aquí y maneja el valor predeterminado en el backend
         }
 
-        const endpoint = `${apiURL}/api/users/signup`;  // URL del endpoint de signup.
+        let endpoint = `${apiURL}/api/users/signup`;  // URL del endpoint de signup.
+
+        // Verifica si el rol es 'Pharmacy' y si una farmacia ha sido seleccionada
+        if (role === 'Pharmacy' && pharmacy) {
+            endpoint = `${apiURL}/api/pharmacyUser/signup`; // Cambia el endpoint para usuarios de farmacia
+            formData.append('pharmacy', pharmacy); // Añade el ID de la farmacia seleccionada al formData
+        }
 
         try {
             const response = await axios.post(endpoint, formData, {
@@ -109,7 +133,7 @@ const Registrar_User = () => {
 
             // Verifica si la respuesta del servidor indica un registro exitoso.
             if (response.data.message === "User registered successfully") {
-                navigate('/Login'); // O redirige a la pantalla de login, según lo que necesites.
+                navigate('/Users'); // O redirige a la pantalla de login, según lo que necesites.
             } else {
                 // Si el mensaje no indica éxito, muestra un mensaje de error.
                 setErrorMessage(response.data.message);
@@ -137,25 +161,55 @@ const Registrar_User = () => {
                     {/* Input fields with labels to the left */}
                     <form className='text-white row g-3 needs-validation mt-4 mx-5' novalidate onSubmit={handleSubmit}>
                         <div className='d-flex justify-content-space-around mb-3'>
-                            <div className="form-check">
-                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Client" onChange={handleRoleChange} />
-                                <label className="form-check-label me-3" htmlFor="flexRadioDefault1">
-                                    Cliente
-                                </label>
+                            <div className="d-flex justify-content-space-around col-md-8">
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Client" onChange={handleRoleChange} />
+                                    <label className="form-check-label me-3" htmlFor="flexRadioDefault1">
+                                        Cliente
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Admin" onChange={handleRoleChange} />
+                                    <label className="form-check-label me-3" htmlFor="flexRadioDefault2">
+                                        Administrador
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="Operator" onChange={handleRoleChange} />
+                                    <label className="form-check-label me-3" htmlFor="flexRadioDefault3">
+                                        Operador
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="Pharmacy" onChange={handleRoleChange} />
+                                    <label className="form-check-label" htmlFor="flexRadioDefault4">
+                                        Farmacia
+                                    </label>
+                                </div>
                             </div>
-                            <div className="form-check">
-                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Admin" onChange={handleRoleChange} />
-                                <label className="form-check-label me-3" htmlFor="flexRadioDefault2">
-                                    Administrador
-                                </label>
-                            </div>
-                            <div className="form-check">
-                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="Operator" onChange={handleRoleChange} />
-                                <label className="form-check-label" htmlFor="flexRadioDefault3">
-                                    Operador
-                                </label>
+
+                            <div className="col-md-4">
+                                {role === 'Pharmacy' && (
+                                    <div className="row align-items-center">
+                                        <div className="dropdown ">
+                                            <select
+                                                className="elinput form-control bg-transparent border-0 border-bottom rounded-2"
+                                                value={pharmacy}
+                                                onChange={(e) => setPharmacy(e.target.value)}
+                                            >
+                                                <option value="">Selecciona una farmacia</option>
+                                                {pharmacies.map((pharmacy) => (
+                                                    <option key={pharmacy._id} value={pharmacy._id}>
+                                                        {pharmacy.name}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         </div>
+
 
                         {/* Div contenedor para el campo de nombre. */}
                         <div className="col-md-4">

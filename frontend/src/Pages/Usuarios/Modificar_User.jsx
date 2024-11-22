@@ -209,8 +209,22 @@ const Modificar_User = () => {
                                     onChange={handleRoleChange}
                                     checked={selectedRole === 'Operator'}
                                 />
-                                <label className="form-check-label" htmlFor="flexRadioDefault3">
+                                <label className="form-check-label me-3" htmlFor="flexRadioDefault3">
                                     Operador
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input
+                                    className="form-check-input"
+                                    type="radio"
+                                    name="role"
+                                    id="flexRadioDefault4"
+                                    value="Pharmacy"
+                                    onChange={handleRoleChange}
+                                    checked={selectedRole === 'Pharmacy'}
+                                />
+                                <label className="form-check-label" htmlFor="flexRadioDefault4">
+                                    Farmacia
                                 </label>
                             </div>
                         </div>
