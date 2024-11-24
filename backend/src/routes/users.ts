@@ -47,6 +47,8 @@ router.get('/getUsersSearched', userCtrl.getUsersSearched);
 
 router.patch('/modifyUser', upload.single('image'), userCtrl.modifyUser);
 
+router.get('/:id/fullname-email', userCtrl.getUserFullNameAndEmail);
+
 // Exporta el objeto 'router'. Esto permite que las rutas definidas en este archivo sean usadas en otras partes de la aplicación Express,
 // típicamente mediante el uso de app.use() en el archivo principal de la aplicación.
 export default router;

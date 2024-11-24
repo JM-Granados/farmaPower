@@ -45,7 +45,7 @@
     position: relative;
     min-width: 7rem;
     max-width: 24rem;
-    height: 28rem; 
+    height: 22rem; 
     margin: 0.5rem;
     border-radius: 0.7rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -103,7 +103,7 @@
     position: relative;
     min-width: 18rem;
     max-width: 18rem;
-    height: 28rem; 
+    height: 23rem; 
     margin: 0.5rem;
     border-radius: 0.7rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);

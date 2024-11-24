@@ -275,3 +275,32 @@ export const getClients: RequestHandler = async (req, res) => {
         }
     }
 };
+
+export const getUserFullNameAndEmail: RequestHandler = async (req, res) => {
+    try {
+        const { id } = req.params; // Extract the ID from request parameters
+
+        // Search for the user in both collections
+        let user = await User.findById(id).select('firstName firstLastName secondLastName email');
+        if (!user) {
+            user = await PharmacyUser.findById(id).select('firstName firstLastName secondLastName email');
+            if (!user) {
+                return res.status(404).json({ message: "User not found." });
+            }
+        }
+
+        // Construct the full name
+        const fullName = `${user.firstName} ${user.firstLastName} ${user.secondLastName}`.trim();
+
+        res.status(200).json({
+            fullName,
+            email: user.email,
+        });
+    } catch (error) {
+        if (error instanceof Error) {
+            res.status(500).json({ message: "Error retrieving user data.", error: error.message });
+        } else {
+            res.status(500).json({ message: "Unknown error occurred" });
+        }
+    }
+};

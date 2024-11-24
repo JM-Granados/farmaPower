@@ -126,3 +126,94 @@ export const getPoints: RequestHandler = async (req, res) => {
         res.status(500).json({ message: 'Error al obtener puntos del cliente' });
     }
 }
+
+export const getMedicationPoints: RequestHandler = async (req, res) => {
+    const { id } = req.params; // Client ID
+    try {
+        // Obtener puntos acumulados por cada medicamento
+        const accumulatedPoints = await RequestModel.aggregate([
+            { $match: { client: new mongoose.Types.ObjectId(id), rStatus: 'Aprobada' } },
+            {
+                $lookup: {
+                    from: 'elegiblemedication',
+                    localField: 'medication',
+                    foreignField: '_id',
+                    as: 'medicationInfo',
+                },
+            },
+            { $unwind: '$medicationInfo' },
+            {
+                $lookup: {
+                    from: 'medication',
+                    localField: 'medicationInfo.medication',
+                    foreignField: '_id',
+                    as: 'detailedMedication',
+                },
+            },
+            { $unwind: '$detailedMedication' },
+            {
+                $addFields: {
+                    medicationPoints: { $multiply: ['$purchasedQuantity', '$medicationInfo.points'] },
+                },
+            },
+            {
+                $group: {
+                    _id: '$medication', // Group by medication
+                    name: { $first: '$detailedMedication.name' }, // Get the medication name
+                    accumulatedPoints: { $sum: '$medicationPoints' },
+                },
+            },
+        ]);
+
+        // Obtener puntos usados por cada medicamento
+        const usedPoints = await ExchangeModel.aggregate([
+            { $match: { client: new mongoose.Types.ObjectId(id) } },
+            {
+                $lookup: {
+                    from: 'elegiblemedication',
+                    localField: 'product',
+                    foreignField: '_id',
+                    as: 'productInfo',
+                },
+            },
+            { $unwind: '$productInfo' },
+            {
+                $lookup: {
+                    from: 'medication',
+                    localField: 'productInfo.medication',
+                    foreignField: '_id',
+                    as: 'detailedProduct',
+                },
+            },
+            { $unwind: '$detailedProduct' },
+            {
+                $group: {
+                    _id: '$product', // Group by medication
+                    name: { $first: '$detailedProduct.name' }, // Get the medication name
+                    usedPoints: { $sum: '$productInfo.exchangeAmount' },
+                },
+            },
+        ]);
+
+        // Combine datos de acumulados y usados para calcular puntos disponibles
+        const pointsData = accumulatedPoints.map((medication) => {
+            const matchingUsed = usedPoints.find((u) => u._id.toString() === medication._id.toString());
+            const used = matchingUsed?.usedPoints || 0;
+
+            return {
+                _id: medication._id,
+                name: medication.name,
+                accumulatedPoints: medication.accumulatedPoints,
+                usedPoints: used,
+                availablePoints: medication.accumulatedPoints - used,
+            };
+        });
+
+        // Enviar respuesta
+        res.json(pointsData);
+    } catch (error) {
+        console.error('Error al obtener puntos por medicamento:', error);
+        res.status(500).json({ message: 'Error al obtener puntos por medicamento' });
+    }
+};
+

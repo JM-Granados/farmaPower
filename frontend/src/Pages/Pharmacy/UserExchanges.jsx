@@ -14,28 +14,61 @@ const ManageElegibleMedication = () => {
     const [medications, setMedications] = useState([]);
     const [searchText, setSearchText] = useState('');
     const navigate = useNavigate();
+    const [medicationPointsData, setMedicationPointsData] = useState([]);
+    const [pointsData, setPointsData] = useState({
+        totalPoints: 0,
+        usedPoints: 0,
+        availablePoints: 0,
+    });
+    const [userData, setUserData] = useState({
+        fullName: '',
+        email: ''
+    });
 
     useEffect(() => {
-        const fetchMedications = async () => {
+        const fetchUserData = async () => {
             try {
-                if (searchText) {
-                    const response = await axios.get(`${apiURL}/api/elegiblemedications/search?name=${searchText}`);
-                    setMedications(response.data);
-                } else {
-                    const response = await axios.get(`${apiURL}/api/elegiblemedications`);
-                    setMedications(response.data);
-                }
+                const userId = '672b6733dd60abf5b47dd07c'; // Replace with actual user ID
+                const response = await axios.get(`${apiURL}/api/users/${userId}/fullname-email`);
+                setUserData({
+                    fullName: response.data.fullName,
+                    email: response.data.email
+                });
             } catch (error) {
-                console.error("Error fetching eligible medications:", error);
+                console.error("Error fetching user data:", error);
             }
         };
 
-        fetchMedications();
-    }, [searchText]);
+        fetchUserData();
+    }, []);
 
-    const handleModifyClick = (medication) => {
-        navigate('/modifyproduct', { state: medication });
-    };
+    useEffect(() => {
+        const fetchPointsData = async () => {
+            try {
+                const userId = '672b6733dd60abf5b47dd07c'; // Replace with actual user ID
+                const response = await axios.get(`${apiURL}/api/exchanges/points/${userId}`);
+                setPointsData(response.data);
+            } catch (error) {
+                console.error("Error fetching points data:", error);
+            }
+        };
+
+        fetchPointsData();
+    }, []);
+
+    useEffect(() => {
+        const fetchMedicationPoints = async () => {
+            try {
+                const userId = '672b6733dd60abf5b47dd07c'; // Replace with actual user ID
+                const response = await axios.get(`${apiURL}/api/exchanges/points/medication/${userId}`);
+                setMedicationPointsData(response.data);
+            } catch (error) {
+                console.error("Error fetching medication points data:", error);
+            }
+        };
+
+        fetchMedicationPoints();
+    }, []);
 
     return (
         <div className="container-fluid i-ue-manage-elegible-medications">
@@ -56,46 +89,35 @@ const ManageElegibleMedication = () => {
                         <div className="col-md-7">
                             <div className="row i-ue-user-info">
                                 <div className="col-12">
-                                    <h3>Nombre de Usuario</h3>
-                                    <h4>Correo</h4>
+                                    <h3>{userData.fullName}</h3>
+                                    <h4>{userData.email}</h4>
                                     <h3 className="mt-4">Medicamentos Aprobados</h3>
                                 </div>
                             </div>
 
                             <div className="row mt-2">
                                 <div className="i-ue-medications-slider">
-                                    {medications.length > 0 ? (
-                                        medications.map((eligibleMedication) => (
-                                            <div className="i-ue-medication-card" key={eligibleMedication._id}>
+                                    {medicationPointsData.length > 0 ? (
+                                        medicationPointsData.map((medication) => (
+                                            <div className="i-ue-medication-card" key={medication._id}>
                                                 <div className="card i-ue-card p-3 position-relative">
                                                     <div className="i-ue-img-container">
                                                         <img
-                                                            src={eligibleMedication.medication?.imageUrl || pill}
+                                                            src={medication.imageUrl || pill}
                                                             className="mb-3 card-img-top i-ue-card-img"
                                                             alt="Medication"
                                                         />
                                                     </div>
                                                     <div className="card-body i-ue-card-body">
-                                                        <h5 className="card-title i-ue-card-title">
-                                                            {eligibleMedication.medication?.name || 'Nombre no disponible'}
-                                                        </h5>
+                                                        <h5 className="card-title i-ue-card-title">{medication.name || 'Nombre no disponible'}</h5>
                                                         <p className="card-text i-ue-card-text">
-                                                            <strong>Tipo:</strong> {eligibleMedication.medication?.type?.typeMedication || 'Tipo no disponible'} <br />
-                                                            <strong>Cantidad:</strong> {eligibleMedication.medication?.amount || 'Cantidad no disponible'} <br />
-                                                            {eligibleMedication.type === 'points' ? (
-                                                                <>
-                                                                    <strong>Puntos:</strong> {eligibleMedication.points} <br />
-                                                                </>
-                                                            ) : eligibleMedication.type === 'percentage' ? (
-                                                                <>
-                                                                    <strong>Porcentaje:</strong> {eligibleMedication.percentage} <br />
-                                                                </>
-                                                            ) : null}
-                                                            <strong>Cantidad de Intercambio:</strong> {eligibleMedication.exchangeAmount}
+                                                            <strong>Puntos Acumulados:</strong> {medication.accumulatedPoints || '0'} <br />
+                                                            <strong>Puntos Canjeados:</strong> {medication.usedPoints || '0'} <br />
+                                                            <strong>Puntos Disponibles:</strong> {medication.availablePoints || '0'} <br />
                                                         </p>
                                                         <button
                                                             className="btn i-ue-modify-link"
-                                                            onClick={() => handleModifyClick(eligibleMedication)}
+                                                            onClick={() => handleModifyClick(medication)}
                                                             style={{ position: 'absolute', top: '10px', right: '10px' }}
                                                         >
                                                             <FontAwesomeIcon icon={faInfoCircle} />
@@ -114,9 +136,13 @@ const ManageElegibleMedication = () => {
                         <div className="col-md-4 i-ue-global-data">
                             <div className="i-ue-global-data-text">
                                 <h2>Datos Globales</h2>
-                                <h3>Puntos Acumulados</h3>
-                                <h3>Puntos Canjeados</h3>
-                                <h3>Puntos Disponibles</h3>
+                                <hr></hr>
+                                <h3 className='mt-5'>Puntos Acumulados: {pointsData.totalPoints}</h3>
+                                <hr></hr>
+                                <h3 className='mt-5'>Puntos Canjeados: {pointsData.usedPoints}</h3>
+                                <hr></hr>
+                                <h3 className='mt-5'>Puntos Disponibles: {pointsData.availablePoints}</h3>
+                                <hr></hr>
                             </div>
                         </div>
                     </div>
