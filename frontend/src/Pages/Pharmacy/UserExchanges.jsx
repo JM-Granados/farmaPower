@@ -11,8 +11,7 @@ import { useNavigate } from 'react-router-dom';
 const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 const ManageElegibleMedication = () => {
-    const [medications, setMedications] = useState([]);
-    const [searchText, setSearchText] = useState('');
+    const selectedClient = JSON.parse(localStorage.getItem('selectedClient'));
     const navigate = useNavigate();
     const [medicationPointsData, setMedicationPointsData] = useState([]);
     const [pointsData, setPointsData] = useState({
