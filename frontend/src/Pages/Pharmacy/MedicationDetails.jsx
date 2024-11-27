@@ -13,6 +13,7 @@ const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 const MedicationDetails = () => {
     const selectedClient = JSON.parse(localStorage.getItem('selectedClient'));
+    const selectedMedication = JSON.parse(localStorage.getItem('selectedMedication'));
     const navigate = useNavigate();
 
     const [requests, setRequests] = useState([]);
@@ -21,9 +22,13 @@ const MedicationDetails = () => {
     useEffect(() => {
         const fetchRequests = async () => {
             try {
+                // const response = await axios.post(`${apiURL}/api/requests/vs/visitCandidates`, {
+                //     idClient: "672b6733dd60abf5b47dd07c",
+                //     id: "672aca04035a3d6cbf6741e6",
+                // });
                 const response = await axios.post(`${apiURL}/api/requests/vs/visitCandidates`, {
-                    idClient: "672b6733dd60abf5b47dd07c",
-                    id: "672aca04035a3d6cbf6741e6",
+                  idClient:selectedClient._id,
+                  id:selectedMedication._id,
                 });
                 setRequests(response.data.data); 
                 setLoading(false); 
