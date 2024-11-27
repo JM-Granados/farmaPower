@@ -101,3 +101,13 @@ Content-Type: application/json
     "idClient": "672b6733dd60abf5b47dd07c",
     "id": "67469c78ac0989a3c0241de2"
 }
+
+###
+POST http://localhost:3000/api/exchanges/ve/visitExchanges
+Content-Type: application/json
+
+{
+    "idClient": "672b6733dd60abf5b47dd07c",
+    "id": "673fb1a5b7c9819d6f979bf8"
+    
+}
