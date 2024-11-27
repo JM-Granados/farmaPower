@@ -8,7 +8,31 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/api/requests/request/672960ed0e65c6257d4e7591
+POST http://localhost:3000/api/requests/vs/visitCandidates
+Content-Type: application/json
+
+{
+    "idClient": "672b6733dd60abf5b47dd07c",
+    "id": "672aca04035a3d6cbf6741e6"
+    
+}
+
+###
+POST http://localhost:3000/api/exchanges/ve/visitExchanges
+Content-Type: application/json
+
+{
+    "idClient": "672b6733dd60abf5b47dd07c",
+    "id": "673fb1a5b7c9819d6f979bf8"
+    
+}
+
+
+###
+GET http://localhost:3000/api/requests/request/672b6733dd60abf5b47dd07c
+
+###
+GET http://localhost:3000/api/requests/x/672b6733dd60abf5b47dd07c
 
 ###
 GET http://localhost:3000/api/programs

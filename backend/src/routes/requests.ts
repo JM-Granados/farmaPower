@@ -37,4 +37,6 @@ router.get('/p/totalPointsByMedication/:clientId', requestCtrl.getPointsByMedica
 router.get('/request/:id', requestCtrl.getRequestById);
 router.put('/save/:id', requestCtrl.updateRStatus);
 
+router.post('/vs/visitCandidates', requestCtrl.visitCandidates);
+
 export default router;

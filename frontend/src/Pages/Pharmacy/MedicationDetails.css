@@ -1,0 +1,196 @@
+.nueva-solicitud {
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+    /* 100% del alto de la ventana */
+    width: 100%;
+}
+
+.principal {
+    height: 100%;
+    width: 100%;
+}
+
+.div {
+    height: 100%;
+    width: 20%;
+    background-color: rgba(8, 15, 43, 1);
+}
+
+.mddiv2 {
+    width: 80%;
+    height: 100%;
+    background-color: rgba(8, 15, 43, 1);
+}
+
+.mddiv3 {
+    height: 20%;
+    background-color: rgba(8, 15, 43, 1);
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+.imagen-canjear {
+    width: 700px;
+    height: 90%;
+}
+
+.mddiv5 {
+    font-family: "League Spartan-Regular", Helvetica;
+    font-size: 26px;
+    height: 50%;
+    background-color: rgba(8, 15, 43, 1);
+    padding: 30px;
+    display: flex;
+    align-items: start;
+    color: white;
+}
+
+.mddiv6 {
+    display: flex;
+    height: 90%;
+    width: 70%;
+    background-color: rgba(8, 15, 43, 1);
+}
+
+.mddiv9{
+    height: 28%;
+    width: 70%;
+    background-color: rgba(8, 15, 43, 1);
+    font-size: 13px;
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas pasen a la siguiente fila si no caben */
+    gap:1rem; 
+    justify-content: space-evenly; /* Distribuye las tarjetas uniformemente */
+    align-items: flex-start; /* Alinea las tarjetas al inicio vertical */
+}
+
+.form-control {
+    background-color: #141E46;
+    color: white;
+    border: 1px solid #141E46;
+    border-radius: 20px;
+    height: 50px;
+}
+
+.mddiv8 {
+    height: 80%;
+    width: 30%;
+}
+
+.mddiv7 {
+    display: flex;
+    height: 80%;
+    width: 100%;
+    background-color: #141E46;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;  
+    justify-content: center; 
+    align-items: center;   
+    color: white;  
+}
+
+.med-name{
+    color: white;
+}
+  
+.div-upload {
+    color:rgba(8, 15, 43, 1);
+    font-size: 26px;
+    margin: 10px 0; 
+    width: 50%;
+    height: 20%;
+  }
+  
+.imagen-folder {
+    width: 150px;
+    height: 150px;
+}
+
+.mdimagen-upload{
+    width: 130px;
+    height: 130px;
+}
+
+.input-group-column {
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    
+}
+
+input[type="date"] {
+    color: #333;
+    background-color: #f3f3f3;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+
+.nrdiv-gradient-header {
+    height: 30%;
+}
+
+.nrimagen {
+    width: 50%;
+    height: 60%;
+}
+
+.j-maem-form-control {
+    background-color: #141E46;
+    color: white;
+    border: 1px solid rgba(104, 104, 104, 0.2);
+}
+.mdcuadrado{
+    width: 200px;
+    height: 230px;
+    background-color: #111A3D;
+    padding: 0;
+    border-radius: 20px;
+}
+
+.mdcard-img-top{
+    width: 80px;
+    height: 80px;
+}
+
+.row1{
+    width:100%;
+    height: 45%;
+    justify-content: center;
+    align-items: center;
+}
+
+.row2{
+    height: 55%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col1{
+    width: 90%;
+    height:90%;
+    background-color: #141E46; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+}
+.col2{
+    width: 90%;
+    height: 90%;
+    background-color: #141E46; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: start;
+    border-radius: 20px;
+    margin-top: -5%;
+}
+

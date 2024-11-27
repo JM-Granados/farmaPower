@@ -1,8 +1,19 @@
-import { RequestHandler } from 'express';
+import { RequestHandler, Request, Response } from 'express';
 import ExchangeModel from '../models/Exchange';
 import CounterModel from '../models/Counter';
 import RequestModel from '../models/Request';
 import mongoose from "mongoose";
+
+//Dado que el controller no es una clase, se hace una chiquita para poder implementar el patron visitor
+import { Element } from "../visitor/Element";
+import { Visitor } from "../visitor/Visitor";
+import { ConcreteVisitor } from '../visitor/ConcreteVisitor';
+
+export class ExchangeManagement implements Element {
+    async accept(params: { v: Visitor; id: number; idClient: number }): Promise<{ success: boolean; data: any }> {
+      return params.v.visitExchanges(params);
+    }
+  }
 
 //A este método le falta ordenar los canjes
 export const getExchanges: RequestHandler = async (req, res) => {
@@ -217,3 +228,17 @@ export const getMedicationPoints: RequestHandler = async (req, res) => {
     }
 };
 
+
+export const visitExchanges = async (req:Request, res:Response) => {
+    const { id, idClient } = req.body;
+    try {
+        const exchangeManagement = new ExchangeManagement();
+        const visitor = new ConcreteVisitor(); 
+        const result = await exchangeManagement.accept({ v: visitor, id, idClient });
+        res.status(200).json(result);
+    } catch (error) {
+        console.error("EXCHANGE.CONTROLLER -> VISITCANDIDATES:", error);
+        const err = error as Error;
+        res.status(500).json({ success: false, error: err.message });
+    }
+  };
