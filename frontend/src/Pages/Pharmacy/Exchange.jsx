@@ -13,9 +13,11 @@ const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 const MedicationDetails = () => {
     const selectedExchangeId = JSON.parse(localStorage.getItem('selectedExchange'));
+    const doubleSelectedClient = JSON.parse(localStorage.getItem('doubleSelectedClient'));
     const navigate = useNavigate();
 
-    console.log(selectedExchange);
+    console.log(doubleSelectedClient);
+    console.log(selectedExchangeId);
 
     const [exchangeData, setExchangeData] = useState(null); // Para almacenar la información del exchange
     const [requests, setRequests] = useState([]);
@@ -25,7 +27,7 @@ const MedicationDetails = () => {
         const fetchRequests = async () => {
             try {
                 const response = await axios.post(`${apiURL}/api/exchanges/ve/visitExchanges`, {
-                    idClient: "672b6733dd60abf5b47dd07c",
+                    idClient: doubleSelectedClient,
                     id: selectedExchangeId,
                 });
                 setRequests(response.data.data);
