@@ -251,24 +251,3 @@ export const visitExchanges = async (req: Request, res: Response) => {
     }
 };
 
-export const getIdClientByExchange = async (req: Request, res: Response) => {
-    try {
-        const { exchangeId } = req.params;
-
-        console.log(exchangeId);
-
-        // Busca el intercambio por su ID
-        const exchange = await ExchangeModel.findById(exchangeId).exec();
-
-        if (!exchange) {
-            return res.status(404).json({ message: "Exchange not found" });
-        }
-
-        // Devuelve el ID del cliente asociado al intercambio
-        res.json({ clientId: exchange.client });
-    } catch (error) {
-        console.error('Error fetching client ID by exchange ID:', error);
-        res.status(500).json({ message: "Internal server error" });
-    }
-};
-

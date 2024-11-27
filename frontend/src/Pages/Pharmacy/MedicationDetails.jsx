@@ -48,189 +48,63 @@ const MedicationDetails = () => {
     .filter((request) => request.rStatus === 'Aprobada')
     .reduce((total, request) => total + request.medication.points * request.purchasedQuantity, 0);
 
-    const puntosParaCanje = requests[0]?.medication.exchangeAmount * requests[0]?.medication.points;
+  const puntosParaCanje = requests[0]?.medication.exchangeAmount * requests[0]?.medication.points;
 
   const puedeCanjear = puntosDisponibles >= puntosParaCanje;
 
-    function getRequestIdsForPoints(requests) {
-      const selectedRequestIds = [];
-      let accumulatedPoints = 0; 
-    
-      for (const request of requests) {
-        const requestPoints = (request.medication.exchangeAmount || 0) * (request.medication.points || 0);
-        selectedRequestIds.push(request._id);
-        accumulatedPoints += requestPoints;
-        if (accumulatedPoints >= puntosParaCanje) {
-          break;
-        }
+  function getRequestIdsForPoints(requests) {
+    const selectedRequestIds = [];
+    let accumulatedPoints = 0;
+
+    for (const request of requests) {
+      const requestPoints = (request.medication.exchangeAmount || 0) * (request.medication.points || 0);
+      selectedRequestIds.push(request._id);
+      accumulatedPoints += requestPoints;
+      if (accumulatedPoints >= puntosParaCanje) {
+        break;
       }
-      return selectedRequestIds;
+    }
+    return selectedRequestIds;
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('product', requests[0].medication.medication._id);
+    //formData.append('client',  user._id);
+    formData.append('client', '672b6733dd60abf5b47dd07c');
+    formData.append('pharmacy', requests[0].pharmacy._id);
+    formData.append('requests', getRequestIdsForPoints(requests));
+
+    for (const [key, value] of formData.entries()) {
+      console.log(`${key}:`, value);
     }
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-    
-      const formData = new FormData();
-      formData.append('product', requests[0].medication.medication._id);
-      //formData.append('client',  user._id);
-      formData.append('client', '672b6733dd60abf5b47dd07c');
-      formData.append('pharmacy', requests[0].pharmacy._id);
-      formData.append('requests', getRequestIdsForPoints(requests)); 
-  
-      for (const [key, value] of formData.entries()) {
-        console.log(`${key}:`, value);
-      }
-    
-      try {
-        //const response = await axios.post('http://localhost:3000/api/requests/c/', formData, {
-        const response = await axios.post(`${apiURL}/api/exchanges/newExchange`, formData, {
-          headers: { 'Content-Type': 'multipart/form-data' },
-        });
-  
-        console.log('Respuesta del servidor:', response.data);
-        navigate('/MedicationDetails')
-      } catch (error) {
-        console.error("Error al enviar los datos:", error);
-      }
-    };
+    try {
+      //const response = await axios.post('http://localhost:3000/api/requests/c/', formData, {
+      const response = await axios.post(`${apiURL}/api/exchanges/newExchange`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
 
-    return (
-        <div className="nueva-solicitud">
-          <div className="row principal">
-            <div className="div">
-              <SideBar />
-            </div>
-    
-            <div className="col mddiv2">
-              <div className="row mddiv3">
-                <div className="mddiv-gradient-header d-flex justify-content-start align-items-end" style={{ height: '100%' }}>
-                  <img className='mdimagen' src={gradient} alt="Logo" id="gradient" />
-                </div>
-              </div>
-    
-              {/* <form onSubmit={handleSubmit} className="row nrdiv5 overflow-auto"> */}
-              <form  className="row mddiv5">
+      console.log('Respuesta del servidor:', response.data);
+      navigate('/MedicationDetails')
+    } catch (error) {
+      console.error("Error al enviar los datos:", error);
+    }
+  };
 
-                <div className="col mddiv6 input-group-column">
-                 
-                  <div className="row mt-4 align-items-center">
-                    <div className="col-md-4">
-                      <p className="form-label ">Puntos por unidad</p>
-                    </div>
-                    <div className="col-md-6">
-                      <input
-                        type="number"
-                        className="form-control"
-                        defaultValue={requests[0]?.medication.points || -1} 
-                        readOnly
-                      />
-                    </div>
-                  </div>
+  return (
+    <div className="nueva-solicitud">
+      <div className="row principal">
+        <div className="div">
+          <SideBar />
+        </div>
 
-                  <div className="row mt-4 align-items-center">
-                    <div className="col-md-4">
-                      <p className="form-label ">Puntos para el canje</p>
-                    </div>
-                    <div className="col-md-6">
-                      <input
-                        type="number"
-                        className="form-control"
-                        //          Si es 0 lo selecciona                  Total de puntos para canjear      -      Lo que ha comprado                                         
-                        defaultValue={Math.max( 0, (requests[0]?.medication.exchangeAmount || -9999) * (requests[0]?.medication.points || -9999) 
-                            - (requests[0]?.medication.points || -9999) *(requests[0]?.purchasedQuantity || -9999) )}
-                        readOnly
-                      />
-                    </div>
-                  </div>
-
-                  <div className="row mt-4 align-items-center">
-                    <div className="col-md-4">
-                      <p className="form-label ">Puntos acumulados</p>
-                    </div>
-                    <div className="col-md-6">
-                      <input
-                        type="number"
-                        className="form-control"
-                        defaultValue={(requests[0]?.medication.points || -9999) *(requests[0]?.purchasedQuantity || -9999) }
-                        readOnly
-                      />
-                    </div>
-                  </div>
-
-                  <div className="row mt-4 align-items-center">
-                    <div className="col-md-4">
-                      <p className="form-label ">Puntos disponibles</p>
-                    </div>
-                    <div className="col-md-6">
-                      <input
-                        type="number"
-                        className="form-control"
-                        defaultValue={puntosDisponibles}
-                        readOnly
-                      />
-                    </div>
-                  </div>
-
-
-                </div>
-    
-                <div className="col-3 mddiv8">
-                  <div className="col-3 rndiv7">
-                    <div className="div-upload d-flex flex-column justify-content-center align-items-center">
-                      <img
-                        className='mdimagen-upload'
-                        src={medicine}
-                        alt="Upload icon"
-                        style={{ cursor: 'pointer', maxWidth: '1000px' }}
-                      />
-                      <h3 className='med-name'><br />{requests[0].medication.medication.name}</h3>
-                    </div>
-                  </div>
-
-                  {puedeCanjear && (
-                    <div className="row div-upload d-flex justify-content-center align-items-center">
-                        <img
-                        className="imagen-canjear"
-                        src={exchange}
-                        alt="Upload icon"
-                        onClick={handleSubmit}
-                        style={{ cursor: 'pointer' }}
-                        />
-                    </div>
-                  )}
-    
-    
-                </div>
-    
-              </form>
-
-              <div className="col mddiv9 overflow-auto">
-                {requests.map((request, index) => (
-                        // Cada tarjeta es un cuadrado
-                        <div className="mdcuadrado" key={request._id}>
-                            {/* Se divide en 2, la imagen y el texto. En el CSS  esta la configuraicion */}
-                            {/* Imagen */}
-                            <div className="row1">
-                                <div className="col1">
-                                    <img src={pill} className="mdcard-img-top" alt="..." />
-                                </div>
-                            </div>
-
-                            {/* Texto */}
-                            <div className="row2">
-                                <div className="col2">
-                                    <p>
-                                        Fecha: {new Intl.DateTimeFormat('es-ES', { dateStyle: 'long' }).format(new Date(request.purchaseDate))} <br />
-                                        Factura: {request.invoiceNumber} <br />
-                                        Farmacia: {request.pharmacy.name} <br />
-                                        Canje: {request.exchangeNumber}
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-                    ))}
-                </div>  
+        <div className="col mddiv2">
+          <div className="row mddiv3">
+            <div className="mddiv-gradient-header d-flex justify-content-start align-items-end" style={{ height: '100%' }}>
+              <img className='mdimagen' src={gradient} alt="Logo" id="gradient" />
             </div>
           </div>
 
@@ -319,6 +193,7 @@ const MedicationDetails = () => {
                     className="imagen-canjear"
                     src={exchange}
                     alt="Upload icon"
+                    onClick={handleSubmit}
                     style={{ cursor: 'pointer' }}
                   />
                 </div>
@@ -357,6 +232,129 @@ const MedicationDetails = () => {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* <form onSubmit={handleSubmit} className="row nrdiv5 overflow-auto"> */}
+      <form className="row mddiv5">
+
+        <div className="col mddiv6 input-group-column">
+
+          <div className="row mt-4 align-items-center">
+            <div className="col-md-4">
+              <p className="form-label ">Puntos por unidad</p>
+            </div>
+            <div className="col-md-6">
+              <input
+                type="number"
+                className="form-control"
+                defaultValue={requests[0]?.medication.points || -1}
+                readOnly
+              />
+            </div>
+          </div>
+
+          <div className="row mt-4 align-items-center">
+            <div className="col-md-4">
+              <p className="form-label ">Puntos para el canje</p>
+            </div>
+            <div className="col-md-6">
+              <input
+                type="number"
+                className="form-control"
+                //          Si es 0 lo selecciona                  Total de puntos para canjear      -      Lo que ha comprado                                         
+                defaultValue={Math.max(0, (requests[0]?.medication.exchangeAmount || -9999) * (requests[0]?.medication.points || -9999)
+                  - (requests[0]?.medication.points || -9999) * (requests[0]?.purchasedQuantity || -9999))}
+                readOnly
+              />
+            </div>
+          </div>
+
+          <div className="row mt-4 align-items-center">
+            <div className="col-md-4">
+              <p className="form-label ">Puntos acumulados</p>
+            </div>
+            <div className="col-md-6">
+              <input
+                type="number"
+                className="form-control"
+                defaultValue={(requests[0]?.medication.points || -9999) * (requests[0]?.purchasedQuantity || -9999)}
+                readOnly
+              />
+            </div>
+          </div>
+
+          <div className="row mt-4 align-items-center">
+            <div className="col-md-4">
+              <p className="form-label ">Puntos disponibles</p>
+            </div>
+            <div className="col-md-6">
+              <input
+                type="number"
+                className="form-control"
+                defaultValue={puntosDisponibles}
+                readOnly
+              />
+            </div>
+          </div>
+
+
+        </div>
+
+        <div className="col-3 mddiv8">
+          <div className="col-3 rndiv7">
+            <div className="div-upload d-flex flex-column justify-content-center align-items-center">
+              <img
+                className='mdimagen-upload'
+                src={medicine}
+                alt="Upload icon"
+                style={{ cursor: 'pointer', maxWidth: '1000px' }}
+              />
+              <h3 className='med-name'><br />{requests[0].medication.medication.name}</h3>
+            </div>
+          </div>
+
+          {puedeCanjear && (
+            <div className="row div-upload d-flex justify-content-center align-items-center">
+              <img
+                className="imagen-canjear"
+                src={exchange}
+                alt="Upload icon"
+                style={{ cursor: 'pointer' }}
+              />
+            </div>
+          )}
+
+
+        </div>
+
+      </form>
+
+      <div className="col mddiv9 overflow-auto">
+        {requests.map((request, index) => (
+          // Cada tarjeta es un cuadrado
+          <div className="mdcuadrado" key={request._id}>
+            {/* Se divide en 2, la imagen y el texto. En el CSS  esta la configuraicion */}
+            {/* Imagen */}
+            <div className="row1">
+              <div className="col1">
+                <img src={pill} className="mdcard-img-top" alt="..." />
+              </div>
+            </div>
+
+            {/* Texto */}
+            <div className="row2">
+              <div className="col2">
+                <p>
+                  Fecha: {new Intl.DateTimeFormat('es-ES', { dateStyle: 'long' }).format(new Date(request.purchaseDate))} <br />
+                  Factura: {request.invoiceNumber} <br />
+                  Farmacia: {request.pharmacy.name} <br />
+                  Canje: {request.exchangeNumber}
+                </p>
+              </div>
+            </div>
+
+          </div>
+        ))}
       </div>
     </div>
   );
