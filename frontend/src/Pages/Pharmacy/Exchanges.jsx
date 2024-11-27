@@ -11,23 +11,6 @@ import { Exchange } from '../Operator/Components';
 
 const apiURL = import.meta.env.VITE_BACKEND_URL;
 
-// cuidao con esto porque aun no se define un modelo, por lo que hay que cambiarlo despues
-const mockExchanges = [
-    {_id: '1', exchangeNumber: 1, createdAt: '17/02/2024', product: 'Ibuprofeno', pharmacy: 'La Bomba', client: '672b6733dd60abf5b47dd07c'},
-    {_id: '1', exchangeNumber: 2, createdAt: '15/02/2024', product: 'Escitalopram', pharmacy: 'La Bomba', client: '672b6733dd60abf5b47dd07c'},
-    {_id: '1', exchangeNumber: 3, createdAt: '12/02/2024', product: 'Paracetamol', pharmacy: 'La Bomba', client: '672b6733dd60abf5b47dd07c'},
-    {_id: '1', exchangeNumber: 4, createdAt: '19/02/2024', product: 'Enantium', pharmacy: 'La Bomba', client: 4}
-]
-
-const mockClients = [
-    {_id: 1, firstName: 'Adriana', firstLastName: 'Mora', secondLastName: 'Solano', email: 'adrianita@gmail.com'},
-    {_id: '672b6733dd60abf5b47dd07c', firstName: 'Cliente', firstLastName: 'del', secondLastName: 'Sistema', email: 'client@client.com'},
-    {_id: 3, firstName: 'Karol', firstLastName: 'Montero', secondLastName: 'Chaves', email: 'montero@gmail.com'},
-    {_id: 4, firstName: 'Meli', firstLastName: 'Carvajal', secondLastName: 'Charpentier', email: 'melicarvajalcharpentier.me@gmail.com'}
-]
-
-//falta configurar la barra de búsqueda
-
 function Exchanges(){
     const [exchanges, setExchanges] = useState([]);
     const [filteredExchanges, setFExchanges] = useState([]);
@@ -66,7 +49,9 @@ function Exchanges(){
         setClientName(`${client.firstName} ${client.firstLastName} ${client.secondLastName}`);
 
         // Filtrar exchanges del cliente
-        const clientExchanges = exchanges.filter((exchange) => exchange.client._id === client._id); //cuidao aqui
+        const clientExchanges = exchanges
+                                .filter((exchange) => exchange.client._id === client._id) //cuidao aqui
+                                .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)); 
         setFExchanges(clientExchanges);
         const fetchPoints = async () => {
             try {
@@ -91,10 +76,13 @@ function Exchanges(){
             try {
                 const response = await axios.get(endpoint + "/api/exchanges/all");
                 const data = Array.isArray(response.data) ? response.data : []; // Verifica si data es un array
+                // 
+                const sortedExchanges = data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
                 // setExchanges(mockExchanges);
                 // setFExchanges(mockExchanges)
-                setExchanges(data);
-                setFExchanges(data);
+                setExchanges(sortedExchanges);
+                setFExchanges(sortedExchanges);
             } catch (error) {
                 console.error(error.response?.data?.message || 'Error al obtener las canjes');
                 setExchanges([]);
@@ -109,7 +97,7 @@ function Exchanges(){
                 // setClients(data);
             } catch (error) {
                 console.error(error.response?.data?.message || 'Error al obtener las clientes');
-                setClients(mockClients);
+                setClients([]);
             };
         }
         fetchClients();
