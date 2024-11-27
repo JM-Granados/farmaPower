@@ -18,13 +18,13 @@ function Home_Guest() {
             <Header_Home />
 
             <div className="hcontainer contiene container-fluid d-flex justify-content-start">
-                <Link to="/ManageProgram" className="ir ms-5 mt-5 me-5 card-link">
+                <Link to="/Clients" className="ir ms-5 mt-5 me-5 card-link">
                     <div className="card">
                         <img src={Clientes} className="card-img-top" alt="..." />
                     </div>
                 </Link>
 
-                <Link to="/ManagePharmacy" className="ir ms-5 mt-5 me-5 card-link">
+                <Link to="/Exchanges" className="ir ms-5 mt-5 me-5 card-link">
                     <div className="card">
                         <img src={Canjes} className="card-img-top" alt="..." />
                     </div>

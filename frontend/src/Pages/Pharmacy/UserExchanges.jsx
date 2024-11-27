@@ -12,6 +12,7 @@ const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 const ManageElegibleMedication = () => {
     const selectedClient = JSON.parse(localStorage.getItem('selectedClient'));
+    console.log(selectedClient);
     const navigate = useNavigate();
     const [medicationPointsData, setMedicationPointsData] = useState([]);
     const [pointsData, setPointsData] = useState({
@@ -27,7 +28,7 @@ const ManageElegibleMedication = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const userId = '672b6733dd60abf5b47dd07c'; // Replace with actual user ID
+                const userId = selectedClient._id; // Replace with actual user ID
                 const response = await axios.get(`${apiURL}/api/users/${userId}/fullname-email`);
                 setUserData({
                     fullName: response.data.fullName,
@@ -44,7 +45,7 @@ const ManageElegibleMedication = () => {
     useEffect(() => {
         const fetchPointsData = async () => {
             try {
-                const userId = '672b6733dd60abf5b47dd07c'; // Replace with actual user ID
+                const userId = selectedClient._id; // Replace with actual user ID
                 const response = await axios.get(`${apiURL}/api/exchanges/points/${userId}`);
                 setPointsData(response.data);
             } catch (error) {
@@ -58,7 +59,7 @@ const ManageElegibleMedication = () => {
     useEffect(() => {
         const fetchMedicationPoints = async () => {
             try {
-                const userId = '672b6733dd60abf5b47dd07c'; // Replace with actual user ID
+                const userId = selectedClient._id; // Replace with actual user ID
                 const response = await axios.get(`${apiURL}/api/exchanges/points/medication/${userId}`);
                 setMedicationPointsData(response.data);
             } catch (error) {

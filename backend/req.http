@@ -92,3 +92,6 @@ GET http://localhost:3000/api/exchanges/points/672b6733dd60abf5b47dd07c
 
 ###
 GET http://localhost:3000/api/users/clients
+
+###
+GET http://localhost:3000/api/exchanges/getIdClientByExchange/673e764443e00197951d53ff

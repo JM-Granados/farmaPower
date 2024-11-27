@@ -43,8 +43,9 @@ function Request({id, date, status, number}){
 export function Exchange({id, number, date, product, farmacia}){
     const navigate = useNavigate();
 
-    const handleClick = () => { // Maneja la acción de click
-        navigate(`/${id}`); // Falta colocar la ruta y consultar como quiere que le lleguen los params
+    const handleClick = () => { // Maneja la acción de click}
+        localStorage.setItem('selectedExchange', JSON.stringify(id));
+        navigate(`/Exchange`); // Falta colocar la ruta y consultar como quiere que le lleguen los params
     };
     
     return (

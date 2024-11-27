@@ -23,6 +23,11 @@
     height: auto;
 }
 
+.j-imagen {
+    max-width: 40%;
+    height: auto;
+}
+
 .j-maem-form-control {
     background-color: rgb(27, 43, 107); /* Initial background color */
     color: white; /* Text color */
@@ -78,6 +83,14 @@
     position: absolute;
     top: 20px; /* Ajusta este valor según sea necesario para el margen superior */
     right: 20px; /* Asegura que el icono esté 10px alejado del borde derecho del contenedor de la tarjeta */
+    width: 35px; /* Establece el ancho, o puedes removerlo si ya lo defines en el atributo width del elemento img */
+    height: 35px; /* Establece la altura, o puedes removerlo si ya lo defines en el atributo height del elemento img */
+    cursor: pointer; /* Opcional, para hacer el cursor como una mano cuando se pasa sobre el icono */
+}
+
+.info-icon {
+    position: absolute;
+    top: 20px; /* Ajusta este valor según sea necesario para el margen superior */
     width: 35px; /* Establece el ancho, o puedes removerlo si ya lo defines en el atributo width del elemento img */
     height: 35px; /* Establece la altura, o puedes removerlo si ya lo defines en el atributo height del elemento img */
     cursor: pointer; /* Opcional, para hacer el cursor como una mano cuando se pasa sobre el icono */

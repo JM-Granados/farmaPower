@@ -244,7 +244,7 @@ export const modifyUser: RequestHandler = async (req, res) => {
 export const getClients: RequestHandler = async (req, res) => {
     try {
         // Buscar todos los usuarios en la base de datos y seleccionar campos específicos
-        const users = await User.find({role: 'Client'}).select('firstName firstLastName secondLastName email');
+        const users = await User.find({role: 'Client'}).select('id firstName firstLastName secondLastName email role status createdAt imageUrl principalImage');
 
         // Enviar la lista de usuarios al frontend
         res.status(200).json(users);
@@ -286,3 +286,38 @@ export const getUserFullNameAndEmail: RequestHandler = async (req, res) => {
         }
     }
 };
+
+
+export const getClientsSearched: RequestHandler = async (req, res) => {
+    try {
+        // Obtiene el término de búsqueda del query string y asegura que sea un string
+        const search = typeof req.query.search === 'string' ? req.query.search : '';
+
+        // Asegúrate de que search no es solo espacios en blanco o vacío
+        if (!search.trim()) {
+            return res.status(400).json({ message: "Search query cannot be empty." });
+        }
+
+        const query = {
+            $or: [
+                { firstName: { $regex: `^${search}`, $options: 'i' } },
+                { firstLastName: { $regex: `^${search}`, $options: 'i' } },
+                { secondLastName: { $regex: `^${search}`, $options: 'i' } },
+                { email: { $regex: `^${search}`, $options: 'i' } }
+            ]
+        };
+
+        // Buscar en el modelo User
+        const regularUsers = await User.find(query).select('firstName firstLastName secondLastName email role status createdAt imageUrl principalImage');
+
+        // Enviar la lista de usuarios al frontend
+        res.status(200).json(regularUsers);
+    } catch (error) {
+        // Manejar posibles errores de la base de datos
+        if (error instanceof Error) {
+            res.status(500).json({ message: "Error retrieving users: ", error: error.message });
+        } else {
+            res.status(500).json({ message: "Unknown error occurred" });
+        }
+    }
+}
