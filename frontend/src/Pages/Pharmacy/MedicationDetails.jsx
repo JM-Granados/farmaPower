@@ -13,6 +13,7 @@ const apiURL = import.meta.env.VITE_BACKEND_URL;
 
 const MedicationDetails = () => {
     const selectedClient = JSON.parse(localStorage.getItem('selectedClient'));
+    const selectedMedication = JSON.parse(localStorage.getItem('selectedMedication'));
     const navigate = useNavigate();
 
     const [requests, setRequests] = useState([]);
@@ -22,8 +23,8 @@ const MedicationDetails = () => {
         const fetchRequests = async () => {
             try {
                 const response = await axios.post(`${apiURL}/api/requests/vs/visitCandidates`, {
-                    idClient: "672b6733dd60abf5b47dd07c",
-                    id: "672aca04035a3d6cbf6741e6",
+                    idClient:selectedClient._id,
+                    id:selectedMedication._id,
                 });
                 setRequests(response.data.data); 
                 setLoading(false); 
@@ -71,11 +72,11 @@ const MedicationDetails = () => {
       e.preventDefault();
     
       const formData = new FormData();
-      formData.append('product', requests[0].medication.medication._id);
-      //formData.append('client',  user._id);
-      formData.append('client', '672b6733dd60abf5b47dd07c');
+      formData.append('product', requests[0].medication._id);
+      formData.append('client', selectedClient._id);
       formData.append('pharmacy', requests[0].pharmacy._id);
-      formData.append('requests', getRequestIdsForPoints(requests)); 
+      formData.append('requests', getRequestIdsForPoints(requests
+        .filter((request) => request.rStatus === 'Aprobada'))); 
   
       for (const [key, value] of formData.entries()) {
         console.log(`${key}:`, value);
@@ -88,7 +89,7 @@ const MedicationDetails = () => {
         });
   
         console.log('Respuesta del servidor:', response.data);
-        navigate('/MedicationDetails')
+        navigate('/Clients')
       } catch (error) {
         console.error("Error al enviar los datos:", error);
       }

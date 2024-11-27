@@ -74,7 +74,15 @@ export class ConcreteVisitor implements Visitor {
         //Query de toda la vida
         .populate("pharmacy")
         .populate("requests")
-        .populate("product")
+        .populate({
+          path: 'product',
+          model: 'ElegibleMedication',
+          populate: {
+            path: 'medication', 
+            model: 'Medication',
+            select: 'name',
+          },
+        })
         .populate("client")
 
       console.log("CONCRETE VISITOR -> exchanges", exchanges);
