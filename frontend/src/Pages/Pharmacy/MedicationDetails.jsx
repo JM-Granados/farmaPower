@@ -48,9 +48,51 @@ const MedicationDetails = () => {
     .filter((request) => request.rStatus === 'Aprobada')
     .reduce((total, request) => total + request.medication.points * request.purchasedQuantity, 0);
 
-    const puntosParaCanje = requests[0]?.exchangeAmount * requests[0]?.points;
+    const puntosParaCanje = requests[0]?.medication.exchangeAmount * requests[0]?.medication.points;
 
     const puedeCanjear = puntosDisponibles >= puntosParaCanje;
+
+    function getRequestIdsForPoints(requests) {
+      const selectedRequestIds = [];
+      let accumulatedPoints = 0; 
+    
+      for (const request of requests) {
+        const requestPoints = (request.medication.exchangeAmount || 0) * (request.medication.points || 0);
+        selectedRequestIds.push(request._id);
+        accumulatedPoints += requestPoints;
+        if (accumulatedPoints >= puntosParaCanje) {
+          break;
+        }
+      }
+      return selectedRequestIds;
+    }
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+    
+      const formData = new FormData();
+      formData.append('product', requests[0].medication.medication._id);
+      //formData.append('client',  user._id);
+      formData.append('client', '672b6733dd60abf5b47dd07c');
+      formData.append('pharmacy', requests[0].pharmacy._id);
+      formData.append('requests', getRequestIdsForPoints(requests)); 
+  
+      for (const [key, value] of formData.entries()) {
+        console.log(`${key}:`, value);
+      }
+    
+      try {
+        //const response = await axios.post('http://localhost:3000/api/requests/c/', formData, {
+        const response = await axios.post(`${apiURL}/api/exchanges/newExchange`, formData, {
+          headers: { 'Content-Type': 'multipart/form-data' },
+        });
+  
+        console.log('Respuesta del servidor:', response.data);
+        navigate('/MedicationDetails')
+      } catch (error) {
+        console.error("Error al enviar los datos:", error);
+      }
+    };
 
     return (
         <div className="nueva-solicitud">
@@ -151,6 +193,7 @@ const MedicationDetails = () => {
                         className="imagen-canjear"
                         src={exchange}
                         alt="Upload icon"
+                        onClick={handleSubmit}
                         style={{ cursor: 'pointer' }}
                         />
                     </div>

@@ -60,6 +60,12 @@ export const createExchange: RequestHandler = async (req, res) => {
             requests: requests, //esto debe ser un [] con los _ids de las requests que respaldan el canje
         });
 
+        // Actualizar el estado de las solicitudes a 'Canjeada'
+        await RequestModel.updateMany(
+            { _id: { $in: requests } },  // Filtramos por los ids de las requests
+            { $set: { rStatus: 'Canjeada' } }  // Actualizamos el rStatus a 'Canjeada'
+        );
+
         res.status(201).json({ message: 'Exchange created successfully', exchange: newExchange });
     } catch (error) {
         res.status(500).json({ message: 'Error creating exchange', error });
