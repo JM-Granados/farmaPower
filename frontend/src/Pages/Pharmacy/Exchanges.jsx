@@ -136,7 +136,7 @@ function Exchanges(){
                     <div className="row g-4 p-15">
                         {filteredExchanges.map((exchange, index) => (
                             <div key={exchange._id} className="col-auto d-flex p-2">
-                                <Exchange id={exchange._id} number={exchange.exchangeNumber} date={exchange.createdAt} product={exchange.product.medication.name} farmacia={exchange.pharmacy.name} /> 
+                                <Exchange id={exchange._id} number={exchange.exchangeNumber} date={exchange.createdAt} product={exchange.product.medication.name} farmacia={exchange.pharmacy.name} clientID={exchange.client._id}/> 
                             </div>
                         ))}
                     </div>
