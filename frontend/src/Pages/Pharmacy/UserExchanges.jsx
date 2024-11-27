@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 const apiURL = import.meta.env.VITE_BACKEND_URL;
 
-const ManageElegibleMedication = () => {
+const UserExchanges = () => {
     const selectedClient = JSON.parse(localStorage.getItem('selectedClient'));
     console.log(selectedClient);
     const navigate = useNavigate();
@@ -70,6 +70,11 @@ const ManageElegibleMedication = () => {
         fetchMedicationPoints();
     }, []);
 
+    const handleInfoClick = (medication) => {
+        localStorage.setItem('selectedMedication', JSON.stringify(medication));
+        navigate(`/MedicationDetails`);
+    }
+
     return (
         <div className="container-fluid i-ue-manage-elegible-medications">
             <div className="row i-ue-principal">
@@ -117,7 +122,7 @@ const ManageElegibleMedication = () => {
                                                         </p>
                                                         <button
                                                             className="btn i-ue-modify-link"
-                                                            onClick={() => handleModifyClick(medication)}
+                                                            onClick={() => handleInfoClick(medication)}
                                                             style={{ position: 'absolute', top: '10px', right: '10px' }}
                                                         >
                                                             <FontAwesomeIcon icon={faInfoCircle} />
@@ -152,4 +157,4 @@ const ManageElegibleMedication = () => {
     );
 };
 
-export default ManageElegibleMedication;
+export default UserExchanges;
