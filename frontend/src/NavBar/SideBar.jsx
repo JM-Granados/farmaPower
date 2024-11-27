@@ -66,7 +66,7 @@ const SideBar = () => {
     } else if (user && user.role === 'Pharmacy') {
         links = (
             <>
-                <Link className={`yendo nav-link text-white mb-2 ${location.pathname === '/Home_Pharmacy' ? 'active' : ''}`} to="/Home_Operator">Inicio</Link>
+                <Link className={`yendo nav-link text-white mb-2 ${location.pathname === '/Home_Pharmacy' ? 'active' : ''}`} to="/Home_Pharmacy">Inicio</Link>
                 <Link className={`yendo nav-link text-white mb-2 ${isActive(['/Clients', '/UserExchanges', '/MedicationDetails']) ? 'active' : ''}`} to="/Clients">Clientes disponibles</Link>
                 <Link className={`yendo nav-link text-white mb-2 ${isActive(['/Exchanges', '/Exchange']) ? 'active' : ''}`} to="/Exchanges">Canjes</Link>
                 <button className="yendo nav-link text-white btn btn-link p-0 mb-5 text-start" onClick={handleLogout}>
