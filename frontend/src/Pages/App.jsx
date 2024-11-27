@@ -45,6 +45,9 @@ import ModifyProgram from '../Pages/Admin/ModifyProgram';
 import Exchanges from './Pharmacy/Exchanges';
 import UserExchanges from '../Pages/Pharmacy/UserExchanges';
 import MedicationDetails from './Pharmacy/MedicationDetails';
+import Exchange from './Pharmacy/Exchange';
+import Clients from './Pharmacy/Clients'
+
 
 /**
  * @fileoverview Aplicación principal para el proyecto React usando React Router y Bootstrap.
@@ -77,27 +80,27 @@ function App() {
         {/* Ruta para la página de inicio accesible desde la URL base '/' */}
         <Route path='/' element={<Home_Guest />}></Route>
         {/* Ruta para la página de requests de operador accesible desde '/requests' */}
-        <Route path='/Requests' element={<Requests/>}></Route>
+        <Route path='/Requests' element={<Requests />}></Route>
         {/* Ruta para la página de request específico accesible desde '/viewrequest/id' */}
-        <Route path='/Viewrequest/:id' element={<ThisRequest/>}></Route>
+        <Route path='/Viewrequest/:id' element={<ThisRequest />}></Route>
         {/* Ruta para la página de registrar programa accesible desde '/registerProgram' */}
-        <Route path='/RegisterProgram' element={<RegisterProgram/>}></Route>
+        <Route path='/RegisterProgram' element={<RegisterProgram />}></Route>
         {/* Ruta para la página de registrar programa accesible desde '/info/id' */}
-        <Route path='/Info/:id' element={<Info/>}></Route> {/*No se como se vaya a manejar esto */}
+        <Route path='/Info/:id' element={<Info />}></Route> {/*No se como se vaya a manejar esto */}
         {/* Ruta para la página de registrar programa accesible desde '/help' */}
-        <Route path='/Help' element={<Help/>}></Route>
-        <Route path='/Exchanges' element={<Exchanges/>}></Route> 
+        <Route path='/Help' element={<Help />}></Route>
+        <Route path='/Exchanges' element={<Exchanges />}></Route>
 
         <Route path='/Login' element={<Login />}></Route>
-        <Route path='/Signup' element={<Signup/>}></Route>
-        <Route path='/PassRecovery' element={<PassRecovery/>}></Route>
-        <Route path='/Registrar_User' element={<Registrar_User/>}></Route>
-        <Route path='/Modificar_User' element={<Modificar_User/>}></Route>
-        <Route path='/Users' element={<Users/>}></Route>
-        <Route path='/Home_Admin' element={<Home_Admin/>}></Route>
-        <Route path='/Home_Client' element={<Home_Client/>}></Route>
-        <Route path='/Home_Operator' element={<Home_Operator/>}></Route>
-        <Route path='/Home_Pharmacy' element={<Home_Pharmacy/>}></Route>
+        <Route path='/Signup' element={<Signup />}></Route>
+        <Route path='/PassRecovery' element={<PassRecovery />}></Route>
+        <Route path='/Registrar_User' element={<Registrar_User />}></Route>
+        <Route path='/Modificar_User' element={<Modificar_User />}></Route>
+        <Route path='/Users' element={<Users />}></Route>
+        <Route path='/Home_Admin' element={<Home_Admin />}></Route>
+        <Route path='/Home_Client' element={<Home_Client />}></Route>
+        <Route path='/Home_Operator' element={<Home_Operator />}></Route>
+        <Route path='/Home_Pharmacy' element={<Home_Pharmacy />}></Route>
         <Route path='/MyRequests' element={<My_Requests />}></Route>
         <Route path="/NewRequest" element={<NewRequest />}></Route>
         <Route path="/MyPoints" element={<Points />}></Route>
@@ -105,20 +108,24 @@ function App() {
         <Route path="/Medications" element={<Medication />}></Route>
         <Route path="/Pharmacies" element={<Pharmacies />}></Route>
         <Route path="/Programs" element={<Programs />}></Route>
-        <Route path='/ManageElegibleMedication' element={<ManageElegibleMedication/>}></Route>
-        <Route path='/ManagePharmacy' element={<ManagePharmacy/>}></Route>
-        <Route path='/ManageProgram' element={<ManageProgram/>}></Route>
-        <Route path='/RegisterProduct' element={<RegisterProduct/>}></Route>
-        <Route path='/ModifyProduct' element={<ModifyProduct/>}></Route>
-        <Route path='/RegisterPharmacy' element={<RegisterPharmacy/>}></Route>
-        <Route path='/ModifyPharmacy' element={<ModifyPharmacy/>}></Route>
-        <Route path='/ModifyProgram' element={<ModifyProgram/>}></Route>
+        <Route path='/ManageElegibleMedication' element={<ManageElegibleMedication />}></Route>
+        <Route path='/ManagePharmacy' element={<ManagePharmacy />}></Route>
+        <Route path='/ManageProgram' element={<ManageProgram />}></Route>
+        <Route path='/RegisterProduct' element={<RegisterProduct />}></Route>
+        <Route path='/ModifyProduct' element={<ModifyProduct />}></Route>
+        <Route path='/RegisterPharmacy' element={<RegisterPharmacy />}></Route>
+        <Route path='/ModifyPharmacy' element={<ModifyPharmacy />}></Route>
+        <Route path='/ModifyProgram' element={<ModifyProgram />}></Route>
 
-        <Route path='/MedicationDetails' element={<MedicationDetails/>}></Route>
+        <Route path='/MedicationDetails' element={<MedicationDetails />}></Route>
 
-        <Route path='/UserExchanges' element={<UserExchanges/>}></Route>
+        <Route path='/UserExchanges' element={<UserExchanges />}></Route>
 
-        <Route path='/Header_User' element={<Header_User/>}></Route>
+        <Route path='/Clients' element={<Clients />}></Route>
+
+        <Route path='/Exchange' element={<Exchange />}></Route>
+
+        <Route path='/Header_User' element={<Header_User />}></Route>
       </Routes>
     </BrowserRouter>
   )

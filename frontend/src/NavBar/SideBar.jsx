@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation  } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './SideBar.css';
 import gradient from '../assets/lightblue_yellow_gradient.png';
@@ -19,6 +19,10 @@ const SideBar = () => {
         localStorage.removeItem('user');
         navigate('/');
     };
+
+    function isActive(paths) {
+        return paths.includes(location.pathname);
+    }
 
     if (user && user.role === 'Client') {
         links = (
@@ -54,6 +58,17 @@ const SideBar = () => {
                 <Link className={`yendo nav-link text-white mb-2 ${location.pathname === '/Pendientes' ? 'active' : ''}`} to="/Pendientes">Pendientes</Link>
                 <Link className={`yendo nav-link text-white mb-2 ${location.pathname === '/Rechazadas' ? 'active' : ''}`} to="/Rechazadas">Rechazadas</Link>
                 <Link className={`yendo nav-link text-white mb-2 ${location.pathname === '/Aprobadas' ? 'active' : ''}`} to="/Aprobadas">Aprobadas</Link>
+                <button className="yendo nav-link text-white btn btn-link p-0 mb-5 text-start" onClick={handleLogout}>
+                    Salir
+                </button>
+            </>
+        );
+    } else if (user && user.role === 'Pharmacy') {
+        links = (
+            <>
+                <Link className={`yendo nav-link text-white mb-2 ${location.pathname === '/Home_Pharmacy' ? 'active' : ''}`} to="/Home_Operator">Inicio</Link>
+                <Link className={`yendo nav-link text-white mb-2 ${isActive(['/Clients', '/UserExchanges', '/MedicationDetails']) ? 'active' : ''}`} to="/Clients">Clientes disponibles</Link>
+                <Link className={`yendo nav-link text-white mb-2 ${isActive(['/Exchanges', '/Exchange']) ? 'active' : ''}`} to="/Exchanges">Canjes</Link>
                 <button className="yendo nav-link text-white btn btn-link p-0 mb-5 text-start" onClick={handleLogout}>
                     Salir
                 </button>
