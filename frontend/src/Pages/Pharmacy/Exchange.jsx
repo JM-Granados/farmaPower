@@ -16,9 +16,6 @@ const MedicationDetails = () => {
     const doubleSelectedClient = JSON.parse(localStorage.getItem('doubleSelectedClient'));
     const navigate = useNavigate();
 
-    console.log(doubleSelectedClient);
-    console.log(selectedExchangeId);
-
     const [exchangeData, setExchangeData] = useState(null); // Para almacenar la información del exchange
     const [requests, setRequests] = useState([]);
     const [loading, setLoading] = useState(true); // Estado para controlar la carga
@@ -31,6 +28,7 @@ const MedicationDetails = () => {
                     id: selectedExchangeId,
                 });
                 setRequests(response.data.data);
+                console.log(response.data.data)
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching requests:", error);
@@ -84,7 +82,7 @@ const MedicationDetails = () => {
                                     <input
                                         type="number"
                                         className="form-control"
-                                        defaultValue={requests[0]?.medication.points || -1}
+                                        defaultValue={requests[0]?.createdAt}
                                         readOnly
                                     />
                                 </div>
@@ -99,8 +97,7 @@ const MedicationDetails = () => {
                                         type="number"
                                         className="form-control"
                                         //          Si es 0 lo selecciona                  Total de puntos para canjear      -      Lo que ha comprado                                         
-                                        defaultValue={Math.max(0, (requests[0]?.medication.exchangeAmount || -9999) * (requests[0]?.medication.points || -9999)
-                                            - (requests[0]?.medication.points || -9999) * (requests[0]?.purchasedQuantity || -9999))}
+                                        defaultValue={a}
                                         readOnly
                                     />
                                 </div>
