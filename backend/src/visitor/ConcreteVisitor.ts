@@ -78,7 +78,7 @@ export class ConcreteVisitor implements Visitor {
           path: 'product',
           model: 'ElegibleMedication',
           populate: {
-            path: 'medication',
+            path: 'medication', 
             model: 'Medication',
             select: 'name',
           },
