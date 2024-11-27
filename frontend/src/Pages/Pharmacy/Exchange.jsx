@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './MedicationDetails.css';
 import SideBar from '../../NavBar/SideBar';
-import inforCanje from '../../assets/inforCanje.png';
+import inforCanje from '../../assets/InforCanje.png';
 import pill from '../../assets/drugs1.png';
 import exchange from '../../assets/Canjear.png';
 import medicine from '../../assets/medicine.png';
