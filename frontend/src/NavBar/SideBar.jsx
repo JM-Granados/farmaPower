@@ -59,6 +59,22 @@ const SideBar = () => {
                 </button>
             </>
         );
+    } else if (user && user.role === 'Pharmacy') {
+        links = (
+            <>
+                <Link className={`yendo nav-link text-white mb-2 ${location.pathname === '/Home_Pharmacy' ? 'active' : ''}`} to="/Home_Operator">Inicio</Link>
+                <Link className={`yendo nav-link text-white mb-2 ${location.pathname === '/Todas' ? 'active' : ''}`} to="/Todas">Clientes disponibles</Link>
+                <Link className={`yendo nav-link text-white mb-2 ${location.pathname === '/Todas' ? 'active' : ''}`} to="/Todas">Clientes disponibles</Link>
+                <Link className={`yendo nav-link text-white mb-2 ${location.pathname === '/Todas' ? 'active' : ''}`} to="/Todas">Clientes disponibles</Link>
+
+                <Link className={`yendo nav-link text-white mb-2 ${location.pathname === '/Pendientes' ? 'active' : ''}`} to="/Pendientes">Canjes</Link>
+                <Link className={`yendo nav-link text-white mb-2 ${location.pathname === '/Pendientes' ? 'active' : ''}`} to="/Pendientes">Canjes</Link>
+                <Link className={`yendo nav-link text-white mb-2 ${location.pathname === '/Pendientes' ? 'active' : ''}`} to="/Pendientes">Canjes</Link>
+                <button className="yendo nav-link text-white btn btn-link p-0 mb-5 text-start" onClick={handleLogout}>
+                    Salir
+                </button>
+            </>
+        );
     } else {
         // Caso no definido o cuando el rol no es reconocido, puedes decidir qué mostrar
         links = <div>Acceso no permitido o rol desconocido</div>;

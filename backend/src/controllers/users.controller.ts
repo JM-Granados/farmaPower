@@ -22,17 +22,9 @@ export const loginUser: RequestHandler = async (req, res) => {
 
         // Buscar al usuario por email
         let user = await User.findOne({ email: email });
-        let returnUser;
 
         if (!user) {
-            user = await PharmacyUser.findOne({ email: email });
-            if (!user) {
-                return res.status(200).json({ message: "Invalid credentials." });
-            } else {
-                returnUser = await PharmacyUser.findOne({ email: email }).select('-password');  // Excluye la contraseña en la consulta misma
-            }
-        } else {
-            returnUser = await User.findOne({ email: email }).select('-password');  // Excluye la contraseña en la consulta misma
+            return res.status(200).json({ message: "Invalid credentials." });        
         }
         
         // Comprobar si la contraseña proporcionada es correcta
@@ -42,8 +34,8 @@ export const loginUser: RequestHandler = async (req, res) => {
             
             return res.status(200).json({ message: "Invalid credentials." });
         }
-        console.log("hola")
-        console.log(returnUser)
+
+        const returnUser = await User.findOne({ email: email }).select('-password');  // Excluye la contraseña en la consulta misma
 
         res.status(200).json({
             message: "User logged in successfully",
@@ -152,12 +144,8 @@ export const getAllUsers: RequestHandler = async (req, res) => {
         // Buscar todos los usuarios en la base de datos y seleccionar campos específicos
         const users = await User.find({}).select('firstName firstLastName secondLastName email role status createdAt imageUrl principalImage');
 
-        const pharmacyUsers = await PharmacyUser.find({}).select('firstName firstLastName secondLastName email role status createdAt imageUrl principalImage pharmacy');
-
-        const combinedUsers = users.concat(pharmacyUsers);
-
         // Enviar la lista de usuarios al frontend
-        res.status(200).json(combinedUsers);
+        res.status(200).json(users);
     } catch (error) {
         // Manejar posibles errores de la base de datos
         if (error instanceof Error) {
@@ -190,14 +178,8 @@ export const getUsersSearched: RequestHandler = async (req, res) => {
         // Buscar en el modelo User
         const regularUsers = await User.find(query).select('firstName firstLastName secondLastName email role status createdAt imageUrl principalImage');
 
-        // Buscar en el modelo PharmacyUser (ajusta los campos si es necesario)
-        const pharmacyUsers = await PharmacyUser.find(query).select('firstName firstLastName secondLastName email role status createdAt imageUrl principalImage pharmacy');
-
-        // Combinar los resultados de ambos modelos en un solo array
-        const combinedUsers = regularUsers.concat(pharmacyUsers);
-
         // Enviar la lista de usuarios al frontend
-        res.status(200).json(combinedUsers);
+        res.status(200).json(regularUsers);
     } catch (error) {
         // Manejar posibles errores de la base de datos
         if (error instanceof Error) {
