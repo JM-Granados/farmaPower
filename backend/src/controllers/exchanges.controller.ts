@@ -11,22 +11,22 @@ import { ConcreteVisitor } from '../visitor/ConcreteVisitor';
 
 export class ExchangeManagement implements Element {
     async accept(params: { v: Visitor; id: number; idClient: number }): Promise<{ success: boolean; data: any }> {
-      return params.v.visitExchanges(params);
+        return params.v.visitExchanges(params);
     }
-  }
+}
 
 //A este método le falta ordenar los canjes
 export const getExchanges: RequestHandler = async (req, res) => {
     try {
         const exchanges = await ExchangeModel.find()
-            .populate('client')   
-            .populate('pharmacy') 
+            .populate('client')
+            .populate('pharmacy')
             .populate('requests')
             .populate({
-                path: 'product', 
+                path: 'product',
                 populate: {
-                    path: 'medication',            
-                    model: 'Medication',            
+                    path: 'medication',
+                    model: 'Medication',
                     select: 'name',
                 }
             });
@@ -44,7 +44,7 @@ export const createExchange: RequestHandler = async (req, res) => {
         if (!product || !client || !pharmacy || !requests) {
             return res.status(400).json({ message: 'Missing required field' });
         }
-        
+
         const counter = await CounterModel.findOneAndUpdate(
             { sequenceName: 'exchangeNumber' },
             { $inc: { sequenceValue: 1 } },
@@ -75,28 +75,28 @@ export const createExchange: RequestHandler = async (req, res) => {
 //obtener todos los puntos de un cliente para la ventana de exchanges
 export const getPoints: RequestHandler = async (req, res) => {
     const { id } = req.params;
-    try{
+    try {
         // Obtener puntos acumulados
         const totalPointsResult = await RequestModel.aggregate([
             { $match: { client: new mongoose.Types.ObjectId(id), rStatus: 'Aprobada' } }, //buscamos las solicitudes aprobadas del cliente
             {
                 $lookup: { // Esto es como hacer un join entre requests y elegible medication
-                from: 'elegiblemedication', // Collection que vamos a unir
-                localField: 'medication', // Campo de requests a unir
-                foreignField: '_id', // Campo de elegibleMedication a unir
-                as: 'medicationInfo', // Nombre del array de salida de la unión
+                    from: 'elegiblemedication', // Collection que vamos a unir
+                    localField: 'medication', // Campo de requests a unir
+                    foreignField: '_id', // Campo de elegibleMedication a unir
+                    as: 'medicationInfo', // Nombre del array de salida de la unión
                 },
             },
             { $unwind: '$medicationInfo' }, //convierte el array en documentos individuales en caso de que hayan varios campos
             {
                 $addFields: {
-                  totalPoints: { $multiply: ['$purchasedQuantity', '$medicationInfo.points'] },
+                    totalPoints: { $multiply: ['$purchasedQuantity', '$medicationInfo.points'] },
                 }
             },
             {
                 $group: {
                     _id: {
-                       clientID: '$client',
+                        clientID: '$client',
                     },
                     totalPoints: { $sum: '$totalPoints' }
                 },
@@ -109,10 +109,10 @@ export const getPoints: RequestHandler = async (req, res) => {
             { $match: { client: new mongoose.Types.ObjectId(id) } }, //buscamos los exchanges del cliente
             {
                 $lookup: { // Join
-                from: 'elegiblemedication', // Collection que vamos a unir
-                localField: 'product', // Campos a unir
-                foreignField: '_id',
-                as: 'productInfo', //Nombre de la unión
+                    from: 'elegiblemedication', // Collection que vamos a unir
+                    localField: 'product', // Campos a unir
+                    foreignField: '_id',
+                    as: 'productInfo', //Nombre de la unión
                 },
             },
             { $unwind: '$productInfo' }, //convierte el array en documentos individuales
@@ -122,7 +122,7 @@ export const getPoints: RequestHandler = async (req, res) => {
                         clientID: '$client',
                     },
                     totalUsedPoints: {
-                        $sum: {$sum: '$productInfo.exchangeAmount'}, //Obtenemos la cantidad canjeada
+                        $sum: { $sum: '$productInfo.exchangeAmount' }, //Obtenemos la cantidad canjeada
                     },
                 },
             },
@@ -146,6 +146,7 @@ export const getPoints: RequestHandler = async (req, res) => {
 
 export const getMedicationPoints: RequestHandler = async (req, res) => {
     const { id } = req.params; // Client ID
+    console.log(id);
     try {
         // Obtener puntos acumulados por cada medicamento
         const accumulatedPoints = await RequestModel.aggregate([
@@ -235,12 +236,12 @@ export const getMedicationPoints: RequestHandler = async (req, res) => {
 };
 
 
-export const visitExchanges = async (req:Request, res:Response) => {
+export const visitExchanges = async (req: Request, res: Response) => {
     const { id, idClient } = req.body;
     console.log("EXCHANGE.CONTROLLER -> VISITCANDIDATES:", id, idClient);
     try {
         const exchangeManagement = new ExchangeManagement();
-        const visitor = new ConcreteVisitor(); 
+        const visitor = new ConcreteVisitor();
         const result = await exchangeManagement.accept({ v: visitor, id, idClient });
         res.status(200).json(result);
     } catch (error) {
@@ -248,4 +249,5 @@ export const visitExchanges = async (req:Request, res:Response) => {
         const err = error as Error;
         res.status(500).json({ success: false, error: err.message });
     }
-  };
+};
+

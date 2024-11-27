@@ -10,8 +10,9 @@ import { useNavigate } from 'react-router-dom';
 
 const apiURL = import.meta.env.VITE_BACKEND_URL;
 
-const ManageElegibleMedication = () => {
+const UserExchanges = () => {
     const selectedClient = JSON.parse(localStorage.getItem('selectedClient'));
+    console.log(selectedClient);
     const navigate = useNavigate();
     const [medicationPointsData, setMedicationPointsData] = useState([]);
     const [pointsData, setPointsData] = useState({
@@ -27,7 +28,7 @@ const ManageElegibleMedication = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const userId = '672b6733dd60abf5b47dd07c'; // Replace with actual user ID
+                const userId = selectedClient._id; // Replace with actual user ID
                 const response = await axios.get(`${apiURL}/api/users/${userId}/fullname-email`);
                 setUserData({
                     fullName: response.data.fullName,
@@ -44,7 +45,7 @@ const ManageElegibleMedication = () => {
     useEffect(() => {
         const fetchPointsData = async () => {
             try {
-                const userId = '672b6733dd60abf5b47dd07c'; // Replace with actual user ID
+                const userId = selectedClient._id; // Replace with actual user ID
                 const response = await axios.get(`${apiURL}/api/exchanges/points/${userId}`);
                 setPointsData(response.data);
             } catch (error) {
@@ -58,7 +59,7 @@ const ManageElegibleMedication = () => {
     useEffect(() => {
         const fetchMedicationPoints = async () => {
             try {
-                const userId = '672b6733dd60abf5b47dd07c'; // Replace with actual user ID
+                const userId = selectedClient._id; // Replace with actual user ID
                 const response = await axios.get(`${apiURL}/api/exchanges/points/medication/${userId}`);
                 setMedicationPointsData(response.data);
             } catch (error) {
@@ -68,6 +69,11 @@ const ManageElegibleMedication = () => {
 
         fetchMedicationPoints();
     }, []);
+
+    const handleInfoClick = (medication) => {
+        localStorage.setItem('selectedMedication', JSON.stringify(medication));
+        navigate(`/MedicationDetails`);
+    }
 
     return (
         <div className="container-fluid i-ue-manage-elegible-medications">
@@ -116,7 +122,7 @@ const ManageElegibleMedication = () => {
                                                         </p>
                                                         <button
                                                             className="btn i-ue-modify-link"
-                                                            onClick={() => handleModifyClick(medication)}
+                                                            onClick={() => handleInfoClick(medication)}
                                                             style={{ position: 'absolute', top: '10px', right: '10px' }}
                                                         >
                                                             <FontAwesomeIcon icon={faInfoCircle} />
@@ -151,4 +157,4 @@ const ManageElegibleMedication = () => {
     );
 };
 
-export default ManageElegibleMedication;
+export default UserExchanges;

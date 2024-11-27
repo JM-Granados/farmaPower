@@ -3,7 +3,7 @@
     padding: 1.2rem;
     color: white;
     border-radius: 0.5rem;
-    height: 90%;
+    height: 95%;
     width: auto;
     margin-top: 8%;
     margin-left: 10%;
@@ -26,7 +26,7 @@
 
 .user_image_container img {
     width: 100%;
-    max-width: 25%;
+    max-width: 50%;
     border-radius: 50%;
 }
 
