@@ -199,3 +199,6 @@ input[type="date"] {
     height: auto;
 }
 
+.tituloSolicitudes {
+    margin-top: -10%;
+}
