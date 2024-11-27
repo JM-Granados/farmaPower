@@ -65,32 +65,18 @@ export class ConcreteVisitor implements Visitor {
     try {
       const idClient = params.idClient;
       const idExchange = params.id;
+      console.log("idExchange", idExchange);
+      console.log("idClient", idClient);
       const exchanges = await ExchangeModel.find({
         client: new mongoose.Types.ObjectId(idClient),
-        medication: new mongoose.Types.ObjectId(idExchange),
-        rStatus: 'Canjeada'
+        _id: new mongoose.Types.ObjectId(idExchange),
       })
         //Query de toda la vida
-        .populate({
-          path: 'requests', 
-          model: 'Request',
-          populate: [
-            {
-              path: 'pharmacy', 
-              model: 'Pharmacy',
-              select: 'name',
-            },
-            {
-              path: 'medication',
-              model: 'ElegibleMedication',
-              populate: {
-                path: 'medication',
-                model: 'Medication',
-                select: 'name points', 
-              },
-            },
-          ],
-        })
+        .populate("pharmacy")
+        .populate("requests")
+        .populate("client")
+
+      console.log("CONCRETE VISITOR -> exchanges", exchanges);
 
         //  Fecha del canje
         //  Número de canje – debería mostrarse de mayor a menor por la cronología.

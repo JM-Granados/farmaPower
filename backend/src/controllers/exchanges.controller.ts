@@ -237,6 +237,7 @@ export const getMedicationPoints: RequestHandler = async (req, res) => {
 
 export const visitExchanges = async (req:Request, res:Response) => {
     const { id, idClient } = req.body;
+    console.log("EXCHANGE.CONTROLLER -> VISITCANDIDATES:", id, idClient);
     try {
         const exchangeManagement = new ExchangeManagement();
         const visitor = new ConcreteVisitor(); 

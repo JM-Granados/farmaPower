@@ -92,3 +92,12 @@ GET http://localhost:3000/api/exchanges/points/672b6733dd60abf5b47dd07c
 
 ###
 GET http://localhost:3000/api/users/clients
+
+###
+POST http://localhost:3000/api/exchanges/ve/visitExchanges 
+Content-Type: application/json
+
+{
+    "idClient": "672b6733dd60abf5b47dd07c",
+    "id": "67469c78ac0989a3c0241de2"
+}
