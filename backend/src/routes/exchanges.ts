@@ -7,6 +7,7 @@ router.get('/all', exchangeCtrl.getExchanges); // Route to get exchanges
 router.post('/newExchange', exchangeCtrl.createExchange);
 router.get('/points/:id', exchangeCtrl.getPoints);
 router.get('/points/medication/:id', exchangeCtrl.getMedicationPoints);
+router.post('/ve/visitExchanges', exchangeCtrl.visitExchanges);
 
 
 export default router;

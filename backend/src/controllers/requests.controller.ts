@@ -7,6 +7,20 @@ import ProgramModel from '../models/Program'
 import mongoose from "mongoose";
 import { MongoError } from 'mongodb';
 
+//Dado que el controller no es una clase, se hace una chiquita para poder implementar el patron visitor
+
+import { Element } from "../visitor/Element";
+import { Visitor } from "../visitor/Visitor";
+import { ConcreteVisitor } from '../visitor/ConcreteVisitor';
+
+export class RequestManagement implements Element {
+  async accept(params: { v: Visitor; id: number; idClient: number }): Promise<{ success: boolean; data: any }> {
+    return params.v.visitCandidates(params);
+  }
+}
+
+
+
 export const getRequests: RequestHandler = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -254,5 +268,20 @@ export const updateRStatus: RequestHandler = async (req, res) => {
   } catch (error) {
     console.error("Error updating request status:", error);
     res.status(500).json({ message: "Error updating request status" });
+  }
+};
+
+
+export const visitCandidates = async (req:Request, res:Response) => {
+  const { id, idClient } = req.body;
+  try {
+      const requestManagement = new RequestManagement();
+      const visitor = new ConcreteVisitor(); 
+      const result = await requestManagement.accept({ v: visitor, id, idClient });
+      res.status(200).json(result);
+  } catch (error) {
+      console.error("REQUEST.CONTROLLER -> VISITCANDIDATES:", error);
+      const err = error as Error;
+      res.status(500).json({ success: false, error: err.message });
   }
 };
