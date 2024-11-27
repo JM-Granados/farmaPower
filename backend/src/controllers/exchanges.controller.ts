@@ -151,7 +151,12 @@ export const getMedicationPoints: RequestHandler = async (req, res) => {
     try {
         // Obtener puntos acumulados por cada medicamento
         const accumulatedPoints = await RequestModel.aggregate([
-            { $match: { client: new mongoose.Types.ObjectId(id), rStatus: 'Aprobada' } },
+            { 
+                $match: { 
+                    client: new mongoose.Types.ObjectId(id), 
+                    rStatus: { $in: ['Aprobada', 'Canjeada'] } // Include both statuses 
+                } 
+            },
             {
                 $lookup: {
                     from: 'elegiblemedication',
@@ -235,6 +240,7 @@ export const getMedicationPoints: RequestHandler = async (req, res) => {
         res.status(500).json({ message: 'Error al obtener puntos por medicamento' });
     }
 };
+
 
 
 export const visitExchanges = async (req: Request, res: Response) => {
