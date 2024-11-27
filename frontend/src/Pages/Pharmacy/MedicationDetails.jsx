@@ -72,7 +72,7 @@ const MedicationDetails = () => {
       e.preventDefault();
     
       const formData = new FormData();
-      formData.append('product', requests[0].medication.medication._id);
+      formData.append('product', requests[0].medication._id);
       formData.append('client', selectedClient._id);
       formData.append('pharmacy', requests[0].pharmacy._id);
       formData.append('requests', getRequestIdsForPoints(requests
