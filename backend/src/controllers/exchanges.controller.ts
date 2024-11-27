@@ -78,7 +78,12 @@ export const getPoints: RequestHandler = async (req, res) => {
     try {
         // Obtener puntos acumulados
         const totalPointsResult = await RequestModel.aggregate([
-            { $match: { client: new mongoose.Types.ObjectId(id), rStatus: 'Aprobada' } }, //buscamos las solicitudes aprobadas del cliente
+            {
+                $match: {
+                    client: new mongoose.Types.ObjectId(id),
+                    rStatus: { $in: ['Aprobada', 'Canjeada'] }, // Include both statuses
+                },
+            },
             {
                 $lookup: { // Esto es como hacer un join entre requests y elegible medication
                     from: 'elegiblemedication', // Collection que vamos a unir
@@ -142,7 +147,8 @@ export const getPoints: RequestHandler = async (req, res) => {
         console.error('Error al obtener puntos del cliente:', error);
         res.status(500).json({ message: 'Error al obtener puntos del cliente' });
     }
-}
+};
+
 
 export const getMedicationPoints: RequestHandler = async (req, res) => {
     const { id } = req.params; // Client ID
