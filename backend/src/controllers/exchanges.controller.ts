@@ -39,6 +39,7 @@ export const getExchanges: RequestHandler = async (req, res) => {
 // Crear un nuevo canje
 export const createExchange: RequestHandler = async (req, res) => {
     try {
+        console.log("FROM EXCHANGE.CONTROLLER -> ",req.body);
         const { product, client, pharmacy, requests } = req.body;
 
         if (!product || !client || !pharmacy || !requests) {
